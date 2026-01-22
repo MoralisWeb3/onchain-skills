@@ -13,6 +13,57 @@ metadata:
 
 Query token and NFT prices for both EVM chains and Solana including current prices, historical data, and market statistics.
 
+## When to Use This Skill
+
+Use this skill when the user asks about:
+
+**Token Prices:**
+- "What's the price of ETH/BNB/MATIC?", "Native token price", "Gas token price"
+- "Token price", "How much is this token worth", "Current price"
+- "Multiple token prices", "Batch prices", "Price of these tokens"
+
+**Price History & Charts:**
+- "Price history", "Historical prices", "Past prices", "Price over time"
+- "Price chart", "Candlesticks", "OHLCV data", "Trading data"
+- "Price at specific date", "Historical price data"
+
+**NFT Prices:**
+- "Floor price", "NFT floor price", "Lowest price", "Collection floor"
+- "NFT sales prices", "Recent sales", "Sale history"
+- "NFT price history", "Historical floor prices"
+
+**DEX Prices:**
+- "Pair price", "DEX price", "Liquidity pool price"
+- "Trading pair price", "Pool price"
+
+**Market Data:**
+- "All native prices", "Network prices", "Chain prices"
+- "Price statistics", "Market data", "Price analytics"
+
+**⚠️ NOT for:**
+- Token metadata/contract info → Use `web3-token-api`
+- Wallet token holdings with prices → Use `web3-wallet-api` with `/wallets/:address/tokens`
+- NFT metadata with price → Use `web3-nft-api`
+- Token swaps/trades → Use `web3-token-api`
+
+## Common Pitfalls
+
+### Confusion: Token Price vs Token Metadata
+- **Price only:** Use this skill (`web3-price-api`) with `/erc20/:address/price`
+- **Metadata + price:** Use `web3-token-api` with `/erc20/metadata` (includes price)
+
+### Confusion: NFT Floor Price vs NFT Metadata
+- **Floor price only:** Use this skill (`web3-price-api`) with `/nft/:address/lowestprice`
+- **NFT metadata + traits:** Use `web3-nft-api` with `/nft/:address`
+
+### Confusion: Price History vs Token Swaps
+- **Historical price data:** Use this skill (`web3-price-api`) with `/erc20/:address/price/history`
+- **Swap/trade history:** Use `web3-token-api` with `/erc20/:address/swaps`
+
+### Confusion: OHLCV Candlesticks vs Price History
+- **OHLCV candlesticks (charting):** Use this skill (`web3-price-api`) with `/erc20/:address/price/candlesticks`
+- **Simple price history:** Use this skill (`web3-price-api`) with `/erc20/:address/price/history`
+
 ## Setup
 
 ```bash

@@ -13,6 +13,54 @@ metadata:
 
 Query token data for both EVM chains and Solana including prices, metadata, DEX pairs, swaps, and transfers.
 
+## When to Use This Skill
+
+Use this skill when the user asks about:
+
+**Token Prices & Metadata:**
+- "What's the price of this token?", "Token price", "How much is this worth?"
+- "Token metadata", "Token info", "Token details", "Token symbol/decimals"
+- "Multiple token prices", "Price of these tokens"
+
+**DEX & Trading Data:**
+- "Trading pairs", "DEX pairs", "Where is this token traded?"
+- "Token swaps", "Swap history", "Trading activity"
+- "Liquidity pairs", "Available pairs"
+
+**Token Holders & Transfers:**
+- "Token holders", "Who owns this token?", "Whale holders"
+- "Token transfers", "Transfer history", "Token movement"
+- "Token balance", "How many tokens does this wallet have?"
+
+**Token Discovery:**
+- "Search for tokens", "Find tokens", "Token search"
+- "Trending tokens", "Hot tokens", "Popular tokens"
+- "Token stats", "Token statistics", "Market data"
+
+**Solana-Specific:**
+- "Pump.fun tokens", "Bonding curve status", "New Solana tokens"
+- "SPL token info", "Solana token metadata"
+
+**⚠️ NOT for:**
+- Wallet token holdings (portfolio view) → Use `web3-wallet-api`
+- NFT prices/metadata → Use `web3-nft-api` or `web3-price-api`
+- Native token prices (ETH, BNB) → Use `web3-price-api`
+- Historical price charts/candlesticks → Use `web3-price-api`
+
+## Common Pitfalls
+
+### Confusion: Token Price vs Wallet Token Holdings
+- **Individual token price:** Use this skill (`web3-token-api`) with `/erc20/:address/price`
+- **All tokens in a wallet:** Use `web3-wallet-api` with `/wallets/:address/tokens`
+
+### Confusion: Token Transfers vs Wallet Transactions
+- **Transfers for a specific token:** Use this skill (`web3-token-api`) with `/erc20/:address/transfers`
+- **All token transfers to/from a wallet:** Use `web3-wallet-api` with `/:address/erc20/transfers`
+
+### Confusion: Token Owners vs Wallet Holdings
+- **Who owns token X:** Use this skill (`web3-token-api`) with `/erc20/:address/owners`
+- **What tokens does wallet Y own:** Use `web3-wallet-api` with `/wallets/:address/tokens`
+
 ## Setup
 
 ```bash

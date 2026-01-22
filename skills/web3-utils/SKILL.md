@@ -13,6 +13,35 @@ metadata:
 
 API utilities and information.
 
+## When to Use This Skill
+
+Use this skill when the user asks about:
+
+**API Information:**
+- "API version", "What version is this?", "API info"
+- "Endpoint weights", "API costs", "Rate limits", "Query weights"
+- "API status", "API info", "System information"
+
+**Debugging:**
+- "Debug API", "Check API", "API configuration"
+- "Endpoint information", "API details"
+
+**⚠️ NOT for:**
+- Wallet/token/NFT/transaction data → Use specific data API skills
+- Blockchain queries → Use `web3-wallet-api`, `web3-blockchain-api`, etc.
+- Price queries → Use `web3-price-api`
+
+## Common Pitfalls
+
+### This is a Utility Skill
+- **This skill provides API metadata only** - not blockchain data
+- Use other skills for actual data queries (wallets, tokens, prices, etc.)
+
+### When to Use Endpoint Weights
+- **Planning API usage:** Use this skill to check query costs before making requests
+- **Debugging rate limits:** Check which endpoints are consuming your quota
+- **Optimization:** Find lighter-weight alternatives for common queries
+
 ## Setup
 
 ```bash

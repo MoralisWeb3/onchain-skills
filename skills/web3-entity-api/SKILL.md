@@ -13,6 +13,53 @@ metadata:
 
 Query labeled entities on EVM chains including exchanges, funds, protocols, and whale wallets.
 
+## When to Use This Skill
+
+Use this skill when the user asks about:
+
+**Entity Search & Discovery:**
+- "Search for entities", "Find exchanges", "Look up funds"
+- "Entity categories", "What entities exist?", "List entities"
+- "Labeled addresses", "Known addresses", "Tagged wallets"
+
+**Exchange Data:**
+- "Exchange wallets", "Exchange addresses", "CEX wallets"
+- "Binance wallets", "Coinbase wallets", "Kraken addresses"
+
+**Fund & Investor Data:**
+- "Fund wallets", "VC wallets", "Investor addresses"
+- "a16z wallets", "Paradigm addresses", "Fund tracking"
+
+**Protocol Data:**
+- "Protocol wallets", "DAO treasuries", "Protocol addresses"
+
+**Whale Tracking:**
+- "Whale wallets", "Large holders", "Whale addresses"
+
+**⚠️ NOT for:**
+- Wallet balances/holdings → Use `web3-wallet-api`
+- Transaction history → Use `web3-wallet-api` or `web3-blockchain-api`
+- Token/NFT prices → Use `web3-price-api`
+- Solana entities → Not supported (EVM only)
+
+## Common Pitfalls
+
+### Confusion: Entity Labels vs Wallet Data
+- **Entity labels/categories:** Use this skill (`web3-entity-api`) to find labeled addresses
+- **Wallet balances/transactions:** Use `web3-wallet-api` for actual wallet data
+
+### Confusion: Entity Search vs Token Search
+- **Search entities (exchanges, funds):** Use this skill (`web3-entity-api`) with `/entities/search`
+- **Search tokens:** Use `web3-token-api` with `/erc20/search`
+
+### Confusion: Entity Categories vs NFT Collections
+- **Entity categories (exchanges, funds):** Use this skill (`web3-entity-api`)
+- **NFT collections:** Use `web3-nft-api`
+
+### EVM Only Limitation
+- **This skill is EVM only** - No Solana support
+- Solana addresses are not labeled in the entity database
+
 ## Setup
 
 ```bash

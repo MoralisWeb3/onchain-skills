@@ -15,6 +15,47 @@ Query DeFi positions and protocol exposure on EVM chains.
 
 **Important:** This skill is **EVM only**. Solana DeFi is tracked through the Token API swaps endpoint.
 
+## When to Use This Skill
+
+Use this skill when the user asks about:
+
+**DeFi Positions:**
+- "DeFi positions", "Liquidity positions", "Where is the liquidity?"
+- "Yield farming", "Staking positions", "Lending positions"
+- "DeFi portfolio", "DeFi exposure", "Protocol positions"
+
+**Protocol Exposure:**
+- "What DeFi protocols?", "Which protocols?", "DeFi summary"
+- "Protocol usage", "DeFi overview", "Protocol exposure"
+
+**Protocol-Specific Data:**
+- "Aave positions", "Compound positions", "Uniswap positions"
+- "Positions in [protocol]", "What's in [protocol]?"
+
+**⚠️ NOT for:**
+- Wallet token holdings → Use `web3-wallet-api` with `/wallets/:address/tokens`
+- Token swaps/trades → Use `web3-wallet-api` with `/wallets/:address/swaps` or `web3-token-api`
+- Solana DeFi → Use `web3-token-api` swap endpoints (Raydium, Orca, Jupiter)
+- Transaction history → Use `web3-wallet-api` or `web3-blockchain-api`
+
+## Common Pitfalls
+
+### Confusion: DeFi Positions vs Token Holdings
+- **DeFi positions only:** Use this skill (`web3-defi-api`) with `/wallets/:address/defi/positions`
+- **All tokens in wallet:** Use `web3-wallet-api` with `/wallets/:address/tokens` (includes DeFi tokens)
+
+### Confusion: DeFi Summary vs DeFi Positions
+- **Protocol summary:** Use this skill (`web3-defi-api`) with `/wallets/:address/defi/summary` (overview by protocol)
+- **Detailed positions:** Use this skill (`web3-defi-api`) with `/wallets/:address/defi/positions` (full position details)
+
+### Confusion: EVM DeFi vs Solana DeFi
+- **EVM DeFi:** Use this skill (`web3-defi-api`) for Aave, Compound, Uniswap, Curve, Yearn, etc.
+- **Solana DeFi:** Use `web3-token-api` swap endpoints for Raydium, Orca, Jupiter activity
+
+### Confusion: Wallet Swaps vs DeFi Positions
+- **Swap history:** Use `web3-wallet-api` with `/wallets/:address/swaps` (all DEX trades)
+- **Current positions:** Use this skill (`web3-defi-api`) with `/wallets/:address/defi/positions` (active liquidity)
+
 ## Setup
 
 ```bash

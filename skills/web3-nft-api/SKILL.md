@@ -13,6 +13,61 @@ metadata:
 
 Query NFT data for both EVM chains and Solana including metadata, transfers, trades, traits, and rarity.
 
+## When to Use This Skill
+
+Use this skill when the user asks about:
+
+**NFT Metadata & Info:**
+- "NFT metadata", "NFT info", "NFT details"
+- "What's this NFT?", "Show me this NFT"
+- "Collection info", "NFT collection details"
+
+**NFT Holdings:**
+- "What NFTs does this wallet own?", "NFT collection"
+- "Wallet NFTs", "NFT portfolio"
+- "NFTs by contract", "All NFTs in this collection"
+
+**NFT Transfers & Trading:**
+- "NFT transfers", "NFT sent/received", "Transfer history"
+- "NFT trades", "Sales history", "Who sold this NFT"
+- "NFT owners", "Who owns this NFT", "Holder changes"
+
+**NFT Market Data:**
+- "Floor price", "Lowest price", "Current floor"
+- "NFT sales prices", "Recent sales", "Sale history"
+- "NFT collections", "Top collections", "Trending collections"
+
+**NFT Attributes:**
+- "NFT traits", "Attributes", "Rarity"
+- "Trait distribution", "How rare is this trait"
+
+**NFT Discovery:**
+- "Search NFTs", "Find NFTs", "NFT search"
+- "Trending NFTs", "Hot collections"
+
+**⚠️ NOT for:**
+- NFT prices (floor/sales) without metadata → Use `web3-price-api`
+- Wallet's NFTs with portfolio view → Use `web3-wallet-api`
+- Individual NFT transfers to/from wallet → Use `web3-wallet-api` with `/:address/nft/transfers`
+
+## Common Pitfalls
+
+### Confusion: NFT Metadata vs Floor Price
+- **NFT metadata/traits:** Use this skill (`web3-nft-api`) with `/nft/:address` or `/nft/:address/traits`
+- **Floor price only:** Use `web3-price-api` with `/nft/:address/lowestprice`
+
+### Confusion: NFT Transfers by Contract vs by Wallet
+- **All transfers for a collection:** Use this skill (`web3-nft-api`) with `/nft/:address/transfers`
+- **NFT transfers to/from a wallet:** Use `web3-wallet-api` with `/:address/nft/transfers`
+
+### Confusion: All NFTs by Wallet vs NFTs by Collection
+- **All NFTs owned by wallet:** Use `web3-wallet-api` with `/:address/nft`
+- **All NFTs in a collection:** Use this skill (`web3-nft-api`) with `/nft/:address`
+
+### Confusion: NFT Metadata vs Metadata URI
+- **Resolved NFT metadata:** Use this skill (`web3-nft-api`) with `/nft/:address` (auto-fetches from URI)
+- **Raw metadata from URI:** Use this skill (`web3-nft-api`) with `/nft/resolve` (manual URI lookup)
+
 ## Setup
 
 ```bash
