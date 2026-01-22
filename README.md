@@ -59,7 +59,6 @@ Comprehensive Web3 data skills for Claude Code supporting both **EVM chains** (E
 
 ## Documentation
 
-- [Implementation Plan](IMPLEMENTATION_PLAN.md)
 - [Moralis EVM API](https://deep-index.moralis.io/api-docs-2.2/)
 - [Moralis Solana API](https://solana-gateway.moralis.io/api/)
 
