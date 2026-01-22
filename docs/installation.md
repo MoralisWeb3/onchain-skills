@@ -10,7 +10,9 @@ Follow these steps to install Web3 Skills for Claude Code.
 ## Prerequisites
 
 - **Node.js** installed (for running queries)
-- **[Moralis API key](https://admin.moralis.io/register)** - Get one free (no credit card required)
+- **Moralis API key:**
+  1. Register at [admin.moralis.io/register](https://admin.moralis.io/register) (free, no credit card required)
+  2. Get your API key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 
 ## Installation Methods
 
@@ -97,6 +99,10 @@ The `.env` file is missing. Create it:
 ```bash
 echo "MORALIS_API_KEY=YOUR_KEY" > ~/.claude/skills/SKILL_NAME/.env
 ```
+
+**To get your key:**
+1. Register at [admin.moralis.io/register](https://admin.moralis.io/register) (free)
+2. Get your key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 
 ### "SKILL.md not found" error
 

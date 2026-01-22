@@ -59,7 +59,7 @@ Comprehensive Web3 data skills for Claude Code supporting both **EVM chains** (E
 
 ## Documentation
 
-- [Get API Key](https://admin.moralis.io/register) - Free registration
+- **Get API Key:** Register at [admin.moralis.io/register](https://admin.moralis.io/register), then get your key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 - [Moralis EVM API Docs](https://deep-index.moralis.io/api-docs-2.2/)
 - [Moralis Solana API Docs](https://solana-gateway.moralis.io/api/)
 

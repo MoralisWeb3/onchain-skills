@@ -18,7 +18,8 @@ Comprehensive Web3 data skills for Claude Code supporting both **EVM chains** (E
 
 ### 1. Get API Key
 
-Visit [admin.moralis.io/register](https://admin.moralis.io/register) to get your free API key.
+1. Register at **[admin.moralis.io/register](https://admin.moralis.io/register)** (free, no credit card required)
+2. Get your API key at **[admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)**
 
 ### 2. Install Skills
 
