@@ -1,31 +1,32 @@
 {
-    "name": "web3-skills-marketplace",
-    "owner": {
-        "name": "noviulian"
-    },
-    "metadata": {
-        "description": "Web3 development skills for Moralis API integration",
-        "version": "1.0.0"
-    },
-    "plugins": [
-        {
-            "name": "web3-skills",
-            "description": "Comprehensive Web3 development suite including wallet, NFT, token, DeFi, blockchain APIs, and specialized utilities for Moralis integration",
-            "source": "./",
-            "strict": false,
-            "skills": [
-                "./skills/web3-wallet-api",
-                "./skills/web3-nft-api",
-                "./skills/web3-token-api",
-                "./skills/web3-defi-api",
-                "./skills/web3-entity-api",
-                "./skills/web3-price-api",
-                "./skills/web3-blockchain-api",
-                "./skills/web3-utils",
-                "./skills/web3-premium"
-            ],
-            "commands": ["./commands/web3-api-key"],
-            "agents": ["./agents/web3-developer"]
-        }
-    ]
+  "name": "web3-skills-marketplace",
+  "owner": {
+    "name": "noviulian",
+    "email": "noviulian@icloud.com"
+  },
+  "metadata": {
+    "description": "Web3 development skills for Moralis API integration",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "web3-skills",
+      "description": "Comprehensive Web3 development suite including wallet, NFT, token, DeFi, blockchain APIs, and specialized utilities for Moralis integration",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/web3-wallet-api",
+        "./skills/web3-nft-api",
+        "./skills/web3-token-api",
+        "./skills/web3-defi-api",
+        "./skills/web3-entity-api",
+        "./skills/web3-price-api",
+        "./skills/web3-blockchain-api",
+        "./skills/web3-utils",
+        "./skills/web3-premium"
+      ],
+      "commands": ["./commands/web3-api-key.md"],
+      "agents": ["./agents/web3-developer.md"]
+    }
+  ]
 }

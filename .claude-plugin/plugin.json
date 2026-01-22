@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Comprehensive Web3 data skills for Claude Code supporting both EVM chains (ETH, Polygon, BSC, etc.) and Solana using Moralis API. ZERO dependencies - plug and play!",
   "author": {
-    "name": "noviulian"
+    "name": "noviulian",
+    "email": "noviulian@icloud.com"
   },
   "license": "MIT",
   "repository": "https://github.com/noviulian/web3-skills",
+  "homepage": "https://github.com/noviulian/web3-skills",
   "keywords": [
     "web3",
     "blockchain",
@@ -17,5 +19,8 @@
     "solana",
     "evm",
     "moralis"
-  ]
+  ],
+  "commands": ["./commands/web3-api-key.md"],
+  "agents": ["./agents/web3-developer.md"],
+  "skills": "./skills/"
 }
