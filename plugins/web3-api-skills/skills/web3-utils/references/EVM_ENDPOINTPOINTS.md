@@ -18,13 +18,19 @@
 ---
 
 ## Get API Version
+
 - **Endpoint:** `GET /web3/version`
-- **Description:** Get current API version
+- **Description:** Get API version. Retrieves the current API version information.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/web3/version
 - **Use this endpoint when:** User asks "API version", "what version", "API info", "system version"
 - **Params:** None
 
+---
+
 ## Get Endpoint Weights
+
 - **Endpoint:** `GET /info/endpointWeights`
-- **Description:** Get API endpoint weights for rate limiting
+- **Description:** Get weights of endpoints. Retrieves the API quota cost (weight) for each endpoint to help manage rate limits.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/info/endpointWeights
 - **Use this endpoint when:** User asks "endpoint weights", "API costs", "rate limits", "query costs", "quota usage"
 - **Params:** None

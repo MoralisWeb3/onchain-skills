@@ -23,38 +23,70 @@
 ---
 
 ## Get Block by Number/Hash
-- **Endpoint:** `GET /block/:blockNumberOrHash`
-- **Description:** Get block details by number or hash
+
+- **Endpoint:** `GET /block/:block_number_or_hash`
+- **Description:** Get block by hash or number. Retrieves block details including transactions, timestamps, and other block data.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/block/:block_number_or_hash
 - **Use this endpoint when:** User asks "block [number]", "block data", "block information", "block [hash]"
-- **Params:** `chain`
+- **Auto-chain:** Yes
+
+---
 
 ## Get Block by Date
+
 - **Endpoint:** `GET /dateToBlock`
-- **Description:** Convert date to block number
+- **Description:** Get block by date. Converts a date to a block number.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/dateToBlock
 - **Use this endpoint when:** User asks "block on [date]", "what block was on [date]", "block number for date"
 - **Params:** `date`, `chain`
 
-## Get Transaction by Hash
-- **Endpoint:** `GET /transaction/:transactionHash`
-- **Description:** Get transaction details
-- **Use this endpoint when:** User asks "transaction [hash]", "transaction details", "TX info", "transaction data"
-- **Params:** `chain`
+---
 
-## Get Decoded Transaction
-- **Endpoint:** `GET /transaction/:transactionHash/verbose`
-- **Description:** Get decoded transaction with method calls
+## Get Transaction by Hash
+
+- **Endpoint:** `GET /transaction/:transaction_hash`
+- **Description:** Get transaction by hash. Retrieves transaction details including from, to, value, and gas data.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/transaction/:transaction_hash
+- **Use this endpoint when:** User asks "transaction [hash]", "transaction details", "TX info", "transaction data"
+- **Auto-chain:** Yes
+
+---
+
+## Get Decoded Transaction by Hash
+
+- **Endpoint:** `GET /transaction/:transaction_hash/verbose`
+- **Description:** Get decoded transaction by hash. Retrieves transaction with ABI-decoded function calls and parameters.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/transaction/:transaction_hash/verbose
 - **Use this endpoint when:** User asks "decoded transaction", "what function was called", "transaction decoded", "method name"
-- **Params:** `chain`
+- **Auto-chain:** Yes
+
+---
+
+## Get Decoded Wallet Transaction
+
+- **Endpoint:** `GET /:address/verbose`
+- **Description:** Get decoded transactions by wallet. Retrieves decoded transactions with method names and parsed parameters for a wallet.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/:address/verbose
+- **Use this endpoint when:** User asks "decoded transactions for wallet", "what functions were called by wallet"
+- **Auto-chain:** Yes
+
+---
+
+## Get Wallet Transactions
+
+- **Endpoint:** `GET /:address`
+- **Description:** Get native transactions by wallet. Retrieves all native currency transfers for a wallet.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/:address
+- **Use this endpoint when:** User asks "wallet transactions", "native transactions by wallet", "wallet txs"
+- **Auto-chain:** Yes
+
+---
 
 ## Get Latest Block Number
-- **Endpoint:** `GET /latestBlockNumber/:chain`
-- **Description:** Get current block number
-- **Use this endpoint when:** User asks "latest block", "current block number", "block height", "chain height"
-- **Params:** `chain`
 
-## Get Internal Transactions
-- **Endpoint:** `GET /transaction/:transactionHash`
-- **Description:** Get transaction details including internal transactions
-- **Use this endpoint when:** User asks "internal transactions", "internal TXs", "contract calls within transaction"
-- **Params:** `chain`, `include=internal_transactions`
+- **Endpoint:** `GET /latestBlockNumber/:chain`
+- **Description:** Get latest block number. Retrieves the current block height for a chain.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/latestBlockNumber/:chain
+- **Use this endpoint when:** User asks "latest block", "current block number", "block height", "chain height"
+- **Params:** `:chain` (e.g., "eth", "polygon", "bsc")
 

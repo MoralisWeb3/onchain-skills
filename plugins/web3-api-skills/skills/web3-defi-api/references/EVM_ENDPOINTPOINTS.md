@@ -20,24 +20,35 @@
 ---
 
 ## Get DeFi Summary
+
 - **Endpoint:** `GET /wallets/:address/defi/summary`
-- **Description:** Get all DeFi protocols used by wallet with aggregated values
+- **Description:** Get DeFi protocols by wallet. Retrieves a summary of all DeFi protocols the wallet has interacted with, showing total value and protocol exposure.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/wallets/:address/defi/summary
 - **Use this endpoint when:** User asks "DeFi summary", "what protocols", "DeFi overview", "protocol exposure", "which DeFi protocols"
 - **Auto-chain:** Yes
 
+---
+
 ## Get DeFi Positions Summary
+
 - **Endpoint:** `GET /wallets/:address/defi/positions`
-- **Description:** Get all DeFi positions across all protocols
+- **Description:** Get DeFi positions by wallet. Retrieves detailed DeFi positions across all protocols including liquidity, staking, lending, and yield farming positions.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/wallets/:address/defi/positions
 - **Use this endpoint when:** User asks "DeFi positions", "liquidity positions", "staking", "yield farming", "lending positions", "where is the liquidity"
 - **Auto-chain:** Yes
 - **Params:** `cursor`, `limit`
 
-## Get Positions by Protocol
+---
+
+## Get DeFi Positions by Protocol
+
 - **Endpoint:** `GET /wallets/:address/defi/:protocol/positions`
-- **Description:** Get detailed positions for specific protocol
+- **Description:** Get detailed DeFi positions by wallet and protocol. Retrieves detailed positions for a specific DeFi protocol.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/wallets/:address/defi/:protocol/positions
 - **Use this endpoint when:** User asks "Aave positions", "Uniswap positions", "positions in [protocol]", "what's in [protocol]"
 - **Auto-chain:** Yes
 - **Protocols:** aave-v2, aave-v3, compound-v2, compound-v3, uniswap-v2, uniswap-v3, sushiswap, curve, yearn-v2, yearn-v3, etc.
+- **Params:** `cursor`, `limit`
 
 ## Supported DeFi Protocols
 

@@ -1,8 +1,8 @@
 ---
 name: web3-price-api
-description: Query token and NFT prices including current prices, historical data, OHLCV candlesticks, floor prices, and sale prices for both EVM chains and Solana. Get native token prices, ERC20 prices, NFT floor prices, and price history. Use when user asks about prices, market data, or valuations.
+description: Query token and NFT prices for both EVM chains and Solana. Get current ERC20/SPL token prices, NFT floor prices, sale prices, and pair OHLCV candlestick data. Use when user asks about prices, market data, or valuations.
 license: MIT
-compatibility: Requires Node.js (built-in modules only, no npm install needed)
+compatibility: Requires Node.js (built-in modules only, no npm install needed). Solana API is more limited than EVM.
 metadata:
   version: "1.0.0"
   author: web3-skills
@@ -11,7 +11,12 @@ metadata:
 
 # Web3 Price API
 
-Query token and NFT prices for both EVM chains and Solana including current prices, historical data, and market statistics.
+Query token and NFT prices for both EVM chains and Solana including current prices, NFT floor prices, and market statistics.
+
+**⚠️ Important Limitations:**
+- **EVM:** No native token price endpoints (ETH, BNB, MATIC) - use wrapped token addresses instead
+- **EVM:** No token price history endpoints
+- **Solana:** Very limited - only current SPL token prices available
 
 ## When to Use This Skill
 
@@ -22,23 +27,17 @@ Use this skill when the user asks about:
 - "Token price", "How much is this token worth", "Current price"
 - "Multiple token prices", "Batch prices", "Price of these tokens"
 
-**Price History & Charts:**
-- "Price history", "Historical prices", "Past prices", "Price over time"
+**Price Charts (EVM only):**
 - "Price chart", "Candlesticks", "OHLCV data", "Trading data"
-- "Price at specific date", "Historical price data"
+- "Pair candlesticks", "DEX price chart"
 
-**NFT Prices:**
+**NFT Prices (EVM only):**
 - "Floor price", "NFT floor price", "Lowest price", "Collection floor"
 - "NFT sales prices", "Recent sales", "Sale history"
 - "NFT price history", "Historical floor prices"
 
-**DEX Prices:**
+**DEX Prices (EVM only):**
 - "Pair price", "DEX price", "Liquidity pool price"
-- "Trading pair price", "Pool price"
-
-**Market Data:**
-- "All native prices", "Network prices", "Chain prices"
-- "Price statistics", "Market data", "Price analytics"
 
 **⚠️ NOT for:**
 - Token metadata/contract info → Use `web3-token-api`
@@ -53,16 +52,12 @@ Use this skill when the user asks about:
 - **Metadata + price:** Use `web3-token-api` with `/erc20/metadata` (includes price)
 
 ### Confusion: NFT Floor Price vs NFT Metadata
-- **Floor price only:** Use this skill (`web3-price-api`) with `/nft/:address/lowestprice`
+- **Floor price only:** Use this skill (`web3-price-api`) with `/nft/:address/floor-price`
 - **NFT metadata + traits:** Use `web3-nft-api` with `/nft/:address`
 
-### Confusion: Price History vs Token Swaps
-- **Historical price data:** Use this skill (`web3-price-api`) with `/erc20/:address/price/history`
+### Confusion: OHLCV Candlesticks vs Token Swaps
+- **OHLCV candlesticks (charting):** Use this skill (`web3-price-api`) with `/pairs/:address/ohlcv`
 - **Swap/trade history:** Use `web3-token-api` with `/erc20/:address/swaps`
-
-### Confusion: OHLCV Candlesticks vs Price History
-- **OHLCV candlesticks (charting):** Use this skill (`web3-price-api`) with `/erc20/:address/price/candlesticks`
-- **Simple price history:** Use this skill (`web3-price-api`) with `/erc20/:address/price/history`
 
 ## Setup
 
@@ -96,21 +91,40 @@ query('/token/mainnet/7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU/price', {})
 "
 ```
 
-### Get Native Token Price
+### Get Token Pair Price (EVM)
 
 ```bash
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/price/:network', {
-  params: { network: 'eth' }
+query('/{token0_address}/{token1_address}/price', {
+  params: {
+    token0_address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', // WETH
+    token1_address: '0x6B175474E89094C44Da98b954EedeAC495271d0F', // DAI
+    chain: 'eth'
+  }
 })
-  .then(data => console.log('ETH Price:', data.usdPrice, 'USD'))
+  .then(data => console.log('Pair Price:', JSON.stringify(data, null, 2)))
   .catch(console.error);
 "
 ```
 
-**Supported networks:** eth, polygon, bsc, arbitrum, optimism, avalanche, fantom, etc.
+**Note:** This endpoint is deprecated. For production use, get the pair address first and use `/pairs/:address/ohlcv`.
+
+### Get Pair OHLCV Candlesticks (EVM)
+
+```bash
+cd $SKILL_DIR
+node -e "
+const { query } = require('./query');
+query('/pairs/:address/ohlcv', {
+  address: '0x60aE616a2155Ee3d9A68541Ba4544862310933d4', // WETH/USDC pair
+  params: { chain: 'eth', limit: 30 }
+})
+  .then(data => console.log('Candlesticks:', data.result?.length || 0))
+  .catch(console.error);
+"
+```
 
 ### Get Multiple Token Prices
 
@@ -128,46 +142,14 @@ query('/erc20/prices', {
 "
 ```
 
-### Get Token Pair Price (DEX)
+### Get NFT Floor Price (EVM)
 
 ```bash
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/pairs/:address/price', {
-  address: '0x1234...',
-  params: { chain: 'eth' }
-})
-  .then(data => console.log('Pair Price:', JSON.stringify(data, null, 2)))
-  .catch(console.error);
-"
-```
-
-### Get OHLCV Candlesticks
-
-```bash
-cd $SKILL_DIR
-node -e "
-const { query } = require('./query');
-query('/erc20/:address/price/candlesticks', {
-  address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-  params: { chain: 'eth', timeframe: '1d', limit: 30 }
-})
-  .then(data => console.log('Candlesticks:', data.result?.length || 0))
-  .catch(console.error);
-"
-```
-
-**Timeframes:** `1m`, `5m`, `15m`, `1h`, `4h`, `1d`, `1w`
-
-### Get NFT Floor Price
-
-```bash
-cd $SKILL_DIR
-node -e "
-const { query } = require('./query');
-query('/nft/:address/lowestprice', {
-  address: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
+query('/nft/:address/floor-price', {
+  address: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d', // Bored Ape Yacht Club
   params: { chain: 'eth' }
 })
   .then(data => console.log('Floor Price:', JSON.stringify(data, null, 2)))
@@ -175,13 +157,13 @@ query('/nft/:address/lowestprice', {
 "
 ```
 
-### Get NFT Sale Prices
+### Get NFT Sale Prices (EVM)
 
 ```bash
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/nft/:address/sales', {
+query('/nft/:address/price', {
   address: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
   params: { chain: 'eth', limit: 10 }
 })
@@ -190,13 +172,13 @@ query('/nft/:address/sales', {
 "
 ```
 
-### Get Historical NFT Floor Price
+### Get Historical NFT Floor Price (EVM)
 
 ```bash
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/nft/:address/price/history', {
+query('/nft/:address/floor-price/historical', {
   address: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
   params: { chain: 'eth', from: '2024-01-01', to: '2024-01-31' }
 })
@@ -205,30 +187,18 @@ query('/nft/:address/price/history', {
 "
 ```
 
-### Get Token Price History
+### Get Multiple Solana Token Prices
 
 ```bash
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/erc20/:address/price/history', {
-  address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-  params: { chain: 'eth', from: '2024-01-01', to: '2024-01-31', interval: '1d' }
+query('/token/:network/prices', {
+  params: {
+    network: 'mainnet',
+    addresses: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU,So11111111111111111111111111111111111111112'
+  }
 })
-  .then(data => console.log('History:', data.result?.length || 0))
-  .catch(console.error);
-"
-```
-
-**Intervals:** `1m`, `5m`, `15m`, `1h`, `4h`, `1d`, `1w`
-
-### Get All Native Prices
-
-```bash
-cd $SKILL_DIR
-node -e "
-const { query } = require('./query');
-query('/price')
   .then(data => console.log(JSON.stringify(data, null, 2)))
   .catch(console.error);
 "
@@ -247,16 +217,12 @@ query('/price')
 }
 ```
 
-## Supported Native Tokens
+## Supported Chains
 
-- **ETH** - Ethereum
-- **MATIC** - Polygon
-- **BNB** - Binance Smart Chain
-- **ARB** - Arbitrum
-- **OP** - Optimism
-- **AVAX** - Avalanche
-- **FTM** - Fantom
-- And more...
+**EVM:** eth, polygon, bsc, arbitrum, optimism, avalanche, fantom, etc.
+**Solana:** mainnet, devnet
+
+**Note:** For native token prices (ETH, BNB, MATIC, SOL), use wrapped token addresses or external price APIs like CoinGecko.
 
 ## See Also
 

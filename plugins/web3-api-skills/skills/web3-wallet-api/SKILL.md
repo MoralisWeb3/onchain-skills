@@ -113,7 +113,7 @@ q('/:address/balance', { address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045' }
 ```bash
 cd $SKILL_DIR
 node -e "const { q } = require('./query');
-q('/:network/:address/balance', { address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb' })
+q('/account/:network/:address/balance', { address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb' })
   .then(r => console.log('Balance:', r.balance, 'SOL'))
   .catch(console.error);
 "
@@ -148,7 +148,7 @@ q('/wallets/:address/tokens', { address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA9
 ```bash
 cd $SKILL_DIR
 node -e "const { q } = require('./query');
-q('/:network/:address/tokens', { address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb' })
+q('/account/:network/:address/tokens', { address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb' })
   .then(r => console.log('Tokens:', r.result.length))
   .catch(console.error);
 "
@@ -191,7 +191,7 @@ q('/wallets/:address/history', {
 ```bash
 cd $SKILL_DIR
 node -e "const { q } = require('./query');
-q('/:network/:address/portfolio', { address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb' })
+q('/account/:network/:address/portfolio', { address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb' })
   .then(console.log)
   .catch(console.error);
 "
@@ -218,7 +218,7 @@ q('/:address/nft', {
 ```bash
 cd $SKILL_DIR
 node -e "const { q } = require('./query');
-q('/:network/:address/nft', { address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb' })
+q('/account/:network/:address/nft', { address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb' })
   .then(r => console.log('NFTs:', r.result.length))
   .catch(console.error);
 "

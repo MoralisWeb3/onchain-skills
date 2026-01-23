@@ -132,7 +132,7 @@ query('/erc20/metadata', {
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/token/:network/:address', {
+query('/token/:network/:address/metadata', {
   address: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU',
   network: 'mainnet'
 })
@@ -239,7 +239,7 @@ searchToken('pepe', ['0x1', '0x89'])
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/trending/tokens', {
+query('/tokens/trending', {
   params: { chain: 'eth' }
 })
   .then(data => console.log('Trending:', data.result?.length || 0))
@@ -253,7 +253,7 @@ query('/trending/tokens', {
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/token/:network/pumpfun/active', { network: 'mainnet' })
+query('/token/:network/exchange/pump/new', { network: 'mainnet' })
   .then(data => console.log(JSON.stringify(data, null, 2)))
   .catch(console.error);
 "
@@ -265,11 +265,11 @@ query('/token/:network/pumpfun/active', { network: 'mainnet' })
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/token/:network/:address/pumpfun/isBonding', {
+query('/token/:network/:address/bonding-status', {
   address: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU',
   network: 'mainnet'
 })
-  .then(data => console.log('Is Bonding:', data.isBonding))
+  .then(data => console.log('Is Bonding:', data.bonding))
   .catch(console.error);
 "
 ```
@@ -282,28 +282,12 @@ query('/token/:network/:address/pumpfun/isBonding', {
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/token/:network/:address/owners', {
+query('/token/:network/holders/:address', {
   address: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU',
   network: 'mainnet',
   params: { limit: 10 }
 })
   .then(data => console.log('Holders:', data.result?.length || 0))
-  .catch(console.error);
-"
-```
-
-### Get Token Transfers (Solana)
-
-```bash
-cd $SKILL_DIR
-node -e "
-const { query } = require('./query');
-query('/token/:network/:address/transfers', {
-  address: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU',
-  network: 'mainnet',
-  params: { limit: 10 }
-})
-  .then(data => console.log('Transfers:', data.result?.length || 0))
   .catch(console.error);
 "
 ```

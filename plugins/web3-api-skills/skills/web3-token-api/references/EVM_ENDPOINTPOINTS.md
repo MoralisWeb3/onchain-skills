@@ -9,14 +9,20 @@
 | "What's the token price?" | `/erc20/:address/price` | Single token price |
 | "Multiple token prices" | `/erc20/prices` | Batch prices |
 | "Token metadata/info" | `/erc20/metadata` | Name, symbol, decimals |
-| "Trading pairs?" | `/erc20/:address/pairs` | DEX pairs |
+| "Trading pairs?" | `/:token_address/pairs` | DEX pairs |
 | "Token swaps?" | `/erc20/:address/swaps` | Swap history |
-| "Who owns this token?" | `/erc20/:address/owners` | Token holders |
+| "Who owns this token?" | `/erc20/:token_address/owners` | Token holders |
 | "Token transfers?" | `/erc20/:address/transfers` | Transfer events |
-| "Search for tokens" | `/erc20/search` | By name/symbol |
-| "Trending tokens?" | `/trending/tokens` | Social sentiment |
+| "Search for tokens" | `/tokens/search` | By name/symbol |
+| "Trending tokens?" | `/tokens/trending` | Social sentiment |
 | "Token stats?" | `/erc20/:address/stats` | Market statistics |
 | "Token balance?" | `/wallets/:address/tokens` | Token balances for wallet |
+| "Top gainers?" | `/discovery/tokens/top-gainers` | Top gainers |
+| "Top losers?" | `/discovery/tokens/top-losers` | Top losers |
+| "Token pairs stats?" | `/pairs/:address/stats` | Pair statistics |
+| "OHLCV data?" | `/pairs/:address/ohlcv` | Candlesticks |
+| "Token analytics?" | `/tokens/:address/analytics` | Token analytics |
+| "Top tokens?" | `/market-data/erc20s/top-tokens` | By market cap |
 
 ## Key Endpoint Patterns
 
@@ -24,97 +30,499 @@
 - **Batch operations:** `/erc20/*` (no `:address`)
 - **Pair-based data:** `/pairs/:address/*`
 - **Metadata returns:** name, symbol, decimals, logos, contract info
+- **Discovery endpoints:** `/discovery/tokens/*` for trending/filtering
+
+---
+
+## Get Token Balances
+
+### Get ERC20 Token Balances by Wallet
+
+- **Endpoint:** `GET /:address/erc20`
+- **Description:** Get ERC20 token balance by wallet. Retrieves all ERC20 token balances for a given address without USD pricing.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/:address/erc20
+- **Use this endpoint when:** User asks "ERC20 balances", "token balances without prices", "what ERC20 tokens"
+- **Auto-chain:** Yes
+- **Params:** `limit`, `cursor`
+- **Note:** This endpoint is also documented in `web3-wallet-api`
+
+---
+
+### Get Token Balances with Prices
+
+- **Endpoint:** `GET /wallets/:address/tokens`
+- **Description:** Get Native & ERC20 token balances & prices by wallet. Retrieves all tokens held by the wallet with their USD prices and metadata.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/wallets/:address/tokens
+- **Use this endpoint when:** User asks "token balance", "how many tokens does this wallet have", "check wallet token balances", "tokens with prices"
+- **Auto-chain:** Yes
+- **Params:** `limit`, `cursor`
+- **Note:** This endpoint is also documented in `web3-wallet-api`
+
+---
+
+## Get Token Approvals
+
+### Get Token Approvals
+
+- **Endpoint:** `GET /wallets/:address/approvals`
+- **Description:** Get ERC20 approvals by wallet. Retrieves all token approval transactions for the wallet.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/wallets/:address/approvals
+- **Use this endpoint when:** User asks "token approvals", "what contracts are approved", "allowances", "permissions"
+- **Auto-chain:** Yes
+- **Note:** This endpoint is also documented in `web3-wallet-api`
+
+---
+
+## Get Token Metadata
+
+### Get Token Metadata by Symbols
+
+- **Endpoint:** `POST /erc20/metadata/symbols`
+- **Description:** Get ERC20 token metadata by symbols. Retrieves metadata for multiple tokens by their symbols.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/metadata/symbols
+- **Use this endpoint when:** User asks "token metadata by symbol", "info for BTC, ETH", "get token info"
+- **Method:** POST with body `{"symbols": ["ETH", "USDT", ...]}`
+
+---
+
+### Get Token Metadata
+
+- **Endpoint:** `POST /erc20/metadata`
+- **Description:** Get ERC20 token metadata by contract. Retrieves metadata including name, symbol, decimals, logos, and contract info.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/metadata
+- **Use this endpoint when:** User asks "token metadata", "token info", "token details", "what's the symbol/decimals", "token name"
+- **Method:** POST with body `{"addresses": ["0x...", ...]}`
+
+---
+
+### Get Discovery Token
+
+- **Endpoint:** `GET /discovery/token`
+- **Description:** Get token details. Retrieves comprehensive token information from the discovery service.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/discovery/token
+- **Use this endpoint when:** User asks "token details", "discovery info", "comprehensive token data"
+- **Params:** `addresses` (comma-separated token addresses)
 
 ---
 
 ## Get Token Price
+
+### Get Token Price
+
 - **Endpoint:** `GET /erc20/:address/price`
-- **Description:** Get current token price in USD
+- **Description:** Get ERC20 token price. Retrieves the current price of a token in the blockchain's native currency and USD.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:address/price
 - **Use this endpoint when:** User asks "token price", "how much is this token worth", "current price", "USD price"
 - **Auto-chain:** Yes
+- **Params:** `include` (optional: "percent_change")
 
-## Get Multiple Token Prices
-- **Endpoint:** `GET /erc20/prices`
-- **Description:** Get prices for multiple tokens at once
+---
+
+### Get Multiple Token Prices
+
+- **Endpoint:** `POST /erc20/prices`
+- **Description:** Get multiple token prices. Retrieves prices for multiple tokens in a single request.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/prices
 - **Use this endpoint when:** User asks "multiple token prices", "price of these tokens", "batch prices", "check prices for..."
-- **Params:** `addresses` (comma-separated)
+- **Method:** POST with body `{"addresses": ["0x...", ...]}`
+- **Params:** `include` (optional: "percent_change")
 
-## Get Token Metadata
-- **Endpoint:** `GET /erc20/metadata`
-- **Description:** Get token metadata (name, symbol, decimals, logo)
-- **Use this endpoint when:** User asks "token metadata", "token info", "token details", "what's the symbol/decimals", "token name"
-- **Params:** `addresses` (comma-separated)
+---
 
-## Get Token Pairs
-- **Endpoint:** `GET /erc20/:address/pairs`
-- **Description:** Get DEX pairs for a token
+### Get OHLCV Candlesticks
+
+- **Endpoint:** `GET /pairs/:address/ohlcv`
+- **Description:** Get the OHLCV candlesticks by using pair address. Retrieves Open-High-Low-Close-Volume data for a trading pair.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/pairs/:address/ohlcv
+- **Use this endpoint when:** User asks "candlesticks", "OHLCV", "price chart data", "candle data"
+- **Auto-chain:** Yes
+- **Params:** `timeframe` (1m, 5m, 15m, 1h, 4h, 1d), `fromDate`, `toDate`
+
+---
+
+## Get Token Swaps
+
+### Get Swaps by Pair Address
+
+- **Endpoint:** `GET /pairs/:address/swaps`
+- **Description:** Get swaps by pair address. Retrieves swap history for a specific DEX pair.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/pairs/:address/swaps
+- **Use this endpoint when:** User asks "pair swaps", "trades on this pair", "pair volume"
+- **Auto-chain:** Yes
+- **Params:** `limit`, `from`, `to`
+
+---
+
+### Get Swaps by Token Address
+
+- **Endpoint:** `GET /erc20/:address/swaps`
+- **Description:** Get swaps by ERC20 token address. Retrieves swap history for a specific token across all pairs.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:address/swaps
+- **Use this endpoint when:** User asks "token swaps", "swap history", "trading activity", "who's swapping this token"
+- **Auto-chain:** Yes
+- **Params:** `limit`, `from`, `to`
+
+---
+
+### Get Swaps by Wallet Address
+
+- **Endpoint:** `GET /wallets/:address/swaps`
+- **Description:** Get swaps by wallet address. Retrieves all DEX swaps performed by a wallet.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/wallets/:address/swaps
+- **Use this endpoint when:** User asks "my swaps", "wallet swaps", "what swaps did this wallet do"
+- **Auto-chain:** Yes
+- **Params:** `limit`, `from`, `to`
+- **Note:** This endpoint is also documented in `web3-wallet-api`
+
+---
+
+## Get Token Transfers
+
+### Get Token Transfers by Wallet
+
+- **Endpoint:** `GET /:address/erc20/transfers`
+- **Description:** Get ERC20 token transfers by wallet. Retrieves all ERC20 transfers to and from the specified address.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/:address/erc20/transfers
+- **Use this endpoint when:** User asks "my token transfers", "wallet transfers", "tokens sent/received"
+- **Auto-chain:** Yes
+- **Params:** `limit`, `cursor`, `from`, `to`
+- **Note:** This endpoint is also documented in `web3-wallet-api`
+
+---
+
+### Get Token Transfers
+
+- **Endpoint:** `GET /erc20/:address/transfers`
+- **Description:** Get ERC20 token transfers by contract. Retrieves all transfer events for a specific token contract.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:address/transfers
+- **Use this endpoint when:** User asks "token transfers", "transfer history", "token movement", "who's transferring"
+- **Auto-chain:** Yes
+- **Params:** `limit`, `cursor`, `from`, `to`
+
+---
+
+## Get Token Top Traders
+
+### Get Token Profitable Wallets
+
+- **Endpoint:** `GET /erc20/:address/top-gainers`
+- **Description:** Get Token Profitable Wallets. Retrieves wallets with the highest profits from trading a specific token.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:address/top-gainers
+- **Use this endpoint when:** User asks "top traders", "profitable wallets", "who made money on this token", "best traders"
+- **Auto-chain:** Yes
+
+---
+
+## Get Volume Stats
+
+### Get Volume Stats by Chain
+
+- **Endpoint:** `GET /volume/chains`
+- **Description:** Get volume statistics by chain. Retrieves DEX trading volume statistics for all chains.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/volume/chains
+- **Use this endpoint when:** User asks "volume by chain", "trading volume stats", "DEX volume"
+- **Params:** `fromDate`, `toDate`
+
+---
+
+### Get Volume Stats by Category
+
+- **Endpoint:** `GET /volume/categories`
+- **Description:** Get volume and chain data by categories. Retrieves volume statistics grouped by token categories.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/volume/categories
+- **Use this endpoint when:** User asks "volume by category", "category stats", "sector volume"
+- **Params:** `chain`, `fromDate`, `toDate`
+
+---
+
+### Get Time Series Volume
+
+- **Endpoint:** `GET /volume/timeseries`
+- **Description:** Retrieve timeseries volume data by chain. Gets historical volume data over time.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/volume/timeseries
+- **Use this endpoint when:** User asks "volume over time", "historical volume", "volume timeseries"
+- **Params:** `chain`, `timeframe`, `fromDate`, `toDate`
+
+---
+
+### Get Time Series Volume by Category
+
+- **Endpoint:** `GET /volume/timeseries/:category`
+- **Description:** Retrieve timeseries volume data by category. Gets historical volume data for a specific category.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/volume/timeseries/:category
+- **Use this endpoint when:** User asks "category volume over time", "historical category volume"
+- **Params:** `chain`, `timeframe`, `fromDate`, `toDate`
+- **Example:** `/volume/timeseries/artificial-intelligence`
+
+---
+
+## Get Token Pairs & Liquidity
+
+### Get Token Pairs
+
+- **Endpoint:** `GET /:token_address/pairs`
+- **Description:** Get token pairs by address. Retrieves all DEX trading pairs for a specific token.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/:token_address/pairs
 - **Use this endpoint when:** User asks "trading pairs", "DEX pairs", "where is this token traded", "liquidity pairs", "available pairs"
+- **Auto-chain:** Yes
 - **Params:** `limit`, `cursor`
 
-## Get Token Swaps by Address
-- **Endpoint:** `GET /erc20/:address/swaps`
-- **Description:** Get swaps for a specific token
-- **Use this endpoint when:** User asks "token swaps", "swap history", "trading activity", "who's swapping this token"
-- **Params:** `limit`, `from`, `to`
+---
 
-## Get Swaps by Pair Address
-- **Endpoint:** `GET /pairs/:address/swaps`
-- **Description:** Get swaps for a DEX pair
-- **Use this endpoint when:** User asks "pair swaps", "trades on this pair", "pair volume"
-- **Params:** `limit`, `from`, `to`
+### Get Token Pair Stats
 
-## Get Token Owners
-- **Endpoint:** `GET /erc20/:address/owners`
-- **Description:** Get token holders/owners
+- **Endpoint:** `GET /pairs/:address/stats`
+- **Description:** Get token pair statistics. Retrieves statistics for a specific DEX pair.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/pairs/:address/stats
+- **Use this endpoint when:** User asks "pair stats", "pair statistics", "trading pair data"
+- **Auto-chain:** Yes
+
+---
+
+### Get Aggregated Token Pair Stats
+
+- **Endpoint:** `GET /:token_address/pairs/stats`
+- **Description:** Get aggregated token pair statistics. Retrieves aggregated statistics across all pairs for a token.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/:token_address/pairs/stats
+- **Use this endpoint when:** User asks "aggregate pair stats", "total pair statistics"
+- **Auto-chain:** Yes
+
+---
+
+### Get DEX Token Pair Address
+
+- **Endpoint:** `GET /:token0_address/:token1_address/pairAddress`
+- **Description:** Get DEX token pair address. Finds the pair address for two tokens on a DEX.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/:token0_address/:token1_address/pairAddress
+- **Use this endpoint when:** User asks "pair address", "find pair", "get pair for two tokens"
+- **Auto-chain:** Yes
+
+---
+
+### Get DEX Token Pair Reserves
+
+- **Endpoint:** `GET /:pair_address/reserves`
+- **Description:** Get DEX token pair reserves. Retrieves the current reserves in a DEX pair.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/:pair_address/reserves
+- **Use this endpoint when:** User asks "pair reserves", "liquidity reserves", "pool reserves"
+- **Auto-chain:** Yes
+
+---
+
+## Get Token Analytics
+
+### Get Token Analytics
+
+- **Endpoint:** `GET /tokens/:address/analytics`
+- **Description:** Get token analytics. Retrieves comprehensive analytics data for a token.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/tokens/:address/analytics
+- **Use this endpoint when:** User asks "token analytics", "token analysis", "comprehensive token data"
+- **Auto-chain:** Yes
+
+---
+
+### Get Multiple Token Analytics
+
+- **Endpoint:** `POST /tokens/analytics`
+- **Description:** Get multiple token analytics. Retrieves analytics for multiple tokens in a single request.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/tokens/analytics
+- **Use this endpoint when:** User asks "multiple token analytics", "analytics for several tokens"
+- **Method:** POST with body `{"addresses": ["0x...", ...]}`
+
+---
+
+### Get Time Series Token Analytics
+
+- **Endpoint:** `GET /tokens/analytics/timeseries`
+- **Description:** Get timeseries token analytics. Retrieves historical analytics data over time.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/tokens/analytics/timeseries
+- **Use this endpoint when:** User asks "analytics over time", "historical analytics", "timeseries analytics"
+- **Params:** `address`, `timeframe`, `fromDate`, `toDate`
+
+---
+
+## Get Tokens by Exchange
+
+### Get Newly Launched Tokens by Exchange
+
+- **Endpoint:** `GET /erc20/exchange/:exchange/new`
+- **Description:** Get newly launched tokens by exchange. Retrieves tokens that have recently launched on a DEX.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/exchange/:exchange/new
+- **Use this endpoint when:** User asks "new tokens", "newly launched", "just launched tokens"
+- **Params:** `limit`
+- **Example exchanges:** "uniswap-v2", "uniswap-v3", "sushiswap"
+
+---
+
+### Get Bonding Tokens by Exchange
+
+- **Endpoint:** `GET /erc20/exchange/:exchange/bonding`
+- **Description:** Get bonding tokens by exchange. Retrieves tokens currently in the bonding curve phase.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/exchange/:exchange/bonding
+- **Use this endpoint when:** User asks "bonding tokens", "tokens in bonding", "bonding curve tokens"
+- **Params:** `limit`
+
+---
+
+### Get Graduated Tokens by Exchange
+
+- **Endpoint:** `GET /erc20/exchange/:exchange/graduated`
+- **Description:** Get graduated tokens by exchange. Retrieves tokens that have graduated from bonding to full DEX listing.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/exchange/:exchange/graduated
+- **Use this endpoint when:** User asks "graduated tokens", "tokens that graduated"
+- **Params:** `limit`
+
+---
+
+### Get Token Bonding Status
+
+- **Endpoint:** `GET /erc20/:address/bondingStatus`
+- **Description:** Get token bonding status. Checks if a token is in bonding, graduated, or not on the exchange.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:address/bondingStatus
+- **Use this endpoint when:** User asks "bonding status", "is this token bonding", "token status"
+- **Auto-chain:** Yes
+
+---
+
+## Get Token Stats
+
+### Get ERC20 Token Stats
+
+- **Endpoint:** `GET /erc20/:address/stats`
+- **Description:** Get ERC20 token stats. Retrieves market statistics for a token including price, market cap, volume, etc.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:address/stats
+- **Use this endpoint when:** User asks "token stats", "token statistics", "market data", "token metrics"
+- **Auto-chain:** Yes
+
+---
+
+## Get Token Holders
+
+### Get ERC20 Token Holders
+
+- **Endpoint:** `GET /erc20/:token_address/owners`
+- **Description:** Get ERC20 Token Holders. Retrieves the current holders of a token.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:token_address/owners
 - **Use this endpoint when:** User asks "token holders", "who owns this token", "whale holders", "top holders"
 - **Params:** `limit`, `cursor`
 
-## Get Token Transfers
-- **Endpoint:** `GET /erc20/:address/transfers`
-- **Description:** Get ERC20 transfer events
-- **Use this endpoint when:** User asks "token transfers", "transfer history", "token movement", "who's transferring"
-- **Params:** `limit`, `cursor`, `from`, `to`
+---
 
-## Search Tokens
-- **Endpoint:** `GET /tokens/search` (via `searchToken()` helper)
-- **Description:** Search for tokens by name, symbol, or address across all chains
-- **Use this endpoint when:** User asks "search tokens", "find tokens", "look up token", "token search"
-- **Params:** `query`, `chains` (optional array of hex chain IDs)
-- **Usage:**
-  - Search all: `searchToken('pepe')`
-  - Search specific chain: `searchToken('pepe', '0x1')`
-  - Search multiple: `searchToken('pepe', ['0x1', '0x89'])`
+### Get ERC20 Token Holders Stats
+
+- **Endpoint:** `GET /erc20/:token_address/holders`
+- **Description:** Get ERC20 Token Holders Stats. Retrieves statistics about token holders.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:token_address/holders
+- **Use this endpoint when:** User asks "holder stats", "holder statistics", "holder data"
+- **Params:** `limit`, `cursor`
+
+---
+
+### Get Historical Token Holders
+
+- **Endpoint:** `GET /erc20/:token_address/holders/historical`
+- **Description:** Get ERC20 token holders stats timeseries. Retrieves historical holder statistics over time.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:token_address/holders/historical
+- **Use this endpoint when:** User asks "historical holders", "holder count over time", "holder history"
+- **Params:** `fromDate`, `toDate`
+
+---
+
+## Get Token Score
+
+### Get Token Score
+
+- **Endpoint:** `GET /tokens/:tokenAddress/score`
+- **Description:** Get token score. Retrieves a trust/quality score for a token based on various metrics.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/tokens/:tokenAddress/score
+- **Use this endpoint when:** User asks "token score", "token rating", "token quality", "trust score"
+- **Auto-chain:** Yes
+
+---
+
+## Get Token Snipers
+
+### Get Snipers by Pair Address
+
+- **Endpoint:** `GET /pairs/:address/snipers`
+- **Description:** Get snipers by pair address. Retrieves wallets that sniped (bought early) on a DEX pair.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/pairs/:address/snipers
+- **Use this endpoint when:** User asks "snipers", "early buyers", "who sniped this token"
+- **Auto-chain:** Yes
+
+---
 
 ## Get Trending Tokens
-- **Endpoint:** `GET /trending/tokens`
-- **Description:** Get trending tokens on social media
+
+### Get Trending Tokens
+
+- **Endpoint:** `GET /tokens/trending`
+- **Description:** Get trending tokens. Retrieves tokens trending based on social sentiment and mentions.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/tokens/trending
 - **Use this endpoint when:** User asks "trending tokens", "hot tokens", "popular tokens", "what's trending"
 - **Params:** `chain`, `limit`
 
-## Get Allowance
-- **Endpoint:** `GET /erc20/:address/allowance`
-- **Description:** Check token allowance
-- **Use this endpoint when:** User asks "token allowance", "check approval", "how much is approved"
-- **Params:** `ownerAddress`, `spenderAddress`
+---
 
-## Get Total Supply
-- **Endpoint:** `GET /erc20/:address/totalSupply`
-- **Description:** Get token total supply
-- **Use this endpoint when:** User asks "total supply", "circulating supply", "max supply"
+### Get Tokens with Top Gainers
 
-## Get Token Balance
-- **Endpoint:** `GET /wallets/:address/tokens`
-- **Description:** Get token balances for a wallet
-- **Use this endpoint when:** User asks "token balance", "how many tokens does this wallet have", "check wallet token balances"
+- **Endpoint:** `GET /discovery/tokens/top-gainers`
+- **Description:** Get tokens with top gainers. Retrieves tokens with the highest price increases.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/discovery/tokens/top-gainers
+- **Use this endpoint when:** User asks "top gainers", "biggest gainers", "tokens that went up"
+- **Params:** `chain`, `limit`
 
-## Get Token Stats
-- **Endpoint:** `GET /erc20/:address/stats`
-- **Description:** Get token statistics
-- **Use this endpoint when:** User asks "token stats", "token statistics", "market data", "token metrics"
-- **Params:** `chain`
+---
 
-## Get Token Price History
-- **Endpoint:** `GET /erc20/:address/price/history`
-- **Description:** Get historical price data
-- **Use this endpoint when:** User asks "price history", "historical prices", "past prices", "price over time"
-- **Params:** `chain`, `from`, `to`, `interval`
+### Get Tokens with Top Losers
+
+- **Endpoint:** `GET /discovery/tokens/top-losers`
+- **Description:** Get tokens with top losers. Retrieves tokens with the highest price decreases.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/discovery/tokens/top-losers
+- **Use this endpoint when:** User asks "top losers", "biggest losers", "tokens that went down"
+- **Params:** `chain`, `limit`
+
+---
+
+### Get Top ERC20 Tokens by Market Cap
+
+- **Endpoint:** `GET /market-data/erc20s/top-tokens`
+- **Description:** Get the top ERC20 tokens by market cap. Retrieves tokens ranked by market capitalization.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/market-data/erc20s/top-tokens
+- **Use this endpoint when:** User asks "top tokens", "biggest tokens", "tokens by market cap", "largest tokens"
+- **Params:** `chain`, `limit`
+
+---
+
+## Get Filtered Tokens
+
+### Get Filtered Tokens
+
+- **Endpoint:** `POST /discovery/tokens`
+- **Description:** Get filtered tokens. Retrieves tokens based on various filter criteria.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/discovery/tokens
+- **Use this endpoint when:** User asks "filter tokens", "search with filters", "tokens by criteria"
+- **Method:** POST with filter criteria in body
+- **Filter by:** market cap, volume, price changes, etc.
+
+---
+
+## Search Tokens
+
+### Search Tokens
+
+- **Endpoint:** `POST /tokens/search`
+- **Description:** Search tokens. Searches for tokens by name, symbol, or address across all chains.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/tokens/search
+- **Use this endpoint when:** User asks "search tokens", "find tokens", "look up token", "token search"
+- **Method:** POST with body `{"query": "pepe", "from": 0, "limit": 10}`
+
+---
+
+## Note on Token Balance by Wallet
+
+For wallet token balances, use the Wallet API endpoint:
+
+**`GET /wallets/:address/tokens`**
+
+This provides all tokens held by the wallet with USD prices and metadata.

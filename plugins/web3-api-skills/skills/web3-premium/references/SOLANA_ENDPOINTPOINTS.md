@@ -6,55 +6,55 @@
 
 | User Question | Endpoint | Example |
 |---------------|----------|---------|
-| "Volume by chain?" | `/volume/chains` | Includes Solana |
-| "Solana volume over time?" | `/volume/timeseries/solana` | Solana timeseries |
-| "Solana token stats?" | `/token/:network/:address/stats` | Token analytics |
-| "Multiple Solana analytics?" | `/tokens/analytics/solana` | Batch analytics |
-| "Solana market data?" | `/market/data/solana` | Market statistics |
-| "Top Solana tokens?" | `/tokens/top/solana` | By volume/market cap |
+| "Token pair stats?" | `/token/:network/:address/pairs/stats` | DEX pair stats |
+| "Pair stats?" | `/token/:network/pairs/:pairAddress/stats` | Specific pair |
 
 ## Key Endpoint Patterns
 
-- **Volume analytics:** `/volume/*` (includes Solana)
-- **Solana-specific:** `/volume/timeseries/solana`, `/tokens/analytics/solana`
-- **Token stats:** `/token/:network/:address/stats` (detailed analytics)
+- **Pair stats:** `/token/:network/*pairs*/stats` (DEX pair analytics)
 - **Network parameter:** `mainnet` or `devnet`
 - **Premium endpoints:** Higher API cost, advanced analytics
 
+**⚠️ IMPORTANT Limitations:**
+- The Solana API has **very limited** premium endpoints compared to EVM
+- No volume/timeseries endpoints for Solana
+- No token discovery endpoints for Solana
+- No market data endpoints for Solana
+
 ---
 
-## Volume Stats
-- **Endpoint:** `GET /volume/chains`
-- **Description:** Get trading volume by chain (includes Solana)
-- **Use this endpoint when:** User asks "volume by chain", "Solana volume", "chain volume stats"
-- **Params:** None
-
-## Timeseries Volume (Solana)
-- **Endpoint:** `GET /volume/timeseries/solana`
-- **Description:** Get Solana volume timeseries data
-- **Use this endpoint when:** User asks "Solana volume over time", "Solana historical volume", "Solana timeseries"
-- **Params:** `timeframe`, `from`, `to`
-
-## Token Stats (Solana)
-- **Endpoint:** `GET /token/:network/:address/stats`
-- **Description:** Get detailed token statistics
-- **Use this endpoint when:** User asks "Solana token stats", "SPL token analytics", "token statistics"
+## Get Token Pairs Stats
+- **Endpoint:** `GET /token/:network/:address/pairs/stats`
+- **Description:** Get stats for all DEX pairs of a token
+- **Use this endpoint when:** User asks "token pairs stats", "DEX pairs for this token", "pair analytics"
 - **Networks:** mainnet, devnet
 
-## Token Analytics (Solana)
-- **Endpoint:** `GET /tokens/analytics/solana`
-- **Description:** Get analytics for Solana tokens
-- **Use this endpoint when:** User asks "multiple Solana token analytics", "batch Solana analytics"
-- **Params:** `addresses`
+## Get Pair Stats
+- **Endpoint:** `GET /token/:network/pairs/:pairAddress/stats`
+- **Description:** Get stats for a specific DEX pair
+- **Use this endpoint when:** User asks "pair stats", "DEX pair statistics", "liquidity pool stats"
+- **Networks:** mainnet, devnet
 
-## Market Data (Solana)
-- **Endpoint:** `GET /market/data/solana`
-- **Description:** Get Solana market data
-- **Use this endpoint when:** User asks "Solana market data", "Solana market statistics", "Solana market overview"
-- **Params:** None
+## Solana API Limitations
 
-## Top Tokens (Solana)
-- **Endpoint:** `GET /tokens/top/solana`
-- **Description:** Get top Solana tokens by volume/market cap
-- **Use this endpoint when:** User asks "top Solana tokens", "best Solana tokens", "Solana tokens by volume"
-- **Params:** `limit`
+The Solana API has **very limited** premium endpoints compared to EVM:
+
+**❌ Not Available:**
+- `/volume/chains` (EVM only)
+- `/volume/timeseries` (EVM only)
+- `/volume/timeseries/solana` (doesn't exist)
+- `/tokens/search` (EVM only)
+- `/tokens/analytics` (EVM only)
+- `/discovery/tokens` (EVM only)
+- `/token/:network/:address/stats` (doesn't exist)
+- `/tokens/analytics/solana` (doesn't exist)
+- `/market/data/solana` (doesn't exist)
+- `/tokens/top/solana` (doesn't exist)
+
+**✅ Available:**
+- Token pair stats (`/token/:network/:address/pairs/stats`)
+- Specific pair stats (`/token/:network/pairs/:pairAddress/stats`)
+
+For advanced Solana analytics (volume, timeseries, discovery), consider using:
+- Solana-specific APIs (Jupiter, Raydium, Orca)
+- External analytics platforms (CoinGecko, Messari)

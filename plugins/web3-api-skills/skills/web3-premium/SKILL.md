@@ -1,8 +1,8 @@
 ---
 name: web3-premium
-description: Premium endpoints with advanced analytics including volume stats, timeseries data, filtered token search, and multiple token analytics for both EVM and Solana. Use for advanced market analysis and professional data.
+description: Premium endpoints with advanced analytics including volume stats, timeseries data, filtered token search, and multiple token analytics for EVM chains. Solana support is very limited. Use for advanced market analysis and professional data.
 license: MIT
-compatibility: Requires Node.js (built-in modules only, no npm install needed)
+compatibility: Requires Node.js (built-in modules only, no npm install needed). Solana API is very limited compared to EVM.
 metadata:
   version: "1.0.0"
   author: web3-skills
@@ -11,7 +11,7 @@ metadata:
 
 # Web3 Premium API
 
-Premium endpoints with advanced analytics for both EVM and Solana.
+Premium endpoints with advanced analytics. **EVM chains have full premium support; Solana support is very limited.**
 
 ## When to Use This Skill
 
@@ -32,15 +32,10 @@ Use this skill when the user asks about:
 
 **Token Analytics:**
 - "Multiple token analytics", "Batch analytics", "Token stats"
-- "Token statistics", "Advanced token data"
+- "Token statistics", "Token score", "Advanced token data"
 
-**Wallet Analytics:**
-- "Token allocation", "Portfolio allocation", "Wallet token distribution"
-- "Wallet analytics", "Advanced wallet data"
-
-**Solana Premium:**
-- "Solana token stats", "Solana analytics", "Solana volume"
-- "Solana timeseries", "Solana data"
+**Solana Premium (Very Limited):**
+- "Solana pair stats", "DEX pair analytics"
 
 **⚠️ NOT for:**
 - Basic token prices → Use `web3-price-api` or `web3-token-api`
@@ -57,10 +52,6 @@ Use this skill when the user asks about:
 ### Confusion: Premium vs Standard Token Analytics
 - **Multiple token analytics (batch):** Use this skill (`web3-premium`) with `/tokens/analytics`
 - **Single token price/stats:** Use `web3-price-api` or `web3-token-api`
-
-### Confusion: Premium vs Standard Wallet Data
-- **Token allocation (portfolio view):** Use this skill (`web3-premium`) with `/wallets/:address/tokens/allocation`
-- **Basic token holdings:** Use `web3-wallet-api` with `/wallets/:address/tokens`
 
 ### When to Use Premium Endpoints
 - **Premium endpoints** have higher API costs (weights)
@@ -135,29 +126,15 @@ query('/discovery/tokens', { params: { minLiquidity: 100000 }})
 "
 ```
 
-### Get Token Stats
+### Get Token Analytics
 
 ```bash
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/token/:address/stats', {
-  address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+query('/tokens/{tokenAddress}/analytics', {
+  tokenAddress: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
   params: { chain: 'eth' }
-})
-  .then(data => console.log(JSON.stringify(data, null, 2)))
-  .catch(console.error);
-"
-```
-
-### Get Token Allocation
-
-```bash
-cd $SKILL_DIR
-node -e "
-const { query } = require('./query');
-query('/wallets/:address/tokens/allocation', {
-  address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
 })
   .then(data => console.log(JSON.stringify(data, null, 2)))
   .catch(console.error);
@@ -166,28 +143,38 @@ query('/wallets/:address/tokens/allocation', {
 
 ## Solana Premium Endpoints
 
-### Get Solana Token Stats
+**⚠️ Note:** Solana has very limited premium endpoints. Only pair stats are available.
+
+### Get Solana Token Pair Stats
 
 ```bash
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/token/mainnet/:address/stats', {
-  address: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU'
+query('/token/:network/:address/pairs/stats', {
+  params: {
+    network: 'mainnet',
+    address: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU'
+  }
 })
-  .then(data => console.log(JSON.stringify(data, null, 2)))
+  .then(data => console.log('Pairs:', data.result?.length || 0))
   .catch(console.error);
 "
 ```
 
-### Get Solana Timeseries
+### Get Solana Pair Stats
 
 ```bash
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/volume/timeseries/solana', { params: { timeframe: '1d' }})
-  .then(data => console.log('Data points:', data.result?.length || 0))
+query('/token/:network/pairs/:pairAddress/stats', {
+  params: {
+    network: 'mainnet',
+    pairAddress: '58iLCAVN8qY2nx7FWPcYZmLkYCboBnBfTFbkLJF3xY5r'
+  }
+})
+  .then(data => console.log(JSON.stringify(data, null, 2)))
   .catch(console.error);
 "
 ```

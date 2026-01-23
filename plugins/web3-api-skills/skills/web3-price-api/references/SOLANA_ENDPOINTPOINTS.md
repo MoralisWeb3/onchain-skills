@@ -7,72 +7,71 @@
 | User Question | Endpoint | Example |
 |---------------|----------|---------|
 | "Solana token price?" | `/token/:network/:address/price` | SPL token price |
-| "SOL price?" | `/price/:network` | Native SOL |
-| "Price chart/candlesticks?" | `/token/:network/:address/price/candlesticks` | OHLCV data |
-| "Price history?" | `/token/:network/:address/price/history` | Historical prices |
-| "DEX pair price?" | `/pairs/:network/:address/price` | Pool price |
-| "Pair candlesticks?" | `/pairs/:network/:address/price/candlesticks` | Pool OHLCV |
-| "NFT floor price?" | `/nft/:network/:address/lowestprice` | Collection floor |
-| "NFT sales?" | `/nft/:network/:address/sales` | Recent sales |
+| "Multiple token prices?" | `/token/:network/prices` | Batch prices |
+| "OHLCV data?" | `/token/:network/pairs/:pairAddress/ohlcv` | Candlesticks |
 
 ## Key Endpoint Patterns
 
-- **Token prices:** `/token/:network/:address/price*` (current + history)
-- **Native SOL:** `/price/:network` (SOL price)
-- **DEX pairs:** `/pairs/:network/:address/price*` (pool prices)
-- **NFT prices:** `/nft/:network/:address/*price*` (floor + sales)
+- **Token prices:** `/token/:network/:address/price` (current price)
+- **Batch prices:** `/token/:network/prices` (multiple tokens)
+- **OHLCV data:** `/token/:network/pairs/:pairAddress/ohlcv` (candlesticks)
 - **Network parameter:** `mainnet` or `devnet`
+
+**⚠️ IMPORTANT Limitations:**
+- No native SOL price endpoint (use external APIs)
+- Limited historical price data
+- No NFT floor price endpoints for Solana
 
 ---
 
 ## Get Token Price
+
 - **Endpoint:** `GET /token/:network/:address/price`
-- **Description:** Get current token price
-- **Use this endpoint when:** User asks "Solana token price", "SPL token price", "how much is this token"
+- **Description:** Get token price. Retrieves the current price of a Solana SPL token in USD.
+- **API Reference:** https://solana-gateway.moralis.io/token/:network/:address/price
+- **Use this endpoint when:** User asks "Solana token price", "SPL token price", "how much is this token", "token price USD"
 - **Networks:** mainnet, devnet
 
-## Get Native Token Price (SOL)
-- **Endpoint:** `GET /price/:network`
-- **Description:** Get SOL price
-- **Use this endpoint when:** User asks "SOL price", "Solana price", "native token price"
+---
+
+## Get Multiple Token Prices
+
+- **Endpoint:** `POST /token/:network/prices`
+- **Description:** Get multiple token prices. Retrieves prices for multiple SPL tokens in a single request.
+- **API Reference:** https://solana-gateway.moralis.io/token/:network/prices
+- **Use this endpoint when:** User asks "multiple Solana token prices", "batch SPL prices", "prices for several tokens"
+- **Method:** POST with body `{"addresses": ["...", ...]}`
 - **Networks:** mainnet, devnet
+
+---
 
 ## Get OHLCV Candlesticks
-- **Endpoint:** `GET /token/:network/:address/price/candlesticks`
-- **Description:** Get OHLCV candlestick data
-- **Use this endpoint when:** User asks "candlesticks", "OHLCV", "price chart", "charting data", "open/high/low/close"
-- **Networks:** mainnet, devnet
-- **Params:** `timeframe`, `limit`, `from`, `to`
 
-## Get Token Price History
-- **Endpoint:** `GET /token/:network/:address/price/history`
-- **Description:** Get historical price data
-- **Use this endpoint when:** User asks "price history", "historical prices", "past prices", "price over time"
+- **Endpoint:** `GET /token/:network/pairs/:pairAddress/ohlcv`
+- **Description:** Get OHLCV candlesticks by pair address. Retrieves Open-High-Low-Close-Volume data for a Solana DEX trading pair.
+- **API Reference:** https://solana-gateway.moralis.io/token/:network/pairs/:pairAddress/ohlcv
+- **Use this endpoint when:** User asks "candlesticks", "OHLCV", "price chart data", "candle data"
 - **Networks:** mainnet, devnet
-- **Params:** `from`, `to`, `interval`
+- **Params:** `timeframe`, `fromDate`, `toDate`
 
-## Get Pair Price
-- **Endpoint:** `GET /pairs/:network/:address/price`
-- **Description:** Get price for a DEX pair
-- **Use this endpoint when:** User asks "pair price", "liquidity pool price", "DEX price", "pool price"
-- **Networks:** mainnet, devnet
+---
 
-## Get Pair Candlesticks
-- **Endpoint:** `GET /pairs/:network/:address/price/candlesticks`
-- **Description:** Get OHLCV for DEX pair
-- **Use this endpoint when:** User asks "pair candlesticks", "pool OHLCV", "liquidity pool chart"
-- **Networks:** mainnet, devnet
-- **Params:** `timeframe`, `limit`
+## Solana API Limitations
 
-## Get NFT Floor Price
-- **Endpoint:** `GET /nft/:network/:address/lowestprice`
-- **Description:** Get floor price for NFT collection
-- **Use this endpoint when:** User asks "floor price", "NFT floor", "lowest price", "collection floor"
-- **Networks:** mainnet, devnet
+The Solana Price API has **limited** endpoints compared to EVM:
 
-## Get NFT Sale Prices
-- **Endpoint:** `GET /nft/:network/:address/sales`
-- **Description:** Get recent NFT sales
-- **Use this endpoint when:** User asks "NFT sales", "recent sales", "sale prices", "what did it sell for"
-- **Networks:** mainnet, devnet
-- **Params:** `limit`, `cursor`
+**❌ Not Available:**
+- Native SOL price (use external APIs like CoinGecko, CoinMarketCap)
+- Historical NFT floor prices
+- NFT sale prices by token/collection
+- Advanced market data for NFTs
+
+**✅ Available:**
+- Current SPL token prices (single token)
+- Batch SPL token prices (multiple tokens)
+- OHLCV data for DEX pairs
+
+For more advanced price data on Solana, consider using:
+- DEX-specific APIs (Jupiter aggregator, Raydium, Orca)
+- External price aggregators (CoinGecko, CoinMarketCap, DexScreener)
+- Marketplace APIs for NFT prices (Tensor, Magic Eden)

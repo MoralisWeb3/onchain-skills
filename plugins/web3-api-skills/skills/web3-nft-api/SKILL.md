@@ -13,6 +13,8 @@ metadata:
 
 Query NFT data for both EVM chains and Solana including metadata, transfers, trades, traits, and rarity.
 
+**Note:** Solana NFT API is more limited than EVM. For Solana, only metadata and wallet NFTs endpoints are available. There are no dedicated endpoints for transfers, owners, traits, or trades.
+
 ## When to Use This Skill
 
 Use this skill when the user asks about:
@@ -93,9 +95,10 @@ query('/:address/nft', {
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/:network/:address/nft', {
-  address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb',
-  network: 'mainnet'
+query('/account/:network/:address/nft', {
+  address: 'kXB7FfzdrfZpAZEW3TZcp8a8CwQbsowa6BdfAHZ4gVs',
+  network: 'mainnet',
+  params: { nftMetadata: true, mediaItems: true }
 })
   .then(data => console.log(JSON.stringify(data, null, 2)))
   .catch(console.error);
@@ -123,8 +126,8 @@ query('/nft/:address', {
 cd $SKILL_DIR
 node -e "
 const { query } = require('./query');
-query('/nft/:network/:address', {
-  address: '742d35Cc6634C0532925a3b844Bc9e7595f0bEb',
+query('/nft/:network/:address/metadata', {
+  address: 'So11111111111111111111111111111111111111112',
   network: 'mainnet'
 })
   .then(data => console.log(JSON.stringify(data, null, 2)))

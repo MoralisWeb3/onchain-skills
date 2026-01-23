@@ -8,88 +8,104 @@
 |---------------|----------|---------|
 | "Token price?" | `/erc20/:address/price` | ERC20 price |
 | "Multiple token prices?" | `/erc20/prices` | Batch prices |
-| "ETH/BNB/MATIC price?" | `/price/:network` | Native token |
-| "All native prices?" | `/price` | All networks |
-| "DEX pair price?" | `/pairs/:address/price` | Liquidity pool |
-| "Price chart/candlesticks?" | `/erc20/:address/price/candlesticks` | OHLCV data |
-| "Price history?" | `/erc20/:address/price/history` | Historical prices |
-| "NFT floor price?" | `/nft/:address/lowestprice` | Collection floor |
-| "NFT sales?" | `/nft/:address/sales` | Recent sales |
-| "NFT price history?" | `/nft/:address/price/history` | Floor history |
+| "Pair price?" | `/token0/:token0_address/token1/:token1_address/price` | DEX pair price |
+| "Price chart/candlesticks?" | `/pairs/:address/ohlcv` | OHLCV data |
+| "NFT floor price?" | `/nft/:address/floor-price` | Collection floor |
+| "NFT sales/contract prices?" | `/nft/:address/price` | Sale prices |
+| "NFT price history?" | `/nft/:address/floor-price/historical` | Floor history |
 
 ## Key Endpoint Patterns
 
-- **Token prices:** `/erc20/:address/price*` (current + history)
-- **Native tokens:** `/price*` (ETH, BNB, MATIC, etc.)
-- **DEX pairs:** `/pairs/:address/price*` (pool prices)
-- **NFT prices:** `/nft/:address/*price*` (floor + sales)
-- **Charting data:** Use `candlesticks` endpoint for OHLCV, `history` for simple time series
+- **Token prices:** `/erc20/:address/price` (current price only)
+- **DEX pair prices:** `/{token0_address}/{token1_address}/price` (deprecated, use pairs/ohlcv)
+- **Pair OHLCV:** `/pairs/:address/ohlcv` (candlestick chart data)
+- **NFT prices:** `/nft/:address/*price*` (floor + sales + history)
+- **Note:** Native token prices (ETH, BNB, MATIC) are NOT available as separate endpoints
+
+**⚠️ IMPORTANT Limitations:**
+- No native token price endpoints (use `/erc20/:address/price` with WETH, WBNB, etc.)
+- No `/erc20/:address/price/history` endpoint (historical prices not available)
+- No `/nft/:address/sales` endpoint (use `/nft/:address/price` for sale prices)
 
 ---
 
 ## Get Token Price
+
 - **Endpoint:** `GET /erc20/:address/price`
-- **Description:** Get current token price in USD
+- **Description:** Get ERC20 token price. Retrieves the current price of a token in the blockchain's native currency and USD.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/:address/price
 - **Use this endpoint when:** User asks "token price", "how much is this token", "current price", "USD price"
 - **Auto-chain:** Yes
+- **Params:** `include` (optional: "percent_change")
+
+---
 
 ## Get Multiple Token Prices
-- **Endpoint:** `GET /erc20/prices`
-- **Description:** Get prices for multiple tokens
+
+- **Endpoint:** `POST /erc20/prices`
+- **Description:** Get multiple token prices. Retrieves prices for multiple tokens in a single request.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/erc20/prices
 - **Use this endpoint when:** User asks "multiple token prices", "batch prices", "check these tokens", "price list"
-- **Params:** `addresses` (comma-separated)
+- **Method:** POST with body `{"addresses": ["0x...", ...]}`
 
-## Get Native Token Price
-- **Endpoint:** `GET /price/:network`
-- **Description:** Get native token price (ETH, MATIC, BNB, etc.)
-- **Use this endpoint when:** User asks "ETH price", "BNB price", "MATIC price", "gas token price", "native token price"
-- **Networks:** eth, polygon, bsc, arbitrum, optimism, avalanche, fantom, etc.
+---
 
-## Get All Native Prices
-- **Endpoint:** `GET /price`
-- **Description:** Get prices for all supported native tokens
-- **Use this endpoint when:** User asks "all native prices", "network prices", "all chain prices", "ETH/BNB/MATIC prices"
+## Get Pair OHLCV Candlesticks
 
-## Get Token Pair Price
-- **Endpoint:** `GET /pairs/:address/price`
-- **Description:** Get price for a DEX pair
-- **Use this endpoint when:** User asks "pair price", "liquidity pool price", "DEX price", "pool price"
-- **Params:** `chain`
-
-## Get OHLCV Candlesticks
-- **Endpoint:** `GET /erc20/:address/price/candlesticks`
-- **Description:** Get OHLCV candlestick data
+- **Endpoint:** `GET /pairs/:address/ohlcv`
+- **Description:** Get the OHLCV candlesticks by using pair address. Retrieves Open-High-Low-Close-Volume data for a trading pair.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/pairs/:address/ohlcv
 - **Use this endpoint when:** User asks "candlesticks", "OHLCV", "price chart", "charting data", "open/high/low/close"
-- **Params:** `chain`, `timeframe`, `limit`, `from`, `to`
-- **Timeframes:** 1m, 5m, 15m, 1h, 4h, 1d, 1w
+- **Auto-chain:** Yes
+- **Params:** `timeframe` (1m, 5m, 15m, 1h, 4h, 1d), `fromDate`, `toDate`
 
-## Get Token Price History
-- **Endpoint:** `GET /erc20/:address/price/history`
-- **Description:** Get historical price data
-- **Use this endpoint when:** User asks "price history", "historical prices", "past prices", "price over time"
-- **Params:** `chain`, `from`, `to`, `interval`
-- **Intervals:** 1m, 5m, 15m, 1h, 4h, 1d, 1w
+---
 
-## Get NFT Floor Price
-- **Endpoint:** `GET /nft/:address/lowestprice`
-- **Description:** Get lowest price/floor for NFT collection
+## Get NFT Floor Price by Contract
+
+- **Endpoint:** `GET /nft/:address/floor-price`
+- **Description:** Get NFT floor price by contract. Retrieves the current lowest price across all marketplaces.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/nft/:address/floor-price
 - **Use this endpoint when:** User asks "floor price", "NFT floor", "lowest price", "collection floor"
-- **Params:** `chain`
+- **Auto-chain:** Yes
 
-## Get NFT Sale Prices
-- **Endpoint:** `GET /nft/:address/sales`
-- **Description:** Get recent NFT sales
-- **Use this endpoint when:** User asks "NFT sales", "recent sales", "sale prices", "what did it sell for"
-- **Params:** `chain`, `limit`, `from`, `to`
+---
+
+## Get NFT Floor Price by Token
+
+- **Endpoint:** `GET /nft/:address/:token_id/floor-price`
+- **Description:** Get NFT floor price by token. Retrieves the floor price for a specific token ID.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/nft/:address/:token_id/floor-price
+- **Use this endpoint when:** User asks "floor price for this NFT", "token floor price"
+- **Auto-chain:** Yes
+
+---
 
 ## Get Historical NFT Floor Price
-- **Endpoint:** `GET /nft/:address/price/history`
-- **Description:** Get historical floor price data
-- **Use this endpoint when:** User asks "NFT price history", "historical floor", "floor over time"
-- **Params:** `chain`, `from`, `to`
 
-## Get Pair Price History
-- **Endpoint:** `GET /pairs/:address/price/history`
-- **Description:** Get historical price for DEX pair
-- **Use this endpoint when:** User asks "pair price history", "pool price history", "DEX historical price"
-- **Params:** `chain`, `from`, `to`, `interval`
+- **Endpoint:** `GET /nft/:address/floor-price/historical`
+- **Description:** Get historical NFT floor price by contract. Retrieves historical floor price data over time.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/nft/:address/floor-price/historical
+- **Use this endpoint when:** User asks "NFT price history", "historical floor", "floor over time"
+- **Auto-chain:** Yes
+- **Params:** `days`, `fromDate`, `toDate`
+
+---
+
+## Get NFT Contract Sale Prices
+
+- **Endpoint:** `GET /nft/:address/price`
+- **Description:** Get contract sale prices. Retrieves recent sale prices for NFTs in the contract.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/nft/:address/price
+- **Use this endpoint when:** User asks "NFT sales", "recent sales", "sale prices", "what did it sell for"
+- **Auto-chain:** Yes
+
+---
+
+## Get NFT Sale Prices
+
+- **Endpoint:** `GET /nft/:address/:token_id/price`
+- **Description:** Get sale prices. Retrieves recent sale prices for a specific NFT.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/nft/:address/:token_id/price
+- **Use this endpoint when:** User asks "this NFT's sale price", "token sale price"
+- **Auto-chain:** Yes

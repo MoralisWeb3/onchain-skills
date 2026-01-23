@@ -21,26 +21,40 @@
 ---
 
 ## Search Entities
+
 - **Endpoint:** `GET /entities/search`
-- **Description:** Search for labeled entities
+- **Description:** Search for entities, addresses, and categories. Searches through labeled entities including exchanges, funds, DeFi protocols, whales, and DEX traders.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/entities/search
 - **Use this endpoint when:** User asks "search entities", "find exchanges", "look up funds", "search for Binance", "find a16z"
 - **Params:** `q` (search query), `chain`
 
+---
+
 ## Get Entity Categories
+
 - **Endpoint:** `GET /entities/categories`
-- **Description:** Get all entity categories
+- **Description:** Get entity categories. Retrieves all available entity categories/types in the system.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/entities/categories
 - **Use this endpoint when:** User asks "entity categories", "what types of entities", "list categories", "entity types"
 - **Params:** None
 
+---
+
 ## Get Entities by Category
-- **Endpoint:** `GET /entities/categories/:categoryId/entities`
-- **Description:** Get all entities in a category
+
+- **Endpoint:** `GET /entities/categories/:categoryId`
+- **Description:** Get entities by category. Retrieves all labeled entities belonging to a specific category.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/entities/categories/:categoryId
 - **Use this endpoint when:** User asks "all exchanges", "all funds", "entities in category", "list [type] entities"
 - **Params:** `chain`, `limit`, `cursor`
 
+---
+
 ## Get Entity by ID
+
 - **Endpoint:** `GET /entities/:entityId`
-- **Description:** Get detailed entity information
+- **Description:** Get entity by ID. Retrieves detailed information about a specific labeled entity including associated addresses and metadata.
+- **API Reference:** https://deep-index.moralis.io/api/v2.2/entities/:entityId
 - **Use this endpoint when:** User asks "entity details", "entity info", "show me this entity", "entity data"
 - **Params:** None
 
