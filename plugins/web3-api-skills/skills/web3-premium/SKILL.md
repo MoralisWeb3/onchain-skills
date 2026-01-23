@@ -181,5 +181,5 @@ query('/token/:network/pairs/:pairAddress/stats', {
 
 ## See Also
 
-- [EVM Endpoints Reference](references/EVM_ENDPOINTPOINTS.md)
+- [EVM Endpoints Reference](references/EVM_ENDPOINTS.md)
 - [Solana Endpoints Reference](references/SOLANA_ENDPOINTPOINTS.md)
