@@ -4,13 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Moralis API Skills Marketplace** is a multi-plugin marketplace for Moralis API integration with Claude Code. It contains two separate plugins:
+**Moralis API Skills** is a collection of modular skills for Moralis API integration with Claude Code. It provides 13 skills for Web3 blockchain data (EVM chains + Solana) plus real-time event monitoring.
 
-1. **web3-api-skills** - 9 modular skills for Web3 blockchain data (EVM chains + Solana)
-   - **New in v1.1.0:** Net worth, PnL tracking, wallet stats, domain resolution, token analytics, security scores, DEX snipers
-   - **New Chains (2025):** Flow, Ronin, Lisk, Sei, Monad
-2. **streams-api-skills** - Real-time blockchain event monitoring with webhooks
-   - **New in v1.1.0:** Native balance streaming, enhanced history replay, POST/DELETE/PATCH support
+**Skills included:**
+- **moralis-wallet-api** - Wallet balances, tokens, NFTs, DeFi positions
+- **moralis-token-api** - Token prices, metadata, DEX pairs, swaps
+- **moralis-nft-api** - NFT metadata, transfers, traits, rarity
+- **moralis-defi-api** - Protocol positions and exposure
+- **moralis-entity-api** - Labeled addresses/entities
+- **moralis-price-api** - Token/NFT prices, OHLCV data
+- **moralis-blockchain-api** - Blocks and transactions
+- **moralis-utils** - API version, endpoint weights
+- **moralis-premium** - Advanced analytics endpoints
+- **moralis-analytics-api** - Token analytics and volume timeseries
+- **moralis-score-api** - Token security scores
+- **moralis-sniper-api** - DEX snipers detection
+- **moralis-streams-api** - Real-time blockchain event monitoring
 
 **Key Design Principle: ZERO external dependencies - uses only Node.js built-in modules (https, fs, path, url, crypto).**
 
@@ -19,10 +28,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### API Key Setup (Required before use)
 
 ```bash
-/web3-api-key <your_api_key_here>
+/moralis-api-key <your_api_key_here>
 ```
 
-This command sets the Moralis API key for all 9 skills at once by updating the `.env` file in the project root.
+This command sets the Moralis API key for all skills at once by updating the `.env` file in the skills directory.
 
 Get your API key:
 1. Register at https://admin.moralis.io/register (free)
@@ -34,79 +43,58 @@ Get your API key:
 # Test all skills load correctly
 ./scripts/test-all-skills.sh
 
-# Test plugin installation flow
+# Test installation flow
 ./scripts/test-installation.sh
 
 # Test individual skill queries (requires API key)
-cd skills/web3-wallet-api
+cd skills/moralis-wallet-api
 node -e "const { query } = require('./query'); query('/:address/balance', { address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045' }).then(console.log)"
 ```
 
-### Plugin Installation
+### Skills Installation
 
 ```bash
-# Add marketplace
-/plugin marketplace add noviulian/moralis-skills
+# Add skills from repository
+npx skills add noviulian/moralis-api-skills
+
+# List available skills
+npx skills add noviulian/moralis-api-skills --list
 ```
 
-```bash
-# Install web3-api-skills (EVM/Solana data APIs)
-/plugin install web3-api-skills@moralis-skills
-```
-
-```bash
-# Install streams-api-skills (Real-time event monitoring)
-/plugin install streams-api-skills@moralis-skills
-```
-
-```bash
-# Local development testing
-/plugin marketplace add ./
-```
+Skills are installed to:
+- Project level: `<project>/.claude/skills/`
+- Global: `~/.claude/skills/`
 
 ## Architecture
 
-### Marketplace Structure
+### Skills-Only Structure
 
 ```
-moralis-skills/
-├── .claude-plugin/
-│   └── marketplace.json     # Marketplace manifest with both plugins
+moralis-api-skills/
+├── skills/                         # Root-level skills directory
+│   ├── web3-shared/                # ⭐ Unified query client
+│   │   └── query.js
+│   ├── moralis-wallet-api/         # Wallet balances, tokens, NFTs
+│   ├── moralis-token-api/          # Token prices, metadata, DEX
+│   ├── moralis-nft-api/            # NFT metadata, transfers
+│   ├── moralis-defi-api/           # Protocol positions
+│   ├── moralis-entity-api/         # Labeled addresses
+│   ├── moralis-price-api/          # Token/NFT prices, OHLCV
+│   ├── moralis-blockchain-api/     # Blocks and transactions
+│   ├── moralis-utils/              # API version, weights
+│   ├── moralis-premium/            # Advanced analytics
+│   ├── moralis-analytics-api/      # Token analytics
+│   ├── moralis-score-api/          # Security scores
+│   ├── moralis-sniper-api/         # DEX snipers
+│   ├── moralis-streams-api/        # Real-time event monitoring
+│   └── moralis-api-key/            # API key setup skill
 │
-├── plugins/
-│   ├── web3-api-skills/     # Plugin 1: EVM/Solana data APIs (self-contained)
-│   │   ├── .claude-plugin/
-│   │   │   └── plugin.json  # Plugin manifest
-│   │   ├── skills/          # 9 modular skills
-│   │   │   ├── web3-shared/         # ⭐ Unified query client
-│   │   │   ├── web3-wallet-api/     # Wallet balances, tokens, NFTs
-│   │   │   ├── web3-token-api/      # Token prices, metadata, DEX
-│   │   │   ├── web3-nft-api/        # NFT metadata, transfers
-│   │   │   ├── web3-defi-api/       # Protocol positions
-│   │   │   ├── web3-entity-api/     # Labeled addresses
-│   │   │   ├── web3-price-api/      # Token/NFT prices, OHLCV
-│   │   │   ├── web3-blockchain-api/ # Blocks and transactions
-│   │   │   ├── web3-utils/          # API version, weights
-│   │   │   └── web3-premium/        # Advanced analytics
-│   │   ├── agents/
-│   │   │   └── web3-developer.md    # Expert Web3 development agent
-│   │   └── commands/
-│   │       └── web3-api-key.md      # API key setup command
-│   │
-│   └── streams-api-skills/   # Plugin 2: Streams API (self-contained)
-│       ├── .claude-plugin/
-│       │   └── plugin.json  # Plugin manifest
-│       └── skills/
-│           └── streams-api/
-│               ├── SKILL.md
-│               └── query.js
-│
-├── documentation/           # Anthropic docs, guides
-├── scripts/                 # Testing scripts
-└── swagger/                 # API swagger files
+├── documentation/                  # Anthropic docs, guides
+├── scripts/                        # Testing scripts
+└── swagger/                        # API swagger files
 ```
 
-### Unified Query Client (`plugins/web3-api-skills/skills/web3-shared/query.js`)
+### Unified Query Client (`skills/web3-shared/query.js`)
 
 All web3-api-skills share a single query client that provides:
 
@@ -161,7 +149,7 @@ module.exports = require("../web3-shared/query");
 Each skill follows the Agent Skills standard:
 
 ```
-web3-wallet-api/
+moralis-wallet-api/
 ├── SKILL.md             # Skill metadata + usage documentation
 ├── query.js             # Re-exports from web3-shared
 └── references/          # Detailed endpoint documentation
@@ -172,30 +160,30 @@ web3-wallet-api/
 **SKILL.md Frontmatter (required):**
 ```yaml
 ---
-name: web3-wallet-api
+name: moralis-wallet-api
 description: Query wallet data...
 license: MIT
 compatibility: Requires Node.js (built-in modules only)
 metadata:
   version: "1.0.0"
-  author: web3-skills
+  author: moralis-skills
   tags: [web3, blockchain, wallet, crypto]
 ---
 ```
 
 ### API Endpoint Patterns
 
-**EVM API (web3-api-skills):**
+**EVM API:**
 - Base URL: `https://deep-index.moralis.io/api/v2.2/`
 - Chain parameter: `?chain=eth`, `?chain=0x1`, `?chain=polygon`
 - Addresses: `0x...` format (42 characters)
 
-**Solana API (web3-api-skills):**
+**Solana API:**
 - Base URL: `https://solana-gateway.moralis.io/`
 - Network: `/mainnet/` or `/devnet/` in path
 - Addresses: Base58 encoded (32-44 characters)
 
-**Streams API (streams-api-skills):**
+**Streams API:**
 - Base URL: `https://api.moralis-streams.com/`
 - Uses PUT for create, POST for update, DELETE for delete
 - Webhook-based event streaming
@@ -207,27 +195,33 @@ metadata:
 - Streams API requires `limit` parameter on GET endpoints (max 100)
 - Stream IDs are UUIDs, not hex strings
 
-## Plugin: web3-api-skills
+## Available Skills
 
-Contains 9 modular skills for EVM and Solana blockchain data queries:
+### Core Web3 Skills
 
-- `web3-wallet-api` - Wallet balances, tokens, NFTs, DeFi positions
-  - **v1.1.0 additions:** Net worth, PnL tracking, wallet stats, chain activity, ENS domain resolution
-- `web3-token-api` - Token prices, metadata, DEX pairs, swaps
-  - **v1.1.0 additions:** Token security scores, DEX snipers detection, bonding status, analytics, volume timeseries, historical holder stats
-- `web3-nft-api` - NFT metadata, transfers, traits, rarity
-  - **v1.1.0 additions:** NFT floor price history
-- `web3-defi-api` - Protocol positions and exposure
-- `web3-entity-api` - Labeled addresses/entities
-- `web3-price-api` - Token/NFT prices, OHLCV data
-  - **v1.1.0 additions:** NFT contract sale prices
-- `web3-blockchain-api` - Blocks and transactions
-- `web3-utils` - API version, endpoint weights
-- `web3-premium` - Advanced analytics endpoints
+- **moralis-wallet-api** - Wallet balances, tokens, NFTs, DeFi positions
+  - Net worth, PnL tracking, wallet stats, chain activity, ENS domain resolution
+- **moralis-token-api** - Token prices, metadata, DEX pairs, swaps
+  - Token security scores, DEX snipers detection, bonding status, analytics
+- **moralis-nft-api** - NFT metadata, transfers, traits, rarity
+  - NFT floor price history
+- **moralis-defi-api** - Protocol positions and exposure
+- **moralis-entity-api** - Labeled addresses/entities
+- **moralis-price-api** - Token/NFT prices, OHLCV data
+  - NFT contract sale prices
+- **moralis-blockchain-api** - Blocks and transactions
+- **moralis-utils** - API version, endpoint weights
 
-## Plugin: streams-api-skills
+### Advanced Skills
 
-Real-time blockchain event monitoring with webhooks:
+- **moralis-premium** - Advanced analytics endpoints
+- **moralis-analytics-api** - Token analytics and volume timeseries
+- **moralis-score-api** - Token security scores
+- **moralis-sniper-api** - DEX snipers detection
+
+### Streaming
+
+- **moralis-streams-api** - Real-time blockchain event monitoring
 
 **Key Capabilities:**
 - Create and manage streams (create, update, delete, get)
@@ -247,21 +241,11 @@ Real-time blockchain event monitoring with webhooks:
 
 ## Adding a New Skill
 
-### Adding to web3-api-skills
-
-1. Create skill directory: `mkdir plugins/web3-api-skills/skills/web3-your-skill`
+1. Create skill directory: `mkdir skills/moralis-your-skill`
 2. Create `SKILL.md` with proper frontmatter
 3. Create `query.js` that re-exports from web3-shared
 4. Add reference documentation in `references/`
 5. Test with real API calls
-
-### Adding a New Plugin
-
-1. Create plugin directory: `mkdir plugins/your-plugin/.claude-plugin`
-2. Create `plugin.json` with plugin metadata
-3. Add skills directory: `mkdir -p plugins/your-plugin/skills/your-skill`
-4. Create `SKILL.md` and `query.js` in the skills directory
-5. Update `.claude-plugin/marketplace.json` to include the plugin
 
 **SKILL.md guidelines:**
 - Keep under 500 lines (token efficiency)
@@ -272,7 +256,7 @@ Real-time blockchain event monitoring with webhooks:
 
 ## Zero Dependencies Policy
 
-**CRITICAL:** This plugin MUST NOT add external npm dependencies.
+**CRITICAL:** This skills collection MUST NOT add external npm dependencies.
 
 **✅ Allowed (Node.js built-in):**
 - `https`, `http` - API requests
@@ -284,25 +268,21 @@ Real-time blockchain event monitoring with webhooks:
 **❌ NOT allowed:**
 - `axios`, `node-fetch` - Use `https` module instead
 - `dotenv` - Use custom `.env` reading in query.js
-- `express`, `commander` - Not needed for plugin
+- `express`, `commander` - Not needed for skills
 
 ## Important Files
 
-- **`.env`** - Contains `MORALIS_API_KEY` (created by `/web3-api-key` command, in .gitignore)
-- **`.claude-plugin/marketplace.json`** - Marketplace manifest with both plugins
-- **`plugins/web3-api-skills/skills/web3-shared/query.js`** - Unified query client for web3-api-skills
-- **`plugins/web3-api-skills/.claude-plugin/plugin.json`** - web3-api-skills manifest
-- **`plugins/web3-api-skills/commands/web3-api-key.md`** - API key setup command
-- **`plugins/web3-api-skills/agents/web3-developer.md`** - Expert Web3 development agent
-- **`plugins/streams-api-skills/skills/streams-api/query.js`** - Streams API query client
+- **`.env`** - Contains `MORALIS_API_KEY` (created by `/moralis-api-key` skill, in .gitignore)
+- **`skills/web3-shared/query.js`** - Unified query client for all web3 skills
+- **`skills/moralis-api-key/SKILL.md`** - API key setup skill
 - **`scripts/test-all-skills.sh`** - Validates all skills load correctly
 - **`CONTRIBUTING.md`** - Guidelines for contributors
 
 ## API Key Management
 
-The `/web3-api-key` command updates `.env` file intelligently:
+The `/moralis-api-key` skill updates `.env` file intelligently:
 - Preserves existing environment variables
 - Adds or updates `MORALIS_API_KEY` line
-- Works across all installation methods (marketplace, manual, global)
+- Works across all installation methods (npx skills add, manual, global)
 
 The query client searches upward from skill directory to find `.env` file, allowing flexible installation locations.

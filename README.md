@@ -1,31 +1,26 @@
-# Moralis API Skills Marketplace
+# Moralis API Skills
 
-Multi-plugin marketplace for [Moralis API](https://admin.moralis.io/register) integration with Claude Code. Contains two plugins:
+A comprehensive collection of Claude Code skills for [Moralis API](https://admin.moralis.io/register) integration with Web3 blockchain data.
 
-1. **web3-api-skills** - EVM & Solana blockchain data APIs (9 modular skills)
-2. **streams-api-skills** - Real-time blockchain event monitoring with webhooks
+**Two skill collections:**
+- **Web3 API Skills** (15 skills) - EVM & Solana blockchain data APIs
+- **Streams API Skills** (1 skill) - Real-time blockchain event monitoring with webhooks
 
 ## Quick Start
 
-**Step 1:** Add the marketplace
+**Step 1:** Install the skills
 ```bash
-/plugin marketplace add noviulian/moralis-skills
+npx skills add noviulian/moralis-api-skills
 ```
 
-**Step 2:** Install plugins
+Optional: List all available skills
 ```bash
-# Install web3-api-skills (EVM/Solana data APIs)
-/plugin install web3-api-skills@moralis-skills
+npx skills add noviulian/moralis-api-skills --list
 ```
 
+**Step 2:** Set your API key
 ```bash
-# Install streams-api-skills (Real-time event monitoring)
-/plugin install streams-api-skills@moralis-skills
-```
-
-**Step 3:** Set your API key
-```bash
-/web3-api-key <paste your API key here>
+/moralis-api-key <paste your API key here>
 ```
 
 ## Features
@@ -33,11 +28,11 @@ Multi-plugin marketplace for [Moralis API](https://admin.moralis.io/register) in
 - **Zero Dependencies** - Pure Node.js built-in modules only
 - **Dual Blockchain Support** - EVM chains and Solana
 - **Real-time Event Streaming** - Webhook-based monitoring
-- **Plug and Play** - Install and use in under 30 seconds
+- **Skills-Based Architecture** - Install via `npx skills add`
 
-## Plugin: web3-api-skills
+## Web3 API Skills
 
-9 modular skills for EVM and Solana blockchain data:
+15 modular skills for EVM and Solana blockchain data:
 
 | Skill | EVM | Solana | Description |
 |-------|-----|--------|-------------|
@@ -50,8 +45,11 @@ Multi-plugin marketplace for [Moralis API](https://admin.moralis.io/register) in
 | **Blockchain API** | ✅ 7 endpoints | ❌ | Blocks and transactions |
 | **Utils** | ✅ 2 endpoints | ❌ | API version, endpoint weights |
 | **Premium** | ✅ 8 endpoints | ✅ 7 endpoints | Advanced analytics |
+| **Analytics API** | ✅ | ✅ | Token analytics and timeseries |
+| **Score API** | ✅ | ✅ | Token security scores |
+| **Sniper API** | ✅ | ❌ | DEX snipers detection |
 
-## Plugin: streams-api-skills
+## Streams API Skills
 
 Real-time blockchain event monitoring with webhooks:
 
@@ -86,13 +84,14 @@ Real-time blockchain event monitoring with webhooks:
 "Pause the stream with ID a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 ```
 
-## Path Notes
+## Installation Paths
 
-Claude Code includes the plugin version in cache paths, so cache directories change on every update. The marketplace folder name also follows the marketplace name (not the repo name). Avoid hard-coded version paths and prefer:
+Skills can be installed in different locations:
 
-- `~/.claude/plugins/marketplaces/moralis-skills/` for the installed marketplace
-- `~/.claude/plugins/cache/moralis-skills/web3-api-skills/*/` for cache versions
-- `.env` discovery from the skill directory (supported by the query clients)
+- **Global:** `~/.claude/skills/<skill-name>/`
+- **Project-specific:** `<project>/.claude/skills/<skill-name>/`
+
+The query clients automatically discover the `.env` file from the skill directory or its parent directories.
 
 ## Supported Chains
 

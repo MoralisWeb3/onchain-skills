@@ -9,27 +9,27 @@ The Moralis API Skills wrap the Moralis Data APIs. Each skill corresponds to a s
 
 ## EVM & Solana API Skills
 
-These skills are part of the `web3-api-skills` plugin.
+These skills provide comprehensive blockchain data access for EVM chains and Solana.
 
 | Skill | EVM Support | Solana Support | Documentation |
 |-------|-------------|----------------|---------------|
-| **Wallet API** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/web3-api-skills/skills/web3-wallet-api/references) |
-| **Token API** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/web3-api-skills/skills/web3-token-api/references) |
-| **NFT API** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/web3-api-skills/skills/web3-nft-api/references) |
-| **Price API** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/web3-api-skills/skills/web3-price-api/references) |
-| **DeFi API** | ✅ | ❌ | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/web3-api-skills/skills/web3-defi-api/references) |
-| **Blockchain API** | ✅ | ❌ | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/web3-api-skills/skills/web3-blockchain-api/references) |
-| **Entity API** | ✅ | ❌ | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/web3-api-skills/skills/web3-entity-api/references) |
-| **Utils** | ✅ | ❌ | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/web3-api-skills/skills/web3-utils/references) |
-| **Premium** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/web3-api-skills/skills/web3-premium/references) |
+| **Wallet API** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-wallet-api/references) |
+| **Token API** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-token-api/references) |
+| **NFT API** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-nft-api/references) |
+| **Price API** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-price-api/references) |
+| **DeFi API** | ✅ | ❌ | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-defi-api/references) |
+| **Blockchain API** | ✅ | ❌ | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-blockchain-api/references) |
+| **Entity API** | ✅ | ❌ | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-entity-api/references) |
+| **Utils** | ✅ | ❌ | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-utils/references) |
+| **Premium** | ✅ | ✅ | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-premium/references) |
 
 ## Streams API Skills
 
-This skill is part of the `streams-api-skills` plugin.
+Real-time blockchain event monitoring with webhooks.
 
 | Skill | Description | Documentation |
 |-------|-------------|---------------|
-| **Streams API** | Real-time blockchain event monitoring | [Endpoints](https://github.com/noviulian/moralis-skills/tree/main/plugins/streams-api-skills/skills/streams-api/references) |
+| **Streams API** | Real-time blockchain event monitoring | [Endpoints](https://github.com/noviulian/moralis-api-skills/tree/main/skills/moralis-streams-api/references) |
 
 ## Common Parameters
 

@@ -13,7 +13,7 @@ Common queries and patterns for using Web3 Skills and Streams.
 
 **EVM (auto-detected):**
 ```javascript
-cd ~/.claude/skills/web3-wallet-api
+cd ~/.claude/skills/moralis-wallet-api
 node -e "
 const { query } = require('./query');
 query('/:address/balance', { address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045' })
@@ -24,7 +24,7 @@ query('/:address/balance', { address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA9604
 
 **Solana (auto-detected):**
 ```javascript
-cd ~/.claude/skills/web3-wallet-api
+cd ~/.claude/skills/moralis-wallet-api
 node -e "
 const { query } = require('./query');
 query('/:network/:address/balance', {
@@ -52,7 +52,7 @@ query('/wallets/:address/tokens', { address: '0xd8dA6BF26964aF9D7eEd9e03E53415D3
 ### Get Token Price
 
 ```javascript
-cd ~/.claude/skills/web3-token-api
+cd ~/.claude/skills/moralis-token-api
 query('/erc20/:address/price', {
   address: '0x6B175474E89094C44Da98b954EedeAC495271d0F' // USDC
 })
@@ -71,7 +71,7 @@ query('/erc20/search', { params: { q: 'bitcoin', chain: 'eth' } })
 ### Get NFTs by Wallet
 
 ```javascript
-cd ~/.claude/skills/web3-nft-api
+cd ~/.claude/skills/moralis-nft-api
 query('/:address/nft', {
   address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
   params: { format: 'decimal', limit: 10 }
@@ -138,7 +138,7 @@ query('/wallets/:address/tokens', {
 ## Solana Pump.fun Tokens
 
 ```javascript
-cd ~/.claude/skills/web3-token-api
+cd ~/.claude/skills/moralis-token-api
 query('/token/mainnet/pumpfun/active', {})
   .then(data => console.log('Active Pump.fun tokens:', data.result?.length));
 ```

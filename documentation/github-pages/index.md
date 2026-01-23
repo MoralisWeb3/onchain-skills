@@ -5,49 +5,45 @@ title: Moralis API Skills for Claude Code
 
 # Moralis API Skills for Claude Code
 
-Multi-plugin marketplace for Claude Code with Moralis API integration:
+Comprehensive skills collection for Claude Code with Moralis API integration:
 
-- **web3-api-skills** - EVM & Solana blockchain data APIs (9 modular skills)
-- **streams-api-skills** - Real-time blockchain event monitoring with webhooks
+- **Web3 API Skills** (15 skills) - EVM & Solana blockchain data APIs
+- **Streams API Skills** (1 skill) - Real-time blockchain event monitoring with webhooks
 
 ## Features
 
 - **Zero Dependencies** - Pure Node.js built-in modules only
 - **Dual Blockchain Support** - EVM and Solana with auto-detection
-- **9 Modular Skills** - Wallet, Token, NFT, DeFi, Entity, Price, Blockchain, Utils, Premium
+- **15 Modular Skills** - Wallet, Token, NFT, DeFi, Entity, Price, Blockchain, Utils, Premium, Analytics, Score, Sniper
 - **Real-time Event Streaming** - Webhook-based monitoring
-- **Plug and Play** - Install and use in under 30 seconds
+- **Skills-Based Architecture** - Install via `npx skills add`
 
 ## Quick Start
 
-### Method 1: Marketplace Installation (Recommended)
+### Install Skills (Recommended)
 
-Install both plugins from the marketplace:
+Install all Moralis API skills:
 
-**Step 1:** Add the marketplace
+**Step 1:** Install the skills
 ```bash
-/plugin marketplace add noviulian/moralis-skills
+npx skills add noviulian/moralis-api-skills
 ```
 
-**Step 2:** Install the plugins
+Optional: List all available skills
 ```bash
-/plugin install web3-api-skills@moralis-skills
+npx skills add noviulian/moralis-api-skills --list
 ```
 
+**Step 2:** Set your API key
 ```bash
-/plugin install streams-api-skills@moralis-skills
+/moralis-api-key <paste your API key here>
 ```
 
-**Step 3:** Restart Claude Code, then set your API key
-```bash
-/web3-api-key <paste your API key here>
-```
-
-That's it! Both plugins are installed and ready to use.
+That's it! All skills are installed and ready to use.
 
 ---
 
-### Method 2: Manual Installation (Advanced)
+### Manual Installation (Advanced)
 
 If you prefer to install individual skills or want more control:
 
@@ -61,28 +57,31 @@ If you prefer to install individual skills or want more control:
 ```bash
 # Add to Claude Code skills directory
 cd ~/.claude/skills
-git clone https://github.com/noviulian/moralis-skills.git
+git clone https://github.com/noviulian/moralis-api-skills.git moralis-api-skills-temp
 
-# Or install individual skills
-cp -r moralis-skills/plugins/web3-api-skills/skills/web3-wallet-api ~/.claude/skills/
-cp -r moralis-skills/plugins/web3-api-skills/skills/web3-token-api ~/.claude/skills/
+# Install individual skills
+cp -r moralis-api-skills-temp/skills/moralis-wallet-api ~/.claude/skills/
+cp -r moralis-api-skills-temp/skills/moralis-token-api ~/.claude/skills/
 # ... etc for other skills
 
 # Streams skill
-cp -r moralis-skills/plugins/streams-api-skills/skills/streams-api ~/.claude/skills/
+cp -r moralis-api-skills-temp/skills/moralis-streams-api ~/.claude/skills/
+
+# Clean up
+rm -rf moralis-api-skills-temp
 ```
 
 #### 3. Set API Key
 
 ```bash
 # Set API key for a skill
-echo "MORALIS_API_KEY=your_actual_key_here" > ~/.claude/skills/web3-wallet-api/.env
-echo "MORALIS_API_KEY=your_actual_key_here" > ~/.claude/skills/streams-api/.env
+echo "MORALIS_API_KEY=your_actual_key_here" > ~/.claude/skills/moralis-wallet-api/.env
+echo "MORALIS_API_KEY=your_actual_key_here" > ~/.claude/skills/moralis-streams-api/.env
 
 # Or set for all skills
-cd ~/.claude/skills/moralis-skills/plugins/web3-api-skills/skills
-for dir in web3-*; do
-  echo "MORALIS_API_KEY=your_actual_key_here" > "$dir/.env"
+cd ~/.claude/skills
+for dir in moralis-*; do
+  [ -d "$dir" ] && echo "MORALIS_API_KEY=your_actual_key_here" > "$dir/.env"
 done
 ```
 
@@ -107,15 +106,19 @@ Or manage Streams:
 
 | Skill | EVM | Solana | Description |
 |-------|-----|--------|-------------|
-| **web3-wallet-api** | ✅ | ✅ | Balances, tokens, NFTs, history, DeFi positions |
-| **web3-token-api** | ✅ | ✅ | Prices, metadata, swaps, pairs, Pump.fun |
-| **web3-nft-api** | ✅ | ✅ | Metadata, traits, transfers, trades |
-| **web3-price-api** | ✅ | ✅ | Token/NFT prices, OHLCV data |
-| **web3-defi-api** | ✅ | ❌ | Protocol positions (EVM only) |
-| **web3-entity-api** | ✅ | ❌ | Labeled addresses (EVM only) |
-| **web3-blockchain-api** | ✅ | ❌ | Blocks and transactions (EVM only) |
-| **web3-utils** | ✅ | ❌ | API utilities (EVM only) |
-| **web3-premium** | ✅ | ✅ | Advanced analytics |
+| **moralis-wallet-api** | ✅ | ✅ | Balances, tokens, NFTs, history, DeFi positions |
+| **moralis-token-api** | ✅ | ✅ | Prices, metadata, swaps, pairs, Pump.fun |
+| **moralis-nft-api** | ✅ | ✅ | Metadata, traits, transfers, trades |
+| **moralis-price-api** | ✅ | ✅ | Token/NFT prices, OHLCV data |
+| **moralis-defi-api** | ✅ | ❌ | Protocol positions (EVM only) |
+| **moralis-entity-api** | ✅ | ❌ | Labeled addresses (EVM only) |
+| **moralis-blockchain-api** | ✅ | ❌ | Blocks and transactions (EVM only) |
+| **moralis-utils** | ✅ | ❌ | API utilities (EVM only) |
+| **moralis-premium** | ✅ | ✅ | Advanced analytics |
+| **moralis-analytics-api** | ✅ | ✅ | Token analytics and timeseries |
+| **moralis-score-api** | ✅ | ✅ | Token security scores |
+| **moralis-sniper-api** | ✅ | ❌ | DEX snipers detection |
+| **moralis-streams-api** | ✅ | ✅ | Real-time event streaming |
 
 ## Supported Chains
 

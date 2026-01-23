@@ -1,5 +1,72 @@
 # Release Notes
 
+## Version 2.0.0 (Breaking Change - Skills-Only Architecture)
+
+### Breaking Changes
+
+**⚠️ Installation method has changed from plugin marketplace to skills-only.**
+
+If you're upgrading from v1.x, see [Migration Guide](documentation/MIGRATION_GUIDE.md) for detailed instructions.
+
+**Old Installation (v1.x) - NO LONGER SUPPORTED:**
+```bash
+/plugin marketplace add noviulian/moralis-skills
+/plugin install web3-api-skills@moralis-skills
+/web3-api-key <your_api_key>
+```
+
+**New Installation (v2.0.0) - USE THIS:**
+```bash
+npx skills add noviulian/moralis-api-skills
+/moralis-api-key <your_api_key>
+```
+
+### What Changed
+
+- ✅ **Simplified installation** - Single `npx skills add` command
+- ✅ **Skills-only architecture** - No plugin marketplace dependency
+- ✅ **Root-level skills directory** - Direct access to all skills
+- ✅ **Updated command** - `/moralis-api-key` replaces `/web3-api-key`
+- ✅ **Better compatibility** - Aligns with Claude Code skills ecosystem
+
+### Migration Steps for Existing Users
+
+1. **Remove old plugin installation:**
+```bash
+rm -rf ~/.claude/plugins/marketplaces/moralis-skills
+rm -rf ~/.claude/plugins/cache/moralis-skills
+```
+
+2. **Install new skills:**
+```bash
+npx skills add noviulian/moralis-api-skills
+```
+
+3. **Set your API key with new command:**
+```bash
+/moralis-api-key <your_api_key>
+```
+
+### Features Unchanged
+
+All 15 skills and API functionality remain the same:
+- ✅ 9 Web3 API skills (EVM + Solana)
+- ✅ 3 Premium skills (Analytics, Score, Sniper)
+- ✅ 1 Streams API skill
+- ✅ 1 API key manager skill
+- ✅ 1 Unified query client (web3-shared)
+- ✅ Zero external dependencies
+- ✅ Auto blockchain detection
+- ✅ Chain name to hex conversion
+
+### Documentation
+
+- [Migration Guide](documentation/MIGRATION_GUIDE.md) - Detailed migration instructions
+- [README.md](README.md) - Updated installation instructions
+- [Installation Guide](documentation/github-pages/installation.md) - Step-by-step setup
+
+---
+
 ## Version 1.0.1
 
 ### Fixes

@@ -14,129 +14,103 @@ Follow these steps to install Moralis API Skills for Claude Code.
   1. Register at [admin.moralis.io/register](https://admin.moralis.io/register) (free, no credit card required)
   2. Get your API key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 
-## Installation Methods
+## Installation
 
-### Method 1: Marketplace Installation (Recommended)
+### Quick Install (Recommended)
 
-The easiest way to install both plugins at once:
-
-**Step 1:** Add the marketplace
-```bash
-/plugin marketplace add noviulian/moralis-skills
-```
-
-**Step 2:** Install the plugins
-```bash
-/plugin install web3-api-skills@moralis-skills
-```
+The easiest way to install all Moralis API skills:
 
 ```bash
-/plugin install streams-api-skills@moralis-skills
+npx skills add noviulian/moralis-api-skills
 ```
 
-**Step 3:** Restart Claude Code, then set your API key
+Optional: List all available skills before installing
 ```bash
-/web3-api-key <paste your API key here>
+npx skills add noviulian/moralis-api-skills --list
 ```
 
-**That's it!** Both plugins are installed and ready to use.
+### Set Your API Key
+
+After installation, set your Moralis API key:
+
+```bash
+/moralis-api-key <paste your API key here>
+```
+
+**Example:**
+```bash
+/moralis-api-key eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+This configures your API key for all Moralis skills at once.
+
+**That's it!** All skills are installed and ready to use.
 
 ---
 
-## Path Notes
+## Installation Paths
 
-Claude Code includes the plugin version in cache paths, so cache directories change on every update. The marketplace folder name also follows the marketplace name (not the repo name). Avoid hard-coded version paths and prefer:
+Skills can be installed in different locations depending on your setup:
 
-- `~/.claude/plugins/marketplaces/moralis-skills/` for the installed marketplace
-- `~/.claude/plugins/cache/moralis-skills/web3-api-skills/*/` for cache versions
-- `~/.claude/plugins/cache/moralis-skills/streams-api-skills/*/` for cache versions
-- `.env` discovery from the skill directory (supported by the query clients)
+| Environment | Skills Directory |
+|-------------|-----------------|
+| Global (default) | `~/.claude/skills/` |
+| Project-specific | `<project>/.claude/skills/` |
+
+The query clients automatically discover the `.env` file from the skill directory or its parent directories.
 
 ---
 
-### Method 2: Install All Skills Manually
+## Manual Installation (Advanced)
+
+If you prefer manual installation or want to install individual skills:
 
 ```bash
 # Clone to Claude skills directory
 cd ~/.claude/skills
-git clone https://github.com/noviulian/moralis-skills.git
+git clone https://github.com/noviulian/moralis-api-skills.git moralis-api-skills-temp
 
-# The skills are now in ~/.claude/skills/moralis-skills/plugins/web3-api-skills/skills/
-# Streams skill is in ~/.claude/skills/moralis-skills/plugins/streams-api-skills/skills/
+# Copy individual skills you need
+cp -r moralis-api-skills-temp/skills/moralis-wallet-api ~/.claude/skills/
+cp -r moralis-api-skills-temp/skills/moralis-token-api ~/.claude/skills/
+# ... add more skills as needed
+
+# Clean up
+rm -rf moralis-api-skills-temp
 ```
 
 Then set your API key (see below).
 
 ---
 
-### Method 3: Install Individual Skills
+### Manual Installation: Individual Skills
 
-```bash
-# Create skills directory if it doesn't exist
-mkdir -p ~/.claude/skills
-
-# Copy specific skills
-git clone https://github.com/noviulian/moralis-skills.git /tmp/moralis-skills
-cp -r /tmp/moralis-skills/plugins/web3-api-skills/skills/web3-wallet-api ~/.claude/skills/
-cp -r /tmp/moralis-skills/plugins/web3-api-skills/skills/web3-token-api ~/.claude/skills/
-# ... add more skills as needed
-
-# Streams skill
-cp -r /tmp/moralis-skills/plugins/streams-api-skills/skills/streams-api ~/.claude/skills/
-```
-
-Then set your API key for each skill (see below).
-
----
-
-### Method 4: Manual Installation
-
-1. Download the skill directory you want
-2. Copy it to `~/.claude/skills/`
+1. Download the skill directory you want from [GitHub](https://github.com/noviulian/moralis-api-skills)
+2. Copy it to `~/.claude/skills/` or `<project>/.claude/skills/`
 3. Ensure the directory contains `SKILL.md` and `query.js`
 4. Set your API key (see below)
 
-## Setting Your API Key
-
-### For Marketplace Installation
-
-If you used the marketplace installation method, simply run:
-
-```bash
-/web3-api-key <paste your API key here>
-```
-
-For example:
-```bash
-/web3-api-key eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-```
-
-This will configure your Moralis API key for all skills in both plugins automatically.
-
 ---
 
-### For Manual Installation
+## Setting Your API Key (Manual Installation)
 
-#### For Individual Skills
+### For Individual Skills
 
 ```bash
 # Replace YOUR_API_KEY from https://admin.moralis.io/register
-echo "MORALIS_API_KEY=YOUR_API_KEY" > ~/.claude/skills/web3-wallet-api/.env
-echo "MORALIS_API_KEY=YOUR_API_KEY" > ~/.claude/skills/streams-api/.env
+echo "MORALIS_API_KEY=YOUR_API_KEY" > ~/.claude/skills/moralis-wallet-api/.env
+echo "MORALIS_API_KEY=YOUR_API_KEY" > ~/.claude/skills/moralis-streams-api/.env
 ```
 
 ### For All Skills at Once
 
 ```bash
-# Set API key for all Web3 skills
+# Set API key for all Moralis skills
 API_KEY="YOUR_API_KEY"
-cd ~/.claude/skills/moralis-skills/plugins/web3-api-skills/skills
-for dir in web3-*; do
-  echo "MORALIS_API_KEY=$API_KEY" > "$dir/.env"
+cd ~/.claude/skills
+for dir in moralis-*; do
+  [ -d "$dir" ] && echo "MORALIS_API_KEY=$API_KEY" > "$dir/.env"
 done
-
-# Set API key for Streams skill
-echo "MORALIS_API_KEY=$API_KEY" > ~/.claude/skills/moralis-skills/plugins/streams-api-skills/skills/streams-api/.env
 echo "✅ API key set for all skills"
 ```
 
@@ -145,7 +119,7 @@ echo "✅ API key set for all skills"
 Test that a skill is working:
 
 ```bash
-cd ~/.claude/skills/web3-wallet-api
+cd ~/.claude/skills/moralis-wallet-api
 node -e "const { query } = require('./query'); query('/:address/balance', { address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045' }).then(console.log).catch(console.error)"
 ```
 
@@ -158,7 +132,7 @@ Expected response:
 
 Optional Streams check:
 ```bash
-cd ~/.claude/skills/streams-api
+cd ~/.claude/skills/moralis-streams-api
 node -e "const { query } = require('./query'); query('/streams/evm', { params: { limit: 1 } }).then(console.log).catch(console.error)"
 ```
 
@@ -198,10 +172,10 @@ Make sure you copied the entire skill directory, including the `SKILL.md` file.
 
 ```bash
 # Remove individual skill
-rm -rf ~/.claude/skills/web3-wallet-api
+rm -rf ~/.claude/skills/moralis-wallet-api
 
-# Remove all Web3 skills
-rm -rf ~/.claude/skills/moralis-skills
+# Remove all Moralis skills
+rm -rf ~/.claude/skills/moralis-*
 ```
 
 ## Next Steps

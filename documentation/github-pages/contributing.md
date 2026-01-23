@@ -3,14 +3,14 @@ layout: default
 title: Contributing
 ---
 
-# Contributing to Web3 Skills
+# Contributing to Moralis API Skills
 
 Thank you for your interest in contributing!
 
 ## Setup
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/noviulian/moralis-skills.git`
+2. Clone your fork: `git clone https://github.com/noviulian/moralis-api-skills.git`
 3. Create a branch: `git checkout -b feature/your-feature`
 
 ## Development
@@ -19,8 +19,8 @@ Thank you for your interest in contributing!
 
 1. Create directory: `skills/your-skill-name/`
 2. Create `SKILL.md` following the [Agent Skills Standard](https://github.com/agentskills/agentskills)
-3. Copy or symlink `query.js` from `skills/shared/`
-4. Create reference documentation in `references/`
+3. Copy or symlink `query.js` from `skills/web3-shared/` (for Web3 skills)
+4. Create reference documentation in `references/` (optional)
 5. Test with a real API key
 
 ### SKILL.md Format
@@ -62,6 +62,6 @@ node -e "const { query } = require('./query'); query('/endpoint', {}).then(conso
 
 ## Zero Dependencies Policy
 
-This plugin MUST NOT add external npm dependencies. All code must use Node.js built-in modules only:
+This project MUST NOT add external npm dependencies. All code must use Node.js built-in modules only:
 - ✅ `https`, `http`, `fs`, `path`, `url`, `crypto`
 - ❌ `axios`, `node-fetch`, `dotenv`, `express`, etc.
