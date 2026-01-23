@@ -25,7 +25,9 @@
 - **Use this endpoint when:** User asks "Solana NFT metadata", "contract info", "NFT details", "collection metadata", "mint metadata"
 - **Networks:** mainnet, devnet
 - **Params:**
-  - `mediaItems` (boolean, default: true) - Return media items
+  - `network` (required) - The network to query
+  - `address` (required) - The address to query
+  - `mediaItems` (optional) - Should return media items
 
 ---
 
@@ -37,12 +39,12 @@
 - **Use this endpoint when:** User asks "wallet NFTs", "what NFTs does this wallet own", "Solana NFT portfolio", "NFT collection"
 - **Networks:** mainnet, devnet
 - **Params:**
-  - `limit` - Number of results per page
-  - `cursor` - Pagination cursor
-  - `nftMetadata` (boolean, default: false) - Return full NFT metadata
-  - `mediaItems` (boolean, default: false) - Return media items
-  - `excludeSpam` (boolean, default: false) - Exclude spam NFTs
-  - `includeFungibleAssets` (boolean, default: false) - Include fungible assets (tokenStandard:1)
+  - `network` (required) - The network to query
+  - `address` (required) - The address to query
+  - `nftMetadata` (optional) - Should return the full NFT metadata
+  - `mediaItems` (optional) - Should return media items
+  - `excludeSpam` (optional) - Should exclude spam NFTs
+  - `includeFungibleAssets` (optional) - Should include fungible assets (tokenStandard:1)
 
 ---
 
