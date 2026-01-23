@@ -17,47 +17,99 @@ const path = require("path");
  * NO external dependencies - uses only Node.js built-in modules
  */
 
-// Chain name to hex ID mapping
+// Chain name to hex ID mapping (swagger-aligned)
 const CHAIN_HEX_MAP = {
   eth: "0x1",
-  ethereum: "0x1",
-  goerli: "0x5",
   sepolia: "0xaa36a7",
+  holesky: "0x4268",
   polygon: "0x89",
-  mumbai: "0x13881",
+  amoy: "0x13882",
   bsc: "0x38",
+  "bsc testnet": "0x61",
   bsc_testnet: "0x61",
-  avalanche: "0xa86a",
-  fuji: "0xa869",
-  fantom: "0xfa",
+  "bsc-testnet": "0x61",
   arbitrum: "0xa4b1",
-  arbitrum_testnet: "0x66eee",
-  optimism: "0xa",
-  optimism_testnet: "0x45",
+  "arbitrum sepolia": "0x66eee",
+  "arbitrum-sepolia": "0x66eee",
   base: "0x2105",
-  base_testnet: "0x14a34",
-  celo: "0xa4ec",
+  "base sepolia": "0x14a34",
+  base_sepolia: "0x14a34",
+  "base-sepolia": "0x14a34",
+  optimism: "0xa",
+  "optimism sepolia": "0xaa37dc",
+  "optimism-sepolia": "0xaa37dc",
+  linea: "0xe708",
+  "linea sepolia": "0xe705",
+  linea_sepolia: "0xe705",
+  "linea-sepolia": "0xe705",
+  avalanche: "0xa86a",
+  fantom: "0xfa",
+  "fantom testnet": "0xfa2",
+  "fantom-testnet": "0xfa2",
+  cronos: "0x19",
   gnosis: "0x64",
+  "gnosis testnet": "0x27d8",
+  gnosis_testnet: "0x27d8",
+  "gnosis-testnet": "0x27d8",
+  chiliz: "0x15b38",
+  "chiliz testnet": "0x15b32",
+  chiliz_testnet: "0x15b32",
+  "chiliz-testnet": "0x15b32",
   moonbeam: "0x504",
   moonriver: "0x505",
-  cronos: "0x19",
-  aurora: "0x4e454152",
-  polygon_zkevm: "0x144",
-  amoy: "0x13882",
-  zkevm: "0x144",
-  linea: "0x770e",
-  linea_testnet: "0xe708",
-  scroll: "0x82750",
-  scroll_testnet: "0x8274f",
-  blast: "0x81457",
-  blast_testnet: "0x24c931",
-  manta: "0xa9b4",
-  manta_testnet: "0x5e02",
-  taiko: "0x50e8",
-  taiko_testnet: "0x50e3",
-  world: "0x1e12",
-  world_testnet: "0x1e14",
+  moonbase: "0x507",
+  flow: "0x2eb",
+  "flow testnet": "0x221",
+  "flow-testnet": "0x221",
+  ronin: "0x7e4",
+  "ronin testnet": "0x7e5",
+  "ronin-testnet": "0x7e5",
+  "2021": "0x7e5",
+  lisk: "0x46f",
+  "lisk sepolia": "0x106a",
+  "lisk-sepolia": "0x106a",
+  pulse: "0x171",
+  hyperevm: "0x3e7",
+  monad: "0x8f",
 };
+
+const STREAMS_SUPPORTED_CHAIN_IDS = new Set([
+  "0x1",
+  "0xaa36a7",
+  "0x4268",
+  "0x89",
+  "0x13882",
+  "0x38",
+  "0x61",
+  "0xa4b1",
+  "0x66eee",
+  "0x2105",
+  "0x14a34",
+  "0xa",
+  "0xaa37dc",
+  "0xe708",
+  "0xe705",
+  "0xa86a",
+  "0xfa",
+  "0xfa2",
+  "0x19",
+  "0x64",
+  "0x27d8",
+  "0x15b38",
+  "0x15b32",
+  "0x504",
+  "0x505",
+  "0x507",
+  "0x2eb",
+  "0x221",
+  "0x7e4",
+  "0x7e5",
+  "0x46f",
+  "0x106a",
+  "0x171",
+  "0x3e7",
+  "0x8f",
+]);
 
 /**
  * Convert chain name to hex ID
@@ -66,8 +118,21 @@ const CHAIN_HEX_MAP = {
  */
 function chainToHex(chain) {
   if (!chain) return "0x1"; // Default to Ethereum
-  const normalized = chain.toLowerCase();
-  return CHAIN_HEX_MAP[normalized] || chain;
+  const normalized = String(chain).toLowerCase().trim();
+  if (normalized.startsWith("0x")) return normalized;
+  const compact = normalized.replace(/\s+/g, " ");
+  const mapped =
+    CHAIN_HEX_MAP[compact] ||
+    CHAIN_HEX_MAP[compact.replace(/\s+/g, "_")] ||
+    CHAIN_HEX_MAP[compact.replace(/\s+/g, "-")];
+  return mapped || chain;
+}
+
+function assertStreamsChainSupported(chainHex, endpoint) {
+  if (STREAMS_SUPPORTED_CHAIN_IDS.has(chainHex)) return;
+  throw new Error(
+    `Unsupported chain for ${endpoint}. Supported chain IDs: ${[...STREAMS_SUPPORTED_CHAIN_IDS].join(", ")}`,
+  );
 }
 
 /**
@@ -221,9 +286,19 @@ async function query(endpoint, options = {}) {
 
   const normalizeChainParam = (value) => {
     if (Array.isArray(value)) {
-      return value.map((item) => (typeof item === "string" ? chainToHex(item) : item));
+      return value.map((item) => {
+        if (typeof item !== "string") return item;
+        const chainHex = chainToHex(item);
+        assertStreamsChainSupported(chainHex, endpoint);
+        return chainHex;
+      });
     }
-    return typeof value === "string" ? chainToHex(value) : value;
+    if (typeof value === "string") {
+      const chainHex = chainToHex(value);
+      assertStreamsChainSupported(chainHex, endpoint);
+      return chainHex;
+    }
+    return value;
   };
 
   const normalizedParams = { ...params };

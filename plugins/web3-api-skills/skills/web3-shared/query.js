@@ -18,53 +18,135 @@ const path = require("path");
  * NO external dependencies - uses only Node.js built-in modules
  */
 
-// Chain name to hex ID mapping (saves API tokens!)
+// Chain name to hex ID mapping (swagger-aligned)
 const CHAIN_HEX_MAP = {
-  // EVM chains
+  // EVM chains (supported by Web3 API swagger)
   eth: "0x1",
-  ethereum: "0x1",
-  goerli: "0x5",
   sepolia: "0xaa36a7",
+  holesky: "0x4268",
   polygon: "0x89",
-  mumbai: "0x13881",
+  amoy: "0x13882",
   bsc: "0x38",
+  "bsc testnet": "0x61",
   bsc_testnet: "0x61",
-  avalanche: "0xa86a",
-  fuji: "0xa869",
-  fantom: "0xfa",
+  "bsc-testnet": "0x61",
   arbitrum: "0xa4b1",
-  arbitrum_testnet: "0x66eee",
-  optimism: "0xa",
-  optimism_testnet: "0x45",
   base: "0x2105",
-  base_testnet: "0x14a34",
-  celo: "0xa4ec",
+  "base sepolia": "0x14a34",
+  base_sepolia: "0x14a34",
+  "base-sepolia": "0x14a34",
+  optimism: "0xa",
+  linea: "0xe708",
+  "linea sepolia": "0xe705",
+  linea_sepolia: "0xe705",
+  "linea-sepolia": "0xe705",
+  avalanche: "0xa86a",
+  fantom: "0xfa",
+  cronos: "0x19",
   gnosis: "0x64",
+  "gnosis testnet": "0x27d8",
+  gnosis_testnet: "0x27d8",
+  "gnosis-testnet": "0x27d8",
+  chiliz: "0x15b38",
+  "chiliz testnet": "0x15b32",
+  chiliz_testnet: "0x15b32",
+  "chiliz-testnet": "0x15b32",
   moonbeam: "0x504",
   moonriver: "0x505",
-  cronos: "0x19",
-  aurora: "0x4e454152",
-  polygon_zkevm: "0x144",
-  amoy: "0x13882",
-  zkevm: "0x144",
-  linea: "0x770e",
-  linea_testnet: "0xe708",
-  scroll: "0x82750",
-  scroll_testnet: "0x8274f",
-  blast: "0x81457",
-  blast_testnet: "0x24c931",
-  manta: "0xa9b4",
-  manta_testnet: "0x5e02",
-  taiko: "0x50e8",
-  taiko_testnet: "0x50e3",
-  world: "0x1e12",
-  world_testnet: "0x1e14",
-  // Solana (not hex, but included for completeness)
-  sol: "sol",
-  solana: "sol",
+  moonbase: "0x507",
+  flow: "0x2eb",
+  "flow testnet": "0x221",
+  "flow-testnet": "0x221",
+  ronin: "0x7e4",
+  "ronin testnet": "0x7e5",
+  "ronin-testnet": "0x7e5",
+  "2021": "0x7e5",
+  lisk: "0x46f",
+  "lisk sepolia": "0x106a",
+  "lisk-sepolia": "0x106a",
+  pulse: "0x171",
+  sei: "0x531",
+  "sei testnet": "0x530",
+  "sei-testnet": "0x530",
+  monad: "0x8f",
+  // Solana (network names)
   mainnet: "mainnet",
-  devnet: "devnet",
 };
+
+const EVM_SUPPORTED_CHAIN_IDS = new Set([
+  "0x1",
+  "0xaa36a7",
+  "0x4268",
+  "0x89",
+  "0x13882",
+  "0x38",
+  "0x61",
+  "0xa4b1",
+  "0x2105",
+  "0x14a34",
+  "0xa",
+  "0xe708",
+  "0xe705",
+  "0xa86a",
+  "0xfa",
+  "0x19",
+  "0x64",
+  "0x27d8",
+  "0x15b38",
+  "0x15b32",
+  "0x504",
+  "0x505",
+  "0x507",
+  "0x2eb",
+  "0x221",
+  "0x7e4",
+  "0x7e5",
+  "0x46f",
+  "0x106a",
+  "0x171",
+  "0x531",
+  "0x530",
+  "0x8f",
+]);
+
+const EVM_MAINNET_CHAIN_IDS = new Set([
+  "0x1",
+  "0x89",
+  "0x38",
+  "0xa4b1",
+  "0x2105",
+  "0xa",
+  "0xe708",
+  "0xa86a",
+  "0xfa",
+  "0x19",
+  "0x64",
+  "0x15b38",
+  "0x504",
+  "0x2eb",
+  "0x7e4",
+  "0x46f",
+  "0x171",
+  "0x531",
+  "0x8f",
+]);
+
+const EVM_TOKEN_PRICE_CHAIN_IDS = new Set([
+  "0x1",
+  "0x89",
+  "0x38",
+  "0xa4b1",
+  "0x2105",
+  "0xa",
+  "0xe708",
+  "0xa86a",
+  "0x64",
+  "0x504",
+  "0x7e4",
+  "0x171",
+  "0x531",
+  "0x8f",
+]);
 
 /**
  * Convert chain name to hex ID
@@ -73,8 +155,30 @@ const CHAIN_HEX_MAP = {
  */
 function chainToHex(chain) {
   if (!chain) return "0x1"; // Default to Ethereum
-  const normalized = chain.toLowerCase();
-  return CHAIN_HEX_MAP[normalized] || chain;
+  const normalized = String(chain).toLowerCase().trim();
+  if (normalized.startsWith("0x")) return normalized;
+  const compact = normalized.replace(/\s+/g, " ");
+  const mapped =
+    CHAIN_HEX_MAP[compact] ||
+    CHAIN_HEX_MAP[compact.replace(/\s+/g, "_")] ||
+    CHAIN_HEX_MAP[compact.replace(/\s+/g, "-")];
+  return mapped || chain;
+}
+
+function assertEvmChainSupported(chainHex, endpoint, allowedChains, reason) {
+  if (allowedChains.has(chainHex)) return;
+  const message =
+    reason ||
+    `Unsupported chain for ${endpoint}. Supported chain IDs: ${[...allowedChains].join(", ")}`;
+  throw new Error(message);
+}
+
+function isWalletHistoryEndpoint(endpoint) {
+  return /^\/wallets\/(:address|[^/]+)\/history\b/.test(endpoint);
+}
+
+function isWalletTokensEndpoint(endpoint) {
+  return /^\/wallets\/(:address|[^/]+)\/tokens\b/.test(endpoint);
 }
 
 /**
@@ -149,7 +253,7 @@ function detectBlockchain(address, context = {}) {
 
   // Detect from context
   if (context.chain) {
-    const solanaChains = ["sol", "solana", "mainnet", "devnet"];
+    const solanaChains = ["mainnet"];
     if (solanaChains.includes(context.chain.toLowerCase())) {
       return { type: "solana", network: context.network || "mainnet" };
     }
@@ -398,6 +502,25 @@ async function query(endpoint, options = {}) {
 
   if (blockchain.type === "evm") {
     const baseURL = "https://deep-index.moralis.io/api/v2.2";
+    const chainHex = blockchain.chain;
+
+    assertEvmChainSupported(chainHex, endpoint, EVM_SUPPORTED_CHAIN_IDS);
+    if (isWalletHistoryEndpoint(endpoint)) {
+      assertEvmChainSupported(
+        chainHex,
+        endpoint,
+        EVM_MAINNET_CHAIN_IDS,
+        `Endpoint ${endpoint} only supports mainnet chains.`,
+      );
+    }
+    if (isWalletTokensEndpoint(endpoint)) {
+      assertEvmChainSupported(
+        chainHex,
+        endpoint,
+        EVM_TOKEN_PRICE_CHAIN_IDS,
+        `Endpoint ${endpoint} requires token price support (mainnet-only).`,
+      );
+    }
 
     // Replace :address and :walletAddress placeholders in endpoint
     let endpointPath = endpoint;
