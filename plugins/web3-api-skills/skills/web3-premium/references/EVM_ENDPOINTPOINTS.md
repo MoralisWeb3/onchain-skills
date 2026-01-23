@@ -130,6 +130,7 @@
 - **Description:** Get NFT collection statistics
 - **Use this endpoint when:** User asks "NFT collection stats", "collection analytics", "NFT statistics"
 - **Params:** `chain` (string)
+- **⚠️ DEPRECATED (Dec 6, 2024):** Use Streams API instead for real-time NFT event monitoring
 
 ## Token Categories
 - **Endpoint:** `GET /tokens/categories`
