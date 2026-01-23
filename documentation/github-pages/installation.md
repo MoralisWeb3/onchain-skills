@@ -27,8 +27,11 @@ The easiest way to install both plugins at once:
 
 **Step 2:** Install the plugins
 ```bash
-/plugin install web3-api-skills@moralis-api
-/plugin install streams-api-skills@moralis-api
+/plugin install web3-api-skills@moralis-skills
+```
+
+```bash
+/plugin install streams-api-skills@moralis-skills
 ```
 
 **Step 3:** Restart Claude Code, then set your API key
@@ -44,9 +47,9 @@ The easiest way to install both plugins at once:
 
 Claude Code includes the plugin version in cache paths, so cache directories change on every update. The marketplace folder name also follows the marketplace name (not the repo name). Avoid hard-coded version paths and prefer:
 
-- `~/.claude/plugins/marketplaces/moralis-api/` for the installed marketplace
-- `~/.claude/plugins/cache/moralis-api/web3-api-skills/*/` for cache versions
-- `~/.claude/plugins/cache/moralis-api/streams-api-skills/*/` for cache versions
+- `~/.claude/plugins/marketplaces/moralis-skills/` for the installed marketplace
+- `~/.claude/plugins/cache/moralis-skills/web3-api-skills/*/` for cache versions
+- `~/.claude/plugins/cache/moralis-skills/streams-api-skills/*/` for cache versions
 - `.env` discovery from the skill directory (supported by the query clients)
 
 ---

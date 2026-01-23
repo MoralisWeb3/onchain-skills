@@ -15,10 +15,12 @@ Multi-plugin marketplace for [Moralis API](https://admin.moralis.io/register) in
 **Step 2:** Install plugins
 ```bash
 # Install web3-api-skills (EVM/Solana data APIs)
-/plugin install web3-api-skills@moralis-api
+/plugin install web3-api-skills@moralis-skills
+```
 
+```bash
 # Install streams-api-skills (Real-time event monitoring)
-/plugin install streams-api-skills@moralis-api
+/plugin install streams-api-skills@moralis-skills
 ```
 
 **Step 3:** Set your API key
@@ -88,8 +90,8 @@ Real-time blockchain event monitoring with webhooks:
 
 Claude Code includes the plugin version in cache paths, so cache directories change on every update. The marketplace folder name also follows the marketplace name (not the repo name). Avoid hard-coded version paths and prefer:
 
-- `~/.claude/plugins/marketplaces/moralis-api/` for the installed marketplace
-- `~/.claude/plugins/cache/moralis-api/web3-api-skills/*/` for cache versions
+- `~/.claude/plugins/marketplaces/moralis-skills/` for the installed marketplace
+- `~/.claude/plugins/cache/moralis-skills/web3-api-skills/*/` for cache versions
 - `.env` discovery from the skill directory (supported by the query clients)
 
 ## Supported Chains

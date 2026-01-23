@@ -31,8 +31,11 @@ Install both plugins from the marketplace:
 
 **Step 2:** Install the plugins
 ```bash
-/plugin install web3-api-skills@moralis-api
-/plugin install streams-api-skills@moralis-api
+/plugin install web3-api-skills@moralis-skills
+```
+
+```bash
+/plugin install streams-api-skills@moralis-skills
 ```
 
 **Step 3:** Restart Claude Code, then set your API key

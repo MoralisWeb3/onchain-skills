@@ -17,7 +17,10 @@ Real-time blockchain event monitoring with webhooks using the [Moralis Streams A
 **Step 1:** Install from marketplace
 ```bash
 /plugin marketplace add noviulian/moralis-skills
-/plugin install streams-api-skills@moralis-api
+```
+
+```bash
+/plugin install streams-api-skills@moralis-skills
 ```
 
 **Step 2:** Set your API key

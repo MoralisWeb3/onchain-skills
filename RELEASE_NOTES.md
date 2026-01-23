@@ -16,7 +16,7 @@
 
 **Step 2:** Install the plugin
 ```bash
-/plugin install web3-api-skills@moralis-api
+/plugin install web3-api-skills@moralis-skills
 ```
 
 **Step 3:** Restart Claude Code, then set your API key
@@ -57,7 +57,7 @@
 
 ```bash
 /plugin marketplace add noviulian/moralis-skills
-/plugin install web3-api-skills@moralis-api
+/plugin install web3-api-skills@moralis-skills
 /web3-api-key
 ```
 

@@ -44,13 +44,19 @@ node -e "const { query } = require('./query'); query('/:address/balance', { addr
 ```bash
 # Add marketplace
 /plugin marketplace add noviulian/moralis-skills
+```
 
+```bash
 # Install web3-api-skills (EVM/Solana data APIs)
-/plugin install web3-api-skills@moralis-api
+/plugin install web3-api-skills@moralis-skills
+```
 
+```bash
 # Install streams-api-skills (Real-time event monitoring)
-/plugin install streams-api-skills@moralis-api
+/plugin install streams-api-skills@moralis-skills
+```
 
+```bash
 # Local development testing
 /plugin marketplace add ./
 ```
