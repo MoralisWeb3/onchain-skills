@@ -282,7 +282,7 @@ async function query(endpoint, options = {}) {
     skillDir = __dirname,
   } = options;
 
-  const baseURL = "https://streams.moralis.io/api/v2.2";
+  const baseURL = "https://api.moralis-streams.com";
 
   const normalizeChainParam = (value) => {
     if (Array.isArray(value)) {

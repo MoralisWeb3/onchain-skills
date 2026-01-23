@@ -32,7 +32,7 @@ echo ""
 
 # Test 3: Check all skill directories
 echo "Test 3: Skill Directories"
-SKILL_COUNT=$(find plugins/web3-api-skills/skills -maxdepth 1 -type d -name "web3-*" | wc -l)
+SKILL_COUNT=$(find plugins/web3-api-skills/skills -maxdepth 1 -type d -name "web3-*" ! -name "web3-shared" | wc -l)
 echo "Found $SKILL_COUNT skill directories"
 if [ "$SKILL_COUNT" -eq 9 ]; then
   echo "✓ All 9 skills present"

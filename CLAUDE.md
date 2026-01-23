@@ -170,7 +170,7 @@ metadata:
 - Addresses: Base58 encoded (32-44 characters)
 
 **Streams API (streams-api-skills):**
-- Base URL: `https://streams.moralis.io/api/v2.2/`
+- Base URL: `https://api.moralis-streams.com/`
 - Uses PUT for create, POST for update, DELETE for delete
 - Webhook-based event streaming
 

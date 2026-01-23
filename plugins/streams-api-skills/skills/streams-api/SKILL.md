@@ -29,7 +29,7 @@ Use this skill when you need to:
 ## Base URL
 
 ```
-https://streams.moralis.io/api/v2.2
+https://api.moralis-streams.com
 ```
 
 ## Authentication
