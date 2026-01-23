@@ -23,10 +23,10 @@ if [ -f "plugins/web3-api-skills/.claude-plugin/plugin.json" ]; then
 else
   echo "✗ web3-api-skills plugin.json missing"
 fi
-if [ -f "plugins/streams-api-skill/.claude-plugin/plugin.json" ]; then
-  echo "✓ streams-api-skill plugin.json exists"
+if [ -f "plugins/streams-api-skills/.claude-plugin/plugin.json" ]; then
+  echo "✓ streams-api-skills plugin.json exists"
 else
-  echo "✗ streams-api-skill plugin.json missing"
+  echo "✗ streams-api-skills plugin.json missing"
 fi
 echo ""
 
@@ -81,11 +81,11 @@ if command -v python3 &> /dev/null; then
     echo "✗ web3-api-skills plugin.json has invalid JSON"
   fi
 
-  python3 -m json.tool plugins/streams-api-skill/.claude-plugin/plugin.json > /dev/null 2>&1
+  python3 -m json.tool plugins/streams-api-skills/.claude-plugin/plugin.json > /dev/null 2>&1
   if [ $? -eq 0 ]; then
-    echo "✓ streams-api-skill plugin.json is valid JSON"
+    echo "✓ streams-api-skills plugin.json is valid JSON"
   else
-    echo "✗ streams-api-skill plugin.json has invalid JSON"
+    echo "✗ streams-api-skills plugin.json has invalid JSON"
   fi
 else
   echo "⚠ python3 not found, skipping JSON validation"

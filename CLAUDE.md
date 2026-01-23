@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Moralis API Skills Marketplace** is a multi-plugin marketplace for Moralis API integration with Claude Code. It contains two separate plugins:
 
 1. **web3-api-skills** - 9 modular skills for Web3 blockchain data (EVM chains + Solana)
-2. **streams-api-skill** - Real-time blockchain event monitoring with webhooks
+2. **streams-api-skills** - Real-time blockchain event monitoring with webhooks
 
 **Key Design Principle: ZERO external dependencies - uses only Node.js built-in modules (https, fs, path, url, crypto).**
 
@@ -48,8 +48,8 @@ node -e "const { query } = require('./query'); query('/:address/balance', { addr
 # Install web3-api-skills (EVM/Solana data APIs)
 /plugin install web3-api-skills@moralis-api
 
-# Install streams-api-skill (Real-time event monitoring)
-/plugin install streams-api-skill@moralis-api
+# Install streams-api-skills (Real-time event monitoring)
+/plugin install streams-api-skills@moralis-api
 
 # Local development testing
 /plugin marketplace add ./
@@ -84,7 +84,7 @@ moralis-skills/
 │   │   └── commands/
 │   │       └── web3-api-key.md      # API key setup command
 │   │
-│   └── streams-api-skill/   # Plugin 2: Streams API (self-contained)
+│   └── streams-api-skills/   # Plugin 2: Streams API (self-contained)
 │       ├── .claude-plugin/
 │       │   └── plugin.json  # Plugin manifest
 │       └── skills/
@@ -163,7 +163,7 @@ metadata:
 - Network: `/mainnet/` or `/devnet/` in path
 - Addresses: Base58 encoded (32-44 characters)
 
-**Streams API (streams-api-skill):**
+**Streams API (streams-api-skills):**
 - Base URL: `https://streams.moralis.io/api/v2.2/`
 - Uses PUT for create, POST for update, DELETE for delete
 - Webhook-based event streaming
@@ -189,7 +189,7 @@ Contains 9 modular skills for EVM and Solana blockchain data queries:
 - `web3-utils` - API version, endpoint weights
 - `web3-premium` - Advanced analytics endpoints
 
-## Plugin: streams-api-skill
+## Plugin: streams-api-skills
 
 Real-time blockchain event monitoring with webhooks:
 
@@ -258,7 +258,7 @@ Real-time blockchain event monitoring with webhooks:
 - **`plugins/web3-api-skills/.claude-plugin/plugin.json`** - web3-api-skills manifest
 - **`plugins/web3-api-skills/commands/web3-api-key.md`** - API key setup command
 - **`plugins/web3-api-skills/agents/web3-developer.md`** - Expert Web3 development agent
-- **`plugins/streams-api-skill/skills/streams-api/query.js`** - Streams API query client
+- **`plugins/streams-api-skills/skills/streams-api/query.js`** - Streams API query client
 - **`scripts/test-all-skills.sh`** - Validates all skills load correctly
 - **`CONTRIBUTING.md`** - Guidelines for contributors
 

@@ -33,9 +33,9 @@
       "category": "web3"
     },
     {
-      "name": "streams-api-skill",
+      "name": "streams-api-skills",
       "description": "Moralis Streams API for real-time blockchain event monitoring with webhooks and custom filters",
-      "source": "./plugins/streams-api-skill/",
+      "source": "./plugins/streams-api-skills/",
       "strict": true,
       "version": "1.0.0",
       "author": {

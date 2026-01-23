@@ -3,7 +3,7 @@
 Multi-plugin marketplace for [Moralis API](https://admin.moralis.io/register) integration with Claude Code. Contains two plugins:
 
 1. **web3-api-skills** - EVM & Solana blockchain data APIs (9 modular skills)
-2. **streams-api-skill** - Real-time blockchain event monitoring with webhooks
+2. **streams-api-skills** - Real-time blockchain event monitoring with webhooks
 
 ## Quick Start
 
@@ -17,8 +17,8 @@ Multi-plugin marketplace for [Moralis API](https://admin.moralis.io/register) in
 # Install web3-api-skills (EVM/Solana data APIs)
 /plugin install web3-api-skills@moralis-api
 
-# Install streams-api-skill (Real-time event monitoring)
-/plugin install streams-api-skill@moralis-api
+# Install streams-api-skills (Real-time event monitoring)
+/plugin install streams-api-skills@moralis-api
 ```
 
 **Step 3:** Set your API key
@@ -49,7 +49,7 @@ Multi-plugin marketplace for [Moralis API](https://admin.moralis.io/register) in
 | **Utils** | ✅ 2 endpoints | ❌ | API version, endpoint weights |
 | **Premium** | ✅ 8 endpoints | ✅ 7 endpoints | Advanced analytics |
 
-## Plugin: streams-api-skill
+## Plugin: streams-api-skills
 
 Real-time blockchain event monitoring with webhooks:
 

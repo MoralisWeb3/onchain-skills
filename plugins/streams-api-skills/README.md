@@ -1,4 +1,4 @@
-# Streams API Skill for Claude Code
+# Streams API Skills for Claude Code
 
 Real-time blockchain event monitoring with webhooks using the [Moralis Streams API](https://docs.moralis.io/streams).
 
@@ -17,7 +17,7 @@ Real-time blockchain event monitoring with webhooks using the [Moralis Streams A
 **Step 1:** Install from marketplace
 ```bash
 /plugin marketplace add noviulian/moralis-skills
-/plugin install streams-api-skill@moralis-api
+/plugin install streams-api-skills@moralis-api
 ```
 
 **Step 2:** Set your API key
