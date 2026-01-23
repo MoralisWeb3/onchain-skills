@@ -301,29 +301,7 @@ function getAPIKey(skillDir = __dirname) {
  * @returns {object} { type: "evm"|"solana", chain?: string, network?: string }
  */
 function detectBlockchain(address, context = {}) {
-  // Solana addresses are base58 (32-44 chars, no 0x prefix)
-  if (address && !address.startsWith("0x") && address.length >= 32) {
-    // Fix #21: Add Base58 character validation
-    const base58Regex = /^[1-9A-HJ-NP-Za-km-z]+$/;
-    if (!base58Regex.test(address)) {
-      throw new Error("Invalid Solana address: contains non-base58 characters");
-    }
-    return { type: "solana", network: context.network || "mainnet" };
-  }
-
-  // EVM addresses are 0x prefix, 42 chars
-  if (address && address.startsWith("0x") && address.length === 42) {
-    // Fix #22: Add hex character validation
-    const ethRegex = /^0x[a-fA-F0-9]{40}$/;
-    if (!ethRegex.test(address)) {
-      throw new Error(
-        "Invalid EVM address: must be 0x followed by 40 hex characters",
-      );
-    }
-    return { type: "evm", chain: chainToHex(context.chain || "eth") };
-  }
-
-  // Detect from context
+  // Input validation for chain parameter (do this FIRST, before any returns)
   if (context.chain) {
     // Input validation: Ensure chain is a string
     if (typeof context.chain !== "string") {
@@ -343,7 +321,35 @@ function detectBlockchain(address, context = {}) {
     if (dangerousChars.test(trimmedChain)) {
       throw new Error("Invalid chain parameter: contains dangerous characters");
     }
+  }
 
+  // Solana addresses are base58 (32-44 chars, no 0x prefix)
+  if (address && !address.startsWith("0x") && address.length >= 32) {
+    // Fix #21: Add Base58 character validation
+    const base58Regex = /^[1-9A-HJ-NP-Za-km-z]+$/;
+    if (!base58Regex.test(address)) {
+      throw new Error("Invalid Solana address: contains non-base58 characters");
+    }
+    return { type: "solana", network: context.network || "mainnet" };
+  }
+
+  // EVM addresses are 0x prefix, 42 chars
+  if (address && address.startsWith("0x") && address.length === 42) {
+    // Fix #22: Add hex character validation
+    const ethRegex = /^0x[a-fA-F0-9]{40}$/;
+    if (!ethRegex.test(address)) {
+      throw new Error(
+        "Invalid EVM address: must be 0x followed by 40 hex characters",
+      );
+    }
+    // Use validated, trimmed chain
+    const chain = context.chain ? context.chain.trim() : "eth";
+    return { type: "evm", chain: chainToHex(chain) };
+  }
+
+  // Detect from context
+  if (context.chain) {
+    const trimmedChain = context.chain.trim();
     const solanaChains = ["sol", "solana", "mainnet", "devnet"];
     if (solanaChains.includes(trimmedChain.toLowerCase())) {
       return { type: "solana", network: context.network || "mainnet" };
