@@ -330,37 +330,14 @@ async function dateToBlock(date, chain = "eth", skillDir = __dirname) {
   // Call blockchain API
   const url = `https://deep-index.moralis.io/api/v2.2/dateToBlock?chain=${chainHex}&date=${encodeURIComponent(dateStr)}`;
 
-  return new Promise((resolve, reject) => {
-    https
-      .get(
-        url,
-        { headers: { "x-api-key": apiKey, Accept: "application/json" } },
-        (res) => {
-          let data = "";
-          res.on("data", (chunk) => {
-            data += chunk;
-          });
-          res.on("end", () => {
-            try {
-              const parsed = JSON.parse(data);
-              if (res.statusCode >= 400) {
-                reject(
-                  new Error(
-                    `API Error ${res.statusCode}: ${JSON.stringify(parsed)}`,
-                  ),
-                );
-              } else {
-                resolve(parsed.block);
-              }
-            } catch (e) {
-              reject(e);
-            }
-          });
-          res.on("error", reject);
-        },
-      )
-      .on("error", reject);
+  const response = await httpsRequest(url, {
+    "x-api-key": apiKey,
+    Accept: "application/json",
   });
+  if (!response || typeof response !== "object" || response.block == null) {
+    throw new Error("Invalid dateToBlock response from API.");
+  }
+  return response.block;
 }
 
 /**
@@ -383,36 +360,9 @@ async function searchToken(queryParam, chains, skillDir = __dirname) {
     }
   }
 
-  return new Promise((resolve, reject) => {
-    https
-      .get(
-        url,
-        { headers: { "x-api-key": apiKey, Accept: "application/json" } },
-        (res) => {
-          let data = "";
-          res.on("data", (chunk) => {
-            data += chunk;
-          });
-          res.on("end", () => {
-            try {
-              const parsed = JSON.parse(data);
-              if (res.statusCode >= 400) {
-                reject(
-                  new Error(
-                    `API Error ${res.statusCode}: ${JSON.stringify(parsed)}`,
-                  ),
-                );
-              } else {
-                resolve(parsed);
-              }
-            } catch (e) {
-              reject(e);
-            }
-          });
-          res.on("error", reject);
-        },
-      )
-      .on("error", reject);
+  return httpsRequest(url, {
+    "x-api-key": apiKey,
+    Accept: "application/json",
   });
 }
 
