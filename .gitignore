@@ -7,7 +7,7 @@ todo/
 # Always ignore API keys (in skill directories)
 .env
 **/.env
-
+.claude
 # No node_modules needed!
 node_modules/
 
