@@ -1,13 +1,13 @@
 ---
-name: streams-api
+name: moralis-streams-api
 description: Query and manage Moralis Streams API for real-time blockchain event monitoring with webhooks. Use when working with streams, webhooks, or real-time blockchain event tracking.
 disable-model-invocation: true
 license: MIT
 compatibility: Requires Node.js (built-in modules only)
 metadata:
-  version: "1.0.0"
-  author: noviulian
-  tags: [streams, webhooks, real-time, events, monitoring, moralis]
+    version: "1.0.0"
+    author: noviulian
+    tags: [streams, webhooks, real-time, events, monitoring, moralis]
 ---
 
 # Streams API
@@ -17,6 +17,7 @@ The Streams API skill provides access to Moralis Streams API for real-time block
 ## When to Use This Skill
 
 Use this skill when you need to:
+
 - Create and manage streams for real-time blockchain event monitoring
 - Set up webhooks to receive blockchain events
 - Monitor transactions, logs, token transfers, NFT transfers, and internal transactions
@@ -35,11 +36,13 @@ https://api.moralis-streams.com
 ## Authentication
 
 All requests require the Moralis API key in the header:
+
 ```
 x-api-key: YOUR_API_KEY
 ```
 
 Create a `.env` file (in this skill folder or a parent directory) with:
+
 ```
 MORALIS_API_KEY=your_key_here
 ```
@@ -200,6 +203,7 @@ You can also use the shared `/moralis-api-key` command to set the same key for b
 ## Chain IDs (Hex Format)
 
 Common chain IDs:
+
 - Ethereum: `0x1`
 - Polygon: `0x89`
 - BSC: `0x38`
@@ -216,10 +220,12 @@ Common chain IDs:
 ## Advanced Options (Selectors)
 
 ### Transaction Selectors
+
 - Use function signature for monitoring specific contract calls
 - Example: `0xa9059cbb` for `transfer(address,uint256)`
 
 ### Log Filters
+
 - Monitor contract events by topic0 (event signature)
 - Example: `Transfer(address,address,uint256)`
 

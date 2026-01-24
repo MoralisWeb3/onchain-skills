@@ -1,5 +1,4 @@
 # GitHub Pages configuration
-theme: minima
 title: Web3 Skills for Claude Code
 description: Comprehensive Web3 data skills for Claude Code
 url: https://noviulian.github.io/moralis-skills
@@ -8,6 +7,7 @@ baseurl: /moralis-skills
 # Build settings
 markdown: kramdown
 highlighter: rouge
+theme: null  # Using custom layout instead of theme
 
 # Exclude from processing
 exclude:
