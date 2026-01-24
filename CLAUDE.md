@@ -4,24 +4,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Moralis API Skills** is a collection of modular skills for Moralis API integration with Claude Code. It provides 13 skills for Web3 blockchain data (EVM chains + Solana) plus real-time event monitoring.
+**Moralis API Skills** is a collection of modular skills for Moralis API integration with Claude Code. It provides 10 skills for Web3 blockchain data (EVM chains + Solana) plus real-time event monitoring.
 
 **Skills included:**
 - **moralis-wallet-api** - Wallet balances, tokens, NFTs, DeFi positions
-- **moralis-token-api** - Token prices, metadata, DEX pairs, swaps
+- **moralis-token-api** - Token prices, metadata, DEX pairs, swaps, analytics, security scores, sniper detection
 - **moralis-nft-api** - NFT metadata, transfers, traits, rarity
 - **moralis-defi-api** - Protocol positions and exposure
 - **moralis-entity-api** - Labeled addresses/entities
 - **moralis-price-api** - Token/NFT prices, OHLCV data
 - **moralis-blockchain-api** - Blocks and transactions
-- **moralis-utils** - API version, endpoint weights
-- **moralis-premium** - Advanced analytics endpoints
-- **moralis-analytics-api** - Token analytics and volume timeseries
-- **moralis-score-api** - Token security scores
-- **moralis-sniper-api** - DEX snipers detection
 - **moralis-streams-api** - Real-time blockchain event monitoring
 
 **Key Design Principle: ZERO external dependencies - uses only Node.js built-in modules (https, fs, path, url, crypto).**
+
+**v2.0.0:** Consolidated analytics/score/sniper/premium/utils into token-api for reduced skill count while preserving all functionality.
 
 ## Commands
 
@@ -75,17 +72,12 @@ moralis-api-skills/
 │   ├── web3-shared/                # ⭐ Unified query client
 │   │   └── query.js
 │   ├── moralis-wallet-api/         # Wallet balances, tokens, NFTs
-│   ├── moralis-token-api/          # Token prices, metadata, DEX
+│   ├── moralis-token-api/          # Token prices, metadata, DEX, analytics
 │   ├── moralis-nft-api/            # NFT metadata, transfers
 │   ├── moralis-defi-api/           # Protocol positions
 │   ├── moralis-entity-api/         # Labeled addresses
 │   ├── moralis-price-api/          # Token/NFT prices, OHLCV
 │   ├── moralis-blockchain-api/     # Blocks and transactions
-│   ├── moralis-utils/              # API version, weights
-│   ├── moralis-premium/            # Advanced analytics
-│   ├── moralis-analytics-api/      # Token analytics
-│   ├── moralis-score-api/          # Security scores
-│   ├── moralis-sniper-api/         # DEX snipers
 │   ├── moralis-streams-api/        # Real-time event monitoring
 │   └── moralis-api-key/            # API key setup skill
 │
@@ -112,7 +104,7 @@ All web3-api-skills share a single query client that provides:
 - **Auto-pagination:** `paginate()` helper for cursor-based pagination loops
 - **Zero dependencies:** Pure Node.js built-in modules
 
-**New Helper Functions (v1.1.0):**
+**New Helper Functions (v2.0.0):**
 ```javascript
 // Cursor-based pagination
 const allNFTs = await paginate('/:address/nft', { address: '0x123...' });
@@ -165,8 +157,8 @@ description: Query wallet data...
 license: MIT
 compatibility: Requires Node.js (built-in modules only)
 metadata:
-  version: "1.0.0"
-  author: moralis-skills
+  version: "2.0.0"
+  author: web3-skills
   tags: [web3, blockchain, wallet, crypto]
 ---
 ```
@@ -202,7 +194,9 @@ metadata:
 - **moralis-wallet-api** - Wallet balances, tokens, NFTs, DeFi positions
   - Net worth, PnL tracking, wallet stats, chain activity, ENS domain resolution
 - **moralis-token-api** - Token prices, metadata, DEX pairs, swaps
-  - Token security scores, DEX snipers detection, bonding status, analytics
+  - Token security scores, DEX snipers detection, bonding status
+  - **Token analytics**, volume timeseries, historical data
+  - Advanced token search and discovery
 - **moralis-nft-api** - NFT metadata, transfers, traits, rarity
   - NFT floor price history
 - **moralis-defi-api** - Protocol positions and exposure
@@ -210,14 +204,6 @@ metadata:
 - **moralis-price-api** - Token/NFT prices, OHLCV data
   - NFT contract sale prices
 - **moralis-blockchain-api** - Blocks and transactions
-- **moralis-utils** - API version, endpoint weights
-
-### Advanced Skills
-
-- **moralis-premium** - Advanced analytics endpoints
-- **moralis-analytics-api** - Token analytics and volume timeseries
-- **moralis-score-api** - Token security scores
-- **moralis-sniper-api** - DEX snipers detection
 
 ### Streaming
 

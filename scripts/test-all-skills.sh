@@ -18,8 +18,8 @@ fi
 echo ""
 
 # Test each skill loads
-# Updated to use new skill names from skills/ directory
-SKILLS=("moralis-wallet-api" "moralis-nft-api" "moralis-token-api" "moralis-defi-api" "moralis-entity-api" "moralis-price-api" "moralis-blockchain-api" "moralis-utils" "moralis-premium" "moralis-analytics-api" "moralis-score-api" "moralis-sniper-api" "moralis-streams-api" "moralis-api-key")
+# Updated v2.0.0 - Consolidated skills (analytics/score/sniper/premium utils merged into token-api)
+SKILLS=("moralis-wallet-api" "moralis-nft-api" "moralis-token-api" "moralis-defi-api" "moralis-entity-api" "moralis-price-api" "moralis-blockchain-api" "moralis-streams-api" "moralis-api-key")
 
 for skill in "${SKILLS[@]}"; do
   if [ -d "skills/$skill" ]; then

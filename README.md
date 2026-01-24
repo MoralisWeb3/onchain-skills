@@ -2,8 +2,8 @@
 
 A comprehensive collection of Claude Code skills for [Moralis API](https://admin.moralis.io/register) integration with Web3 blockchain data.
 
-**Two skill collections:**
-- **Web3 API Skills** (15 skills) - EVM & Solana blockchain data APIs
+**Skills collection:**
+- **Web3 API Skills** (10 skills) - EVM & Solana blockchain data APIs
 - **Streams API Skills** (1 skill) - Real-time blockchain event monitoring with webhooks
 
 ## Quick Start
@@ -32,22 +32,20 @@ npx skills add noviulian/moralis-api-skills --list
 
 ## Web3 API Skills
 
-15 modular skills for EVM and Solana blockchain data:
+10 modular skills for EVM and Solana blockchain data:
 
 | Skill | EVM | Solana | Description |
 |-------|-----|--------|-------------|
 | **Wallet API** | ✅ 26 endpoints | ✅ 5 endpoints | Balances, history, NFTs, DeFi positions |
-| **Token API** | ✅ 41 endpoints | ✅ 31 endpoints | Prices, metadata, swaps, pairs |
+| **Token API** | ✅ 50+ endpoints | ✅ 33 endpoints | Prices, metadata, swaps, pairs, analytics, scores, snipers |
 | **NFT API** | ✅ 28 endpoints | ✅ 2 endpoints | Metadata, transfers, traits, rarity |
 | **Price API** | ✅ 8 endpoints | ✅ 3 endpoints | Token/NFT prices, OHLCV |
 | **DeFi API** | ✅ 3 endpoints | ❌ | Protocol positions and exposure |
 | **Entity API** | ✅ 4 endpoints | ❌ | Labeled addresses/entities |
 | **Blockchain API** | ✅ 7 endpoints | ❌ | Blocks and transactions |
-| **Utils** | ✅ 2 endpoints | ❌ | API version, endpoint weights |
-| **Premium** | ✅ 8 endpoints | ✅ 7 endpoints | Advanced analytics |
-| **Analytics API** | ✅ | ✅ | Token analytics and timeseries |
-| **Score API** | ✅ | ✅ | Token security scores |
-| **Sniper API** | ✅ | ❌ | DEX snipers detection |
+| **Streams API** | ✅ All stream types | ❌ | Real-time event monitoring |
+
+**v2.0.0 Note:** The Token API now includes advanced analytics, security scores, sniper detection, and volume timeseries (previously separate analytics/score/sniper/premium skills).
 
 ## Streams API Skills
 
@@ -76,6 +74,15 @@ Real-time blockchain event monitoring with webhooks:
 
 # Solana queries (auto-detected from base58 address)
 "Get the balance of Solana wallet 742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
+
+# Token analytics (now in Token API)
+"Get analytics for token 0x6B175474E89094C44Da98b954EedeAC495271d0F"
+
+# Token security score (now in Token API)
+"Check security score for token 0x..."
+
+# DEX sniper detection (now in Token API)
+"Get snipers for DEX pair 0x..."
 
 # Create a stream for monitoring ETH transfers
 "Create a stream to monitor all ERC20 transfers on Ethereum"
