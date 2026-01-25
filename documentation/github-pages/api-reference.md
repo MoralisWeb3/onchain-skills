@@ -11,10 +11,10 @@ The Moralis API Skills provide comprehensive access to Web3 blockchain data thro
 
 | Skill                | Endpoints | EVM | Solana | Description                                                                                    |
 | -------------------- | --------- | --- | ------ | ------------------------------------------------------------------------------------------------ |
-| **Moralis Data API** | 140       | ✅  | ✅     | Wallets, tokens, NFTs, DeFi, entity, price, blockchain, discovery                                |
+| **Moralis Data API** | 136       | ✅  | ✅     | Wallets, tokens, NFTs, DeFi, entity, price, blockchain, discovery                                |
 | **Moralis Streams API** | 20    | ✅  | ❌     | Real-time blockchain event monitoring with webhooks                                              |
 
-## Data API Endpoints (140 total)
+## Data API Endpoints (136 total)
 
 ### Wallet (16 endpoints)
 
@@ -69,14 +69,13 @@ Token prices, metadata, pairs, DEX swaps, analytics, security scores, and sniper
 | [getTokenStats](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTokenStats.md)                                  | Get ERC20 token stats                                |
 | [getTokenTransfers](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTokenTransfers.md)                          | Get ERC20 token transfers by contract address        |
 
-### NFT (24 endpoints)
+### NFT (21 endpoints)
 
 NFT metadata, transfers, traits, rarity, floor prices, and trades.
 
 | Endpoint                                                                                    | Description                                |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | [getContractNFTs](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getContractNFTs.md)                                                 | Get NFTs by contract address               |
-| [getHottestNFTCollectionsByTradingVolume](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getHottestNFTCollectionsByTradingVolume.md) | Get top NFT collections by trading volume  |
 | [getMultipleNFTs](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getMultipleNFTs.md)                                                 | Get Metadata for NFTs                      |
 | [getNFTBulkContractMetadata](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getNFTBulkContractMetadata.md)                           | Get metadata for multiple NFT contracts    |
 | [getNFTByContractTraits](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getNFTByContractTraits.md)                                   | Get NFTs by traits                         |
@@ -98,8 +97,6 @@ NFT metadata, transfers, traits, rarity, floor prices, and trades.
 | [getNFTTraitsByCollectionPaginate](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getNFTTraitsByCollectionPaginate.md)               | Get NFT traits by collection paginate      |
 | [getNFTTransfers](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getNFTTransfers.md)                                                 | Get NFT transfers by token ID              |
 | [getTopNFTCollectionsByMarketCap](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTopNFTCollectionsByMarketCap.md)                 | Get top NFT collections by market cap      |
-| [resyncNFTRarity](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/resyncNFTRarity.md)                                                 | Resync NFT Trait                           |
-| [syncNFTContract](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/syncNFTContract.md)                                                 | Resync NFT Contract                        |
 
 ### DeFi (3 endpoints)
 
@@ -130,9 +127,9 @@ Token and NFT prices, OHLCV candlestick data.
 | [getPairPrice](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getPairPrice.md)                          | Get DEX token pair price        |
 | [getTokenPrice](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTokenPrice__evm.md)                   | Get ERC20 token price           |
 
-### Blockchain (7 endpoints)
+### Blockchain (5 endpoints)
 
-Blocks, transactions, date-to-block conversion, and contract functions.
+Blocks, transactions, and date-to-block conversion.
 
 | Endpoint                                                | Description                     |
 | ------------------------------------------------------- | ------------------------------- |
@@ -141,21 +138,14 @@ Blocks, transactions, date-to-block conversion, and contract functions.
 | [getLatestBlockNumber](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getLatestBlockNumber.md)   | Get latest block number         |
 | [getTransaction](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTransaction.md)               | Get transaction by hash         |
 | [getTransactionVerbose](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTransactionVerbose.md) | Get decoded transaction by hash |
-| [reviewContracts](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/reviewContracts.md)             | Review contracts                |
-| [runContractFunction](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/runContractFunction.md)     | Run contract function           |
 
-### Discovery (21 endpoints)
+### Discovery (15 endpoints)
 
-Trending tokens, blue chips, market movers, and token discovery.
+Trending tokens, market movers, and token discovery.
 
 | Endpoint                                                                                | Description                                                  |
 | --------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| [getBlueChipTokens](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getBlueChipTokens.md)                                         | Get tokens with blue chip                                    |
-| [getBuyingPressureTokens](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getBuyingPressureTokens.md)                             | Get tokens with buying pressure                              |
 | [getDiscoveryToken](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getDiscoveryToken.md)                                         | Get token details                                            |
-| [getRisingLiquidityTokens](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getRisingLiquidityTokens.md)                           | Get tokens with rising liquidity                             |
-| [getRiskyBetsTokens](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getRiskyBetsTokens.md)                                       | Get tokens with risky bets                                   |
-| [getSolidPerformersTokens](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getSolidPerformersTokens.md)                           | Get tokens with solid performance                            |
 | [getTimeSeriesVolume](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTimeSeriesVolume.md)                                     | Retrieve timeseries trading stats by chain                   |
 | [getTimeSeriesVolumeByCategory](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTimeSeriesVolumeByCategory.md)                 | Retrieve timeseries trading stats by category                |
 | [getTopCryptoCurrenciesByMarketCap](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTopCryptoCurrenciesByMarketCap.md)         | Get top crypto currencies by market cap                      |
@@ -166,22 +156,20 @@ Trending tokens, blue chips, market movers, and token discovery.
 | [getTopLosersTokens](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTopLosersTokens.md)                                       | Get tokens with top losers                                   |
 | [getTopProfitableWalletPerToken](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTopProfitableWalletPerToken.md)               | Get top traders for a given ERC20 token                      |
 | [getTrendingTokens](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTrendingTokens.md)                                         | Get trending tokens                                          |
-| [getTrendingTokensV2](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getTrendingTokensV2.md)                                     | Get trending tokens                                          |
 | [getVolumeStatsByCategory](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getVolumeStatsByCategory.md)                           | Get trading stats by categories                              |
 | [getVolumeStatsByChain](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/getVolumeStatsByChain.md)                                 | Get trading stats by chain                                   |
 
-### Other (20+ endpoints)
+### Other (1 endpoint)
 
-Utility endpoints including API version, endpoint weights, address resolution, and more.
+Utility endpoints for address resolution and token search.
 
 | Endpoint                                                                   | Description                                                                      |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| [endpointWeights](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/endpointWeights.md)                                | Get weights of endpoints                                                         |
 | [searchTokens](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/rules/searchTokens.md)                                      | Search for tokens based on contract address, pair address, token name or symbol  |
 
-### Solana Endpoints (24 total)
+### Solana Endpoints (34 total)
 
-Solana-specific endpoints for wallet, token, NFT, and DEX data.
+Solana-specific endpoints and EVM endpoints that support Solana via the `chain=solana` parameter.
 
 | Endpoint                                                                      | Description                                                                     |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |

@@ -1,6 +1,5 @@
 # Development files (not part of plugin)
 /tasks/
-/swagger/
 IMPLEMENTATION_PLAN.md
 todo/
 /simulation

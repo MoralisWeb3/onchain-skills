@@ -61,6 +61,9 @@ function shouldIgnoreEndpoint(operationId) {
  * Get the filename for an operation
  * - Solana endpoints always get __solana suffix
  * - EVM endpoints get no suffix (unless collision with Solana, which adds __evm)
+ *
+ * NOTE: This function reads from operationRegistry which must be pre-populated
+ * by registerOperation() BEFORE any file generation. See main() for the two-pass pattern.
  */
 function getFilename(operationId, source) {
   // Solana endpoints always get __solana suffix
@@ -68,7 +71,7 @@ function getFilename(operationId, source) {
     return operationId + "__solana.md";
   }
 
-  // EVM endpoints - check if Solana version exists
+  // EVM endpoints - check if Solana version exists in pre-built registry
   if (source === "evm") {
     const hasSolanaVersion = operationRegistry[operationId] === "solana";
     if (hasSolanaVersion) {
@@ -82,9 +85,18 @@ function getFilename(operationId, source) {
 }
 
 /**
- * Register an operationId to track which sources have it
+ * Register an operationId in the global registry for collision detection.
+ * LAST registration wins for EVM/Solana collision detection.
+ *
+ * IMPORTANT: All endpoints must be registered BEFORE getFilename() is called
+ * to ensure correct collision detection regardless of processing order.
+ *
+ * NOTE: Since sources are processed in order ["evm", "solana"], Solana entries
+ * will overwrite EVM entries for the same operationId. This is intentional -
+ * getFilename() checks if the registry equals "solana" to detect collisions.
  */
 function registerOperation(operationId, source) {
+  // Last registration wins (Solana overwrites EVM for collisions)
   operationRegistry[operationId] = source;
 }
 
@@ -828,11 +840,11 @@ function processSource(sourceName, sourceData, rulesDir) {
 
   console.log(
     "  Processing " +
-    sourceName +
-    ": " +
-    (operationIds.length - ignored.length) +
-    " endpoints" +
-    (ignored.length > 0 ? " (ignored: " + ignored.length + ")" : ""),
+      sourceName +
+      ": " +
+      (operationIds.length - ignored.length) +
+      " endpoints" +
+      (ignored.length > 0 ? " (ignored: " + ignored.length + ")" : ""),
   );
   if (ignored.length > 0) {
     console.log("    Ignored: " + ignored.join(", "));
@@ -925,8 +937,8 @@ function processEvmEndpointsWithSolanaSupport(evmData, solanaData, rulesDir) {
 
   console.log(
     "\n  EVM endpoints with Solana chain support: " +
-    solanaVariants.length +
-    " (creating __solana variants)",
+      solanaVariants.length +
+      " (creating __solana variants)",
   );
 
   for (const { operationId, endpoint } of solanaVariants) {
@@ -953,8 +965,13 @@ function main() {
   // Load API configs
   const apiConfigs = JSON.parse(fs.readFileSync(API_CONFIGS_PATH, "utf8"));
 
-  // First pass: register all operationIds to build the registry
-  // This is needed to detect EVM-Solana collisions
+  // ========================================================================
+  // TWO-PASS PATTERN FOR ORDER-INDEPENDENT COLLISION DETECTION
+  // ========================================================================
+  // Pass 1: Register all operationIds globally to build collision registry.
+  // This MUST complete before any file generation to ensure getFilename()
+  // can correctly detect EVM/Solana collisions regardless of processing order.
+  // ========================================================================
   for (const [skillName, config] of Object.entries(SKILL_MAPPINGS)) {
     for (const source of config.sources) {
       if (apiConfigs[source]) {
@@ -965,7 +982,7 @@ function main() {
     }
   }
 
-  // Second pass: generate files with correct filenames
+  // Pass 2: Generate files with correct filenames using pre-built registry
   for (const [skillName, config] of Object.entries(SKILL_MAPPINGS)) {
     console.log("\n" + skillName + ":");
     ensureDir(config.rulesDir);
@@ -981,7 +998,7 @@ function main() {
     }
   }
 
-  // Third pass: generate __solana variants for EVM endpoints that support Solana chain
+  // Pass 3: Generate __solana variants for EVM endpoints that support Solana chain
   const dataApiConfig = SKILL_MAPPINGS["moralis-data-api"];
   if (dataApiConfig && apiConfigs.evm) {
     processEvmEndpointsWithSolanaSupport(

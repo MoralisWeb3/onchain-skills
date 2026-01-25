@@ -12,7 +12,7 @@ This is a collection of Claude Code skills for integrating with the Moralis Web3
 
 ```
 skills/
-├── moralis-data-api/       # Unified EVM + Solana data API (140+ endpoints)
+├── moralis-data-api/       # Unified EVM + Solana data API (136 endpoints)
 └── moralis-streams-api/    # Real-time blockchain event streaming
 ```
 
