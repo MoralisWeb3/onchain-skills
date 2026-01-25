@@ -7,14 +7,7 @@ metadata:
   version: "3.0.0"
   author: web3-skills
   tags: [web3, blockchain, streaming, webhooks, events, realtime]
-context:
-  fork: noviulian/moralis-api-skills
-  agent: claude-code
-allowed-tools:
-  - Bash
-invocation:
-  max-turns: 2
-  disable-model: false
+allowed-tools: Bash
 ---
 
 # Moralis Streams API
@@ -23,14 +16,32 @@ Real-time blockchain event monitoring with webhook delivery. Monitor transaction
 
 ## Setup
 
-Run `/moralis-api-key <your_api_key>` before using this skill.
+Provide your Moralis API key before using this skill. You can provide it in any of these ways:
+
+- "Set this as the Moralis API key: `<your_key>`"
+- "Use this API key: `<your_key>`"
+- "Here's my key: `<your_key>`"
+
+The key will be remembered for the current session only. If no key is set, you'll be prompted to provide one.
+
+### For Project Development
+
+If you're building a project (dashboard, wallet, dApp, etc.) that needs persistent API key storage:
+
+> "I recommend creating a `.env` file in your project root with:
+>
+> ```bash
+> MORALIS_API_KEY=your_key_here
+> ```
+>
+> Don't forget to add `.env` to your `.gitignore` file to prevent accidentally committing your key."
 
 ## Authentication
 
 All requests require the API key header:
 
 ```bash
-X-API-Key: $MORALIS_API_KEY
+X-API-Key: <your_api_key>
 ```
 
 ## Base URL
@@ -148,11 +159,11 @@ List endpoints use cursor-based pagination:
 ```bash
 # First page
 curl "https://api.moralis-streams.com/streams/evm?limit=100" \
-  -H "X-API-Key: $MORALIS_API_KEY"
+  -H "X-API-Key: YOUR_API_KEY"
 
 # Next page (use cursor from response)
 curl "https://api.moralis-streams.com/streams/evm?limit=100&cursor=<cursor>" \
-  -H "X-API-Key: $MORALIS_API_KEY"
+  -H "X-API-Key: YOUR_API_KEY"
 ```
 
 ## Example Requests
@@ -160,11 +171,11 @@ curl "https://api.moralis-streams.com/streams/evm?limit=100&cursor=<cursor>" \
 ```bash
 # List all streams
 curl "https://api.moralis-streams.com/streams/evm?limit=100" \
-  -H "X-API-Key: $MORALIS_API_KEY"
+  -H "X-API-Key: YOUR_API_KEY"
 
 # Create a new stream for monitoring ERC20 transfers
 curl -X PUT "https://api.moralis-streams.com/streams/evm" \
-  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "webhookUrl": "https://your-server.com/webhook",
@@ -183,11 +194,11 @@ curl -X PUT "https://api.moralis-streams.com/streams/evm" \
 
 # Get stream details
 curl "https://api.moralis-streams.com/streams/evm/<stream_id>" \
-  -H "X-API-Key: $MORALIS_API_KEY"
+  -H "X-API-Key: YOUR_API_KEY"
 
 # Delete a stream
 curl -X DELETE "https://api.moralis-streams.com/streams/evm/<stream_id>" \
-  -H "X-API-Key: $MORALIS_API_KEY"
+  -H "X-API-Key: YOUR_API_KEY"
 ```
 
 ## Stream Status
@@ -197,13 +208,13 @@ Pause or resume a stream:
 ```bash
 # Pause a stream
 curl -X POST "https://api.moralis-streams.com/streams/evm/<stream_id>/status" \
-  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"status": "paused"}'
 
 # Resume a stream
 curl -X POST "https://api.moralis-streams.com/streams/evm/<stream_id>/status" \
-  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"status": "active"}'
 ```
@@ -215,7 +226,7 @@ Add or remove addresses from an existing stream:
 ```bash
 # Add addresses
 curl -X POST "https://api.moralis-streams.com/streams/evm/<stream_id>/address" \
-  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "addressToAdd": ["0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"]
@@ -223,7 +234,7 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/<stream_id>/address" \
 
 # Remove address
 curl -X DELETE "https://api.moralis-streams.com/streams/evm/<stream_id>/address/<address>" \
-  -H "X-API-Key: $MORALIS_API_KEY"
+  -H "X-API-Key: YOUR_API_KEY"
 ```
 
 ## Supported Chains
