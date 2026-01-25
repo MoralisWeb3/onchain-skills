@@ -20,7 +20,7 @@ SKILLS=("moralis-data-api" "moralis-streams-api")
 
 for skill in "${SKILLS[@]}"; do
   echo "Testing $skill..."
-  if [ -f "$SKILLS_DIR/$skill/SKILL.md" ] && [ -f "$SKILLS_DIR/$skill/query.js" ]; then
+  if [ -f "$SKILLS_DIR/$skill/SKILL.md" ]; then
     echo "✓ $skill OK"
   else
     echo "✗ $skill FAILED"

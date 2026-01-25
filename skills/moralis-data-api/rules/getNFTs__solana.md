@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| network | string | Yes | The network to query | - |
+| network | string (mainnet) | Yes | The network to query | - |
 | address | string | Yes | The address to query | \`kXB7FfzdrfZpAZEW3TZcp8a8CwQbsowa6BdfAHZ4gVs\` |
 
 ## Query Params
@@ -33,7 +33,7 @@ GET
 ## Example (curl)
 
 ```bash
-curl -X GET "https://solana-gateway.moralis.io/account/:network/kXB7FfzdrfZpAZEW3TZcp8a8CwQbsowa6BdfAHZ4gVs/nft" \
+curl -X GET "https://solana-gateway.moralis.io/account/mainnet/kXB7FfzdrfZpAZEW3TZcp8a8CwQbsowa6BdfAHZ4gVs/nft" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

@@ -71,7 +71,7 @@ function escapeMd(str) {
 /**
  * Build curl example from endpoint config
  */
-function buildCurlExample(endpoint) {
+function buildCurlExample(endpoint, source = "") {
   const {
     method,
     apiHost,
@@ -84,8 +84,13 @@ function buildCurlExample(endpoint) {
   // Build URL with path params replaced by examples
   let urlPath = pathTemplate;
   for (const param of pathParams) {
-    if (param.example) {
-      urlPath = urlPath.replace(":" + param.name, param.example);
+    let example = param.example;
+    // For Solana network param, use "mainnet" as default
+    if (source === "solana" && param.name === "network" && !example) {
+      example = "mainnet";
+    }
+    if (example) {
+      urlPath = urlPath.replace(":" + param.name, example);
     }
   }
 
@@ -188,7 +193,7 @@ function buildPaginationSection(endpoint) {
 /**
  * Build path params section
  */
-function buildPathParamsSection(pathParams = []) {
+function buildPathParamsSection(pathParams = [], source = "") {
   if (pathParams.length === 0) {
     return null;
   }
@@ -199,7 +204,14 @@ function buildPathParamsSection(pathParams = []) {
 
   for (const param of pathParams) {
     const name = param.name;
-    const type = param.type || "string";
+    // For Solana network param, default to mainnet if no enum specified
+    let paramEnum = param.enum;
+    if (source === "solana" && name === "network" && !paramEnum) {
+      paramEnum = ["mainnet"];
+    }
+    const type =
+      (param.type || "string") +
+      (paramEnum ? " (" + paramEnum.join(", ") + ")" : "");
     const required = param.required ? "Yes" : "No";
     const desc = param.description || "-";
     const example = param.example
@@ -238,12 +250,7 @@ function buildQueryParamsSection(queryParams = []) {
     const name = param.name;
     const type =
       (param.type || "string") +
-      (param.enum
-        ? " (" +
-          param.enum.slice(0, 5).join(", ") +
-          (param.enum.length > 5 ? "..." : "") +
-          ")"
-        : "");
+      (param.enum ? " (" + param.enum.join(", ") + ")" : "");
     const required = param.required ? "Yes" : "No";
     const desc = param.description || "-";
     const example =
@@ -284,11 +291,14 @@ function buildBodySection(endpoint) {
     section += "|------|------|----------|-------------|\n";
 
     for (const field of bodySchema) {
+      const type =
+        (field.type || "-") +
+        (field.enum ? " (" + field.enum.join(", ") + ")" : "");
       section +=
         "| " +
         field.name +
         " | " +
-        (field.type || "-") +
+        type +
         " | " +
         (field.required ? "Yes" : "No") +
         " | " +
@@ -300,6 +310,9 @@ function buildBodySection(endpoint) {
     section += "|------|------|----------|-------------|----------|\n";
 
     for (const field of bodyParam) {
+      const type =
+        (field.type || "-") +
+        (field.enum ? " (" + field.enum.join(", ") + ")" : "");
       const example =
         field.example !== undefined
           ? "\\`" + escapeMd(field.example) + "\\`"
@@ -308,7 +321,7 @@ function buildBodySection(endpoint) {
         "| " +
         field.name +
         " | " +
-        (field.type || "-") +
+        type +
         " | " +
         (field.required ? "Yes" : "No") +
         " | " +
@@ -349,7 +362,7 @@ function generateEndpointMarkdown(operationId, endpoint, source) {
   md += "## Path\n\n`" + pathTemplate + "`\n\n";
 
   // Path params
-  const pathParamsSection = buildPathParamsSection(pathParams);
+  const pathParamsSection = buildPathParamsSection(pathParams, source);
   if (pathParamsSection) {
     md += pathParamsSection + "\n";
   }
@@ -374,7 +387,9 @@ function generateEndpointMarkdown(operationId, endpoint, source) {
 
   // Example
   md +=
-    "## Example (curl)\n\n```bash\n" + buildCurlExample(endpoint) + "\n```\n";
+    "## Example (curl)\n\n```bash\n" +
+    buildCurlExample(endpoint, source) +
+    "\n```\n";
 
   return md;
 }

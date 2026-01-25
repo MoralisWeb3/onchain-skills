@@ -16,13 +16,13 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| network | string | Yes | The network to query | - |
+| network | string (mainnet) | Yes | The network to query | - |
 | address | string | Yes | The address to query | \`6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN\` |
 
 ## Example (curl)
 
 ```bash
-curl -X GET "https://solana-gateway.moralis.io/token/:network/holders/6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" \
+curl -X GET "https://solana-gateway.moralis.io/token/mainnet/holders/6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

@@ -11,8 +11,8 @@ Follow these steps to install Moralis API Skills for Claude Code.
 
 - **Node.js** installed (for running queries)
 - **Moralis API key:**
-  1. Register at [admin.moralis.io/register](https://admin.moralis.io/register) (free, no credit card required)
-  2. Get your API key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
+    1. Register at [admin.moralis.io/register](https://admin.moralis.io/register) (free, no credit card required)
+    2. Get your API key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 
 ## Installation
 
@@ -25,6 +25,7 @@ npx skills add noviulian/moralis-api-skills
 ```
 
 Optional: List all available skills before installing
+
 ```bash
 npx skills add noviulian/moralis-api-skills --list
 ```
@@ -38,6 +39,7 @@ After installation, set your Moralis API key:
 ```
 
 **Example:**
+
 ```bash
 /moralis-api-key eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
@@ -52,12 +54,12 @@ This configures your API key for all Moralis skills at once.
 
 Skills can be installed in different locations depending on your setup:
 
-| Environment | Skills Directory |
-|-------------|-----------------|
-| Global (default) | `~/.claude/skills/` |
+| Environment      | Skills Directory            |
+| ---------------- | --------------------------- |
+| Global (default) | `~/.claude/skills/`         |
 | Project-specific | `<project>/.claude/skills/` |
 
-The query clients automatically discover the `.env` file from the skill directory or its parent directories.
+Store `.env` in the parent of the skills directory so all skills can read it.
 
 ---
 
@@ -71,9 +73,9 @@ cd ~/.claude/skills
 git clone https://github.com/noviulian/moralis-api-skills.git moralis-api-skills-temp
 
 # Copy individual skills you need
-cp -r moralis-api-skills-temp/skills/moralis-wallet-api ~/.claude/skills/
-cp -r moralis-api-skills-temp/skills/moralis-token-api ~/.claude/skills/
-# ... add more skills as needed
+cp -r moralis-api-skills-temp/skills/moralis-data-api ~/.claude/skills/
+cp -r moralis-api-skills-temp/skills/moralis-streams-api ~/.claude/skills/
+cp -r moralis-api-skills-temp/skills/moralis-api-key ~/.claude/skills/
 
 # Clean up
 rm -rf moralis-api-skills-temp
@@ -87,31 +89,21 @@ Then set your API key (see below).
 
 1. Download the skill directory you want from [GitHub](https://github.com/noviulian/moralis-api-skills)
 2. Copy it to `~/.claude/skills/` or `<project>/.claude/skills/`
-3. Ensure the directory contains `SKILL.md` and `query.js`
+3. Ensure the directory contains `SKILL.md`
 4. Set your API key (see below)
 
 ---
 
 ## Setting Your API Key (Manual Installation)
 
-### For Individual Skills
-
-```bash
-# Replace YOUR_API_KEY from https://admin.moralis.io/register
-echo "MORALIS_API_KEY=YOUR_API_KEY" > ~/.claude/skills/moralis-wallet-api/.env
-echo "MORALIS_API_KEY=YOUR_API_KEY" > ~/.claude/skills/moralis-streams-api/.env
-```
-
 ### For All Skills at Once
 
 ```bash
-# Set API key for all Moralis skills
-API_KEY="YOUR_API_KEY"
-cd ~/.claude/skills
-for dir in moralis-*; do
-  [ -d "$dir" ] && echo "MORALIS_API_KEY=$API_KEY" > "$dir/.env"
-done
-echo "✅ API key set for all skills"
+# Preferred: use the API key skill
+/moralis-api-key <paste your API key here>
+
+# Manual: write shared .env in the parent directory
+echo "MORALIS_API_KEY=YOUR_API_KEY" > ~/.claude/.env
 ```
 
 ## Verification
@@ -119,30 +111,32 @@ echo "✅ API key set for all skills"
 Test that a skill is working:
 
 ```bash
-cd ~/.claude/skills/moralis-wallet-api
-node -e "const { query } = require('./query'); query('/:address/balance', { address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045' }).then(console.log).catch(console.error)"
+curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/balance?chain=0x1" \
+  -H "X-API-Key: $MORALIS_API_KEY"
 ```
 
 Expected response:
+
 ```json
 {
-  "balance": "1000000000000000000"
+    "balance": "1000000000000000000"
 }
 ```
 
 Optional Streams check:
+
 ```bash
-cd ~/.claude/skills/moralis-streams-api
-node -e "const { query } = require('./query'); query('/streams/evm', { params: { limit: 1 } }).then(console.log).catch(console.error)"
+curl "https://api.moralis-streams.com/streams/evm?limit=1" \
+  -H "X-API-Key: $MORALIS_API_KEY"
 ```
 
 ## Supported Environments
 
-| Environment | Skills Directory |
-|-------------|-----------------|
-| Claude Code (Desktop) | `~/.claude/skills/` |
-| Claude Code (CLI) | `~/.claude/skills/` |
-| Project-specific | `<project>/.claude/skills/` |
+| Environment           | Skills Directory            |
+| --------------------- | --------------------------- |
+| Claude Code (Desktop) | `~/.claude/skills/`         |
+| Claude Code (CLI)     | `~/.claude/skills/`         |
+| Project-specific      | `<project>/.claude/skills/` |
 
 ## Troubleshooting
 
@@ -155,6 +149,7 @@ echo "MORALIS_API_KEY=YOUR_KEY" > ~/.claude/skills/SKILL_NAME/.env
 ```
 
 **To get your key:**
+
 1. Register at [admin.moralis.io/register](https://admin.moralis.io/register) (free)
 2. Get your key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 
@@ -172,7 +167,7 @@ Make sure you copied the entire skill directory, including the `SKILL.md` file.
 
 ```bash
 # Remove individual skill
-rm -rf ~/.claude/skills/moralis-wallet-api
+rm -rf ~/.claude/skills/moralis-data-api
 
 # Remove all Moralis skills
 rm -rf ~/.claude/skills/moralis-*
@@ -180,5 +175,5 @@ rm -rf ~/.claude/skills/moralis-*
 
 ## Next Steps
 
-- See [Usage Examples]({{ "/examples" | relative_url }}) for common queries
-- Check [API Reference]({{ "/api-reference" | relative_url }}) for endpoint details
+- See [Usage Examples](/moralis-api-skills/examples) for common queries
+- Check [API Reference](/moralis-api-skills/api-reference) for endpoint details

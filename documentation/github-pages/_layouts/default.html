@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
-  
-  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
   <link rel="icon" href="https://moralis.io/wp-content/uploads/2021/06/Moralis-Icon-Dark.svg" type="image/svg+xml">
 </head>
 <body>
   <div class="app-container">
     <header class="site-header">
-      <a href="{{ "/" | relative_url }}" class="site-title">{{ site.title }}</a>
+      <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
       <nav class="header-nav">
-        <a href="https://github.com/noviulian/moralis-skills" target="_blank">GitHub</a>
+        <a href="https://github.com/noviulian/moralis-api-skills" target="_blank">GitHub</a>
         <a href="https://moralis.io" target="_blank">Moralis.io</a>
       </nav>
     </header>
@@ -23,19 +23,18 @@
       <aside class="sidebar">
         <nav class="sidebar-nav">
           <ul>
-            <li><a href="{{ "/" | relative_url }}">Introduction</a></li>
-            <li><a href="{{ "/installation" | relative_url }}">Installation</a></li>
-            <li><a href="{{ "/examples" | relative_url }}">Usage Examples</a></li>
-            <li><a href="{{ "/api-reference" | relative_url }}">API Reference</a></li>
-            <li><a href="{{ "/contributing" | relative_url }}">Contributing</a></li>
+            <li><a href="{{ site.baseurl }}/">Introduction</a></li>
+            <li><a href="{{ site.baseurl }}/installation">Installation</a></li>
+            <li><a href="{{ site.baseurl }}/examples">Usage Examples</a></li>
+            <li><a href="{{ site.baseurl }}/api-reference">API Reference</a></li>
+            <li><a href="{{ site.baseurl }}/contributing">Contributing</a></li>
           </ul>
-          
+
           <div style="margin-top: 2rem; font-size: 0.85rem; font-weight: 600; color: #6b7280; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Skills Source</div>
           <ul>
-            <li><a href="https://github.com/noviulian/moralis-skills/blob/main/plugins/web3-api-skills/skills/web3-wallet-api/SKILL.md" target="_blank">Wallet API ↗</a></li>
-            <li><a href="https://github.com/noviulian/moralis-skills/blob/main/plugins/web3-api-skills/skills/web3-token-api/SKILL.md" target="_blank">Token API ↗</a></li>
-            <li><a href="https://github.com/noviulian/moralis-skills/blob/main/plugins/web3-api-skills/skills/web3-nft-api/SKILL.md" target="_blank">NFT API ↗</a></li>
-            <li><a href="https://github.com/noviulian/moralis-skills/blob/main/plugins/streams-api-skills/skills/streams-api/SKILL.md" target="_blank">Streams API ↗</a></li>
+            <li><a href="https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-data-api/SKILL.md" target="_blank">Data API ↗</a></li>
+            <li><a href="https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/SKILL.md" target="_blank">Streams API ↗</a></li>
+            <li><a href="https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-api-key/SKILL.md" target="_blank">API Key Setup ↗</a></li>
           </ul>
         </nav>
       </aside>
@@ -50,6 +49,6 @@
     </footer>
   </div>
 
-  <script src="{{ "/assets/js/script.js" | relative_url }}"></script>
+  <script src="{{ site.baseurl }}/assets/js/script.js"></script>
 </body>
 </html>

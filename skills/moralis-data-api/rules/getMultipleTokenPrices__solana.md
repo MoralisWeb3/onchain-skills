@@ -18,7 +18,7 @@ POST
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| network | string | Yes | The network to query | - |
+| network | string (mainnet) | Yes | The network to query | - |
 
 ## Body
 
@@ -26,7 +26,7 @@ POST
 ## Example (curl)
 
 ```bash
-curl -X POST "https://solana-gateway.moralis.io/token/:network/prices" \
+curl -X POST "https://solana-gateway.moralis.io/token/mainnet/prices" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \

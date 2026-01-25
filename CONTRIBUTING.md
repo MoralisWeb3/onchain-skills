@@ -14,13 +14,13 @@ Thank you for your interest in contributing!
 
 1. Create directory: `skills/your-skill-name/`
 2. Create `SKILL.md` following the [Agent Skills Standard](https://github.com/agentskills/agentskills)
-3. Copy or symlink `query.js` from `skills/web3-shared/`
-4. Create reference documentation in `references/`
-5. Test with a real API key
+3. Create reference documentation in `rules/`
+4. Test with a real API key using REST (curl or native HTTP)
 
 ### SKILL.md Format
 
 Required frontmatter:
+
 ```yaml
 ---
 name: your-skill-name
@@ -35,11 +35,11 @@ author: web3-skills
 
 ```bash
 # Set your API key
-echo "MORALIS_API_KEY=your_key" > skills/your-skill/.env
+export MORALIS_API_KEY="your_key"
 
-# Test a query
-cd skills/your-skill
-node -e "const { query } = require('./query'); query('/endpoint', {}).then(console.log)"
+# Test a REST query
+curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/balance?chain=0x1" \
+  -H "X-API-Key: $MORALIS_API_KEY"
 ```
 
 ## Commit Guidelines
@@ -58,5 +58,6 @@ node -e "const { query } = require('./query'); query('/endpoint', {}).then(conso
 ## Zero Dependencies Policy
 
 This skills collection MUST NOT add external npm dependencies. All code must use Node.js built-in modules only:
+
 - ✅ `https`, `http`, `fs`, `path`, `url`, `crypto`
 - ❌ `axios`, `node-fetch`, `dotenv`, `express`, etc.

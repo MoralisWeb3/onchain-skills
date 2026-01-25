@@ -48,100 +48,31 @@ else
 fi
 
 echo ""
-echo "=== Test 2: Check if all skills have query.js ==="
+echo "=== Test 2: Check skill directories and SKILL.md ==="
 SKILLS_DIR="skills"
-MISSING_QUERY=0
+MISSING_SKILL_MD=0
 
 for skill_dir in "$SKILLS_DIR"/moralis-*; do
     if [ -d "$skill_dir" ]; then
         skill_name=$(basename "$skill_dir")
-        if [ "$skill_name" = "moralis-api-key" ]; then
-            # This is a command-only skill, no query.js expected
-            continue
-        fi
-        if [ ! -f "$skill_dir/query.js" ]; then
-            fail "$skill_name missing query.js"
-            ((MISSING_QUERY++))
+        if [ ! -f "$skill_dir/SKILL.md" ]; then
+            fail "$skill_name missing SKILL.md"
+            ((MISSING_SKILL_MD++))
         fi
     fi
 done
 
-if [ $MISSING_QUERY -eq 0 ]; then
-    pass "All skills have query.js files"
+if [ $MISSING_SKILL_MD -eq 0 ]; then
+    pass "All skills have SKILL.md"
 fi
 
 echo ""
-echo "=== Test 3: Test individual skill installation ==="
-TEST_DIR="/tmp/moralis-skill-test-$$"
-mkdir -p "$TEST_DIR"
-
-# Copy one skill in isolation
-cp -r skills/moralis-wallet-api "$TEST_DIR/"
-
-# Try to load it
-cd "$TEST_DIR/moralis-wallet-api"
-if node -e "require('./query.js')" 2>/dev/null; then
-    pass "Skill loads individually (no CRITICAL bug #1)"
-else
-    fail "Skill fails to load individually - CRITICAL bug #1 confirmed"
-    fail "Missing module: ../web3-shared/query"
-fi
-
-cd - > /dev/null
-rm -rf "$TEST_DIR"
-
-echo ""
-echo "=== Test 4: Test all skills installed together ==="
-TEST_DIR="/tmp/moralis-all-skills-test-$$"
-mkdir -p "$TEST_DIR"
-
-# Copy all skills
-cp -r skills/* "$TEST_DIR/"
-
-# Try to load a skill
-cd "$TEST_DIR/moralis-wallet-api"
-if node -e "const q = require('./query.js'); console.log('query function:', typeof q.query === 'function')" 2>/dev/null | grep -q "true"; then
-    pass "Skill loads when all skills are present together"
-else
-    fail "Skill fails even with all skills present"
-fi
-
-cd - > /dev/null
-rm -rf "$TEST_DIR"
-
-echo ""
-echo "=== Test 5: Check if skills CLI exists ==="
+echo "=== Test 3: Check if skills CLI exists ==="
 if command -v skills &> /dev/null; then
     pass "skills CLI is installed"
 else
     warn "skills CLI not found in PATH - MEDIUM bug #3"
     warn "Documentation mentions 'npx skills add' but tool is not available"
-fi
-
-echo ""
-echo "=== Test 6: Verify import paths in query.js files ==="
-WRONG_IMPORTS=0
-
-for query_file in skills/moralis-*/query.js; do
-    if [ -f "$query_file" ]; then
-        # Check if file uses ../web3-shared/query import
-        if grep -q 'require("\.\./web3-shared/query")' "$query_file" || \
-           grep -q "require('\.\./web3-shared/query')" "$query_file"; then
-            : # Correct import
-        else
-            skill=$(echo "$query_file" | cut -d'/' -f2)
-            # Skip moralis-streams-api (has its own query.js)
-            if [ "$skill" != "moralis-streams-api" ]; then
-                warn "$skill has unexpected import path"
-                ((WRONG_IMPORTS++))
-            fi
-        fi
-    fi
-done
-
-if [ $WRONG_IMPORTS -eq 0 ]; then
-    pass "All skills use correct relative imports"
-    warn "However, these imports require web3-shared to be a sibling directory"
 fi
 
 echo ""

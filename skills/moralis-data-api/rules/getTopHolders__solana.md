@@ -16,7 +16,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| network | string | Yes | The network to query | - |
+| network | string (mainnet) | Yes | The network to query | - |
 | address | string | Yes | The address to query | \`EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v\` |
 
 ## Query Params
@@ -36,7 +36,7 @@ The response includes a **cursor** field for pagination. Use this cursor in the 
 ## Example (curl)
 
 ```bash
-curl -X GET "https://solana-gateway.moralis.io/token/:network/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/top-holders" \
+curl -X GET "https://solana-gateway.moralis.io/token/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/top-holders" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

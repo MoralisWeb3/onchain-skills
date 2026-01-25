@@ -1,5 +1,21 @@
 # Release Notes
 
+## Version 3.0.0 (Consolidated Skills, REST-First)
+
+### Highlights
+
+- ✅ **2 consolidated skills** - `moralis-data-api` and `moralis-streams-api`
+- ✅ **REST-first usage** - Use curl/native HTTP clients; no bundled `query.js`
+- ✅ **Rules-based docs** - All endpoints documented under `skills/*/rules/`
+- ✅ **API key manager** - `/moralis-api-key` configures shared `.env`
+
+### Migration Notes
+
+- Replace any `query.js` usage with REST calls from the `rules/` docs
+- Use `/moralis-api-key` or shared `.env` in the skills parent directory
+
+---
+
 ## Version 2.0.0 (Breaking Change - Skills-Only Architecture)
 
 ### Breaking Changes
@@ -9,6 +25,7 @@
 If you're upgrading from v1.x, see [Migration Guide](documentation/MIGRATION_GUIDE.md) for detailed instructions.
 
 **Old Installation (v1.x) - NO LONGER SUPPORTED:**
+
 ```bash
 /plugin marketplace add noviulian/moralis-skills
 /plugin install web3-api-skills@moralis-skills
@@ -16,6 +33,7 @@ If you're upgrading from v1.x, see [Migration Guide](documentation/MIGRATION_GUI
 ```
 
 **New Installation (v2.0.0) - USE THIS:**
+
 ```bash
 npx skills add noviulian/moralis-api-skills
 /moralis-api-key <your_api_key>
@@ -32,17 +50,20 @@ npx skills add noviulian/moralis-api-skills
 ### Migration Steps for Existing Users
 
 1. **Remove old plugin installation:**
+
 ```bash
 rm -rf ~/.claude/plugins/marketplaces/moralis-skills
 rm -rf ~/.claude/plugins/cache/moralis-skills
 ```
 
 2. **Install new skills:**
+
 ```bash
 npx skills add noviulian/moralis-api-skills
 ```
 
 3. **Set your API key with new command:**
+
 ```bash
 /moralis-api-key <your_api_key>
 ```
@@ -50,11 +71,12 @@ npx skills add noviulian/moralis-api-skills
 ### Features Unchanged
 
 All 15 skills and API functionality remain the same:
+
 - ✅ 9 Web3 API skills (EVM + Solana)
 - ✅ 3 Premium skills (Analytics, Score, Sniper)
 - ✅ 1 Streams API skill
 - ✅ 1 API key manager skill
-- ✅ 1 Unified query client (web3-shared)
+- ✅ Shared utilities (web3-shared)
 - ✅ Zero external dependencies
 - ✅ Auto blockchain detection
 - ✅ Chain name to hex conversion
@@ -77,16 +99,19 @@ All 15 skills and API functionality remain the same:
 ### Installation (Updated)
 
 **Step 1:** Add the marketplace
+
 ```bash
 /plugin marketplace add noviulian/moralis-skills
 ```
 
 **Step 2:** Install the plugin
+
 ```bash
 /plugin install web3-api-skills@moralis-skills
 ```
 
 **Step 3:** Restart Claude Code, then set your API key
+
 ```bash
 /web3-api-key <paste your API key here>
 ```

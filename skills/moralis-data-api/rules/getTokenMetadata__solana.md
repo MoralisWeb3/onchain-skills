@@ -18,13 +18,13 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| network | string | Yes | The network to query | - |
+| network | string (mainnet) | Yes | The network to query | - |
 | address | string | Yes | The address to query | \`So11111111111111111111111111111111111111112\` |
 
 ## Example (curl)
 
 ```bash
-curl -X GET "https://solana-gateway.moralis.io/token/:network/So11111111111111111111111111111111111111112/metadata" \
+curl -X GET "https://solana-gateway.moralis.io/token/mainnet/So11111111111111111111111111111111111111112/metadata" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```
