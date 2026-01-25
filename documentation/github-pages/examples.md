@@ -9,11 +9,13 @@ Common queries and patterns for using Moralis REST APIs with Claude Code.
 
 ## Quick Start
 
-First, set your API key:
+First, provide your API key when using either skill:
 
 ```bash
-/moralis-api-key <paste your API key here>
+Set this as the Moralis API key: <paste your API key here>
 ```
+
+The key is stored in memory for the session and shared between both skills.
 
 Then ask Claude naturally - no need to write curl commands yourself.
 

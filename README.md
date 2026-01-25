@@ -8,15 +8,14 @@ Claude Code skills for [Moralis Web3 API](https://admin.moralis.io/register). Qu
 # Install the skills
 npx skills add noviulian/moralis-api-skills
 
-# Set your API key
-/moralis-api-key <paste your API key here>
+# Set your API key (when using either skill)
+Set this as the Moralis API key: <paste your API key here>
 ```
 
 ## Skills
 
 | Skill | Description |
 |-------|-------------|
-| **moralis-api-key** | Shared API key management |
 | **moralis-data-api** | EVM + Solana blockchain data (140+ endpoints) |
 | **moralis-streams-api** | Real-time event monitoring with webhooks |
 

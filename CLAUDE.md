@@ -12,13 +12,9 @@ This is a collection of Claude Code skills for integrating with the Moralis Web3
 
 ```
 skills/
-├── moralis-api-key/        # Shared API key management
 ├── moralis-data-api/       # Unified EVM + Solana data API (140+ endpoints)
 └── moralis-streams-api/    # Real-time blockchain event streaming
 ```
-
-### moralis-api-key
-Manages the shared `MORALIS_API_KEY` environment variable. Skills auto-discover the `.env` file by searching upward from their installation directory.
 
 ### moralis-data-api
 Primary skill for blockchain data queries. Auto-detects EVM vs Solana based on address format:
@@ -88,11 +84,13 @@ invocation:
 
 Query clients use REST APIs via Node.js `https` module. The pattern:
 
-1. Read `$MORALIS_API_KEY` from `.env` file (search upward from skill directory)
+1. Accept API key from user input (stored in session memory)
 2. Build URL with path/query params
 3. Make HTTPS request with `X-API-Key` header
 4. Handle pagination with `cursor` parameter
 5. Return formatted results
+
+**Note:** The API key is managed in-memory per session and shared between both skills. Users provide the key via natural language when using either skill.
 
 ## Pagination Pattern
 

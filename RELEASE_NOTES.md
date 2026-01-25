@@ -1,5 +1,22 @@
 # Release Notes
 
+## Version 3.1.0 (Inline API Key Handling)
+
+### Changes
+
+- ✅ **Inline API key handling** - API key setup is now integrated directly into both skills
+- ✅ **Session-only storage** - API keys are stored in memory only, never written to disk
+- ✅ **Removed `moralis-api-key` skill** - No longer needed as a separate skill
+- ✅ **Simplified setup** - Just provide the key when using either skill
+
+### Migration Notes
+
+- When using either skill, provide your API key with: `Set this as the Moralis API key: <your_key>`
+- The key persists for the session and is available to both skills
+- For project development, use a `.env` file (guidance provided in both skills)
+
+---
+
 ## Version 3.0.0 (Consolidated Skills, REST-First)
 
 ### Highlights
@@ -7,12 +24,12 @@
 - ✅ **2 consolidated skills** - `moralis-data-api` and `moralis-streams-api`
 - ✅ **REST-first usage** - Use curl/native HTTP clients; no bundled `query.js`
 - ✅ **Rules-based docs** - All endpoints documented under `skills/*/rules/`
-- ✅ **API key manager** - `/moralis-api-key` configures shared `.env`
+- ✅ **Session API key storage** - API keys managed in-memory per session
 
 ### Migration Notes
 
 - Replace any `query.js` usage with REST calls from the `rules/` docs
-- Use `/moralis-api-key` or shared `.env` in the skills parent directory
+- Provide API key via natural language when using either skill
 
 ---
 

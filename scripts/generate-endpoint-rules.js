@@ -31,10 +31,23 @@ const operationRegistry = {};
 
 // Endpoints to ignore (don't generate rule files for these)
 const IGNORED_ENDPOINTS = new Set([
+  // Already deprecated/removed endpoints (not in official v2.2 docs)
   "runContractFunction",
   "web3ApiVersion",
   "reviewContracts",
   "syncNFTContract",
+  // EVM endpoints with incorrect names or not in official docs
+  "endpointWeights", // should be getEndpointWeights
+  "getTrendingTokensV2", // should be getTrendingTokens
+  // Discovery endpoints not in official reference docs
+  "getBlueChipTokens",
+  "getBuyingPressureTokens",
+  "getExperiencedBuyersTokens",
+  "getHottestNFTCollectionsByTradingVolume",
+  "getRisingLiquidityTokens",
+  "getRiskyBetsTokens",
+  "getSolidPerformersTokens",
+  "resyncNFTRarity",
 ]);
 
 /**
@@ -815,11 +828,11 @@ function processSource(sourceName, sourceData, rulesDir) {
 
   console.log(
     "  Processing " +
-      sourceName +
-      ": " +
-      (operationIds.length - ignored.length) +
-      " endpoints" +
-      (ignored.length > 0 ? " (ignored: " + ignored.length + ")" : ""),
+    sourceName +
+    ": " +
+    (operationIds.length - ignored.length) +
+    " endpoints" +
+    (ignored.length > 0 ? " (ignored: " + ignored.length + ")" : ""),
   );
   if (ignored.length > 0) {
     console.log("    Ignored: " + ignored.join(", "));
@@ -912,8 +925,8 @@ function processEvmEndpointsWithSolanaSupport(evmData, solanaData, rulesDir) {
 
   console.log(
     "\n  EVM endpoints with Solana chain support: " +
-      solanaVariants.length +
-      " (creating __solana variants)",
+    solanaVariants.length +
+    " (creating __solana variants)",
   );
 
   for (const { operationId, endpoint } of solanaVariants) {

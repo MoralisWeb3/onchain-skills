@@ -32,19 +32,19 @@ npx skills add noviulian/moralis-api-skills --list
 
 ### Set Your API Key
 
-After installation, set your Moralis API key:
+After installation, provide your API key when using either skill:
 
 ```bash
-/moralis-api-key <paste your API key here>
+Set this as the Moralis API key: <paste your API key here>
 ```
 
 **Example:**
 
 ```bash
-/moralis-api-key eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Set this as the Moralis API key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-This configures your API key for all Moralis skills at once.
+The API key is stored in memory for the current session and shared between both skills. You only need to provide it once.
 
 **That's it!** All skills are installed and ready to use.
 
@@ -75,13 +75,12 @@ git clone https://github.com/noviulian/moralis-api-skills.git moralis-api-skills
 # Copy individual skills you need
 cp -r moralis-api-skills-temp/skills/moralis-data-api ~/.claude/skills/
 cp -r moralis-api-skills-temp/skills/moralis-streams-api ~/.claude/skills/
-cp -r moralis-api-skills-temp/skills/moralis-api-key ~/.claude/skills/
 
 # Clean up
 rm -rf moralis-api-skills-temp
 ```
 
-Then set your API key (see below).
+Then provide your API key when using either skill (see below).
 
 ---
 
@@ -96,14 +95,26 @@ Then set your API key (see below).
 
 ## Setting Your API Key (Manual Installation)
 
-### For All Skills at Once
+### Session-Only Storage (Recommended)
+
+When using either skill, provide your API key with natural language:
 
 ```bash
-# Preferred: use the API key skill
-/moralis-api-key <paste your API key here>
+Set this as the Moralis API key: <paste your API key here>
+```
 
-# Manual: write shared .env in the parent directory
-echo "MORALIS_API_KEY=YOUR_API_KEY" > ~/.claude/.env
+The API key is stored in memory only and forgotten when the session ends.
+
+### For Project Development
+
+If you're building a project that needs persistent API key storage, create a `.env` file:
+
+```bash
+# Create .env in your project root
+echo "MORALIS_API_KEY=YOUR_API_KEY" > /path/to/project/.env
+
+# Important: Add .env to .gitignore to prevent committing your key
+echo ".env" >> /path/to/project/.gitignore
 ```
 
 ## Verification

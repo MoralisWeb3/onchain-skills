@@ -7,9 +7,8 @@ title: Moralis API Skills for Claude Code
 
 Comprehensive skills collection for Claude Code with Moralis API integration:
 
-- **Moralis Data API** (v3.0.0) - 140 endpoints for EVM & Solana blockchain data
-- **Moralis Streams API** (v3.0.0) - 20 endpoints for real-time event monitoring
-- **Moralis API Key** (v1.1.0) - Shared API key configuration
+- **Moralis Data API** (v3.1.0) - 140 endpoints for EVM & Solana blockchain data
+- **Moralis Streams API** (v3.1.0) - 20 endpoints for real-time event monitoring
 
 ## Features
 
@@ -17,6 +16,7 @@ Comprehensive skills collection for Claude Code with Moralis API integration:
 - **Dual Blockchain Support** - EVM and Solana with auto-detection
 - **160 REST Endpoints** - 140 Data API + 20 Streams API
 - **Real-time Event Streaming** - Webhook-based monitoring
+- **Session-Based API Key Storage** - API keys stored in memory only, never written to disk
 - **Skills-Based Architecture** - Install via `npx skills add`
 
 ## Quick Start
@@ -37,13 +37,13 @@ Optional: List all available skills
 npx skills add noviulian/moralis-api-skills --list
 ```
 
-**Step 2:** Set your API key
+**Step 2:** Set your API key when using either skill
 
 ```bash
-/moralis-api-key <paste your API key here>
+Set this as the Moralis API key: <paste your API key here>
 ```
 
-That's it! All skills are installed and ready to use.
+The API key is stored in memory for the session and shared between both skills.
 
 ---
 
@@ -66,7 +66,6 @@ git clone https://github.com/noviulian/moralis-api-skills.git moralis-api-skills
 # Install individual skills
 cp -r moralis-api-skills-temp/skills/moralis-data-api ~/.claude/skills/
 cp -r moralis-api-skills-temp/skills/moralis-streams-api ~/.claude/skills/
-cp -r moralis-api-skills-temp/skills/moralis-api-key ~/.claude/skills/
 
 # Clean up
 rm -rf moralis-api-skills-temp
@@ -74,9 +73,10 @@ rm -rf moralis-api-skills-temp
 
 #### 3. Set API Key
 
+When using either skill, provide your API key with natural language:
+
 ```bash
-# Set API key for all skills
-/moralis-api-key <paste your API key here>
+Set this as the Moralis API key: <paste your API key here>
 ```
 
 ---
@@ -98,9 +98,8 @@ Or manage Streams:
 
 | Skill                   | Version | Endpoints | EVM | Solana | Description                         |
 | ----------------------- | ------- | --------- | --- | ------ | ----------------------------------- |
-| **moralis-data-api**    | 3.0.0   | 140       | ✅  | ✅     | Wallets, tokens, NFTs, DeFi, price  |
-| **moralis-streams-api** | 3.0.0   | 20        | ✅  | ❌     | Real-time event streaming           |
-| **moralis-api-key**     | 1.1.0   | -         | -   | -      | Shared API key configuration        |
+| **moralis-data-api**    | 3.1.0   | 140       | ✅  | ✅     | Wallets, tokens, NFTs, DeFi, price  |
+| **moralis-streams-api** | 3.1.0   | 20        | ✅  | ❌     | Real-time event streaming           |
 
 ## Supported Chains
 

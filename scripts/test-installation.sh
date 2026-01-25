@@ -20,24 +20,15 @@ echo ""
 echo "Test 2: Skill Directories"
 SKILL_COUNT=$(find skills -maxdepth 1 -type d ! -name "skills" | wc -l)
 echo "Found $SKILL_COUNT skill directories"
-if [ "$SKILL_COUNT" -ge 3 ]; then
-  echo "✓ At least 3 skills present (found $SKILL_COUNT)"
+if [ "$SKILL_COUNT" -ge 2 ]; then
+  echo "✓ At least 2 skills present (found $SKILL_COUNT)"
 else
-  echo "✗ Expected at least 3 skills, found $SKILL_COUNT"
+  echo "✗ Expected at least 2 skills, found $SKILL_COUNT"
 fi
 echo ""
 
-# Test 3: Check API key command
-echo "Test 3: API Key Command"
-if [ -f "skills/moralis-api-key/SKILL.md" ]; then
-  echo "✓ API key command skill exists"
-else
-  echo "✗ API key command skill missing"
-fi
-echo ""
-
-# Test 4: Sample skill validation
-echo "Test 4: Sample Skill Validation"
+# Test 3: Sample skill validation
+echo "Test 3: Sample Skill Validation"
 SAMPLE_SKILL="skills/moralis-data-api"
 if [ -d "$SAMPLE_SKILL" ]; then
   if [ -f "$SAMPLE_SKILL/SKILL.md" ]; then

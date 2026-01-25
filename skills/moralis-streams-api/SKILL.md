@@ -4,7 +4,7 @@ description: Real-time blockchain event monitoring with webhooks. REST API for s
 license: MIT
 compatibility: Requires Node.js (built-in modules only)
 metadata:
-  version: "3.0.0"
+  version: "3.1.0"
   author: web3-skills
   tags: [web3, blockchain, streaming, webhooks, events, realtime]
 allowed-tools: Bash
@@ -21,8 +21,35 @@ Provide your Moralis API key before using this skill. You can provide it in any 
 - "Set this as the Moralis API key: `<your_key>`"
 - "Use this API key: `<your_key>`"
 - "Here's my key: `<your_key>`"
+- "Configure the API key"
+- "Set up the credentials"
 
 The key will be remembered for the current session only. If no key is set, you'll be prompted to provide one.
+
+**I need your Moralis API key to proceed. You can paste it like: `Set this as the Moralis API key: <key>`**
+
+### Session Memory Pattern
+
+Claude stores the key in memory throughout the session:
+
+```javascript
+// When user provides the key
+const MORALIS_API_KEY = "user_provided_key";
+
+// Use in all curl commands
+curl "https://api.moralis-streams.com/..." \
+  -H "X-API-Key: ${MORALIS_API_KEY}"
+```
+
+**Note:** The key set in this skill is also available to @moralis-data-api within the same session (and vice versa). You only need to provide it once.
+
+### Security Notes
+
+- Key is stored in memory only
+- Never written to disk
+- Never included in git commits
+- Session-isolated (forgotten when session ends)
+- No risk of accidentally committing secrets to version control
 
 ### For Project Development
 
@@ -34,7 +61,16 @@ If you're building a project (dashboard, wallet, dApp, etc.) that needs persiste
 > MORALIS_API_KEY=your_key_here
 > ```
 >
-> Don't forget to add `.env` to your `.gitignore` file to prevent accidentally committing your key."
+> **Important:** Add `.env` to your `.gitignore` file to prevent accidentally committing your key."
+
+### Verify Your Key
+
+After setting the key, you can verify it works:
+
+```bash
+curl "https://api.moralis-streams.com/streams/evm?limit=10" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
 
 ## Authentication
 

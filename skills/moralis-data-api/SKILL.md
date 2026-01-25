@@ -4,7 +4,7 @@ description: Query Web3 blockchain data from Moralis API (wallet, token, NFT, De
 license: MIT
 compatibility: Requires Node.js (built-in modules only)
 metadata:
-  version: "3.0.0"
+  version: "3.1.0"
   author: web3-skills
   tags: [web3, blockchain, evm, solana, wallet, token, nft, defi]
 allowed-tools: Bash
@@ -21,8 +21,35 @@ Provide your Moralis API key before using this skill. You can provide it in any 
 - "Set this as the Moralis API key: `<your_key>`"
 - "Use this API key: `<your_key>`"
 - "Here's my key: `<your_key>`"
+- "Configure the API key"
+- "Set up the credentials"
 
 The key will be remembered for the current session only. If no key is set, you'll be prompted to provide one.
+
+**I need your Moralis API key to proceed. You can paste it like: `Set this as the Moralis API key: <key>`**
+
+### Session Memory Pattern
+
+Claude stores the key in memory throughout the session:
+
+```javascript
+// When user provides the key
+const MORALIS_API_KEY = "user_provided_key";
+
+// Use in all curl commands
+curl "https://deep-index.moralis.io/api/v2.2/..." \
+  -H "X-API-Key: ${MORALIS_API_KEY}"
+```
+
+**Note:** The key set in this skill is also available to @moralis-streams-api within the same session (and vice versa). You only need to provide it once.
+
+### Security Notes
+
+- Key is stored in memory only
+- Never written to disk
+- Never included in git commits
+- Session-isolated (forgotten when session ends)
+- No risk of accidentally committing secrets to version control
 
 ### For Project Development
 
@@ -34,7 +61,16 @@ If you're building a project (dashboard, wallet, dApp, etc.) that needs persiste
 > MORALIS_API_KEY=your_key_here
 > ```
 >
-> Don't forget to add `.env` to your `.gitignore` file to prevent accidentally committing your key."
+> **Important:** Add `.env` to your `.gitignore` file to prevent accidentally committing your key."
+
+### Verify Your Key
+
+After setting the key, you can verify it works:
+
+```bash
+curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/balance?chain=0x1" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
 
 ## Authentication
 
@@ -109,7 +145,7 @@ rules/balance__solana.md
 
 ## Endpoint Catalog
 
-Complete list of all 153 endpoints (112 EVM + 41 Solana) organized by category.
+Complete list of all 136 endpoints (102 EVM + 34 Solana) organized by category.
 
 ### Wallet
 
@@ -171,7 +207,6 @@ NFT metadata, transfers, traits, rarity, floor prices, and trades.
 | Endpoint | Description |
 |----------|-------------|
 | [getContractNFTs](rules/getContractNFTs.md) | Get NFTs by contract address |
-| [getHottestNFTCollectionsByTradingVolume](rules/getHottestNFTCollectionsByTradingVolume.md) | Get top NFT collections by trading volume |
 | [getMultipleNFTs](rules/getMultipleNFTs.md) | Get Metadata for NFTs |
 | [getNFTBulkContractMetadata](rules/getNFTBulkContractMetadata.md) | Get metadata for multiple NFT contracts |
 | [getNFTByContractTraits](rules/getNFTByContractTraits.md) | Get NFTs by traits |
@@ -193,7 +228,6 @@ NFT metadata, transfers, traits, rarity, floor prices, and trades.
 | [getNFTTraitsByCollectionPaginate](rules/getNFTTraitsByCollectionPaginate.md) | Get NFT traits by collection paginate |
 | [getNFTTransfers](rules/getNFTTransfers.md) | Get NFT transfers by token ID |
 | [getTopNFTCollectionsByMarketCap](rules/getTopNFTCollectionsByMarketCap.md) | Get top NFT collections by market cap |
-| [resyncNFTRarity](rules/resyncNFTRarity.md) | Resync NFT Trait |
 
 ### DeFi
 
@@ -242,12 +276,7 @@ Trending tokens, blue chips, market movers, and token discovery.
 
 | Endpoint | Description |
 |----------|-------------|
-| [getBlueChipTokens](rules/getBlueChipTokens.md) | Get tokens with blue chip |
-| [getBuyingPressureTokens](rules/getBuyingPressureTokens.md) | Get tokens with buying pressure |
 | [getDiscoveryToken](rules/getDiscoveryToken.md) | Get token details |
-| [getRisingLiquidityTokens](rules/getRisingLiquidityTokens.md) | Get tokens with rising liquidity |
-| [getRiskyBetsTokens](rules/getRiskyBetsTokens.md) | Get tokens with risky bets |
-| [getSolidPerformersTokens](rules/getSolidPerformersTokens.md) | Get tokens with solid performance |
 | [getTimeSeriesVolume](rules/getTimeSeriesVolume.md) | Retrieve timeseries trading stats by chain |
 | [getTimeSeriesVolumeByCategory](rules/getTimeSeriesVolumeByCategory.md) | Retrieve timeseries trading stats by category |
 | [getTopCryptoCurrenciesByMarketCap](rules/getTopCryptoCurrenciesByMarketCap.md) | Get top crypto currencies by market cap |
@@ -258,7 +287,6 @@ Trending tokens, blue chips, market movers, and token discovery.
 | [getTopLosersTokens](rules/getTopLosersTokens.md) | Get tokens with top losers |
 | [getTopProfitableWalletPerToken](rules/getTopProfitableWalletPerToken.md) | Get top traders for a given ERC20 token |
 | [getTrendingTokens](rules/getTrendingTokens.md) | Get trending tokens |
-| [getTrendingTokensV2](rules/getTrendingTokensV2.md) | Get trending tokens |
 | [getVolumeStatsByCategory](rules/getVolumeStatsByCategory.md) | Get trading stats by categories |
 | [getVolumeStatsByChain](rules/getVolumeStatsByChain.md) | Get trading stats by chain |
 
@@ -268,11 +296,9 @@ Utility endpoints including API version, endpoint weights, and address resolutio
 
 | Endpoint | Description |
 |----------|-------------|
-| [endpointWeights](rules/endpointWeights.md) | Get weights of endpoints |
 | [getBondingTokensByExchange](rules/getBondingTokensByExchange__evm.md) | Get bonding tokens by exchange |
 | [getCandleSticks](rules/getCandleSticks__evm.md) | Get OHLCV by pair address |
 | [getEntitiesByCategory](rules/getEntitiesByCategory.md) | Get Entities By Category |
-| [getExperiencedBuyersTokens](rules/getExperiencedBuyersTokens.md) | Get tokens with experienced buyers |
 | [getFilteredTokens](rules/getFilteredTokens.md) | Returns a list of tokens that match the specified filters and criteria |
 | [getGraduatedTokensByExchange](rules/getGraduatedTokensByExchange__evm.md) | Get graduated tokens by exchange |
 | [getHistoricalTokenHolders](rules/getHistoricalTokenHolders__evm.md) | Get timeseries holders data |
@@ -288,7 +314,7 @@ Utility endpoints including API version, endpoint weights, and address resolutio
 
 ### Solana Endpoints
 
-Solana-specific endpoints (24 native + 17 EVM variants that support Solana chain = 41 total).
+Solana-specific endpoints (24 native + 10 EVM variants that support Solana chain = 34 total).
 
 | Endpoint | Description |
 |----------|-------------|
@@ -316,14 +342,8 @@ Solana-specific endpoints (24 native + 17 EVM variants that support Solana chain
 | [getTokenPairs](rules/getTokenPairs__solana.md) | Get token pairs by address |
 | [getTokenPrice](rules/getTokenPrice__solana.md) | Get token price |
 | [getTopHolders](rules/getTopHolders__solana.md) | Get paginated top holders for a given token. |
-| [getBlueChipTokens](rules/getBlueChipTokens__solana.md) | **Solana variant:** Get tokens with blue chip |
-| [getBuyingPressureTokens](rules/getBuyingPressureTokens__solana.md) | **Solana variant:** Get tokens with buying pressure |
 | [getDiscoveryToken](rules/getDiscoveryToken__solana.md) | **Solana variant:** Get token details |
-| [getExperiencedBuyersTokens](rules/getExperiencedBuyersTokens__solana.md) | **Solana variant:** Get tokens with experienced buyers |
 | [getHistoricalTokenScore](rules/getHistoricalTokenScore__solana.md) | **Solana variant:** Get historical token score by token address |
-| [getRisingLiquidityTokens](rules/getRisingLiquidityTokens__solana.md) | **Solana variant:** Get tokens with rising liquidity |
-| [getRiskyBetsTokens](rules/getRiskyBetsTokens__solana.md) | **Solana variant:** Get tokens with risky bets |
-| [getSolidPerformersTokens](rules/getSolidPerformersTokens__solana.md) | **Solana variant:** Get tokens with solid performance |
 | [getTimeSeriesVolume](rules/getTimeSeriesVolume__solana.md) | **Solana variant:** Retrieve timeseries trading stats by chain |
 | [getTimeSeriesVolumeByCategory](rules/getTimeSeriesVolumeByCategory__solana.md) | **Solana variant:** Retrieve timeseries trading stats by category |
 | [getTokenAnalytics](rules/getTokenAnalytics__solana.md) | **Solana variant:** Get token analytics by token address |
@@ -331,7 +351,6 @@ Solana-specific endpoints (24 native + 17 EVM variants that support Solana chain
 | [getTopGainersTokens](rules/getTopGainersTokens__solana.md) | **Solana variant:** Get tokens with top gainers |
 | [getTopLosersTokens](rules/getTopLosersTokens__solana.md) | **Solana variant:** Get tokens with top losers |
 | [getTrendingTokens](rules/getTrendingTokens__solana.md) | **Solana variant:** Get trending tokens |
-| [getTrendingTokensV2](rules/getTrendingTokensV2__solana.md) | **Solana variant:** Get trending tokens |
 | [getVolumeStatsByCategory](rules/getVolumeStatsByCategory__solana.md) | **Solana variant:** Get trading stats by categories |
 
 ## Common Pitfalls
