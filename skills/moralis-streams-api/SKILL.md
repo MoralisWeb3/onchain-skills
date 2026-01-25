@@ -81,45 +81,49 @@ rules/DeleteAddressFromStream.md  # Remove addresses
 
 ## Endpoint Catalog
 
+Complete list of all 20 Streams API endpoints organized by category.
+
 ### Stream Management
 
-| Endpoint | Description |
-|----------|-------------|
-| [GetStreams](rules/GetStreams.md) | Get all evm streams for the current project |
-| [CreateStream](rules/CreateStream.md) | Create a new evm stream |
-| [GetStream](rules/GetStream.md) | Get a specific evm stream |
-| [UpdateStream](rules/UpdateStream.md) | Update an existing evm stream |
-| [DeleteStream](rules/DeleteStream.md) | Delete an existing evm stream |
-| [DuplicateStream](rules/DuplicateStream.md) | Duplicate an existing evm stream |
-
-### Address Management
+Create, update, delete, and manage streams.
 
 | Endpoint | Description |
 |----------|-------------|
-| [GetAddresses](rules/GetAddresses.md) | Get all addresses that are being monitored by a stream |
-| [AddAddressToStream](rules/AddAddressToStream.md) | Add an address to be monitored by a stream |
-| [ReplaceAddressFromStream](rules/ReplaceAddressFromStream.md) | Replace an address that is being monitored by a stream |
-| [DeleteAddressFromStream](rules/DeleteAddressFromStream.md) | Remove an address from being monitored by a stream |
+| [AddAddressToStream](rules/AddAddressToStream.md) | Add address to stream |
+| [CreateStream](rules/CreateStream.md) | Create stream |
+| [DeleteAddressFromStream](rules/DeleteAddressFromStream.md) | Delete address from stream |
+| [DeleteStream](rules/DeleteStream.md) | Delete stream |
+| [DuplicateStream](rules/DuplicateStream.md) | Duplicate stream |
+| [GetAddresses](rules/GetAddresses.md) | Get addresses by stream |
+| [GetHistory](rules/GetHistory.md) | Get history |
+| [GetLogs](rules/GetLogs.md) | Get logs |
+| [GetSettings](rules/GetSettings.md) | Get project settings |
+| [GetStats](rules/GetStats.md) | Get project stats |
+| [GetStatsByStreamId](rules/GetStatsByStreamId.md) | Get project stats by Stream ID |
+| [GetStream](rules/GetStream.md) | Get a specific evm stream. |
+| [GetStreamBlockDataByNumber](rules/GetStreamBlockDataByNumber.md) | Get webhook data returned on the block number with provided stream config |
+| [GetStreamBlockDataToWebhookByNumber](rules/GetStreamBlockDataToWebhookByNumber.md) | Send webhook based on a specific block number using stream config and addresses. |
+| [GetStreams](rules/GetStreams.md) | Get streams |
+| [ReplaceAddressFromStream](rules/ReplaceAddressFromStream.md) | Replaces address from stream |
+| [UpdateStream](rules/UpdateStream.md) | Update stream |
+| [UpdateStreamStatus](rules/UpdateStreamStatus.md) | Update stream status |
 
 ### Status & Settings
 
+Pause/resume streams and configure settings.
+
 | Endpoint | Description |
 |----------|-------------|
-| [UpdateStreamStatus](rules/UpdateStreamStatus.md) | Update the status (active/paused) of a stream |
-| [SetSettings](rules/SetSettings.md) | Set settings for streams |
-| [GetSettings](rules/GetSettings.md) | Get settings for streams |
+| [SetSettings](rules/SetSettings.md) | Set project settings |
 
 ### History & Analytics
 
+Stream history, replay, statistics, logs, and block data.
+
 | Endpoint | Description |
 |----------|-------------|
-| [GetHistory](rules/GetHistory.md) | Get the history of a stream |
-| [ReplayHistory](rules/ReplayHistory.md) | Replay historical data for a stream |
-| [GetStats](rules/GetStats.md) | Get statistics for all streams |
-| [GetStatsByStreamId](rules/GetStatsByStreamId.md) | Get statistics for a specific stream |
-| [GetLogs](rules/GetLogs.md) | Get logs for a stream |
-| [GetStreamBlockDataByNumber](rules/GetStreamBlockDataByNumber.md) | Get the block data for a specific block number that was processed by a stream |
-| [GetStreamBlockDataToWebhookByNumber](rules/GetStreamBlockDataToWebhookByNumber.md) | Get the block data that was sent to the webhook for a specific block number |
+| [ReplayHistory](rules/ReplayHistory.md) | Replay history |
+
 
 ## HTTP Methods
 

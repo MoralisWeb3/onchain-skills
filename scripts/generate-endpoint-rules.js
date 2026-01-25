@@ -380,6 +380,311 @@ function generateEndpointMarkdown(operationId, endpoint, source) {
 }
 
 /**
+ * Generate endpoint catalog for data-api SKILL.md
+ */
+function generateDataApiCatalog(apiConfigs) {
+  const evm = apiConfigs.evm || {};
+  const solana = apiConfigs.solana || {};
+
+  // Explicit endpoint categorization by operationId pattern
+  const categoryPatterns = [
+    // Wallet - highest priority: starts with getWallet or getNative
+    { pattern: /^getWallet|^getNative/, category: "wallet" },
+    // NFT - contains NFT but not getWalletNFT (which is wallet)
+    { pattern: /NFT|nft/, category: "nft", exclude: /^getWallet/ },
+    // DeFi - contains DeFi
+    { pattern: /DeFi|Defi/, category: "defi" },
+    // Entity - contains Entity
+    { pattern: /Entity|entity/, category: "entity" },
+    // Token price data - getTokenPrice but not wallet
+    { pattern: /TokenPrice|PairPrice|Candlesticks/, category: "price" },
+    // NFT price data - NFTFloorPrice
+    { pattern: /FloorPrice|floorprice/, category: "price" },
+    // Token operations (holders, transfers, metadata) but not wallet
+    {
+      pattern: /^get(Token|ERC20)|^getMultiple/,
+      category: "token",
+      exclude: /Wallet|NFT/,
+    },
+    // Pairs and swaps
+    { pattern: /Pair|Swaps|^getAggregated/, category: "token" },
+    // Token analytics/score
+    { pattern: /Analytics|Score|analytics/, category: "token" },
+    // Blockchain - block, transaction, web3
+    {
+      pattern: /Block|Transaction|Web3|DateTo|Contract/,
+      category: "blockchain",
+    },
+    // Discovery - trending, top, blue chips
+    {
+      pattern:
+        /Top|Trending|BlueChip|Discovery|Buying|Solid|Risky|Gainers|Losers|Rising|Volume|TimeSeries|Snipers/,
+      category: "discovery",
+    },
+    // Security - review
+    { pattern: /Review|Contract/, category: "security" },
+    // Other utility - resolve, endpoint weights, web3
+    { pattern: /resolve|endpointWeights|web3Api/, category: "other" },
+  ];
+
+  const categoryTitles = {
+    wallet: {
+      title: "Wallet",
+      description:
+        "Balances, tokens, NFTs, transaction history, profitability, and net worth data.",
+    },
+    token: {
+      title: "Token",
+      description:
+        "Token prices, metadata, pairs, DEX swaps, analytics, security scores, and sniper detection.",
+    },
+    nft: {
+      title: "NFT",
+      description:
+        "NFT metadata, transfers, traits, rarity, floor prices, and trades.",
+    },
+    defi: {
+      title: "DeFi",
+      description: "DeFi protocol positions, liquidity, and exposure data.",
+    },
+    entity: {
+      title: "Entity",
+      description:
+        "Labeled addresses including exchanges, funds, protocols, and whales.",
+    },
+    price: {
+      title: "Price",
+      description: "Token and NFT prices, OHLCV candlestick data.",
+    },
+    blockchain: {
+      title: "Blockchain",
+      description:
+        "Blocks, transactions, date-to-block conversion, and contract functions.",
+    },
+    discovery: {
+      title: "Discovery",
+      description:
+        "Trending tokens, blue chips, market movers, and token discovery.",
+    },
+    security: {
+      title: "Security",
+      description: "Contract security review and analysis.",
+    },
+    other: {
+      title: "Other",
+      description:
+        "Utility endpoints including API version, endpoint weights, and address resolution.",
+    },
+  };
+
+  // Categorize EVM endpoints
+  const evmByCategory = {};
+  for (const cat of Object.keys(categoryTitles)) {
+    evmByCategory[cat] = [];
+  }
+
+  for (const [opId, endpoint] of Object.entries(evm)) {
+    let categorized = false;
+
+    for (const { pattern, category, exclude } of categoryPatterns) {
+      if (exclude && opId.match(exclude)) continue;
+      if (opId.match(pattern)) {
+        evmByCategory[category].push({ opId, endpoint });
+        categorized = true;
+        break;
+      }
+    }
+
+    if (!categorized) {
+      evmByCategory.other.push({ opId, endpoint });
+    }
+  }
+
+  // Generate catalog markdown
+  let md = "## Endpoint Catalog\n\n";
+  md +=
+    "Complete list of all " +
+    (Object.keys(evm).length + Object.keys(solana).length) +
+    " endpoints (" +
+    Object.keys(evm).length +
+    " EVM + " +
+    Object.keys(solana).length +
+    " Solana) organized by category.\n\n";
+
+  // EVM categories
+  for (const [catKey, catDef] of Object.entries(categoryTitles)) {
+    const endpoints = evmByCategory[catKey];
+    if (endpoints.length === 0) continue;
+
+    md += "### " + catDef.title + "\n\n";
+    md += catDef.description + "\n\n";
+    md += "| Endpoint | Description |\n";
+    md += "|----------|-------------|\n";
+
+    for (const { opId, endpoint } of endpoints.sort((a, b) =>
+      a.opId.localeCompare(b.opId),
+    )) {
+      const desc = (endpoint.summary || "").substring(0, 80);
+      const filename = getFilename(opId, "evm");
+      md += "| [" + opId + "](rules/" + filename + ") | " + desc + " |\n";
+    }
+
+    md += "\n";
+  }
+
+  // Solana section
+  md += "### Solana Endpoints\n\n";
+  md +=
+    "Solana-specific endpoints (" + Object.keys(solana).length + " total).\n\n";
+  md += "| Endpoint | Description |\n";
+  md += "|----------|-------------|\n";
+
+  for (const [opId, endpoint] of Object.entries(solana).sort()) {
+    const desc = (endpoint.summary || "").substring(0, 80);
+    const filename = getFilename(opId, "solana");
+    md += "| [" + opId + "](rules/" + filename + ") | " + desc + " |\n";
+  }
+
+  return md;
+}
+
+/**
+ * Generate endpoint catalog for streams-api SKILL.md
+ */
+function generateStreamsApiCatalog(apiConfigs) {
+  const streams = apiConfigs.streams || {};
+
+  // Stream categories
+  const categories = {
+    streamManagement: {
+      title: "Stream Management",
+      description: "Create, update, delete, and manage streams.",
+      keywords: [
+        "Stream",
+        "streams",
+        "Create",
+        "Update",
+        "Delete",
+        "Get",
+        "Duplicate",
+      ],
+    },
+    addressManagement: {
+      title: "Address Management",
+      description: "Add, remove, and replace addresses in streams.",
+      keywords: ["Address", "Addresses"],
+    },
+    statusSettings: {
+      title: "Status & Settings",
+      description: "Pause/resume streams and configure settings.",
+      keywords: ["Status", "Settings"],
+    },
+    historyAnalytics: {
+      title: "History & Analytics",
+      description: "Stream history, replay, statistics, logs, and block data.",
+      keywords: ["History", "Replay", "Stats", "Logs", "Block"],
+    },
+  };
+
+  // Categorize streams endpoints
+  const streamsByCategory = {};
+  for (const cat of Object.keys(categories)) {
+    streamsByCategory[cat] = [];
+  }
+
+  for (const [opId, endpoint] of Object.entries(streams)) {
+    let categorized = false;
+    const searchStr = (
+      opId +
+      " " +
+      (endpoint.summary || "") +
+      " " +
+      (endpoint.description || "")
+    ).toLowerCase();
+
+    for (const [catKey, catDef] of Object.entries(categories)) {
+      if (catDef.keywords.some((k) => searchStr.includes(k.toLowerCase()))) {
+        streamsByCategory[catKey].push({ opId, endpoint });
+        categorized = true;
+        break;
+      }
+    }
+
+    if (!categorized) {
+      streamsByCategory.streamManagement.push({ opId, endpoint });
+    }
+  }
+
+  // Generate catalog markdown
+  let md = "## Endpoint Catalog\n\n";
+  md +=
+    "Complete list of all " +
+    Object.keys(streams).length +
+    " Streams API endpoints organized by category.\n\n";
+
+  for (const [catKey, catDef] of Object.entries(categories)) {
+    const endpoints = streamsByCategory[catKey];
+    if (endpoints.length === 0) continue;
+
+    md += "### " + catDef.title + "\n\n";
+    md += catDef.description + "\n\n";
+    md += "| Endpoint | Description |\n";
+    md += "|----------|-------------|\n";
+
+    for (const { opId, endpoint } of endpoints.sort((a, b) =>
+      a.opId.localeCompare(b.opId),
+    )) {
+      const desc = (endpoint.summary || "").substring(0, 80);
+      md += "| [" + opId + "](rules/" + opId + ".md) | " + desc + " |\n";
+    }
+
+    md += "\n";
+  }
+
+  return md;
+}
+
+/**
+ * Update SKILL.md file with new catalog section
+ */
+function updateSkillMdFile(skillPath, newCatalog) {
+  let content = fs.readFileSync(skillPath, "utf8");
+  const lines = content.split("\n");
+
+  // Find the start of "## Endpoint Catalog"
+  let catalogStartIndex = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i] === "## Endpoint Catalog") {
+      catalogStartIndex = i;
+      break;
+    }
+  }
+
+  if (catalogStartIndex === -1) {
+    console.warn(
+      "  Could not find '## Endpoint Catalog' section in " + skillPath,
+    );
+    return;
+  }
+
+  // Find the next section start (## after catalog)
+  let catalogEndIndex = lines.length;
+  for (let i = catalogStartIndex + 1; i < lines.length; i++) {
+    if (lines[i].startsWith("## ") && lines[i] !== "## Endpoint Catalog") {
+      catalogEndIndex = i;
+      break;
+    }
+  }
+
+  // Rebuild content: before catalog + new catalog + after catalog
+  const beforeCatalog = lines.slice(0, catalogStartIndex).join("\n");
+  const afterCatalog = lines.slice(catalogEndIndex).join("\n");
+
+  const newContent = beforeCatalog + "\n" + newCatalog + "\n" + afterCatalog;
+  writeFileIfChanged(skillPath, newContent);
+}
+
+/**
  * Process a single source (evm, solana, streams)
  */
 function processSource(sourceName, sourceData, rulesDir) {
@@ -443,6 +748,29 @@ function main() {
   console.log("\nDone! Generated rules:");
   console.log("  - skills/moralis-data-api/rules/*.md");
   console.log("  - skills/moralis-streams-api/rules/*.md");
+
+  // Generate SKILL.md endpoint catalogs
+  console.log("\nGenerating SKILL.md endpoint catalogs...\n");
+
+  // Update data-api SKILL.md
+  const dataApiCatalog = generateDataApiCatalog(apiConfigs);
+  const dataApiSkillPath = path.join(
+    __dirname,
+    "../skills/moralis-data-api/SKILL.md",
+  );
+  console.log("  Updating skills/moralis-data-api/SKILL.md");
+  updateSkillMdFile(dataApiSkillPath, dataApiCatalog);
+
+  // Update streams-api SKILL.md
+  const streamsApiCatalog = generateStreamsApiCatalog(apiConfigs);
+  const streamsApiSkillPath = path.join(
+    __dirname,
+    "../skills/moralis-streams-api/SKILL.md",
+  );
+  console.log("  Updating skills/moralis-streams-api/SKILL.md");
+  updateSkillMdFile(streamsApiSkillPath, streamsApiCatalog);
+
+  console.log("\nDone! Updated SKILL.md files with endpoint catalogs.");
 }
 
 // Run
