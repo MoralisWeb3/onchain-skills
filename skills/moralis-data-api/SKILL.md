@@ -120,6 +120,17 @@ Use this skill when the user asks about:
 
 ⚠️ **NOT for:** Real-time event streaming → Use @moralis-streams-api
 
+## Default Chain Behavior
+
+**For EVM addresses:** When a user provides an EVM address (`0x...`) without specifying a chain, default to **Ethereum (`chain=0x1`)** unless the user specifies a different chain or multiple chains.
+
+**Examples:**
+- "Get the balance of `0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045`" → Use `chain=0x1` (default)
+- "Get the balance of `0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045` on Polygon" → Use `chain=0x89`
+- "Get the balance of `0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045` on Ethereum and Base" → Query both chains
+
+**For Solana addresses:** The base58 format is auto-detected and routed to the Solana API. No chain defaulting applies.
+
 ## Endpoint Rules
 
 Each endpoint has its own rule file with full documentation:

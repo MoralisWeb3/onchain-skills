@@ -224,9 +224,11 @@ Create, update, delete, and manage streams.
 
 ### Chain
 
+**Default Behavior:** For EVM addresses without a specified chain, the API defaults to Ethereum (`chain=0x1`). Specify a different chain if needed.
+
 For EVM endpoints, the `chain` parameter accepts both hex strings and common names:
 
-- `0x1` or `eth` (Ethereum Mainnet)
+- `0x1` or `eth` (Ethereum Mainnet) - **default**
 - `0x89` or `polygon` (Polygon Mainnet)
 - `0x38` or `bsc` (BNB Smart Chain)
 - ... and many more.

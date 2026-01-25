@@ -89,6 +89,11 @@ Simply ask Claude about Web3 data:
 - "Get the price of ETH"
 - "What NFTs does this wallet own?"
 
+**Default Chain:** For EVM addresses without a specified chain, the data API defaults to Ethereum (`0x1`). Specify a different chain if needed:
+
+- "Get the balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 on Polygon"
+- "Show tokens for this wallet on Base and Arbitrum"
+
 Or manage Streams:
 
 - "Create a stream to monitor all ERC20 transfers on Ethereum"

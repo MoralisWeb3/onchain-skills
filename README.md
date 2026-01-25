@@ -23,6 +23,8 @@ Set this as the Moralis API key: <paste your API key here>
 
 Unified skill for all blockchain data queries. Auto-detects EVM vs Solana from address format.
 
+**Default Chain:** For EVM addresses without a specified chain, defaults to Ethereum (`0x1`).
+
 **Categories:**
 - Wallet (balances, tokens, NFTs, history)
 - Token (prices, metadata, pairs, analytics, security scores)
@@ -33,8 +35,11 @@ Unified skill for all blockchain data queries. Auto-detects EVM vs Solana from a
 - Blockchain (blocks, transactions)
 
 ```bash
-# EVM query (auto-detected from 0x address)
+# EVM query - defaults to Ethereum if no chain specified
 "Get the balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+
+# EVM query with specific chain
+"Get the balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 on Polygon"
 
 # Solana query (auto-detected from base58 address)
 "Get the balance of Solana wallet 742d35Cc6634C0532925a3b844Bc9e7595f0bEb"

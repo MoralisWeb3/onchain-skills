@@ -126,6 +126,8 @@ curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37
   -H "X-API-Key: $MORALIS_API_KEY"
 ```
 
+**Note:** For EVM addresses, if you don't specify a chain, the API defaults to Ethereum (`0x1`).
+
 Expected response:
 
 ```json
