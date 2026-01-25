@@ -30,22 +30,34 @@ const SKILL_MAPPINGS = {
 const operationRegistry = {};
 
 /**
- * Register an operationId and detect collisions
- * Returns the filename to use (with suffix if collision)
+ * Get the filename for an operation
+ * - Solana endpoints always get __solana suffix
+ * - EVM endpoints get no suffix (unless collision with Solana, which adds __evm)
  */
-function registerOperation(operationId, source) {
-  if (!operationRegistry[operationId]) {
-    operationRegistry[operationId] = source;
+function getFilename(operationId, source) {
+  // Solana endpoints always get __solana suffix
+  if (source === "solana") {
+    return operationId + "__solana.md";
+  }
+
+  // EVM endpoints - check if Solana version exists
+  if (source === "evm") {
+    const hasSolanaVersion = operationRegistry[operationId] === "solana";
+    if (hasSolanaVersion) {
+      return operationId + "__evm.md";
+    }
     return operationId + ".md";
   }
 
-  // Collision detected - add suffix
-  const existingSource = operationRegistry[operationId];
-  if (existingSource !== source) {
-    return operationId + "__" + source + ".md";
-  }
-
+  // Streams (no collisions expected)
   return operationId + ".md";
+}
+
+/**
+ * Register an operationId to track which sources have it
+ */
+function registerOperation(operationId, source) {
+  operationRegistry[operationId] = source;
 }
 
 /**
@@ -378,7 +390,7 @@ function processSource(sourceName, sourceData, rulesDir) {
 
   for (const operationId of operationIds) {
     const endpoint = sourceData[operationId];
-    const filename = registerOperation(operationId, sourceName);
+    const filename = getFilename(operationId, sourceName);
     const filepath = path.join(rulesDir, filename);
 
     const markdown = generateEndpointMarkdown(
@@ -400,7 +412,19 @@ function main() {
   // Load API configs
   const apiConfigs = JSON.parse(fs.readFileSync(API_CONFIGS_PATH, "utf8"));
 
-  // Process each skill
+  // First pass: register all operationIds to build the registry
+  // This is needed to detect EVM-Solana collisions
+  for (const [skillName, config] of Object.entries(SKILL_MAPPINGS)) {
+    for (const source of config.sources) {
+      if (apiConfigs[source]) {
+        for (const operationId of Object.keys(apiConfigs[source])) {
+          registerOperation(operationId, source);
+        }
+      }
+    }
+  }
+
+  // Second pass: generate files with correct filenames
   for (const [skillName, config] of Object.entries(SKILL_MAPPINGS)) {
     console.log("\n" + skillName + ":");
     ensureDir(config.rulesDir);
