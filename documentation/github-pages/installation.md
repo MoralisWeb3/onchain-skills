@@ -11,7 +11,7 @@ Follow these steps to install Moralis API Skills for Claude Code.
 
 - **Node.js** installed (for running queries)
 - **Moralis API key:**
-    1. Register at [admin.moralis.io/register](https://admin.moralis.io/register) (free, no credit card required)
+    1. Register at [admin.moralis.com/register](https://admin.moralis.com/register) (free, no credit card required)
     2. Get your API key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 
 ## Installation
@@ -163,7 +163,7 @@ echo "MORALIS_API_KEY=YOUR_KEY" > ~/.claude/skills/SKILL_NAME/.env
 
 **To get your key:**
 
-1. Register at [admin.moralis.io/register](https://admin.moralis.io/register) (free)
+1. Register at [admin.moralis.com/register](https://admin.moralis.com/register) (free)
 2. Get your key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 
 ### "SKILL.md not found" error
@@ -172,7 +172,7 @@ Make sure you copied the entire skill directory, including the `SKILL.md` file.
 
 ### Query returns errors
 
-1. Verify your API key is valid at [admin.moralis.io](https://admin.moralis.io/register)
+1. Verify your API key is valid at [admin.moralis.com](https://admin.moralis.com/register)
 2. Check the address format is correct
 3. Ensure you have network access
 

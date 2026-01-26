@@ -7,7 +7,14 @@ metadata:
   version: "3.2.0"
   author: web3-skills
   tags: [web3, blockchain, streaming, webhooks, events, realtime]
-allowed-tools: Bash
+context:
+  fork: noviulian/moralis-api-skills
+  agent: claude-code
+allowed-tools:
+  - Bash
+invocation:
+  max-turns: 2
+  disable-model: false
 ---
 
 # Moralis Streams API
@@ -143,9 +150,10 @@ Use this skill when the user asks about:
 
 ## Endpoint Rules
 
-Each endpoint has its own rule file with full documentation:
+Endpoints and reference docs live in `rules/`:
 
 ```bash
+# Endpoint rules (examples)
 rules/GetStreams.md          # List all streams
 rules/CreateStream.md        # Create a new stream
 rules/GetStream.md           # Get stream details
@@ -153,10 +161,12 @@ rules/UpdateStream.md        # Update existing stream
 rules/DeleteStream.md        # Delete a stream
 rules/AddAddressToStream.md  # Add addresses to monitor
 rules/DeleteAddressFromStream.md  # Remove addresses
-rules/FAQ.md                 # Frequently asked questions
-rules/WebhookSecurity.md     # Verify webhook signatures
-rules/WebhookResponseBody.md # Webhook payload structure examples
 # ... and 14 more
+
+# Reference docs (non-endpoint)
+rules/FAQ.md
+rules/WebhookSecurity.md
+rules/WebhookResponseBody.md
 ```
 
 ## Endpoint Catalog

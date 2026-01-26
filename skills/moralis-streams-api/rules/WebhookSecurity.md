@@ -2,6 +2,8 @@
 
 All webhook requests sent by Moralis Streams are signed with your streams secret to verify authenticity.
 
+**Note:** The code snippets below are illustrative examples only. They are not drop-in production code, and you are free to use any libraries or frameworks you prefer in your own project.
+
 ## Signature Header
 
 The signature is included in the request headers:

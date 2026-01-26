@@ -30,9 +30,20 @@ Required frontmatter:
 ---
 name: your-skill-name
 description: What this skill does and when to use it
-tags: [web3, ...]
-version: 1.0.0
-author: web3-skills
+license: MIT
+compatibility: Requires Node.js (built-in modules only)
+metadata:
+  version: "1.0.0"
+  author: web3-skills
+  tags: [web3, ...]
+context:
+  fork: noviulian/moralis-api-skills
+  agent: claude-code
+allowed-tools:
+  - Bash
+invocation:
+  max-turns: 2
+  disable-model: false
 ---
 ```
 

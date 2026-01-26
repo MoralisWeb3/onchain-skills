@@ -7,14 +7,14 @@ title: Moralis API Skills for Claude Code
 
 Comprehensive skills collection for Claude Code with Moralis API integration:
 
-- **Moralis Data API** (v3.1.0) - 140 endpoints for EVM & Solana blockchain data
-- **Moralis Streams API** (v3.1.0) - 20 endpoints for real-time event monitoring
+- **Moralis Data API** - 136 endpoints for EVM & Solana blockchain data
+- **Moralis Streams API** - 20 endpoints for real-time event monitoring
 
 ## Features
 
 - **Zero Dependencies** - Pure Node.js built-in modules only
 - **Dual Blockchain Support** - EVM and Solana with auto-detection
-- **160 REST Endpoints** - 140 Data API + 20 Streams API
+- **156 REST Endpoints** - 136 Data API + 20 Streams API
 - **Real-time Event Streaming** - Webhook-based monitoring
 - **Session-Based API Key Storage** - API keys stored in memory only, never written to disk
 - **Skills-Based Architecture** - Install via `npx skills add`
@@ -53,7 +53,7 @@ If you prefer to install individual skills or want more control:
 
 #### 1. Get API Key
 
-1. Register at **[admin.moralis.io/register](https://admin.moralis.io/register)** (free, no credit card required)
+1. Register at **[admin.moralis.com/register](https://admin.moralis.com/register)** (free, no credit card required)
 2. Get your API key at **[admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)**
 
 #### 2. Install Skills
@@ -101,10 +101,10 @@ Or manage Streams:
 
 ## Skills Overview
 
-| Skill                   | Version | Endpoints | EVM | Solana | Description                         |
-| ----------------------- | ------- | --------- | --- | ------ | ----------------------------------- |
-| **moralis-data-api**    | 3.1.0   | 140       | ✅  | ✅     | Wallets, tokens, NFTs, DeFi, price  |
-| **moralis-streams-api** | 3.1.0   | 20        | ✅  | ❌     | Real-time event streaming           |
+| Skill                   | Endpoints | EVM | Solana | Description                         |
+| ----------------------- | --------- | --- | ------ | ----------------------------------- |
+| **moralis-data-api**    | 136       | ✅  | ✅     | Wallets, tokens, NFTs, DeFi, price  |
+| **moralis-streams-api** | 20        | ✅  | ❌     | Real-time event streaming           |
 
 ## Supported Chains
 

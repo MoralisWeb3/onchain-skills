@@ -182,7 +182,7 @@ Solana-specific endpoints and EVM endpoints that support Solana via the `chain=s
 
 Real-time blockchain event monitoring with webhook delivery.
 
-### Stream Management (17 endpoints)
+### Stream Management (18 endpoints)
 
 Create, update, delete, and manage streams.
 
@@ -192,10 +192,36 @@ Create, update, delete, and manage streams.
 | [CreateStream](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/CreateStream.md) | Create stream |
 | [DeleteAddressFromStream](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/DeleteAddressFromStream.md) | Delete address from stream |
 | [DeleteStream](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/DeleteStream.md) | Delete stream |
-| [GetStreams](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetStreams.md) | Get streams |
+| [DuplicateStream](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/DuplicateStream.md) | Duplicate stream |
+| [GetAddresses](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetAddresses.md) | Get addresses by stream |
+| [GetHistory](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetHistory.md) | Get history |
+| [GetLogs](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetLogs.md) | Get logs |
+| [GetSettings](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetSettings.md) | Get project settings |
+| [GetStats](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetStats.md) | Get project stats |
+| [GetStatsByStreamId](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetStatsByStreamId.md) | Get project stats by Stream ID |
 | [GetStream](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetStream.md) | Get a specific stream |
+| [GetStreamBlockDataByNumber](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetStreamBlockDataByNumber.md) | Get webhook data returned on the block number with provided stream config |
+| [GetStreamBlockDataToWebhookByNumber](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetStreamBlockDataToWebhookByNumber.md) | Send webhook based on a specific block number using stream config and addresses |
+| [GetStreams](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/GetStreams.md) | Get streams |
+| [ReplaceAddressFromStream](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/ReplaceAddressFromStream.md) | Replaces address from stream |
 | [UpdateStream](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/UpdateStream.md) | Update stream |
-| [UpdateStreamStatus](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/UpdateStreamStatus.md) | Update stream status (pause/resume) |
+| [UpdateStreamStatus](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/UpdateStreamStatus.md) | Update stream status |
+
+### Status & Settings (1 endpoint)
+
+Configure project-level settings.
+
+| Endpoint | Description |
+|----------|-------------|
+| [SetSettings](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/SetSettings.md) | Set project settings |
+
+### History & Analytics (1 endpoint)
+
+Replay historical events.
+
+| Endpoint | Description |
+|----------|-------------|
+| [ReplayHistory](https://github.com/noviulian/moralis-api-skills/blob/main/skills/moralis-streams-api/rules/ReplayHistory.md) | Replay history |
 
 ### Stream Types
 

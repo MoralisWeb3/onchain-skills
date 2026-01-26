@@ -7,7 +7,14 @@ metadata:
   version: "3.1.0"
   author: web3-skills
   tags: [web3, blockchain, evm, solana, wallet, token, nft, defi]
-allowed-tools: Bash
+context:
+  fork: noviulian/moralis-api-skills
+  agent: claude-code
+allowed-tools:
+  - Bash
+invocation:
+  max-turns: 2
+  disable-model: false
 ---
 
 # Moralis Data API
@@ -121,17 +128,17 @@ Use this skill when the user asks about:
 Each endpoint has its own rule file with full documentation:
 
 ```bash
-# EVM endpoints (112 rules - excludes 4 ignored endpoints)
+# EVM endpoints (102 total)
 rules/getWalletNFTs.md
 rules/getTokenPrice__evm.md
 rules/getWalletTokenBalances.md
-# ... and 109 more
+# ... and 99 more
 
-# Solana endpoints (41 rules total)
+# Solana endpoints (34 total)
 rules/getNFTMetadata__solana.md
 rules/getTokenPrice__solana.md
 rules/balance__solana.md
-# ... and 38 more (including 17 EVM variants that support Solana chain)
+# ... and 31 more (including 10 EVM variants that support Solana chain)
 ```
 
 **Note:**
@@ -146,8 +153,6 @@ Complete list of all 136 endpoints (102 EVM + 34 Solana) organized by category.
 ### Wallet
 
 Balances, tokens, NFTs, transaction history, profitability, and net worth data.
-
-> See [WalletHistory](rules/WalletHistory.md) for transaction categories and classifications
 
 | Endpoint | Description |
 |----------|-------------|
@@ -172,8 +177,6 @@ Balances, tokens, NFTs, transaction history, profitability, and net worth data.
 ### Token
 
 Token prices, metadata, pairs, DEX swaps, analytics, security scores, and sniper detection.
-
-> See [SupportedDexs](rules/SupportedDexs.md) for supported DEXs per chain | [TokenSearch](rules/TokenSearch.md) for token search functionality | [TokenHoldersFaq](rules/TokenHoldersFaq.md) for token holders FAQ | [SpamDetection](rules/SpamDetection.md) for spam detection
 
 | Endpoint | Description |
 |----------|-------------|
@@ -204,8 +207,6 @@ Token prices, metadata, pairs, DEX swaps, analytics, security scores, and sniper
 
 NFT metadata, transfers, traits, rarity, floor prices, and trades.
 
-> See [NftMarketplaces](rules/NftMarketplaces.md) for supported NFT marketplaces per chain | [SpamDetection](rules/SpamDetection.md) for spam detection
-
 | Endpoint | Description |
 |----------|-------------|
 | [getContractNFTs](rules/getContractNFTs.md) | Get NFTs by contract address |
@@ -234,8 +235,6 @@ NFT metadata, transfers, traits, rarity, floor prices, and trades.
 ### DeFi
 
 DeFi protocol positions, liquidity, and exposure data.
-
-> See [DefiProtocols](rules/DefiProtocols.md) for supported DeFi protocols per chain
 
 | Endpoint | Description |
 |----------|-------------|

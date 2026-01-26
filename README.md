@@ -1,6 +1,6 @@
 # Moralis API Skills
 
-Claude Code skills for [Moralis Web3 API](https://admin.moralis.io/register). Query blockchain data from EVM chains and Solana, plus real-time event streaming.
+Claude Code skills for [Moralis Web3 API](https://admin.moralis.com/register). Query blockchain data from EVM chains and Solana, plus real-time event streaming.
 
 ## Quick Start
 
@@ -16,8 +16,8 @@ Set this as the Moralis API key: <paste your API key here>
 
 | Skill | Description |
 |-------|-------------|
-| **moralis-data-api** | EVM + Solana blockchain data (140+ endpoints) |
-| **moralis-streams-api** | Real-time event monitoring with webhooks |
+| **moralis-data-api** | EVM + Solana blockchain data (136 endpoints) |
+| **moralis-streams-api** | Real-time event monitoring with webhooks (20 endpoints) |
 
 ## moralis-data-api
 
@@ -67,7 +67,7 @@ Real-time blockchain event monitoring with webhooks.
 
 ## Documentation
 
-- Get API key: [admin.moralis.io/register](https://admin.moralis.io/register)
+- Get API key: [admin.moralis.com/register](https://admin.moralis.com/register)
 - [EVM API Docs](https://deep-index.moralis.io/api-docs-2.2/)
 - [Solana API Docs](https://solana-gateway.moralis.io/api/)
 - [Streams API Docs](https://docs.moralis.io/streams)

@@ -174,14 +174,14 @@ All 15 skills and API functionality remain the same:
 
 - [README.md](README.md)
 - [Implementation Plan](IMPLEMENTATION_PLAN.md)
-- **Get API Key:** Register at [admin.moralis.io/register](https://admin.moralis.io/register), then get your key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
+- **Get API Key:** Register at [admin.moralis.com/register](https://admin.moralis.com/register), then get your key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 - [Moralis EVM API Docs](https://deep-index.moralis.io/api-docs-2.2/)
 - [Moralis Solana API Docs](https://solana-gateway.moralis.io/api/)
 
 ### Requirements
 
 - Node.js (built-in modules only)
-- **Moralis API key:** Register at [admin.moralis.io/register](https://admin.moralis.io/register), then get your key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
+- **Moralis API key:** Register at [admin.moralis.com/register](https://admin.moralis.com/register), then get your key at [admin.moralis.com/api-keys](https://admin.moralis.com/api-keys)
 
 ### Known Limitations
 
