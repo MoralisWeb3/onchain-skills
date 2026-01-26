@@ -4,7 +4,7 @@ description: Real-time blockchain event monitoring with webhooks. REST API for s
 license: MIT
 compatibility: Requires Node.js (built-in modules only)
 metadata:
-  version: "3.1.0"
+  version: "3.2.0"
   author: web3-skills
   tags: [web3, blockchain, streaming, webhooks, events, realtime]
 allowed-tools: Bash
@@ -80,6 +80,36 @@ All requests require the API key header:
 X-API-Key: <your_api_key>
 ```
 
+## Webhook Security
+
+All webhook requests from Moralis Streams are signed with your **streams secret** (different from your API key) to verify authenticity.
+
+### Signature Verification
+
+- **Header:** `x-signature`
+- **Algorithm:** `web3.utils.sha3(JSON.stringify(body) + secret)`
+- **Secret location:** Moralis Streams Settings page
+
+See [WebhookSecurity.md](rules/WebhookSecurity.md) for complete verification examples in JavaScript, Python, and Go.
+
+See [WebhookResponseBody.md](rules/WebhookResponseBody.md) for webhook payload structure examples (ERC20 transfers, NFT transfers, internal transactions, etc.).
+
+### Quick Example (JavaScript)
+
+```javascript
+const verifySignature = (req, secret) => {
+  const providedSignature = req.headers["x-signature"];
+  if (!providedSignature) throw new Error("Signature not provided");
+
+  const generatedSignature = web3.utils.sha3(JSON.stringify(req.body) + secret);
+  if (generatedSignature !== providedSignature) {
+    throw new Error("Invalid Signature");
+  }
+};
+```
+
+**Always verify signatures** before processing webhook data to prevent fake requests.
+
 ## Base URL
 
 ```
@@ -123,7 +153,10 @@ rules/UpdateStream.md        # Update existing stream
 rules/DeleteStream.md        # Delete a stream
 rules/AddAddressToStream.md  # Add addresses to monitor
 rules/DeleteAddressFromStream.md  # Remove addresses
-# ... and 13 more
+rules/FAQ.md                 # Frequently asked questions
+rules/WebhookSecurity.md     # Verify webhook signatures
+rules/WebhookResponseBody.md # Webhook payload structure examples
+# ... and 14 more
 ```
 
 ## Endpoint Catalog
