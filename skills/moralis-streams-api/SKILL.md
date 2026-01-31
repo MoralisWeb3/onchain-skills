@@ -4,7 +4,7 @@ description: Real-time blockchain event monitoring with webhooks. REST API for s
 license: MIT
 compatibility: Requires Node.js (built-in modules only)
 metadata:
-  version: "3.3.0"
+  version: "3.4.0"
   author: web3-skills
   tags: [web3, blockchain, streaming, webhooks, events, realtime]
 context:

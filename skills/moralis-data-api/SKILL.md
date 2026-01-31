@@ -4,7 +4,7 @@ description: Query Web3 blockchain data from Moralis API (wallet, token, NFT, De
 license: MIT
 compatibility: Requires Node.js (built-in modules only)
 metadata:
-    version: "3.2.0"
+    version: "3.4.0"
     author: web3-skills
     tags: [web3, blockchain, evm, solana, wallet, token, nft, defi]
 context:
