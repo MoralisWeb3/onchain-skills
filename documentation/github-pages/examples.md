@@ -13,7 +13,21 @@ Ask Claude these natural language queries to interact with the Moralis Web3 API.
 
 > Set the Moralis API key to `your_api_key_here`
 
-The key is stored in memory for the session and shared between both skills.
+The key is stored in memory for the session and shared between all skills.
+
+---
+
+## General Questions
+
+Ask general questions about Moralis before diving into specific queries:
+
+- What is Moralis?
+- What chains does Moralis support?
+- Which Moralis API should I use for tracking wallet activity?
+- Can Moralis detect snipers and bots?
+- What's the difference between the Data API and Streams?
+- How much does Moralis cost?
+- What can I build with Moralis?
 
 ---
 
@@ -77,15 +91,20 @@ The key is stored in memory for the session and shared between both skills.
 - Show me the top holders of USDC
 - What are the token pairs for this address?
 - Get DEX swaps for this token
+- Show me the token bonding status
+- Get historical token holders data
 
 ### Token Discovery
 
 - Show me trending tokens
-- What are the blue chip tokens?
 - Find tokens named "pepe"
 - Search for tokens by symbol
 - Get the top gainers today
 - Show me tokens with highest volume
+- Get bonding tokens on pump.fun
+- Show graduated tokens on Raydium
+- Get new tokens listed on Uniswap
+- Filter tokens by market cap and volume
 
 ---
 
@@ -103,6 +122,7 @@ The key is stored in memory for the session and shared between both skills.
 - Get NFT floor price for `0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d`
 - Show NFT collection stats for this contract
 - Get NFT metadata for token ID 1234
+- How many unique owners does this collection have?
 
 ### NFT Transfers & Owners
 
@@ -134,10 +154,11 @@ The key is stored in memory for the session and shared between both skills.
 - Show NFT transfers in the last hour
 - Get internal transactions for this tx hash
 
-### Contract Data
+### Address Resolution
 
-- Get contract logs for this address
-- Show events emitted by this contract
+- Resolve ENS name `vitalik.eth` to an address
+- Get the ENS name for address `0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045`
+- Resolve Unstoppable domain `example.crypto`
 
 ---
 
@@ -164,11 +185,21 @@ The key is stored in memory for the session and shared between both skills.
 - Remove this address from the stream
 - Delete stream `xyz`
 - Update my stream to also watch Polygon
+- Duplicate stream `xyz` with a new webhook URL
 
 ### Stream Settings
 
 - Get stream status
 - Update the webhook URL for this stream
+
+---
+
+## Entity & Label Queries
+
+- What entity is address `0x...`? (exchange, fund, whale, etc.)
+- Get all entity categories
+- Search for entities by name
+- Get entities in the "exchange" category
 
 ---
 
@@ -198,6 +229,7 @@ Claude automatically detects EVM vs Solana addresses:
 - Show token holder distribution
 - Get liquidity pair data
 - Analyze token price history
+- Get OHLCV candlestick data for a pair
 
 ### Search & Discovery
 
@@ -228,6 +260,7 @@ Claude automatically detects EVM vs Solana addresses:
 - Show me the top holders of this token
 - What's the trading activity for this collection?
 - Analyze this wallet's DeFi positions
+- Get the token score and security analysis
 
 ### Monitoring
 
@@ -246,6 +279,7 @@ Claude automatically detects EVM vs Solana addresses:
 4. **Ask follow-ups** - Claude can filter, sort, or dive deeper into results
 5. **Multi-chain** - Just ask - Claude will detect EVM vs Solana automatically
 6. **Pagination** - For large result sets, ask to "show more" or "get next page"
+7. **General questions first** - Use the General Knowledge skill to understand what's possible before querying
 
 ---
 

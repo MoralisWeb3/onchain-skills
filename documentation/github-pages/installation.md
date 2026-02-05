@@ -30,9 +30,14 @@ Optional: List all available skills before installing
 npx skills add novnski/moralis-api-skills --list
 ```
 
+This installs all three skills:
+- **moralis-data-api** - 135 endpoints for querying blockchain data
+- **moralis-streams-api** - 20 endpoints for real-time event streaming
+- **moralis-general-knowledge** - Routing, FAQ, pricing, and capability guidance
+
 ### Set Your API Key
 
-After installation, provide your API key when using either skill:
+After installation, provide your API key when using any skill:
 
 ```bash
 Set this as the Moralis API key: <paste your API key here>
@@ -44,7 +49,7 @@ Set this as the Moralis API key: <paste your API key here>
 Set this as the Moralis API key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-The API key is stored in memory for the current session and shared between both skills. You only need to provide it once.
+The API key is stored in memory for the current session and shared between all skills. You only need to provide it once.
 
 **That's it!** All skills are installed and ready to use.
 
@@ -75,12 +80,13 @@ git clone https://github.com/novnski/moralis-api-skills.git moralis-api-skills-t
 # Copy individual skills you need
 cp -r moralis-api-skills-temp/skills/moralis-data-api ~/.claude/skills/
 cp -r moralis-api-skills-temp/skills/moralis-streams-api ~/.claude/skills/
+cp -r moralis-api-skills-temp/skills/moralis-general-knowledge ~/.claude/skills/
 
 # Clean up
 rm -rf moralis-api-skills-temp
 ```
 
-Then provide your API key when using either skill (see below).
+Then provide your API key when using any skill (see below).
 
 ---
 
@@ -97,7 +103,7 @@ Then provide your API key when using either skill (see below).
 
 ### Session-Only Storage (Recommended)
 
-When using either skill, provide your API key with natural language:
+When using any skill, provide your API key with natural language:
 
 ```bash
 Set this as the Moralis API key: <paste your API key here>

@@ -7,14 +7,15 @@ title: Moralis API Skills for Claude Code
 
 Comprehensive skills collection for Claude Code with Moralis API integration:
 
-- **Moralis Data API** - 136 endpoints for EVM & Solana blockchain data
+- **Moralis Data API** - 135 endpoints for EVM & Solana blockchain data
 - **Moralis Streams API** - 20 endpoints for real-time event monitoring
+- **Moralis General Knowledge** - Routing, FAQ, pricing, and capability guidance
 
 ## Features
 
 - **Zero Dependencies** - Pure Node.js built-in modules only
 - **Dual Blockchain Support** - EVM and Solana with auto-detection
-- **156 REST Endpoints** - 136 Data API + 20 Streams API
+- **155 REST Endpoints** - 135 Data API + 20 Streams API
 - **Real-time Event Streaming** - Webhook-based monitoring
 - **Session-Based API Key Storage** - API keys stored in memory only, never written to disk
 - **Skills-Based Architecture** - Install via `npx skills add`
@@ -37,13 +38,13 @@ Optional: List all available skills
 npx skills add novnski/moralis-api-skills --list
 ```
 
-**Step 2:** Set your API key when using either skill
+**Step 2:** Set your API key when using any skill
 
 ```bash
 Set this as the Moralis API key: <paste your API key here>
 ```
 
-The API key is stored in memory for the session and shared between both skills.
+The API key is stored in memory for the session and shared between all skills.
 
 ---
 
@@ -66,6 +67,7 @@ git clone https://github.com/novnski/moralis-api-skills.git moralis-api-skills-t
 # Install individual skills
 cp -r moralis-api-skills-temp/skills/moralis-data-api ~/.claude/skills/
 cp -r moralis-api-skills-temp/skills/moralis-streams-api ~/.claude/skills/
+cp -r moralis-api-skills-temp/skills/moralis-general-knowledge ~/.claude/skills/
 
 # Clean up
 rm -rf moralis-api-skills-temp
@@ -73,7 +75,7 @@ rm -rf moralis-api-skills-temp
 
 #### 3. Set API Key
 
-When using either skill, provide your API key with natural language:
+When using any skill, provide your API key with natural language:
 
 ```bash
 Set this as the Moralis API key: <paste your API key here>
@@ -99,16 +101,23 @@ Or manage Streams:
 - "Create a stream to monitor all ERC20 transfers on Ethereum"
 - "Pause the stream with ID a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 
+Or ask general questions:
+
+- "What is Moralis?"
+- "Which Moralis API should I use for tracking wallet activity?"
+- "What chains does Moralis support?"
+
 ## Skills Overview
 
-| Skill                   | Endpoints | EVM | Solana | Description                         |
-| ----------------------- | --------- | --- | ------ | ----------------------------------- |
-| **moralis-data-api**    | 136       | ✅  | ✅     | Wallets, tokens, NFTs, DeFi, price  |
-| **moralis-streams-api** | 20        | ✅  | ❌     | Real-time event streaming           |
+| Skill | Endpoints | EVM | Solana | Description |
+| --- | --- | --- | --- | --- |
+| **moralis-data-api** | 135 | ✅ | ✅ | Wallets, tokens, NFTs, DeFi, price, discovery |
+| **moralis-streams-api** | 20 | ✅ | ❌ | Real-time event streaming |
+| **moralis-general-knowledge** | — | — | — | Routing, FAQ, pricing, capabilities |
 
 ## Supported Chains
 
-**EVM (40+ chains):** eth, polygon, bsc, arbitrum, optimism, avalanche, fantom, base, and more
+**EVM (40+ chains):** eth, polygon, bsc, arbitrum, optimism, avalanche, fantom, base, sei, monad, and more
 
 **Solana:** mainnet, devnet
 
