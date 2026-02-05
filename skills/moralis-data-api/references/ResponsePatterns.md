@@ -2,6 +2,19 @@
 
 Complete reference for pagination patterns and response wrapper structures in Moralis Data API.
 
+## Table of Contents
+
+- [Pattern 1: No Pagination (Single Result)](#pattern-1-no-pagination-single-result)
+- [Pattern 2: Simple Cursor/Page](#pattern-2-simple-cursorpage)
+- [Pattern 3: Full Pagination with Metadata](#pattern-3-full-pagination-with-metadata)
+- [Pattern 4: Direct Array (No Wrapper)](#pattern-4-direct-array-no-wrapper)
+- [How to Detect Which Pattern](#how-to-detect-which-pattern)
+- [Common Access Patterns](#common-access-patterns)
+- [Error Handling by Pattern](#error-handling-by-pattern)
+- [Best Practices](#best-practices)
+
+---
+
 ## Pattern 1: No Pagination (Single Result)
 
 ### Description

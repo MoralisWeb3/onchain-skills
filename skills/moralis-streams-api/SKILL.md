@@ -1,170 +1,43 @@
 ---
 name: moralis-streams-api
-description: Real-time blockchain event monitoring with webhooks. REST API for stream management (create, update, delete streams, add addresses).
-license: MIT
-compatibility: Requires Node.js (built-in modules only)
-metadata:
-  version: "3.4.0"
-  author: web3-skills
-  tags: [web3, blockchain, streaming, webhooks, events, realtime]
-context:
-  fork: novnski/moralis-api-skills
-  agent: claude-code
-allowed-tools:
-  - Bash
-invocation:
-  max-turns: 2
-  disable-model: false
+description: Real-time blockchain event monitoring with webhooks. Use when user asks about setting up webhooks, real-time event streaming, monitoring wallet addresses, tracking token transfers in real-time, creating/updating/deleting streams, adding/removing addresses from streams, or receiving blockchain events as they happen. Supports all EVM chains. NOT for querying historical or current blockchain state - use moralis-data-api instead.
 ---
 
-## 🚨 CRITICAL: READ BEFORE IMPLEMENTING
+## CRITICAL: Read Rule Files Before Implementing
 
-**This skill requires reading rule files for accurate implementation.**
+**The #1 cause of bugs is using wrong HTTP methods or stream configurations.**
 
-The #1 cause of bugs is **not reading the rule file's example response** before writing code.
+For EVERY endpoint:
+1. Read `rules/{EndpointName}.md`
+2. Check HTTP method (PUT for create, POST for update, DELETE for delete)
+3. Verify stream ID format (UUID, not hex)
+4. Use hex chain IDs (0x1, 0x89), not names (eth, polygon)
 
-### Mandatory Pre-Implementation Checklist
-
-For EVERY endpoint you implement:
-
-1. [ ] Read `rules/{EndpointName}.md`
-2. [ ] Find the "Example Response" section
-3. [ ] Copy the EXACT JSON structure
-4. [ ] Note EVERY field name (snake_case vs camelCase)
-5. [ ] Note EVERY data type (string vs number vs boolean)
-6. [ ] Note the HTTP method (GET vs POST vs PUT vs DELETE)
-7. [ ] Note the endpoint path EXACTLY (path params vs query params)
-8. [ ] Note any wrapper structure ({ stream: {...} } vs direct arrays)
-
-**Only after completing ALL 8 checks should you write code.**
-
-Failure to follow this process will result in:
-- Wrong HTTP methods (using GET instead of PUT for creating streams)
-- Missing required fields in stream configurations
-- Runtime errors (accessing undefined properties)
-- Incorrect endpoint paths (404 errors)
+**Reading Order:**
+1. This SKILL.md (core patterns)
+2. Endpoint rule file in `rules/`
+3. Pattern references in `references/` (for edge cases only)
 
 ---
-
-## 🔒 MANDATORY READING ORDER
-
-Before implementing ANY stream endpoint, you MUST read these files in this order:
-
-1. **ALWAYS read this SKILL.md first** - Contains critical warnings and 60-70% of patterns
-2. **For specific endpoint** - Read the endpoint's rule file in `rules/{EndpointName}.md`
-3. **For complex/edge-case patterns** - Read these pattern reference files:
-   - [StreamConfiguration.md](rules/StreamConfiguration.md) - Complete stream config reference
-   - [CommonPitfalls.md](rules/CommonPitfalls.md) - Complete pitfalls reference
-
-**For 95% of use cases**, condensed examples in this SKILL.md are sufficient.
-**Only read pattern files when:** configuring streams, handling edge cases, or troubleshooting issues.
-
-**DO NOT SKIP** - Skipping pattern files causes:
-- Wrong HTTP methods (POST instead of PUT for creating streams)
-- Invalid stream configurations
-- Runtime errors (accessing undefined properties)
-
----
-
-# Moralis Streams API
-
-Real-time blockchain event monitoring with webhook delivery. Monitor transactions, logs, token transfers, NFT transfers, and internal transactions across EVM chains.
 
 ## Setup
 
-Provide your Moralis API key before using this skill. You can provide it in any of these ways:
-
+Provide your Moralis API key:
 - "Set this as the Moralis API key: `<your_key>`"
 - "Use this API key: `<your_key>`"
-- "Here's my key: `<your_key>`"
-- "Configure the API key"
-- "Set up the credentials"
 
-The key will be remembered for the current session only. If no key is set, you'll be prompted to provide one.
+The key is stored in memory for the session only. Never written to disk.
 
-**I need your Moralis API key to proceed. You can paste it like: `Set this as the Moralis API key: <key>`**
-
-### Session Memory Pattern
-
-Claude stores the key in memory throughout the session:
-
-```javascript
-// When user provides the key
-const MORALIS_API_KEY = "user_provided_key";
-
-// Use in all curl commands
-curl "https://api.moralis-streams.com/..." \
-  -H "X-API-Key: ${MORALIS_API_KEY}"
-```
-
-**Note:** The key set in this skill is also available to @moralis-data-api within the same session (and vice versa). You only need to provide it once.
-
-### Security Notes
-
-- Key is stored in memory only
-- Never written to disk
-- Never included in git commits
-- Session-isolated (forgotten when session ends)
-- No risk of accidentally committing secrets to version control
-
-### For Project Development
-
-If you're building a project (dashboard, wallet, dApp, etc.) that needs persistent API key storage:
-
-> "I recommend creating a `.env` file in your project root with:
->
-> ```bash
-> MORALIS_API_KEY=your_key_here
-> ```
->
-> **Important:** Add `.env` to your `.gitignore` file to prevent accidentally committing your key."
+**Note:** Key is shared with @moralis-data-api within the same session.
 
 ### Verify Your Key
-
-After setting the key, you can verify it works:
 
 ```bash
 curl "https://api.moralis-streams.com/streams/evm?limit=10" \
   -H "X-API-Key: YOUR_API_KEY"
 ```
 
-## Authentication
-
-All requests require the API key header:
-
-```bash
-X-API-Key: <your_api_key>
-```
-
-## Webhook Security
-
-All webhook requests from Moralis Streams are signed with your **streams secret** (different from your API key) to verify authenticity.
-
-### Signature Verification
-
-- **Header:** `x-signature`
-- **Algorithm:** `web3.utils.sha3(JSON.stringify(body) + secret)`
-- **Secret location:** Moralis Streams Settings page
-
-See [WebhookSecurity.md](rules/WebhookSecurity.md) for complete verification examples in JavaScript, Python, and Go.
-
-See [WebhookResponseBody.md](rules/WebhookResponseBody.md) for webhook payload structure examples (ERC20 transfers, NFT transfers, internal transactions, etc.).
-
-### Quick Example (JavaScript)
-
-```javascript
-const verifySignature = (req, secret) => {
-  const providedSignature = req.headers["x-signature"];
-  if (!providedSignature) throw new Error("Signature not provided");
-
-  const generatedSignature = web3.utils.sha3(JSON.stringify(req.body) + secret);
-  if (generatedSignature !== providedSignature) {
-    throw new Error("Invalid Signature");
-  }
-};
-```
-
-**Always verify signatures** before processing webhook data to prevent fake requests.
+---
 
 ## Base URL
 
@@ -172,19 +45,26 @@ const verifySignature = (req, secret) => {
 https://api.moralis-streams.com
 ```
 
-⚠️ **Important:** Streams API uses a different base URL than the Data API.
+**Important:** Different from Data API (`deep-index.moralis.io`).
 
-## When to Use This Skill
+## Authentication
 
-Use this skill when the user asks about:
-- **Real-time monitoring:** Track blockchain events as they happen
-- **Webhooks:** Set up event streaming to your server
-- **Stream management:** Create, update, delete, pause/resume streams
-- **Address monitoring:** Add/remove addresses from streams
-- **Historical delivery:** Replay past blockchain events
-- **Stream analytics:** Get stream statistics and history
+All requests require: `X-API-Key: <your_api_key>`
 
-⚠️ **NOT for:** Querying current blockchain state → Use @moralis-data-api
+---
+
+## HTTP Methods (CRITICAL)
+
+| Action | Method | Endpoint |
+|--------|--------|----------|
+| Create stream | `PUT` | `/streams/evm` |
+| Update stream | `POST` | `/streams/evm/{id}` |
+| Delete stream | `DELETE` | `/streams/evm/{id}` |
+| Get streams | `GET` | `/streams/evm` |
+
+**Common mistake:** Using POST to create streams. Use PUT instead.
+
+---
 
 ## Stream Types
 
@@ -197,129 +77,22 @@ Use this skill when the user asks about:
 | `nfttransfer` | NFT transfers |
 | `internalTx` | Internal transactions |
 
-## Endpoint Rules
+---
 
-Endpoints and reference docs live in `rules/`:
+## Quick Reference: Most Common Patterns
 
-```bash
-# Endpoint rules (examples)
-rules/GetStreams.md          # List all streams
-rules/CreateStream.md        # Create a new stream
-rules/GetStream.md           # Get stream details
-rules/UpdateStream.md        # Update existing stream
-rules/DeleteStream.md        # Delete a stream
-rules/AddAddressToStream.md  # Add addresses to monitor
-rules/DeleteAddressFromStream.md  # Remove addresses
-# ... and 14 more
+### Stream ID Format (ALWAYS UUID)
 
-# Reference docs (non-endpoint)
-rules/FAQ.md
-rules/WebhookSecurity.md
-rules/WebhookResponseBody.md
-```
-
-## Endpoint Catalog
-
-Complete list of all 20 Streams API endpoints organized by category.
-
-### Stream Management
-
-Create, update, delete, and manage streams.
-
-| Endpoint | Description |
-|----------|-------------|
-| [AddAddressToStream](rules/AddAddressToStream.md) | Add address to stream |
-| [CreateStream](rules/CreateStream.md) | Create stream |
-| [DeleteAddressFromStream](rules/DeleteAddressFromStream.md) | Delete address from stream |
-| [DeleteStream](rules/DeleteStream.md) | Delete stream |
-| [DuplicateStream](rules/DuplicateStream.md) | Duplicate stream |
-| [GetAddresses](rules/GetAddresses.md) | Get addresses by stream |
-| [GetHistory](rules/GetHistory.md) | Get history |
-| [GetLogs](rules/GetLogs.md) | Get logs |
-| [GetSettings](rules/GetSettings.md) | Get project settings |
-| [GetStats](rules/GetStats.md) | Get project stats |
-| [GetStatsByStreamId](rules/GetStatsByStreamId.md) | Get project stats by Stream ID |
-| [GetStream](rules/GetStream.md) | Get a specific evm stream. |
-| [GetStreamBlockDataByNumber](rules/GetStreamBlockDataByNumber.md) | Get webhook data returned on the block number with provided stream config |
-| [GetStreamBlockDataToWebhookByNumber](rules/GetStreamBlockDataToWebhookByNumber.md) | Send webhook based on a specific block number using stream config and addresses. |
-| [GetStreams](rules/GetStreams.md) | Get streams |
-| [ReplaceAddressFromStream](rules/ReplaceAddressFromStream.md) | Replaces address from stream |
-| [UpdateStream](rules/UpdateStream.md) | Update stream |
-| [UpdateStreamStatus](rules/UpdateStreamStatus.md) | Update stream status |
-
-### Status & Settings
-
-Pause/resume streams and configure settings.
-
-| Endpoint | Description |
-|----------|-------------|
-| [SetSettings](rules/SetSettings.md) | Set project settings |
-
-### History & Analytics
-
-Stream history, replay, statistics, logs, and block data.
-
-| Endpoint | Description |
-|----------|-------------|
-| [ReplayHistory](rules/ReplayHistory.md) | Replay history |
-
-
-## HTTP Methods
-
-| Action | HTTP Method |
-|--------|-------------|
-| Create stream | `PUT` |
-| Update stream | `POST` |
-| Delete stream | `DELETE` |
-| Get streams | `GET` |
-
-## Common Pitfalls
-
-### Top 4 Most Common Bugs
-
-1. **Using POST to create streams** - Streams API uses `PUT` for create
-2. **Wrong base URL** - Streams uses `api.moralis-streams.com`, NOT `deep-index.moralis.io`
-3. **Wrong stream ID format** - Must be UUID, not hex string
-4. **Chain IDs as strings** - Use hex (0x1, 0x89) not names (eth, polygon)
-
-### Critical Checks Before Creating/Updating Streams
-
-Before writing ANY code:
-1. ✅ Read the endpoint rule file (`rules/{EndpointName}.md`)
-2. ✅ Verify HTTP method (PUT for create, POST for update, DELETE for delete)
-3. ✅ Check stream ID is UUID format (e.g., `a1b2c3d4-e5f6-7890-abcd-ef1234567890`)
-4. ✅ Use hex chain IDs (0x1, 0x89) not string names (eth, polygon)
-5. ✅ Use lowercase status values ("active", "paused") not uppercase
-
-### HTTP Method Confusion
-
-| Action | HTTP Method | Endpoint |
-|--------|-------------|----------|
-| Create stream | `PUT` | `/streams/evm` |
-| Update stream | `POST` | `/streams/evm/{id}` |
-| Delete stream | `DELETE` | `/streams/evm/{id}` |
-| Get streams | `GET` | `/streams/evm` |
-
-⚠️ **Common mistake:** Using POST to create streams. Use PUT instead.
-
-> See [CommonPitfalls.md](rules/CommonPitfalls.md) for complete reference including response structure variations, webhook payload field differences, and more edge cases.
-
-## Quick Reference: Stream Configuration
-
-**For most common stream configs, see examples below. For complete reference, see [StreamConfiguration.md](rules/StreamConfiguration.md).**
-
-### Most Common Patterns
-
-**Stream ID is ALWAYS UUID:**
 ```typescript
-// ❌ WRONG - Hex format
+// WRONG - Hex format
 "0x1234567890abcdef"
 
-// ✅ CORRECT - UUID format
+// CORRECT - UUID format
 "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 ```
 
-**Common chain IDs (always hex):**
+### Chain IDs (ALWAYS hex)
+
 ```typescript
 "0x1"     // Ethereum
 "0x89"    // Polygon
@@ -329,65 +102,65 @@ Before writing ANY code:
 "0x2105"  // Base
 ```
 
-**Event signature (topic0) format:**
+### Event Signatures (topic0)
+
 ```typescript
-// Must be exact Solidity event signature
-"Transfer(address,address,uint256)"  // ERC20 Transfer
-"Approval(address,address,uint256)"  // ERC20 Approval
-"Transfer(address,address,uint256)"  // NFT Transfer
-"MyEvent(address,uint256,bytes)"  // Custom event
+"Transfer(address,address,uint256)"   // ERC20/NFT Transfer
+"Approval(address,address,uint256)"   // ERC20 Approval
 ```
 
-**Status values (lowercase only):**
-```typescript
-// ✅ CORRECT
-"active"
-"paused"
+### Status Values (lowercase only)
 
-// ❌ WRONG
-"ACTIVE"
-"PAUSED"
-"Active"
-"Paused"
+```typescript
+"active"   // CORRECT
+"paused"   // CORRECT
+"ACTIVE"   // WRONG
 ```
 
-**Common field mappings:**
-```typescript
-// API response → TypeScript interface
-{
-  webhook_url: string;
-  chain_ids: string[];
-  topic0: string[];
-  all_addresses: boolean;
-  include_native_hash: boolean;
-}
-→ {
-  webhookUrl: string;
-  chainIds: string[];
-  topic0: string[];
-  allAddresses: boolean;
-  includeNativeHash: boolean;
-}
+---
+
+## Common Pitfalls (Top 5)
+
+1. **Using POST to create streams** - Use `PUT` instead
+2. **Wrong base URL** - Use `api.moralis-streams.com`, NOT `deep-index.moralis.io`
+3. **Hex stream ID** - Must be UUID format, not hex
+4. **String chain names** - Use hex (0x1), not names (eth)
+5. **Uppercase status** - Use lowercase ("active", "paused")
+
+See [references/CommonPitfalls.md](references/CommonPitfalls.md) for complete reference.
+
+---
+
+## Webhook Security
+
+Webhooks are signed with your streams secret (different from API key).
+
+- **Header:** `x-signature`
+- **Algorithm:** `sha3(JSON.stringify(body) + secret)`
+
+```javascript
+const verifySignature = (req, secret) => {
+  const provided = req.headers["x-signature"];
+  const generated = web3.utils.sha3(JSON.stringify(req.body) + secret);
+  if (generated !== provided) throw new Error("Invalid Signature");
+};
 ```
 
-> See [StreamConfiguration.md](rules/StreamConfiguration.md) for complete reference with all advanced configuration options.
+See [references/WebhookSecurity.md](references/WebhookSecurity.md) for complete examples.
 
-## Testing Stream Endpoints
+---
 
-Before implementing, verify the endpoint works with curl:
-
-### Template Commands
+## Testing Endpoints
 
 ```bash
-# Replace placeholders:
-API_KEY="your_key_here"
+API_KEY="your_key"
 WEBHOOK_URL="https://your-server.com/webhook"
 
-# Test listing streams
-curl -s "https://api.moralis-streams.com/streams/evm?limit=10" \
-  -H "X-API-Key: ${API_KEY}" | jq '.'
+# List streams (requires limit)
+curl "https://api.moralis-streams.com/streams/evm?limit=100" \
+  -H "X-API-Key: ${API_KEY}"
 
-# Test creating a stream
+# Create stream (PUT, not POST)
 curl -X PUT "https://api.moralis-streams.com/streams/evm" \
   -H "X-API-Key: ${API_KEY}" \
   -H "Content-Type: application/json" \
@@ -397,156 +170,91 @@ curl -X PUT "https://api.moralis-streams.com/streams/evm" \
     "tag": "test",
     "topic0": ["Transfer(address,address,uint256)"],
     "allAddresses": false,
-    "chainIds": ["0x1"],
-    "advancedOptions": [{
-      "topic0": "Transfer(address,address,uint256)",
-      "includeNativeHash": true
-    }]
-  }' | jq '.'
-```
+    "chainIds": ["0x1"]
+  }'
 
-### Quick Test by Category
-
-```bash
-# List all streams (requires limit parameter)
-curl "https://api.moralis-streams.com/streams/evm?limit=100" \
-  -H "X-API-Key: ${API_KEY}"
-
-# Get specific stream
-curl "https://api.moralis-streams.com/streams/evm/<stream_id>" \
-  -H "X-API-Key: ${API_KEY}"
-
-# Get stream stats
-curl "https://api.moralis-streams.com/streams/evm/<stream_id>/stats" \
-  -H "X-API-Key: ${API_KEY}"
-
-# Pause a stream
+# Pause stream (POST to status)
 curl -X POST "https://api.moralis-streams.com/streams/evm/<stream_id>/status" \
   -H "X-API-Key: ${API_KEY}" \
   -H "Content-Type: application/json" \
   -d '{"status": "paused"}'
 ```
 
-## Troubleshooting Stream Issues
+---
 
-### Issue: "400 Bad Request on stream creation"
+## Quick Troubleshooting
 
-**Cause**: Invalid stream configuration
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| "400 Bad Request" | Invalid config | Check webhookUrl, topic0 format, chainIds |
+| "404 Not Found" | Wrong stream ID | Verify UUID format |
+| "Method Not Allowed" | Wrong HTTP method | PUT for create, POST for update |
+| "Missing limit" | GET /streams/evm | Add `?limit=100` |
+| "No webhooks" | Stream paused | Check status is "active" |
 
-**Common mistakes**:
-- Missing required `webhookUrl`
-- Invalid `topic0` format (must be exact event signature)
-- `allAddresses: true` without proper resource allocation
-- Invalid chain ID format (use hex strings)
+---
 
-**Solution**: Verify all required fields in `rules/CreateStream.md`
+## Endpoint Categories
 
-### Issue: "404 Not Found for stream"
+### Stream Management
 
-**Cause**: Stream ID format is wrong or stream doesn't exist
+| Endpoint | Description |
+|----------|-------------|
+| [CreateStream](rules/CreateStream.md) | Create new stream (PUT) |
+| [GetStreams](rules/GetStreams.md) | List all streams |
+| [GetStream](rules/GetStream.md) | Get stream details |
+| [UpdateStream](rules/UpdateStream.md) | Update stream (POST) |
+| [DeleteStream](rules/DeleteStream.md) | Delete stream |
+| [UpdateStreamStatus](rules/UpdateStreamStatus.md) | Pause/resume stream |
 
-**Solution**:
-```typescript
-// Check if it's a valid UUID format
-const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-if (!uuidRegex.test(streamId)) {
-  throw new Error('Invalid stream ID format. Must be UUID.');
-}
-```
+### Address Management
 
-### Issue: "Using wrong HTTP method"
+| Endpoint | Description |
+|----------|-------------|
+| [AddAddressToStream](rules/AddAddressToStream.md) | Add addresses |
+| [DeleteAddressFromStream](rules/DeleteAddressFromStream.md) | Remove address |
+| [GetAddresses](rules/GetAddresses.md) | List monitored addresses |
+| [ReplaceAddressFromStream](rules/ReplaceAddressFromStream.md) | Replace address |
 
-**Cause**: Streams API uses non-standard HTTP methods
+### History & Analytics
 
-**Solution**:
-```typescript
-// ✅ CORRECT
-PUT    /streams/evm          // Create
-POST   /streams/evm/{id}     // Update
-DELETE /streams/evm/{id}     // Delete
-GET    /streams/evm          // List
+| Endpoint | Description |
+|----------|-------------|
+| [GetHistory](rules/GetHistory.md) | Get webhook history |
+| [GetStats](rules/GetStats.md) | Get project stats |
+| [GetStatsByStreamId](rules/GetStatsByStreamId.md) | Get stream stats |
+| [ReplayHistory](rules/ReplayHistory.md) | Replay past events |
 
-// ❌ WRONG
-POST   /streams/evm          // Won't create
-GET    /streams/evm/{id}     // Won't update
-```
+### Settings
 
-### Issue: "Missing limit parameter"
+| Endpoint | Description |
+|----------|-------------|
+| [GetSettings](rules/GetSettings.md) | Get project settings |
+| [SetSettings](rules/SetSettings.md) | Update settings |
 
-**Cause**: `GET /streams/evm` requires `limit` parameter
+---
 
-**Solution**:
+## Example: Create ERC20 Transfer Monitor
+
 ```bash
-# ❌ WRONG - Missing limit
-curl "https://api.moralis-streams.com/streams/evm"
-
-# ✅ CORRECT - Includes limit (max 100)
-curl "https://api.moralis-streams.com/streams/evm?limit=100"
+curl -X PUT "https://api.moralis-streams.com/streams/evm" \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookUrl": "https://your-server.com/webhook",
+    "description": "Monitor ERC20 transfers",
+    "tag": "erc20-monitor",
+    "topic0": ["Transfer(address,address,uint256)"],
+    "allAddresses": true,
+    "chainIds": ["0x1", "0x89"],
+    "advancedOptions": [{
+      "topic0": "Transfer(address,address,uint256)",
+      "includeNativeHash": true
+    }]
+  }'
 ```
 
-### Issue: "Webhook signature verification failing"
-
-**Cause**: Incorrect signature calculation
-
-**Solution**: See `rules/WebhookSecurity.md` for complete examples
-
-```typescript
-// Correct signature calculation
-const signature = web3.utils.sha3(JSON.stringify(body) + secret);
-```
-
-### Issue: "No webhook data received"
-
-**Cause**: Stream not active or no matching events
-
-**Solution**:
-1. Verify stream status is `"active"` (not `"paused"`)
-2. Check `chainIds` are correct
-3. Verify `topic0` matches the contract event
-4. For address-specific streams, verify addresses are added
-5. Check webhook URL is accessible from internet
-
-## Recommended Development Workflow
-
-### Step 1: Understand Stream Requirements
-- What events do you want to monitor?
-- Which chains?
-- Specific addresses or all addresses?
-- What data do you need in webhooks?
-
-### Step 2: Read the Rule File
-- Open `rules/{EndpointName}.md`
-- Find the "Example Response" section
-- Copy the exact JSON structure
-
-### Step 3: Test with curl
-- Use the template from "Testing Stream Endpoints" above
-- Create a test stream first
-- Verify webhook endpoint is reachable
-
-### Step 4: Implement Webhook Handler
-- Create webhook endpoint in your application
-- Implement signature verification (CRITICAL for security)
-- Parse incoming webhook data
-- Store/process events as needed
-
-### Step 5: Implement Stream Management
-- Create stream using `CreateStream` endpoint
-- Save stream ID for later management
-- Implement pause/resume functionality
-- Implement add/remove addresses
-
-### Step 6: Test End-to-End
-- Trigger a test transaction on monitored chain
-- Verify webhook receives data
-- Verify signature verification works
-- Check data is processed correctly
-
-### Step 7: Handle Edge Cases
-- Webhook delivery failures
-- Signature verification failures
-- Duplicate events
-- Stream status changes
+---
 
 ## Pagination
 
@@ -554,90 +262,32 @@ List endpoints use cursor-based pagination:
 
 ```bash
 # First page
-curl "https://api.moralis-streams.com/streams/evm?limit=100" \
-  -H "X-API-Key: YOUR_API_KEY"
+curl "...?limit=100" -H "X-API-Key: $KEY"
 
-# Next page (use cursor from response)
-curl "https://api.moralis-streams.com/streams/evm?limit=100&cursor=<cursor>" \
-  -H "X-API-Key: YOUR_API_KEY"
+# Next page
+curl "...?limit=100&cursor=<cursor>" -H "X-API-Key: $KEY"
 ```
 
-## Example Requests
-
-```bash
-# List all streams
-curl "https://api.moralis-streams.com/streams/evm?limit=100" \
-  -H "X-API-Key: YOUR_API_KEY"
-
-# Create a new stream for monitoring ERC20 transfers
-curl -X PUT "https://api.moralis-streams.com/streams/evm" \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "webhookUrl": "https://your-server.com/webhook",
-    "description": "Monitor ERC20 transfers",
-    "tag": "erc20-monitors",
-    "topic0": ["Transfer(address,address,uint256)"],
-    "allAddresses": true,
-    "chainIds": ["0x1", "0x89"],
-    "advancedOptions": [
-      {
-        "topic0": "Transfer(address,address,uint256)",
-        "includeNativeHash": true
-      }
-    ]
-  }'
-
-# Get stream details
-curl "https://api.moralis-streams.com/streams/evm/<stream_id>" \
-  -H "X-API-Key: YOUR_API_KEY"
-
-# Delete a stream
-curl -X DELETE "https://api.moralis-streams.com/streams/evm/<stream_id>" \
-  -H "X-API-Key: YOUR_API_KEY"
-```
-
-## Stream Status
-
-Pause or resume a stream:
-
-```bash
-# Pause a stream
-curl -X POST "https://api.moralis-streams.com/streams/evm/<stream_id>/status" \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"status": "paused"}'
-
-# Resume a stream
-curl -X POST "https://api.moralis-streams.com/streams/evm/<stream_id>/status" \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"status": "active"}'
-```
-
-## Address Management
-
-Add or remove addresses from an existing stream:
-
-```bash
-# Add addresses
-curl -X POST "https://api.moralis-streams.com/streams/evm/<stream_id>/address" \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "addressToAdd": ["0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"]
-  }'
-
-# Remove address
-curl -X DELETE "https://api.moralis-streams.com/streams/evm/<stream_id>/address/<address>" \
-  -H "X-API-Key: YOUR_API_KEY"
-```
+---
 
 ## Supported Chains
 
-**EVM chains supported:** All major EVM chains including Ethereum, Polygon, BSC, Arbitrum, Optimism, Base, Avalanche, and more (use hex chain IDs like `0x1`, `0x89`, etc.)
+All major EVM chains: Ethereum (0x1), Polygon (0x89), BSC (0x38), Arbitrum (0xa4b1), Optimism (0xa), Base (0x2105), Avalanche (0xa86a), and more.
+
+See [references/StreamConfiguration.md](references/StreamConfiguration.md) for complete chain ID list.
+
+---
+
+## Reference Documentation
+
+- [references/CommonPitfalls.md](references/CommonPitfalls.md) - Complete pitfalls reference
+- [references/StreamConfiguration.md](references/StreamConfiguration.md) - Stream config reference
+- [references/WebhookSecurity.md](references/WebhookSecurity.md) - Signature verification
+- [references/WebhookResponseBody.md](references/WebhookResponseBody.md) - Webhook payload structure
+
+---
 
 ## See Also
 
-- Endpoint reference: See individual `rules/*.md` files for detailed documentation
-- Data API: @moralis-data-api for querying current blockchain state
+- Endpoint rules: `rules/*.md` files
+- Data API: @moralis-data-api for querying blockchain state

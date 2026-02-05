@@ -2,6 +2,19 @@
 
 Complete reference for common mistakes, bugs, and gotchas when working with Moralis Streams API.
 
+## Table of Contents
+
+- [HTTP Method Confusion](#http-method-confusion)
+- [Stream Configuration Gotchas](#stream-configuration-gotchas)
+- [Response Structure Variations](#response-structure-variations)
+- [Webhook Payload Fields](#webhook-payload-fields)
+- [Other Common Issues](#other-common-issues)
+- [Error Messages and Causes](#error-messages-and-causes)
+- [Debugging Tips](#debugging-tips)
+- [Prevention Checklist](#prevention-checklist)
+
+---
+
 ## HTTP Method Confusion
 
 The Streams API uses different HTTP methods than typical REST APIs:

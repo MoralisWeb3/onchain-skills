@@ -2,6 +2,19 @@
 
 Complete reference for common mistakes, bugs, and gotchas when working with Moralis Data API.
 
+## Table of Contents
+
+- [Data Type Assumptions](#data-type-assumptions-most-common-bug-source)
+- [Endpoint Path Inconsistencies](#endpoint-path-inconsistencies)
+- [HTTP Method Surprises](#http-method-surprises)
+- [Response Wrapper Structures](#response-wrapper-structures)
+- [TypeScript Property Names](#typescript-property-names)
+- [Other Common Issues](#other-common-issues)
+- [Debugging Tips](#debugging-tips)
+- [Prevention Checklist](#prevention-checklist)
+
+---
+
 ## Data Type Assumptions (MOST COMMON BUG SOURCE)
 
 **NEVER assume these without checking the rule file:**

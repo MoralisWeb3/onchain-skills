@@ -2,6 +2,20 @@
 
 Complete reference for stream configuration when working with Moralis Streams API.
 
+## Table of Contents
+
+- [Stream ID Format](#stream-id-format)
+- [Chain IDs](#chain-ids)
+- [Topic0 (Event Signature) Format](#topic0-event-signature-format)
+- [Stream Status Values](#stream-status-values)
+- [Common Stream Field Mappings](#common-stream-field-mappings)
+- [Stream Types](#stream-types)
+- [Advanced Options](#advanced-options)
+- [Address Monitoring](#address-monitoring)
+- [Best Practices](#best-practices)
+
+---
+
 ## Stream ID Format
 
 **ALWAYS UUID, never hex:**

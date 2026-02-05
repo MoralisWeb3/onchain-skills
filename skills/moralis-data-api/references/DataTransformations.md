@@ -2,6 +2,19 @@
 
 Complete reference for type conversions, field mappings, and data transformations when working with Moralis Data API.
 
+## Table of Contents
+
+- [Block Number Handling](#block-number-handling)
+- [Timestamp Conversions](#timestamp-conversions)
+- [Balance/Amount Handling](#balanceamount-handling)
+- [snake_case to camelCase Patterns](#snake_case--camelcase-patterns)
+- [Boolean String Handling](#boolean-string-handling)
+- [Common Field Mappings](#common-field-mappings)
+- [Type Conversion Utility Functions](#type-conversion-utility-functions)
+- [Best Practices](#best-practices)
+
+---
+
 ## Block Number Handling
 
 **NEVER hex, always decimal:**
