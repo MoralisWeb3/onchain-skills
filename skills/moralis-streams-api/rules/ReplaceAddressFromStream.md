@@ -24,7 +24,7 @@ PATCH
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | - | No | The address or a list of addresses to be removed from the Stream. | \`string\` |
+| address | - | No | The address or a list of addresses to replace in the Stream. | \`string\` |
 
 ## Response Example
 

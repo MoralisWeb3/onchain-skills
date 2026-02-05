@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| limit | number | Yes | - | - |
+| limit | number | Yes | - | \`100\` |
 | cursor | string | No | - | - |
 | transactionHash | string | No | - | - |
 | excludePayload | boolean | No | - | - |
@@ -68,7 +68,7 @@ Ok
 ## Example (curl)
 
 ```bash
-curl -X GET "https://api.moralis-streams.com/history" \
+curl -X GET "https://api.moralis-streams.com/history?limit=100" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

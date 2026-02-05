@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| limit | number | Yes | Limit response results max value 100 | - |
+| limit | number | Yes | Limit response results max value 100 | \`100\` |
 | cursor | string | No | Cursor for fetching next page | - |
 | status | string | No | - | - |
 
@@ -82,7 +82,7 @@ Ok
 ## Example (curl)
 
 ```bash
-curl -X GET "https://api.moralis-streams.com/streams/evm" \
+curl -X GET "https://api.moralis-streams.com/streams/evm?limit=100" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

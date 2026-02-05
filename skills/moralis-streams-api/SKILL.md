@@ -1,6 +1,12 @@
 ---
 name: moralis-streams-api
 description: Real-time blockchain event monitoring with webhooks. Use when user asks about setting up webhooks, real-time event streaming, monitoring wallet addresses, tracking token transfers in real-time, creating/updating/deleting streams, adding/removing addresses from streams, or receiving blockchain events as they happen. Supports all EVM chains. NOT for querying historical or current blockchain state - use moralis-data-api instead.
+license: MIT
+compatibility: Requires Node.js (built-in modules only)
+metadata:
+  version: "3.4.0"
+  author: web3-skills
+allowed-tools: Bash Read Grep Glob
 ---
 
 ## CRITICAL: Read Rule Files Before Implementing
@@ -61,6 +67,7 @@ All requests require: `X-API-Key: <your_api_key>`
 | Update stream | `POST` | `/streams/evm/{id}` |
 | Delete stream | `DELETE` | `/streams/evm/{id}` |
 | Get streams | `GET` | `/streams/evm` |
+| Replace addresses | `PATCH` | `/streams/evm/{id}/address` |
 
 **Common mistake:** Using POST to create streams. Use PUT instead.
 
@@ -290,6 +297,8 @@ See [references/StreamConfiguration.md](references/StreamConfiguration.md) for c
 - [references/StreamConfiguration.md](references/StreamConfiguration.md) - Stream config reference
 - [references/WebhookSecurity.md](references/WebhookSecurity.md) - Signature verification
 - [references/WebhookResponseBody.md](references/WebhookResponseBody.md) - Webhook payload structure
+- [references/MonitorMultipleAddresses.md](references/MonitorMultipleAddresses.md) - Multi-address monitoring patterns
+- [references/ReplayFailedWebhooks.md](references/ReplayFailedWebhooks.md) - Replay failed webhook guide
 
 ---
 

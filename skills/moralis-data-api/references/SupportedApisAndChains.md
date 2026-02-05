@@ -96,6 +96,28 @@ Legend: ✅ Supported | ❌ Not Supported | 🔄 Coming Soon
 | **Zetachain Testnet** (0x1b59)    | 🔄 Coming Soon |
 | **HyperEVM** (0x3e7)              | ❌ Unsupported |
 
+### Solana
+
+Solana uses a separate base URL (`https://solana-gateway.moralis.io`) and dedicated endpoints with the `__solana` suffix.
+
+| Network | Wallet | NFT | Token | Token Price | SPL |
+| ------- | ------ | --- | ----- | ----------- | --- |
+| **Mainnet** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Devnet** | ✅ | ✅ | ✅ | ❌ | ✅ |
+
+**Supported Solana APIs:**
+- **Wallet**: Native balance (`balance__solana`), portfolio (`getPortfolio__solana`)
+- **Token**: Metadata (`getTokenMetadata__solana`), prices (`getTokenPrice__solana`, `getMultipleTokenPrices__solana`)
+- **NFT**: Metadata (`getNFTMetadata__solana`), owned NFTs (`getNFTs__solana`)
+- **SPL**: SPL token balances (`getSPL__solana`)
+- **Analytics**: Token scores, trending tokens, volume stats, candlesticks, pair stats
+
+**Limitations:**
+- No DeFi position tracking on Solana
+- No profitability/PnL analysis
+- No floor price data
+- Price data only available on Mainnet
+
 ## Key Insights
 
 ### Full API Coverage

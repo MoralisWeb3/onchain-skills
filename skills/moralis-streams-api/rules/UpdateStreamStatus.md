@@ -24,10 +24,7 @@ POST
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| status | string (active, paused, error, terminated) | No | The stream status:
-[active] The Stream is healthy and processing blocks
-[paused] The Stream is paused and is not processing blocks
-[error] The Stream has encountered an error and is not processing blocks | \`[object Object]\` |
+| status | string (active, paused) | No | The stream status: active (processing blocks) or paused (not processing blocks) | \`active\` |
 
 ## Response Example
 
@@ -81,6 +78,6 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/:id/status" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "status": {}
+  "status": "active"
 }'
 ```

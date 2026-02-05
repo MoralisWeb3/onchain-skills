@@ -2,19 +2,6 @@ const fs = require("fs");
 const path = require("path");
 
 /**
- * @name camelToSnakeCase
- * @description Convert camelCase to kebab-case for file names
- */
-const camelToSnakeCase = (str) => {
-  return (str.charAt(0).toLowerCase() + str.slice(1))
-    .replaceAll("NFT", "Nft")
-    .replaceAll("SPL", "Spl")
-    .replaceAll("IPFS", "Ipfs")
-    .replaceAll("ERC", "Erc")
-    .replace(/[A-Z]/g, (letter) => "-" + letter.toLowerCase());
-};
-
-/**
  * @name generateDefaultExample
  * @description Generate a default example value based on field type and name
  */
@@ -107,7 +94,6 @@ const writeFileIfChanged = (filepath, contents) => {
 };
 
 module.exports = {
-  camelToSnakeCase,
   generateDefaultExample,
   addMissingExamples,
   loadExistingConfigs,

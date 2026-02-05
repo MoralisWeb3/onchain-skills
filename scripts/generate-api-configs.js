@@ -376,6 +376,50 @@ const formatSwaggerJSON = (swaggerJSON, apiHost) => {
 };
 
 /**
+ * @name applySwaggerFixes
+ * @description Fix known upstream swagger issues that produce incorrect output.
+ *   These corrections are applied post-fetch so they survive regeneration.
+ */
+const applySwaggerFixes = (configs) => {
+    const streams = configs.streams;
+    if (!streams) return;
+
+    // Fix: Add example values to required 'limit' query params so curl examples include them
+    const endpointsNeedingLimitExample = ["GetStreams", "GetAddresses", "GetHistory", "GetLogs"];
+    for (const opId of endpointsNeedingLimitExample) {
+        const endpoint = streams[opId];
+        if (!endpoint) continue;
+        const limitParam = (endpoint.queryParams || []).find((p) => p.name === "limit");
+        if (limitParam && limitParam.example === undefined) {
+            limitParam.example = 100;
+        }
+    }
+
+    // Fix: UpdateStreamStatus - swagger has "example": {} which becomes [object Object],
+    // and includes "error"/"terminated" in enum which are read-only status values
+    if (streams.UpdateStreamStatus && streams.UpdateStreamStatus.bodyParam) {
+        const statusField = (streams.UpdateStreamStatus.bodyParam.fields || []).find((f) => f.name === "status");
+        if (statusField) {
+            if (typeof statusField.example === "object") {
+                statusField.example = "active";
+            }
+            if (Array.isArray(statusField.enum)) {
+                statusField.enum = ["active", "paused"];
+            }
+            statusField.description = "The stream status: active (processing blocks) or paused (not processing blocks)";
+        }
+    }
+
+    // Fix: ReplaceAddressFromStream - swagger description says "removed" instead of "replace"
+    if (streams.ReplaceAddressFromStream && streams.ReplaceAddressFromStream.bodyParam) {
+        const addressField = (streams.ReplaceAddressFromStream.bodyParam.fields || []).find((f) => f.name === "address");
+        if (addressField && addressField.description && addressField.description.includes("removed")) {
+            addressField.description = addressField.description.replace("removed", "replace");
+        }
+    }
+};
+
+/**
  * @name generateConfigs
  * @description Generate JSON config from remote swagger files
  */
@@ -429,6 +473,9 @@ const generateConfigs = async () => {
                 console.error("Failed to process API: " + key, error.message);
             }
         }
+
+        // Post-process: fix known upstream swagger issues
+        applySwaggerFixes(existingConfigs);
 
         // Write the combined result with pretty formatting
         fs.writeFileSync(

@@ -786,7 +786,7 @@ function generateDataApiCatalog(apiConfigs) {
     for (const { opId, endpoint } of endpoints.sort((a, b) =>
       a.opId.localeCompare(b.opId),
     )) {
-      const desc = (endpoint.summary || "").substring(0, 80);
+      const desc = (endpoint.summary || "").substring(0, 120);
       const filename = getFilename(opId, "evm");
       md += "| [" + opId + "](rules/" + filename + ") | " + desc + " |\n";
     }
@@ -935,7 +935,7 @@ function generateStreamsApiCatalog(apiConfigs) {
     for (const { opId, endpoint } of endpoints.sort((a, b) =>
       a.opId.localeCompare(b.opId),
     )) {
-      const desc = (endpoint.summary || "").substring(0, 80);
+      const desc = (endpoint.summary || "").substring(0, 120);
       md += "| [" + opId + "](rules/" + opId + ".md) | " + desc + " |\n";
     }
 

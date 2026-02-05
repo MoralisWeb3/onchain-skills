@@ -29974,7 +29974,8 @@
           "name": "limit",
           "description": "Limit response results max value 100",
           "required": true,
-          "type": "number"
+          "type": "number",
+          "example": 100
         },
         {
           "name": "cursor",
@@ -31815,9 +31816,9 @@
           {
             "name": "status",
             "type": "string",
-            "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
-            "enum": ["active", "paused", "error", "terminated"],
-            "example": {}
+            "description": "The stream status: active (processing blocks) or paused (not processing blocks)",
+            "enum": ["active", "paused"],
+            "example": "active"
           }
         ]
       },
@@ -32059,7 +32060,8 @@
           "name": "limit",
           "description": "Limit response results max value 100",
           "required": true,
-          "type": "number"
+          "type": "number",
+          "example": 100
         },
         {
           "name": "cursor",
@@ -32175,7 +32177,7 @@
         "fields": [
           {
             "name": "address",
-            "description": "The address or a list of addresses to be removed from the Stream.",
+            "description": "The address or a list of addresses to replace in the Stream.",
             "example": "string"
           }
         ]
@@ -32683,7 +32685,8 @@
         {
           "name": "limit",
           "required": true,
-          "type": "number"
+          "type": "number",
+          "example": 100
         },
         {
           "name": "cursor",
@@ -32928,7 +32931,8 @@
         {
           "name": "limit",
           "required": true,
-          "type": "number"
+          "type": "number",
+          "example": 100
         },
         {
           "name": "cursor",
