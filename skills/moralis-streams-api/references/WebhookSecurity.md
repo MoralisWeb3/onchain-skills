@@ -39,7 +39,7 @@ const PORT = 3000;
 // Middleware to parse JSON
 app.use(express.json());
 
-const MORALIS_API_KEY = "YOUR_API_KEY";
+const MORALIS_API_KEY = process.env.MORALIS_API_KEY;
 let SECRET_KEY = null; // Will cache the secret for the account
 
 async function getMoralisSecret() {
@@ -118,7 +118,7 @@ def force_json():
         if 'application/json' not in request.content_type:
             request.environ['CONTENT_TYPE'] = 'application/json'
 
-MORALIS_API_KEY = "YOUR_API_KEY"
+MORALIS_API_KEY = os.environ["MORALIS_API_KEY"]
 SECRET_KEY = None  # Will cache the secret for the account
 
 def get_moralis_secret():
@@ -187,7 +187,7 @@ The examples fetch the streams secret dynamically from the Moralis Streams API:
 
 ```
 GET https://api.moralis-streams.com/settings
-X-API-Key: <your_api_key>
+X-API-Key: $MORALIS_API_KEY
 ```
 
 Response includes `secretKey` - use this for webhook verification (not your API key).
@@ -208,7 +208,7 @@ Response includes `secretKey` - use this for webhook verification (not your API 
 
 ```bash
 curl "https://api.moralis-streams.com/settings" \
-  -H "X-API-Key: YOUR_API_KEY"
+  -H "X-API-Key: $MORALIS_API_KEY"
 ```
 
 ### Option 2: Via Dashboard

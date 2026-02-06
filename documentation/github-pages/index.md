@@ -22,25 +22,17 @@ Comprehensive skills collection for Claude Code with Moralis API integration:
 
 ## Quick Start
 
-### Install Skills (Recommended)
-
-Install all Moralis API skills:
-
-**Step 1:** Install the skills
+### Install the skills
 
 ```bash
 npx skills add novnski/moralis-api-skills
 ```
 
-Optional: List all available skills
+### Set your API key (optional)
 
-```bash
-npx skills add novnski/moralis-api-skills --list
+Open Claude Code and tell it:
+
 ```
-
-**Step 2:** Set your API key when using any skill
-
-```bash
 Set this as the Moralis API key: <paste your API key here>
 ```
 

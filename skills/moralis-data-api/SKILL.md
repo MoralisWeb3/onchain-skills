@@ -30,20 +30,27 @@ For EVERY endpoint:
 
 ## Setup
 
-Provide your Moralis API key:
+### API Key (optional)
 
-- "Set this as the Moralis API key: `<your_key>`"
-- "Use this API key: `<your_key>`"
+Ask the user if they'd like to provide their Moralis API key now. This is optional — they can set it up later.
 
-The key is stored in memory for the session only. Never written to disk.
+- **If they provide a key:** Save it to the `.env` file that the skills directory can discover (see Environment Variable Discovery below). Add `MORALIS_API_KEY=<their_key>` to the file. Make sure `.env` is in `.gitignore`.
+- **If they don't have a key yet:** Let them know they can get one free at [admin.moralis.com/register](https://admin.moralis.com/register). Recommend creating the `.env` file and offer to help set it up when they're ready.
 
-**Note:** Key is shared with @moralis-streams-api within the same session.
+### Environment Variable Discovery
+
+The `.env` file location depends on how skills are installed:
+
+| Installation | `.env` location |
+|---|---|
+| Project skills (`<project>/.claude/skills/`) | `<project>/.claude/.env` |
+| Global skills (`~/.claude/skills/`) | `~/.claude/.env` |
 
 ### Verify Your Key
 
 ```bash
 curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/balance?chain=0x1" \
-  -H "X-API-Key: YOUR_API_KEY"
+  -H "X-API-Key: $MORALIS_API_KEY"
 ```
 
 ---
@@ -57,7 +64,7 @@ curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37
 
 ## Authentication
 
-All requests require: `X-API-Key: <your_api_key>`
+All requests require: `X-API-Key: $MORALIS_API_KEY`
 
 ---
 
@@ -148,21 +155,20 @@ See [references/Pagination.md](references/Pagination.md) for details.
 ## Testing Endpoints
 
 ```bash
-API_KEY="your_key"
 ADDRESS="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
 CHAIN="0x1"
 
 # Wallet Balance
 curl "https://deep-index.moralis.io/api/v2.2/${ADDRESS}/balance?chain=${CHAIN}" \
-  -H "X-API-Key: ${API_KEY}"
+  -H "X-API-Key: $MORALIS_API_KEY"
 
 # Token Price
 curl "https://deep-index.moralis.io/api/v2.2/erc20/0x6B175474E89094C44Da98b954EedeAC495271d0F/price?chain=${CHAIN}" \
-  -H "X-API-Key: ${API_KEY}"
+  -H "X-API-Key: $MORALIS_API_KEY"
 
 # Wallet Transactions (note result wrapper)
 curl "https://deep-index.moralis.io/api/v2.2/${ADDRESS}?chain=${CHAIN}&limit=5" \
-  -H "X-API-Key: ${API_KEY}" | jq '.result'
+  -H "X-API-Key: $MORALIS_API_KEY" | jq '.result'
 ```
 
 ---

@@ -4,11 +4,17 @@ Claude Code skills for [Moralis Web3 API](https://admin.moralis.com/register). Q
 
 ## Quick Start
 
-```bash
-# Install the skills
-npx skills add novnski/moralis-api-skills
+### Install the skills
 
-# Set your API key (when using any skill)
+```bash
+npx skills add novnski/moralis-api-skills
+```
+
+### Set your API key (optional)
+
+Open Claude Code and tell it:
+
+```
 Set this as the Moralis API key: <paste your API key here>
 ```
 

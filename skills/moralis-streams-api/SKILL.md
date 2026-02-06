@@ -28,19 +28,27 @@ For EVERY endpoint:
 
 ## Setup
 
-Provide your Moralis API key:
-- "Set this as the Moralis API key: `<your_key>`"
-- "Use this API key: `<your_key>`"
+### API Key (optional)
 
-The key is stored in memory for the session only. Never written to disk.
+Ask the user if they'd like to provide their Moralis API key now. This is optional — they can set it up later.
 
-**Note:** Key is shared with @moralis-data-api within the same session.
+- **If they provide a key:** Save it to the `.env` file that the skills directory can discover (see Environment Variable Discovery below). Add `MORALIS_API_KEY=<their_key>` to the file. Make sure `.env` is in `.gitignore`.
+- **If they don't have a key yet:** Let them know they can get one free at [admin.moralis.com/register](https://admin.moralis.com/register). Recommend creating the `.env` file and offer to help set it up when they're ready.
+
+### Environment Variable Discovery
+
+The `.env` file location depends on how skills are installed:
+
+| Installation | `.env` location |
+|---|---|
+| Project skills (`<project>/.claude/skills/`) | `<project>/.claude/.env` |
+| Global skills (`~/.claude/skills/`) | `~/.claude/.env` |
 
 ### Verify Your Key
 
 ```bash
 curl "https://api.moralis-streams.com/streams/evm?limit=10" \
-  -H "X-API-Key: YOUR_API_KEY"
+  -H "X-API-Key: $MORALIS_API_KEY"
 ```
 
 ---
@@ -55,7 +63,7 @@ https://api.moralis-streams.com
 
 ## Authentication
 
-All requests require: `X-API-Key: <your_api_key>`
+All requests require: `X-API-Key: $MORALIS_API_KEY`
 
 ---
 
@@ -160,16 +168,15 @@ See [references/WebhookSecurity.md](references/WebhookSecurity.md) for complete 
 ## Testing Endpoints
 
 ```bash
-API_KEY="your_key"
 WEBHOOK_URL="https://your-server.com/webhook"
 
 # List streams (requires limit)
 curl "https://api.moralis-streams.com/streams/evm?limit=100" \
-  -H "X-API-Key: ${API_KEY}"
+  -H "X-API-Key: $MORALIS_API_KEY"
 
 # Create stream (PUT, not POST)
 curl -X PUT "https://api.moralis-streams.com/streams/evm" \
-  -H "X-API-Key: ${API_KEY}" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "webhookUrl": "'${WEBHOOK_URL}'",
@@ -182,7 +189,7 @@ curl -X PUT "https://api.moralis-streams.com/streams/evm" \
 
 # Pause stream (POST to status)
 curl -X POST "https://api.moralis-streams.com/streams/evm/<stream_id>/status" \
-  -H "X-API-Key: ${API_KEY}" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"status": "paused"}'
 ```
@@ -251,7 +258,7 @@ Stream history, replay, statistics, logs, and block data.
 
 ```bash
 curl -X PUT "https://api.moralis-streams.com/streams/evm" \
-  -H "X-API-Key: YOUR_API_KEY" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "webhookUrl": "https://your-server.com/webhook",

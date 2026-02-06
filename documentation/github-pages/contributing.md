@@ -108,7 +108,7 @@ node scripts/check-solana-suffix.js        # Validate Solana suffix naming
 
 ```bash
 # Set your API key
-export MORALIS_API_KEY="your_key"
+export MORALIS_API_KEY="your_moralis_api_key"
 
 # Test a Data API query
 curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/balance?chain=0x1" \

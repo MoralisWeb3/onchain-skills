@@ -15,7 +15,7 @@ When webhook deliveries fail (network issues, server downtime, etc.), you can re
 ```bash
 curl -X GET \
   "https://api.moralis-streams.com/history/logs?limit=100&streamId=YOUR_STREAM_ID&deliveryStatus=failed" \
-  -H "X-API-Key: YOUR_API_KEY"
+  -H "X-API-Key: $MORALIS_API_KEY"
 ```
 
 **Query Parameters:**
@@ -38,7 +38,7 @@ For each failed block from the response:
 ```bash
 curl -X POST \
   "https://api.moralis-streams.com/streams/evm/0x1/block-to-webhook/12345678/YOUR_STREAM_ID" \
-  -H "X-API-Key: YOUR_API_KEY" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json"
 ```
 
@@ -56,13 +56,13 @@ curl -X POST \
 # 1. Get all failed logs for a stream
 curl -X GET \
   "https://api.moralis-streams.com/history/logs?limit=100&streamId=a1b2c3d4-e5f6-7890-abcd-ef1234567890&deliveryStatus=failed" \
-  -H "X-API-Key: YOUR_API_KEY"
+  -H "X-API-Key: $MORALIS_API_KEY"
 
 # 2. For each failed block in response, replay it
 # Example: Block 12345678 on Ethereum (0x1)
 curl -X POST \
   "https://api.moralis-streams.com/streams/evm/0x1/block-to-webhook/12345678/a1b2c3d4-e5f6-7890-abcd-ef1234567890" \
-  -H "X-API-Key: YOUR_API_KEY" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json"
 ```
 

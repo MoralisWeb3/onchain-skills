@@ -24,29 +24,17 @@ The easiest way to install all Moralis API skills:
 npx skills add novnski/moralis-api-skills
 ```
 
-Optional: List all available skills before installing
-
-```bash
-npx skills add novnski/moralis-api-skills --list
-```
-
 This installs all three skills:
 - **moralis-data-api** - 135 endpoints for querying blockchain data
 - **moralis-streams-api** - 20 endpoints for real-time event streaming
 - **moralis-general-knowledge** - Routing, FAQ, pricing, and capability guidance
 
-### Set Your API Key
+### Set Your API Key (optional)
 
-After installation, provide your API key when using any skill:
+Open Claude Code and tell it:
 
-```bash
-Set this as the Moralis API key: <paste your API key here>
 ```
-
-**Example:**
-
-```bash
-Set this as the Moralis API key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Set this as the Moralis API key: <paste your API key here>
 ```
 
 The API key is stored in memory for the current session and shared between all skills. You only need to provide it once.
@@ -117,7 +105,7 @@ If you're building a project that needs persistent API key storage, create a `.e
 
 ```bash
 # Create .env in your project root
-echo "MORALIS_API_KEY=YOUR_API_KEY" > /path/to/project/.env
+echo "MORALIS_API_KEY=your_moralis_api_key" > /path/to/project/.env
 
 # Important: Add .env to .gitignore to prevent committing your key
 echo ".env" >> /path/to/project/.gitignore
@@ -164,7 +152,7 @@ curl "https://api.moralis-streams.com/streams/evm?limit=1" \
 The `.env` file is missing. Create it:
 
 ```bash
-echo "MORALIS_API_KEY=YOUR_KEY" > ~/.claude/skills/SKILL_NAME/.env
+echo "MORALIS_API_KEY=your_moralis_api_key" > ~/.claude/skills/SKILL_NAME/.env
 ```
 
 **To get your key:**

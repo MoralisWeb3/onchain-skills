@@ -136,7 +136,7 @@ Contact Moralis support for crypto payment options.
 
 Single API key in header:
 ```
-X-API-Key: your_api_key
+X-API-Key: $MORALIS_API_KEY
 ```
 
 Get key at: https://admin.moralis.com

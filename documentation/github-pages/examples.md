@@ -11,7 +11,7 @@ Ask Claude these natural language queries to interact with the Moralis Web3 API.
 
 **Provide your API key:**
 
-> Set the Moralis API key to `your_api_key_here`
+> Set the Moralis API key to `your_moralis_api_key`
 
 The key is stored in memory for the session and shared between all skills.
 
