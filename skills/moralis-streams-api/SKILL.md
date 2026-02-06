@@ -30,10 +30,14 @@ For EVERY endpoint:
 
 ### API Key (optional)
 
-Ask the user if they'd like to provide their Moralis API key now. This is optional — they can set it up later.
+**Never ask the user to paste their API key into the chat.** Instead:
 
-- **If they provide a key:** Save it to the `.env` file that the skills directory can discover (see Environment Variable Discovery below). Add `MORALIS_API_KEY=<their_key>` to the file. Make sure `.env` is in `.gitignore`.
-- **If they don't have a key yet:** Let them know they can get one free at [admin.moralis.com/register](https://admin.moralis.com/register). Recommend creating the `.env` file and offer to help set it up when they're ready.
+1. Check if `MORALIS_API_KEY` is already set in the environment (try running `echo $MORALIS_API_KEY`).
+2. If not set, offer to create the `.env` file with an empty placeholder: `MORALIS_API_KEY=`
+3. Tell the user to open the `.env` file and paste their key there themselves.
+4. Let them know: without the key, you won't be able to test or call the Moralis API on their behalf.
+
+If they don't have a key yet, point them to [admin.moralis.com/register](https://admin.moralis.com/register) (free, no credit card).
 
 ### Environment Variable Discovery
 

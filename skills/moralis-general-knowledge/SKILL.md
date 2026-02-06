@@ -130,12 +130,8 @@ Blast, zkSync, Mantle, opBNB, Polygon zkEVM, Zetachain
 
 1. **Sign up:** https://admin.moralis.com/register
 2. **Get API key:** Dashboard → API Keys
-3. **Test endpoint:**
-   ```bash
-   curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/balance?chain=0x1" \
-     -H "X-API-Key: YOUR_KEY"
-   ```
-4. **Use skill:** Tell me your API key and what you want to build
+3. **Set up `.env`:** Add `MORALIS_API_KEY=your_key` to your `.env` file (the skill will help you create it)
+4. **Use skill:** Ask what you want to build — the skill will check for your key and guide you
 
 ---
 
@@ -236,8 +232,8 @@ For detailed information:
 
 After answering a question, always suggest the next action:
 
-1. **If user needs to query data:** "Use @moralis-data-api - provide your API key and I'll help you fetch the data."
+1. **If user needs to query data:** "Use @moralis-data-api — make sure your `MORALIS_API_KEY` is set in your `.env` file, then I can help you fetch the data."
 
-2. **If user needs real-time events:** "Use @moralis-streams-api - provide your API key and webhook URL, I'll help set up the stream."
+2. **If user needs real-time events:** "Use @moralis-streams-api — make sure your `MORALIS_API_KEY` is set in your `.env` file and have your webhook URL ready, then I can help set up the stream."
 
 3. **If user is exploring:** Suggest specific endpoints based on their use case.

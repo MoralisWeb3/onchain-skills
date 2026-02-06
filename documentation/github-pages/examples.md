@@ -9,11 +9,13 @@ Ask Claude these natural language queries to interact with the Moralis Web3 API.
 
 ## First Time Setup
 
-**Provide your API key:**
+Add your API key to a `.env` file — the skill will offer to create it for you, or do it manually:
 
-> Set the Moralis API key to `your_moralis_api_key`
+```bash
+echo "MORALIS_API_KEY=your_key_here" >> ~/.claude/.env
+```
 
-The key is stored in memory for the session and shared between all skills.
+Without the key, the skill can't call the Moralis API on your behalf.
 
 ---
 

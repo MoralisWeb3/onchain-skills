@@ -31,13 +31,13 @@ This installs all three skills:
 
 ### Set Your API Key (optional)
 
-Open Claude Code and tell it:
+Add your key to a `.env` file — the skill will offer to create it for you, or do it manually:
 
-```
-Set this as the Moralis API key: <paste your API key here>
+```bash
+echo "MORALIS_API_KEY=your_key_here" >> ~/.claude/.env
 ```
 
-The API key is stored in memory for the current session and shared between all skills. You only need to provide it once.
+Without the key, the skill can't call the Moralis API on your behalf.
 
 **That's it!** All skills are installed and ready to use.
 
@@ -74,7 +74,7 @@ cp -r moralis-api-skills-temp/skills/moralis-general-knowledge ~/.claude/skills/
 rm -rf moralis-api-skills-temp
 ```
 
-Then provide your API key when using any skill (see below).
+Then add your API key to the `.env` file (see below).
 
 ---
 
@@ -83,25 +83,13 @@ Then provide your API key when using any skill (see below).
 1. Download the skill directory you want from [GitHub](https://github.com/novnski/moralis-api-skills)
 2. Copy it to `~/.claude/skills/` or `<project>/.claude/skills/`
 3. Ensure the directory contains `SKILL.md`
-4. Set your API key (see below)
+4. Add your API key to the `.env` file (see below)
 
 ---
 
 ## Setting Your API Key (Manual Installation)
 
-### Session-Only Storage (Recommended)
-
-When using any skill, provide your API key with natural language:
-
-```bash
-Set this as the Moralis API key: <paste your API key here>
-```
-
-The API key is stored in memory only and forgotten when the session ends.
-
-### For Project Development
-
-If you're building a project that needs persistent API key storage, create a `.env` file:
+Add your key to the `.env` file. The skill will offer to create the file for you, or you can do it manually:
 
 ```bash
 # Create .env in your project root

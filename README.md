@@ -12,11 +12,13 @@ npx skills add novnski/moralis-api-skills
 
 ### Set your API key (optional)
 
-Open Claude Code and tell it:
+Add your key to a `.env` file — the skill will offer to create it for you, or do it manually:
 
+```bash
+echo "MORALIS_API_KEY=your_key_here" >> ~/.claude/.env
 ```
-Set this as the Moralis API key: <paste your API key here>
-```
+
+Without the key, the skill can't call the Moralis API on your behalf.
 
 ## Skills
 
