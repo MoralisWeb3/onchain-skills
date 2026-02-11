@@ -1,6 +1,6 @@
 ---
-name: moralis-general-knowledge
-description: Answer general questions about Moralis and Web3 development. Use when user asks "what is Moralis", "can Moralis do X", "what chains does Moralis support", "how do I get started with Moralis", "which Moralis API should I use", pricing questions, feature comparisons, or any exploratory questions about Moralis capabilities. Routes users to the correct technical skill (@moralis-data-api or @moralis-streams-api) after answering. NOT for actual API implementation - use the technical skills for that.
+name: learn-moralis
+description: Learn about Moralis and Web3 development. Invoked without a question, gives a friendly platform walkthrough — what's available, what data you can fetch, and how everything fits together. Invoked with a question, answers it directly. Use for "what is Moralis", "can Moralis do X", "what chains are supported", "how do I get started", "which API should I use", pricing, feature comparisons, or any exploratory questions. Routes to the correct technical skill (@moralis-data-api or @moralis-streams-api) after answering.
 license: MIT
 compatibility: No dependencies required - knowledge-only skill
 metadata:
@@ -9,9 +9,22 @@ metadata:
 allowed-tools: Read Grep Glob
 ---
 
-# Moralis General Knowledge
+# Learn Moralis
 
-Answer questions about Moralis, help users understand what's possible, and route them to the correct technical skill.
+## Behavior
+
+**If the user invokes `/learn-moralis` with no question** (or just says "learn moralis"), respond with a friendly platform overview. Walk them through:
+
+1. What Moralis is (enterprise Web3 data platform)
+2. The two skills available and when to use each:
+   - **@moralis-data-api** (135 endpoints) — query wallet balances, tokens, NFTs, DeFi positions, prices, transactions, analytics. Use for "what is the current/historical state?"
+   - **@moralis-streams-api** (20 endpoints) — real-time blockchain event monitoring via webhooks. Use for "notify me when something happens"
+3. Supported chains (40+ EVM chains + Solana)
+4. How to get started: set `MORALIS_API_KEY` in `.env`, then use the skill that fits their need
+
+Keep it conversational and concise — think "onboarding tour", not "dump the docs". End by asking what they'd like to build so you can point them to the right skill.
+
+**If the user invokes `/learn-moralis` with a specific question**, answer that question directly using the knowledge below, then route them to the appropriate technical skill.
 
 ## What is Moralis?
 

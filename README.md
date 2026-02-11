@@ -28,7 +28,7 @@ Without the key, the skill can't call the Moralis API on your behalf.
 |-------|-------------|
 | **moralis-data-api** | EVM + Solana blockchain data (135 endpoints) |
 | **moralis-streams-api** | Real-time event monitoring with webhooks (20 endpoints) |
-| **moralis-general-knowledge** | Routing, FAQ, pricing, and capability guidance |
+| **learn-moralis** | Routing, FAQ, pricing, and capability guidance |
 
 ## moralis-data-api
 
@@ -71,14 +71,14 @@ Real-time blockchain event monitoring with webhooks. **20 endpoints** for creati
 /moralis-streams-api Pause the stream with ID a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
 
-## moralis-general-knowledge
+## learn-moralis
 
 Knowledge-only skill for answering general questions about Moralis. Routes users to the correct technical skill after answering.
 
 ```
-/moralis-general-knowledge What is Moralis?
+/learn-moralis What is Moralis?
 
-/moralis-general-knowledge Which Moralis API should I use for tracking wallet activity?
+/learn-moralis Which Moralis API should I use for tracking wallet activity?
 ```
 
 ## Supported Chains

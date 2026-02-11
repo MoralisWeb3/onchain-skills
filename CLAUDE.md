@@ -12,7 +12,7 @@ This is a collection of Claude Code skills for integrating with the Moralis Web3
 
 ```
 skills/
-├── moralis-general-knowledge/  # General Moralis knowledge, routing, FAQ
+├── learn-moralis/              # General Moralis knowledge, routing, FAQ
 │   ├── references/
 │   │   ├── FAQ.md
 │   │   ├── ProductComparison.md
