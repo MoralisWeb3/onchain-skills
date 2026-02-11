@@ -1,6 +1,8 @@
-# Moralis API Skills
+# Onchain Skills
 
-Claude Code skills for [Moralis Web3 API](https://admin.moralis.com/register). Query blockchain data from EVM chains and Solana, plus real-time event streaming.
+Onchain skills built on the [Moralis API](https://admin.moralis.com/register). Query blockchain data from EVM chains and Solana, plus real-time event streaming.
+
+Works with any agent that supports the [Agent Skills](https://skills.sh/) standard — Claude Code, Cursor, Windsurf, GitHub Copilot, Cline, Codex, Gemini, and more.
 
 ## Quick Start
 
@@ -92,8 +94,8 @@ Knowledge-only skill for answering general questions about Moralis. Routes users
 
 ## Architecture
 
-- **Zero dependencies** — Node.js built-in modules only (`https`, `fs`, `path`, `url`, `crypto`)
-- **Session-based API key** — stored in memory, shared between all skills
+- **Zero dependencies** — all API calls use curl
+- **Works with 18+ agents** — any agent supporting the [Agent Skills](https://skills.sh/) standard
 - **Auto-generated endpoint docs** — `swagger/api-configs.json` → `scripts/generate-endpoint-rules.js` → `rules/*.md`
 - **Manually maintained references** — pattern files in each skill's `references/` directory
 
