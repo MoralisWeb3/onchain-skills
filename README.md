@@ -49,16 +49,15 @@ Unified skill for all blockchain data queries. Auto-detects EVM vs Solana from a
 - **Other** (15) — address resolution, token search, bonding, candlesticks, graduated tokens
 - **Solana** (34) — native Solana endpoints + EVM endpoints with Solana support
 
-```bash
-# EVM query - defaults to Ethereum if no chain specified
-"Get the balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
-
-# EVM query with specific chain
-"Get the balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 on Polygon"
-
-# Solana query (auto-detected from base58 address)
-"Get the balance of Solana wallet 742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
 ```
+/moralis-data-api Get the balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045
+
+/moralis-data-api Get the balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 on Polygon
+
+/moralis-data-api Get the balance of Solana wallet 742d35Cc6634C0532925a3b844Bc9e7595f0bEb
+```
+
+> **Tip:** Prefix your prompt with the skill name (e.g. `/moralis-data-api`) to load it directly. Some agents auto-detect skills, but tagging ensures it works across all agents.
 
 ## moralis-streams-api
 
@@ -66,24 +65,20 @@ Real-time blockchain event monitoring with webhooks. **20 endpoints** for creati
 
 **Stream types:** tx, log, erc20transfer, erc20approval, nfttransfer, internalTx
 
-```bash
-# Create a stream
-"Create a stream to monitor all ERC20 transfers on Ethereum"
+```
+/moralis-streams-api Create a stream to monitor all ERC20 transfers on Ethereum
 
-# Manage streams
-"Pause the stream with ID a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+/moralis-streams-api Pause the stream with ID a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
 
 ## moralis-general-knowledge
 
 Knowledge-only skill for answering general questions about Moralis. Routes users to the correct technical skill after answering.
 
-```bash
-# General questions
-"What is Moralis?"
-"Which Moralis API should I use for tracking wallet activity?"
-"What chains does Moralis support?"
-"How much does Moralis cost?"
+```
+/moralis-general-knowledge What is Moralis?
+
+/moralis-general-knowledge Which Moralis API should I use for tracking wallet activity?
 ```
 
 ## Supported Chains
