@@ -98,7 +98,7 @@ license: MIT
 compatibility: Requires Node.js (built-in modules only)
 metadata:
     version: "x.y.z"
-    author: web3-skills
+    author: MoralisWeb3
 allowed-tools: Bash Read Grep Glob
 ---
 ```

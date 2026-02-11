@@ -7,7 +7,7 @@ Claude Code skills for [Moralis Web3 API](https://admin.moralis.com/register). Q
 ### Install the skills
 
 ```bash
-npx skills add novnski/moralis-api-skills
+npx skills add MoralisWeb3/onchain-skills
 ```
 
 ### Set your API key (optional)
@@ -99,7 +99,6 @@ Knowledge-only skill for answering general questions about Moralis. Routes users
 
 ## Documentation
 
-- [Full Documentation](https://novnski.github.io/moralis-api-skills) (GitHub Pages)
 - Get API key: [admin.moralis.com/register](https://admin.moralis.com/register)
 - [EVM API Docs](https://deep-index.moralis.io/api-docs-2.2/)
 - [Solana API Docs](https://solana-gateway.moralis.io/api/)

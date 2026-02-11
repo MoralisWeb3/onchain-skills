@@ -1,11 +1,11 @@
 ---
 name: moralis-streams-api
-description: Real-time blockchain event monitoring with webhooks. Use when user asks about setting up webhooks, real-time event streaming, monitoring wallet addresses, tracking token transfers in real-time, creating/updating/deleting streams, adding/removing addresses from streams, or receiving blockchain events as they happen. Supports all EVM chains. NOT for querying historical or current blockchain state - use moralis-data-api instead.
+description: Real-time blockchain event monitoring with webhooks. Use when user asks about setting up webhooks, real-time event streaming, monitoring wallet addresses, tracking token transfers in real-time, listening to all addresses on a chain, creating/updating/deleting streams, adding/removing addresses from streams, or receiving blockchain events as they happen. Supports all EVM chains. NOT for querying historical or current blockchain state - use moralis-data-api instead.
 license: MIT
-compatibility: Requires Node.js (built-in modules only)
+compatibility: Requires curl for API calls
 metadata:
-  version: "3.4.0"
-  author: web3-skills
+  version: "1.0.0"
+  author: MoralisWeb3
 allowed-tools: Bash Read Grep Glob
 ---
 
@@ -255,6 +255,10 @@ Stream history, replay, statistics, logs, and block data.
 | [ReplayHistory](rules/ReplayHistory.md) | Replay history |
 
 
+## Listen to All Addresses
+
+Set `allAddresses: true` with a `topic0` and `abi` to monitor an event across every contract on a chain (e.g., all ERC20 transfers network-wide). Requires higher-tier plans. See [references/ListenToAllAddresses.md](references/ListenToAllAddresses.md) for complete examples, ABI templates, and gotchas.
+
 ## Example: Create ERC20 Transfer Monitor
 
 ```bash
@@ -301,6 +305,7 @@ See [references/StreamConfiguration.md](references/StreamConfiguration.md) for c
 
 ## Reference Documentation
 
+- [references/ListenToAllAddresses.md](references/ListenToAllAddresses.md) - Monitor events across all contracts on a chain
 - [references/CommonPitfalls.md](references/CommonPitfalls.md) - Complete pitfalls reference
 - [references/StreamConfiguration.md](references/StreamConfiguration.md) - Stream config reference
 - [references/WebhookSecurity.md](references/WebhookSecurity.md) - Signature verification

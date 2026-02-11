@@ -1,11 +1,11 @@
-# Contributing to Web3 Skills
+# Contributing to Onchain Skills
 
 Thank you for your interest in contributing!
 
 ## Setup
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/novnski/moralis-api-skills.git`
+2. Clone your fork: `git clone https://github.com/MoralisWeb3/onchain-skills.git`
 3. Create a branch: `git checkout -b feature/your-feature`
 
 ## Development
@@ -27,7 +27,7 @@ name: your-skill-name
 description: What this skill does and when to use it
 tags: [web3, ...]
 version: 1.0.0
-author: web3-skills
+author: MoralisWeb3
 ---
 ```
 

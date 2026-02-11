@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Bug Reproduction Script for moralis-api-skills
+# Bug Reproduction Script for onchain-skills
 # This script tests for the bugs identified in the bug report
 
-echo "=== moralis-api-skills Bug Testing Script ==="
+echo "=== onchain-skills Bug Testing Script ==="
 echo ""
 echo "This script tests for bugs identified during architecture analysis"
 echo ""

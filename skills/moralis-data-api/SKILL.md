@@ -2,10 +2,10 @@
 name: moralis-data-api
 description: Query Web3 blockchain data from Moralis API. Use when user asks about wallet data (balances, tokens, NFTs, transaction history, profitability, net worth), token data (prices, metadata, DEX pairs, analytics, security scores), NFT data (metadata, transfers, traits, rarity, floor prices), DeFi positions, entity/label data for exchanges and funds, or block and transaction data. Supports EVM chains (Ethereum, Polygon, BSC, Arbitrum, Base, Optimism, Avalanche, etc.) and Solana. NOT for real-time streaming - use moralis-streams-api instead.
 license: MIT
-compatibility: Requires Node.js (built-in modules only)
+compatibility: Requires curl for API calls
 metadata:
-  version: "3.4.0"
-  author: web3-skills
+  version: "1.0.0"
+  author: MoralisWeb3
 allowed-tools: Bash Read Grep Glob
 ---
 

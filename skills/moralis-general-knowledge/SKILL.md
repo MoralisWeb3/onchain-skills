@@ -4,8 +4,8 @@ description: Answer general questions about Moralis and Web3 development. Use wh
 license: MIT
 compatibility: No dependencies required - knowledge-only skill
 metadata:
-  version: "3.4.0"
-  author: web3-skills
+  version: "1.0.0"
+  author: MoralisWeb3
 allowed-tools: Read Grep Glob
 ---
 
