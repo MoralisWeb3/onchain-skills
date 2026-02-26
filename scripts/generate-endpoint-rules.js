@@ -50,6 +50,18 @@ const IGNORED_ENDPOINTS = new Set([
   "resyncNFTRarity",
   // Deprecated in favor of better alternatives
   "getWalletTokenBalances", // use getWalletTokenBalancesPrice instead (includes prices)
+  // Bitcoin Streams — not yet stable/public, under development
+  "bitcoinStreamsGetAll",
+  "bitcoinStreamsCreate",
+  "bitcoinStreamsGet",
+  "bitcoinStreamsUpdate",
+  "bitcoinStreamsDelete",
+  "bitcoinStreamsAddAddresses",
+  "bitcoinStreamsDeleteAddresses",
+  "bitcoinStreamsGetAddresses",
+  "bitcoinStreamsUpdateStatus",
+  "bitcoinGetBlockByNumber",
+  "bitcoinBlockToWebhook",
 ]);
 
 /**
@@ -894,6 +906,11 @@ function generateStreamsApiCatalog(apiConfigs) {
   }
 
   for (const [opId, endpoint] of Object.entries(streams)) {
+    // Skip ignored endpoints
+    if (shouldIgnoreEndpoint(opId)) {
+      continue;
+    }
+
     let categorized = false;
     const searchStr = (
       opId +
@@ -916,11 +933,16 @@ function generateStreamsApiCatalog(apiConfigs) {
     }
   }
 
+  // Count non-ignored endpoints
+  const streamsCount = Object.keys(streams).filter(
+    (id) => !shouldIgnoreEndpoint(id),
+  ).length;
+
   // Generate catalog markdown
   let md = "## Endpoint Catalog\n\n";
   md +=
     "Complete list of all " +
-    Object.keys(streams).length +
+    streamsCount +
     " Streams API endpoints organized by category.\n\n";
 
   for (const [catKey, catDef] of Object.entries(categories)) {
