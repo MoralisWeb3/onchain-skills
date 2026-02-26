@@ -105,6 +105,8 @@ app.listen(PORT, () => {
 ### Python (Flask)
 
 ```python
+import json
+import os
 from flask import Flask, request, jsonify
 import requests
 from web3 import Web3
@@ -136,9 +138,9 @@ def verify_signature(req, secret):
     if not provided_signature:
         raise TypeError("Signature not provided")
 
-    # Generate signature using request data + secret
-    data = req.data + secret.encode()
-    signature = "0x" + Web3.keccak(text=data.decode()).hex()
+    # Parse JSON then re-serialize to match JavaScript's JSON.stringify() output
+    body = json.dumps(req.get_json(), separators=(',', ':'))
+    signature = "0x" + Web3.keccak(text=body + secret).hex()
 
     print("Generated signature:", signature)
 
@@ -177,9 +179,9 @@ if __name__ == '__main__':
 
 Both examples ensure the request body is parsed as **JSON**, not raw text or other formats. This is essential because:
 
-- `JSON.stringify(req.body)` in JavaScript produces consistent output
-- `req.data` in Flask must be decoded as UTF-8 text before hashing
-- Any variation in body formatting will cause signature mismatch
+- `JSON.stringify(req.body)` in JavaScript produces consistent compact output
+- `json.dumps(req.get_json(), separators=(',', ':'))` in Python matches JavaScript's `JSON.stringify()` output
+- Any variation in body formatting (whitespace, key ordering) will cause signature mismatch
 
 ### Getting the Streams Secret
 
