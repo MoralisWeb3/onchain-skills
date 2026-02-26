@@ -74,7 +74,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -274,7 +274,11 @@
                           "description": "The mimetype of the media file [see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types]"
                         },
                         "category": {
-                          "enum": ["image", "audio", "video"]
+                          "enum": [
+                            "image",
+                            "audio",
+                            "video"
+                          ]
                         },
                         "status": {
                           "enum": [
@@ -569,7 +573,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -746,7 +750,11 @@
                       "description": "The mimetype of the media file [see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types]"
                     },
                     "category": {
-                      "enum": ["image", "audio", "video"]
+                      "enum": [
+                        "image",
+                        "audio",
+                        "video"
+                      ]
                     },
                     "status": {
                       "enum": [
@@ -1047,7 +1055,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -1120,7 +1128,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "cursor",
@@ -1502,7 +1513,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -1843,7 +1854,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -2040,7 +2051,11 @@
                           "description": "The mimetype of the media file [see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types]"
                         },
                         "category": {
-                          "enum": ["image", "audio", "video"]
+                          "enum": [
+                            "image",
+                            "audio",
+                            "video"
+                          ]
                         },
                         "status": {
                           "enum": [
@@ -2377,7 +2392,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -2515,7 +2530,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -2694,7 +2709,11 @@
                           "description": "The mimetype of the media file [see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types]"
                         },
                         "category": {
-                          "enum": ["image", "audio", "video"]
+                          "enum": [
+                            "image",
+                            "audio",
+                            "video"
+                          ]
                         },
                         "status": {
                           "enum": [
@@ -2997,7 +3016,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -3061,7 +3080,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "cursor",
@@ -3443,7 +3465,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -3627,7 +3649,11 @@
                           "description": "The mimetype of the media file [see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types]"
                         },
                         "category": {
-                          "enum": ["image", "audio", "video"]
+                          "enum": [
+                            "image",
+                            "audio",
+                            "video"
+                          ]
                         },
                         "status": {
                           "enum": [
@@ -3964,7 +3990,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -4116,7 +4142,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -4149,7 +4175,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         }
       ],
       "responses": [
@@ -4294,7 +4323,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -4401,7 +4430,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -4511,7 +4540,10 @@
                       "name": "token_ids",
                       "type": "array",
                       "description": "The token ID(s) traded",
-                      "example": ["15", "54"],
+                      "example": [
+                        "15",
+                        "54"
+                      ],
                       "field": {
                         "type": "string",
                         "example": "15"
@@ -4660,7 +4692,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -4763,7 +4795,10 @@
                       "name": "token_ids",
                       "type": "array",
                       "description": "The token ID(s) traded",
-                      "example": ["15", "54"],
+                      "example": [
+                        "15",
+                        "54"
+                      ],
                       "field": {
                         "type": "string",
                         "example": "15"
@@ -4905,7 +4940,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -5008,7 +5043,10 @@
                       "name": "token_ids",
                       "type": "array",
                       "description": "The token ID(s) traded",
-                      "example": ["15", "54"],
+                      "example": [
+                        "15",
+                        "54"
+                      ],
                       "field": {
                         "type": "string",
                         "example": "15"
@@ -5150,7 +5188,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -5469,7 +5507,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -5811,7 +5849,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -5962,7 +6000,11 @@
                     "description": "The mimetype of the media file [see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types]"
                   },
                   "category": {
-                    "enum": ["image", "audio", "video"]
+                    "enum": [
+                      "image",
+                      "audio",
+                      "video"
+                    ]
                   },
                   "status": {
                     "enum": [
@@ -6303,7 +6345,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -6343,7 +6385,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "cursor",
@@ -6732,7 +6777,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -6911,7 +6956,11 @@
                           "description": "The mimetype of the media file [see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types]"
                         },
                         "category": {
-                          "enum": ["image", "audio", "video"]
+                          "enum": [
+                            "image",
+                            "audio",
+                            "video"
+                          ]
                         },
                         "status": {
                           "enum": [
@@ -7214,7 +7263,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -7328,7 +7377,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -7477,7 +7526,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -7882,7 +7931,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -8280,7 +8329,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -8360,7 +8409,13 @@
               },
               {
                 "name": "nativePrice",
-                "required": ["value", "decimals", "name", "symbol", "address"],
+                "required": [
+                  "value",
+                  "decimals",
+                  "name",
+                  "symbol",
+                  "address"
+                ],
                 "properties": {
                   "value": {
                     "type": "string",
@@ -8557,7 +8612,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -8589,7 +8644,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "fromBlock",
@@ -8919,7 +8977,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -8997,7 +9055,15 @@
                 "name": "holderChange",
                 "type": "object",
                 "description": "The holder change",
-                "required": ["5min", "1h", "6h", "24h", "7d", "3d", "30d"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "6h",
+                  "24h",
+                  "7d",
+                  "3d",
+                  "30d"
+                ],
                 "properties": {
                   "5min": {
                     "type": "object",
@@ -9040,7 +9106,11 @@
                 "name": "holdersByAcquisition",
                 "type": "object",
                 "description": "The holder change",
-                "required": ["swap", "transfer", "airdrop"],
+                "required": [
+                  "swap",
+                  "transfer",
+                  "airdrop"
+                ],
                 "properties": {
                   "swap": {
                     "type": "number",
@@ -9189,7 +9259,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -9294,7 +9364,11 @@
                       "name": "newHoldersByAcquisition",
                       "type": "object",
                       "description": "The new holders by acquisition",
-                      "required": ["swap", "transfer", "airdrop"],
+                      "required": [
+                        "swap",
+                        "transfer",
+                        "airdrop"
+                      ],
                       "properties": {
                         "swap": {
                           "type": "number",
@@ -9489,7 +9563,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -9814,7 +9888,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -9847,7 +9921,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         }
       ],
       "responses": [
@@ -9946,6 +10023,186 @@
         }
       ]
     },
+    "getWalletTokenBalances": {
+      "apiHost": "https://deep-index.moralis.io/api/v2.2",
+      "summary": "Get ERC20 token balances by wallet",
+      "description": "Get an unpaginated list of token balances, without token prices, for a specific wallet address. Maximum of 2,000 tokens. Each token returned includes on-chain metadata, as well as off-chain metadata, logos, spam status and more.",
+      "method": "GET",
+      "path": "/:address/erc20",
+      "pathParams": [
+        {
+          "name": "address",
+          "description": "The address from which token balances will be checked",
+          "required": true,
+          "example": "0xcB1C1FdE09f811B294172696404e88E658659905",
+          "type": "string"
+        }
+      ],
+      "queryParams": [
+        {
+          "name": "chain",
+          "description": "The chain to query",
+          "required": false,
+          "example": "eth",
+          "type": "string",
+          "enum": [
+            "eth",
+            "0x1",
+            "sepolia",
+            "0xaa36a7",
+            "polygon",
+            "0x89",
+            "bsc",
+            "0x38",
+            "bsc testnet",
+            "0x61",
+            "avalanche",
+            "0xa86a",
+            "fantom",
+            "0xfa",
+            "cronos",
+            "0x19",
+            "arbitrum",
+            "0xa4b1",
+            "chiliz",
+            "0x15b38",
+            "chiliz testnet",
+            "0x15b32",
+            "gnosis",
+            "0x64",
+            "gnosis testnet",
+            "0x27d8",
+            "base",
+            "0x2105",
+            "base sepolia",
+            "0x14a34",
+            "optimism",
+            "0xa",
+            "polygon amoy",
+            "0x13882",
+            "linea",
+            "0xe708",
+            "moonbeam",
+            "0x504",
+            "moonriver",
+            "0x505",
+            "moonbase",
+            "0x507",
+            "linea sepolia",
+            "0xe705",
+            "flow",
+            "0x2eb",
+            "flow-testnet",
+            "0x221",
+            "ronin",
+            "0x7e4",
+            "ronin-testnet",
+            "0x31769",
+            "lisk",
+            "0x46f",
+            "lisk-sepolia",
+            "0x106a",
+            "pulse",
+            "0x171",
+            "sei-testnet",
+            "0x530",
+            "sei",
+            "0x531",
+            "monad",
+            "0x8f"
+          ]
+        },
+        {
+          "name": "to_block",
+          "description": "The block number up to which the balances will be checked.",
+          "required": false,
+          "type": "number"
+        },
+        {
+          "name": "token_addresses",
+          "description": "The addresses to get balances for (optional)",
+          "required": false,
+          "type": "array",
+          "field": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "exclude_spam",
+          "description": "Exclude spam tokens from the result",
+          "required": false,
+          "type": "boolean"
+        }
+      ],
+      "responses": [
+        {
+          "status": "200",
+          "description": "Returns token balances for a specific address",
+          "body": {
+            "type": "array",
+            "field": {
+              "type": "object",
+              "fields": [
+                {
+                  "name": "token_address",
+                  "type": "string",
+                  "description": "The address of the token contract",
+                  "example": "0x2d30ca6f024dbc1307ac8a1a44ca27de6f797ec22ef20627a1307243b0ab7d09"
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "description": "The name of the token contract",
+                  "example": "Kylin Network"
+                },
+                {
+                  "name": "symbol",
+                  "type": "string",
+                  "description": "The symbol of the NFT contract",
+                  "example": "KYL"
+                },
+                {
+                  "name": "logo",
+                  "type": "string",
+                  "description": "The logo of the token",
+                  "example": "https://cdn.moralis.io/eth/0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c.png"
+                },
+                {
+                  "name": "thumbnail",
+                  "type": "string",
+                  "description": "The thumbnail of the logo",
+                  "example": "https://cdn.moralis.io/eth/0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c_thumb.png"
+                },
+                {
+                  "name": "decimals",
+                  "type": "number",
+                  "description": "The number of decimals on the token",
+                  "example": 18
+                },
+                {
+                  "name": "balance",
+                  "type": "string",
+                  "description": "Timestamp of when the contract was last synced with the node",
+                  "example": "123456789"
+                },
+                {
+                  "name": "possible_spam",
+                  "type": "boolean",
+                  "description": "Indicates if a contract is possibly a spam contract",
+                  "example": "false"
+                },
+                {
+                  "name": "verified_contract",
+                  "type": "boolean",
+                  "description": "Indicates if a contract is verified",
+                  "example": "false"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
     "getWalletTokenTransfers": {
       "apiHost": "https://deep-index.moralis.io/api/v2.2",
       "summary": "Get ERC20 token transfers by wallet address",
@@ -10020,7 +10277,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -10079,7 +10336,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "cursor",
@@ -10319,7 +10579,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -10419,7 +10679,10 @@
                   "type": "array",
                   "field": {
                     "description": "The token addresses of the same symbol from another chains",
-                    "required": ["chainId", "address"],
+                    "required": [
+                      "chainId",
+                      "address"
+                    ],
                     "properties": {
                       "chainId": {
                         "type": "string",
@@ -10479,7 +10742,9 @@
                   "name": "categories",
                   "type": "array",
                   "description": "Categories of the token",
-                  "example": ["stablecoin"],
+                  "example": [
+                    "stablecoin"
+                  ],
                   "field": {
                     "type": "string"
                   }
@@ -10609,7 +10874,10 @@
                         "example": "stablecoin"
                       }
                     },
-                    "required": ["name", "id"]
+                    "required": [
+                      "name",
+                      "id"
+                    ]
                   }
                 }
               ]
@@ -10684,7 +10952,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -10784,7 +11052,10 @@
                   "type": "array",
                   "field": {
                     "description": "The token addresses of the same symbol from another chains",
-                    "required": ["chainId", "address"],
+                    "required": [
+                      "chainId",
+                      "address"
+                    ],
                     "properties": {
                       "chainId": {
                         "type": "string",
@@ -10844,7 +11115,9 @@
                   "name": "categories",
                   "type": "array",
                   "description": "Categories of the token",
-                  "example": ["stablecoin"],
+                  "example": [
+                    "stablecoin"
+                  ],
                   "field": {
                     "type": "string"
                   }
@@ -11014,7 +11287,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -11064,7 +11337,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "cursor",
@@ -11312,7 +11588,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -11418,7 +11694,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -11534,7 +11810,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -11815,7 +12091,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -11876,7 +12152,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "limit",
@@ -12780,7 +13059,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -13072,7 +13351,7 @@
               "ronin",
               "0x7e4",
               "ronin-testnet",
-              "0x7e5",
+              "0x31769",
               "lisk",
               "0x46f",
               "lisk-sepolia",
@@ -13278,7 +13557,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -13327,7 +13606,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "limit",
@@ -13341,7 +13623,9 @@
           "required": false,
           "example": "",
           "type": "string",
-          "enum": ["internal_transactions"]
+          "enum": [
+            "internal_transactions"
+          ]
         }
       ],
       "responses": [
@@ -13680,7 +13964,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -13724,7 +14008,9 @@
           "required": false,
           "example": "",
           "type": "string",
-          "enum": ["internal_transactions"]
+          "enum": [
+            "internal_transactions"
+          ]
         },
         {
           "name": "cursor",
@@ -13737,7 +14023,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "limit",
@@ -14147,7 +14436,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -14168,7 +14457,9 @@
           "required": false,
           "example": "",
           "type": "string",
-          "enum": ["internal_transactions"]
+          "enum": [
+            "internal_transactions"
+          ]
         }
       ],
       "responses": [
@@ -14545,7 +14836,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -14566,7 +14857,9 @@
           "required": false,
           "example": "",
           "type": "string",
-          "enum": ["internal_transactions"]
+          "enum": [
+            "internal_transactions"
+          ]
         }
       ],
       "responses": [
@@ -14944,7 +15237,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -14965,7 +15258,9 @@
           "required": false,
           "example": "",
           "type": "string",
-          "enum": ["internal_transactions"]
+          "enum": [
+            "internal_transactions"
+          ]
         }
       ],
       "responses": [
@@ -15445,7 +15740,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -15535,7 +15830,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -15679,7 +15974,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -16049,7 +16344,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -16186,7 +16481,10 @@
                     "type": "array",
                     "items": {
                       "description": "The token addresses of the same symbol from another chains",
-                      "required": ["chainId", "address"],
+                      "required": [
+                        "chainId",
+                        "address"
+                      ],
                       "properties": {
                         "chainId": {
                           "type": "string",
@@ -16244,7 +16542,9 @@
                     },
                     "nullable": true,
                     "description": "Categories of the token",
-                    "example": ["stablecoin"]
+                    "example": [
+                      "stablecoin"
+                    ]
                   },
                   "links": {
                     "$ref": "#/components/schemas/discoveryTokenLinks"
@@ -16333,7 +16633,10 @@
                     "type": "array",
                     "items": {
                       "description": "The token addresses of the same symbol from another chains",
-                      "required": ["chainId", "address"],
+                      "required": [
+                        "chainId",
+                        "address"
+                      ],
                       "properties": {
                         "chainId": {
                           "type": "string",
@@ -16391,7 +16694,9 @@
                     },
                     "nullable": true,
                     "description": "Categories of the token",
-                    "example": ["stablecoin"]
+                    "example": [
+                      "stablecoin"
+                    ]
                   },
                   "links": {
                     "$ref": "#/components/schemas/discoveryTokenLinks"
@@ -16487,7 +16792,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -16617,7 +16922,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -17096,7 +17401,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -17252,7 +17557,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -17436,7 +17741,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -17840,7 +18145,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -18015,7 +18320,7 @@
               "ronin",
               "0x7e4",
               "ronin-testnet",
-              "0x7e5",
+              "0x31769",
               "lisk",
               "0x46f",
               "lisk-sepolia",
@@ -18065,7 +18370,10 @@
                     },
                     {
                       "name": "first_transaction",
-                      "required": ["block_number", "block_timestamp"],
+                      "required": [
+                        "block_number",
+                        "block_timestamp"
+                      ],
                       "properties": {
                         "block_number": {
                           "type": "string",
@@ -18086,7 +18394,10 @@
                     },
                     {
                       "name": "last_transaction",
-                      "required": ["block_number", "block_timestamp"],
+                      "required": [
+                        "block_number",
+                        "block_timestamp"
+                      ],
                       "properties": {
                         "block_number": {
                           "type": "string",
@@ -18187,7 +18498,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -18340,7 +18651,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -18474,7 +18785,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -18524,7 +18835,9 @@
               {
                 "name": "marketplace",
                 "description": "The marketplace in which the floor price is present",
-                "required": ["name"],
+                "required": [
+                  "name"
+                ],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -18630,7 +18943,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -18686,7 +18999,9 @@
               {
                 "name": "marketplace",
                 "description": "The marketplace in which the floor price is present",
-                "required": ["name"],
+                "required": [
+                  "name"
+                ],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -18785,7 +19100,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -18806,7 +19121,15 @@
           "required": true,
           "example": "1d",
           "type": "string",
-          "enum": ["1d", "7d", "30d", "60d", "90d", "1y", "all"]
+          "enum": [
+            "1d",
+            "7d",
+            "30d",
+            "60d",
+            "90d",
+            "1y",
+            "all"
+          ]
         },
         {
           "name": "cursor",
@@ -18957,7 +19280,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -19008,7 +19331,67 @@
       "queryParams": [],
       "bodyParam": {
         "required": true,
-        "type": "json"
+        "type": "json",
+        "fields": [
+          {
+            "name": "chain",
+            "type": "string",
+            "required": true,
+            "description": "Chain hex ID (e.g. \"0x1\" for Ethereum). Required unless 'chains' is provided. See references/FilteredTokens.md for metrics and filter details.",
+            "example": "0x1"
+          },
+          {
+            "name": "filters",
+            "type": "array",
+            "required": true,
+            "description": "Array of filter objects. Each has metric, timeFrame, and at least one of gt/lt/eq. Filters are combined with AND logic. See references/FilteredTokens.md for all metrics and timeframes.",
+            "example": [{"metric": "volumeUsd", "timeFrame": "oneDay", "gt": 100000}]
+          },
+          {
+            "name": "sortBy",
+            "type": "object",
+            "required": true,
+            "description": "Sort configuration with metric, timeFrame, and type (ASC or DESC). See references/FilteredTokens.md for all metrics and timeframes.",
+            "example": {"metric": "volumeUsd", "timeFrame": "oneDay", "type": "DESC"}
+          },
+          {
+            "name": "limit",
+            "type": "number",
+            "required": true,
+            "description": "Maximum number of tokens to return",
+            "example": 20
+          },
+          {
+            "name": "chains",
+            "type": "array",
+            "description": "Array of chain hex IDs for multi-chain queries. Use instead of 'chain' to query multiple chains.",
+            "example": ["0x1", "0x89"]
+          },
+          {
+            "name": "categories",
+            "type": "object",
+            "description": "Category-based filtering. Object with 'include' and/or 'exclude' arrays (e.g. [\"stablecoin\", \"meme\"]).",
+            "example": {"exclude": ["stablecoin"]}
+          },
+          {
+            "name": "timeFramesToReturn",
+            "type": "array",
+            "description": "Which timeframes to include in response metrics. Defaults to all if omitted. See references/FilteredTokens.md for values.",
+            "example": ["oneDay", "oneWeek"]
+          },
+          {
+            "name": "metricsToReturn",
+            "type": "array",
+            "description": "Which metrics to include in response. Defaults to all if omitted. See references/FilteredTokens.md for values.",
+            "example": ["volumeUsd", "usdPricePercentChange"]
+          },
+          {
+            "name": "excludeMetadata",
+            "type": "boolean",
+            "description": "If true, omits token metadata from response to reduce payload size",
+            "example": false
+          }
+        ]
       },
       "responses": [
         {
@@ -19096,7 +19479,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -19231,7 +19614,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -19366,7 +19749,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -19501,7 +19884,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -19615,7 +19998,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -19750,7 +20133,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -19793,7 +20176,12 @@
           "required": false,
           "example": "1d",
           "type": "string",
-          "enum": ["1h", "1d", "1w", "1M"]
+          "enum": [
+            "1h",
+            "1d",
+            "1w",
+            "1M"
+          ]
         }
       ],
       "responses": [
@@ -19872,7 +20260,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -19908,7 +20296,12 @@
           "required": false,
           "example": "1d",
           "type": "string",
-          "enum": ["1h", "1d", "1w", "1M"]
+          "enum": [
+            "1h",
+            "1d",
+            "1w",
+            "1M"
+          ]
         }
       ],
       "responses": [
@@ -19987,7 +20380,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -20023,7 +20416,12 @@
           "required": false,
           "example": "1d",
           "type": "string",
-          "enum": ["1h", "1d", "1w", "1M"]
+          "enum": [
+            "1h",
+            "1d",
+            "1w",
+            "1M"
+          ]
         }
       ],
       "responses": [
@@ -20102,7 +20500,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -20209,7 +20607,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -20414,7 +20812,12 @@
               {
                 "name": "holders_change",
                 "type": "object",
-                "required": ["1h", "1d", "1w", "1M"],
+                "required": [
+                  "1h",
+                  "1d",
+                  "1w",
+                  "1M"
+                ],
                 "properties": {
                   "1h": {
                     "type": "number",
@@ -20445,7 +20848,12 @@
               {
                 "name": "liquidity_change_usd",
                 "type": "object",
-                "required": ["1h", "1d", "1w", "1M"],
+                "required": [
+                  "1h",
+                  "1d",
+                  "1w",
+                  "1M"
+                ],
                 "properties": {
                   "1h": {
                     "type": "number",
@@ -20476,7 +20884,12 @@
               {
                 "name": "experienced_net_buyers_change",
                 "type": "object",
-                "required": ["1h", "1d", "1w", "1M"],
+                "required": [
+                  "1h",
+                  "1d",
+                  "1w",
+                  "1M"
+                ],
                 "properties": {
                   "1h": {
                     "type": "number",
@@ -20507,7 +20920,12 @@
               {
                 "name": "volume_change_usd",
                 "type": "object",
-                "required": ["1h", "1d", "1w", "1M"],
+                "required": [
+                  "1h",
+                  "1d",
+                  "1w",
+                  "1M"
+                ],
                 "properties": {
                   "1h": {
                     "type": "number",
@@ -20538,7 +20956,12 @@
               {
                 "name": "net_volume_change_usd",
                 "type": "object",
-                "required": ["1h", "1d", "1w", "1M"],
+                "required": [
+                  "1h",
+                  "1d",
+                  "1w",
+                  "1M"
+                ],
                 "properties": {
                   "1h": {
                     "type": "number",
@@ -20569,7 +20992,12 @@
               {
                 "name": "price_percent_change_usd",
                 "type": "object",
-                "required": ["1h", "1d", "1w", "1M"],
+                "required": [
+                  "1h",
+                  "1d",
+                  "1w",
+                  "1M"
+                ],
                 "properties": {
                   "1h": {
                     "type": "number",
@@ -20682,7 +21110,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -20830,7 +21258,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -21047,7 +21475,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -21474,7 +21902,10 @@
                       "type": "array",
                       "field": {
                         "type": "string",
-                        "example": ["Uniswap", "Uniswap V3"]
+                        "example": [
+                          "Uniswap",
+                          "Uniswap V3"
+                        ]
                       }
                     }
                   ]
@@ -21601,7 +22032,7 @@
         }
       ]
     },
-    "getCandleSticks": {
+    "getPairCandlesticks": {
       "apiHost": "https://deep-index.moralis.io/api/v2.2",
       "summary": "Get OHLCV by pair address",
       "description": "Retrieve OHLCV (Open, High, Low, Close, Volume) candlestick data for a token pair.",
@@ -21675,7 +22106,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -21889,7 +22320,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -21999,7 +22430,12 @@
               {
                 "name": "pricePercentChange",
                 "type": "object",
-                "required": ["5min", "1h", "4h", "24h"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ],
                 "properties": {
                   "5min": {
                     "type": "number",
@@ -22022,7 +22458,12 @@
               {
                 "name": "liquidityPercentChange",
                 "type": "object",
-                "required": ["5min", "1h", "4h", "24h"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ],
                 "properties": {
                   "5min": {
                     "type": "number",
@@ -22045,7 +22486,12 @@
               {
                 "name": "buys",
                 "type": "object",
-                "required": ["5min", "1h", "4h", "24h"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ],
                 "properties": {
                   "5min": {
                     "type": "number",
@@ -22068,7 +22514,12 @@
               {
                 "name": "sells",
                 "type": "object",
-                "required": ["5min", "1h", "4h", "24h"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ],
                 "properties": {
                   "5min": {
                     "type": "number",
@@ -22091,7 +22542,12 @@
               {
                 "name": "totalVolume",
                 "type": "object",
-                "required": ["5min", "1h", "4h", "24h"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ],
                 "properties": {
                   "5min": {
                     "type": "number",
@@ -22114,7 +22570,12 @@
               {
                 "name": "buyVolume",
                 "type": "object",
-                "required": ["5min", "1h", "4h", "24h"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ],
                 "properties": {
                   "5min": {
                     "type": "number",
@@ -22137,7 +22598,12 @@
               {
                 "name": "sellVolume",
                 "type": "object",
-                "required": ["5min", "1h", "4h", "24h"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ],
                 "properties": {
                   "5min": {
                     "type": "number",
@@ -22160,7 +22626,12 @@
               {
                 "name": "buyers",
                 "type": "object",
-                "required": ["5min", "1h", "4h", "24h"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ],
                 "properties": {
                   "5min": {
                     "type": "number",
@@ -22183,7 +22654,12 @@
               {
                 "name": "sellers",
                 "type": "object",
-                "required": ["5min", "1h", "4h", "24h"],
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ],
                 "properties": {
                   "5min": {
                     "type": "number",
@@ -22282,7 +22758,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -22525,7 +23001,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -22639,7 +23115,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -22844,7 +23320,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -23049,7 +23525,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -23254,7 +23730,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -23376,7 +23852,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -23438,7 +23914,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "transactionTypes",
@@ -23670,6 +24149,328 @@
         }
       ]
     },
+    "getWalletInsight": {
+      "apiHost": "https://deep-index.moralis.io/api/v2.2",
+      "summary": "Get wallet insight metrics",
+      "description": "Retrieve comprehensive wallet insight metrics including activity age, transfer counts, counterparties, and swap volume.",
+      "method": "GET",
+      "path": "/wallets/:address/insight",
+      "pathParams": [
+        {
+          "name": "address",
+          "description": "The wallet address to get insight for",
+          "required": true,
+          "example": "0xcB1C1FdE09f811B294172696404e88E658659905",
+          "type": "string"
+        }
+      ],
+      "queryParams": [
+        {
+          "name": "chains",
+          "description": "The chains to query. If not provided, aggregates across all supported chains.",
+          "required": false,
+          "example": [
+            "0x1",
+            "0x89"
+          ],
+          "type": "array",
+          "field": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": [
+        {
+          "status": "200",
+          "description": "Returns wallet insight metrics.",
+          "body": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "address",
+                "type": "string",
+                "description": "The wallet address",
+                "example": "0xcB1C1FdE09f811B294172696404e88E658659905"
+              },
+              {
+                "name": "addressType",
+                "type": "string",
+                "description": "The type of address",
+                "example": "evm"
+              },
+              {
+                "name": "walletAgeDays",
+                "type": "number",
+                "description": "Wallet age in days since first activity",
+                "example": 1314
+              },
+              {
+                "name": "firstActivityAt",
+                "type": "object",
+                "nullable": true,
+                "properties": {
+                  "chain": {
+                    "type": "string",
+                    "description": "Chain ID",
+                    "example": "0x1"
+                  },
+                  "blockNumber": {
+                    "type": "string",
+                    "description": "Block number",
+                    "example": "23583751"
+                  },
+                  "blockTimestamp": {
+                    "type": "string",
+                    "description": "Block timestamp",
+                    "example": "2025-10-15T14:41:23.000Z"
+                  },
+                  "transactionHash": {
+                    "type": "string",
+                    "description": "Transaction hash",
+                    "example": "0x..."
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Activity type",
+                    "example": "tokenTransfer"
+                  },
+                  "direction": {
+                    "type": "string",
+                    "description": "Direction (in or out)",
+                    "example": "in"
+                  }
+                }
+              },
+              {
+                "name": "lastActivityAt",
+                "type": "object",
+                "nullable": true,
+                "properties": {
+                  "chain": {
+                    "type": "string",
+                    "description": "Chain ID",
+                    "example": "0x1"
+                  },
+                  "blockNumber": {
+                    "type": "string",
+                    "description": "Block number",
+                    "example": "23583751"
+                  },
+                  "blockTimestamp": {
+                    "type": "string",
+                    "description": "Block timestamp",
+                    "example": "2025-10-15T14:41:23.000Z"
+                  },
+                  "transactionHash": {
+                    "type": "string",
+                    "description": "Transaction hash",
+                    "example": "0x..."
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Activity type",
+                    "example": "tokenTransfer"
+                  },
+                  "direction": {
+                    "type": "string",
+                    "description": "Direction (in or out)",
+                    "example": "in"
+                  }
+                }
+              },
+              {
+                "name": "firstInitiatedAt",
+                "type": "object",
+                "nullable": true,
+                "properties": {
+                  "chain": {
+                    "type": "string",
+                    "description": "Chain ID",
+                    "example": "0x1"
+                  },
+                  "blockNumber": {
+                    "type": "string",
+                    "description": "Block number",
+                    "example": "23583751"
+                  },
+                  "blockTimestamp": {
+                    "type": "string",
+                    "description": "Block timestamp",
+                    "example": "2025-10-15T14:41:23.000Z"
+                  },
+                  "transactionHash": {
+                    "type": "string",
+                    "description": "Transaction hash",
+                    "example": "0x..."
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Activity type",
+                    "example": "tokenTransfer"
+                  },
+                  "direction": {
+                    "type": "string",
+                    "description": "Direction (in or out)",
+                    "example": "in"
+                  }
+                }
+              },
+              {
+                "name": "lastInitiatedAt",
+                "type": "object",
+                "nullable": true,
+                "properties": {
+                  "chain": {
+                    "type": "string",
+                    "description": "Chain ID",
+                    "example": "0x1"
+                  },
+                  "blockNumber": {
+                    "type": "string",
+                    "description": "Block number",
+                    "example": "23583751"
+                  },
+                  "blockTimestamp": {
+                    "type": "string",
+                    "description": "Block timestamp",
+                    "example": "2025-10-15T14:41:23.000Z"
+                  },
+                  "transactionHash": {
+                    "type": "string",
+                    "description": "Transaction hash",
+                    "example": "0x..."
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Activity type",
+                    "example": "tokenTransfer"
+                  },
+                  "direction": {
+                    "type": "string",
+                    "description": "Direction (in or out)",
+                    "example": "in"
+                  }
+                }
+              },
+              {
+                "name": "activeDays",
+                "type": "number",
+                "description": "Number of unique active days",
+                "example": 503
+              },
+              {
+                "name": "activeChains",
+                "type": "number",
+                "description": "Number of unique chains the wallet is active on",
+                "example": 9
+              },
+              {
+                "name": "transactionsInitiated",
+                "type": "number",
+                "description": "Number of transactions initiated by the wallet",
+                "example": 724
+              },
+              {
+                "name": "transactionsInvolved",
+                "type": "number",
+                "description": "Number of transactions involving the wallet",
+                "example": 754
+              },
+              {
+                "name": "nativeTransfers",
+                "type": "object",
+                "properties": {
+                  "sent": {
+                    "type": "integer",
+                    "description": "Number of transfers sent",
+                    "example": 210
+                  },
+                  "received": {
+                    "type": "integer",
+                    "description": "Number of transfers received",
+                    "example": 272
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "Total number of transfers",
+                    "example": 482
+                  }
+                }
+              },
+              {
+                "name": "erc20Transfers",
+                "type": "object",
+                "properties": {
+                  "sent": {
+                    "type": "integer",
+                    "description": "Number of transfers sent",
+                    "example": 210
+                  },
+                  "received": {
+                    "type": "integer",
+                    "description": "Number of transfers received",
+                    "example": 272
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "Total number of transfers",
+                    "example": 482
+                  }
+                }
+              },
+              {
+                "name": "nftTransfers",
+                "type": "object",
+                "properties": {
+                  "sent": {
+                    "type": "integer",
+                    "description": "Number of transfers sent",
+                    "example": 210
+                  },
+                  "received": {
+                    "type": "integer",
+                    "description": "Number of transfers received",
+                    "example": 272
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "Total number of transfers",
+                    "example": 482
+                  }
+                }
+              },
+              {
+                "name": "uniqueCounterparties",
+                "type": "object",
+                "properties": {
+                  "sentTo": {
+                    "type": "integer",
+                    "description": "Number of unique counterparties sent to",
+                    "example": 412
+                  },
+                  "receivedFrom": {
+                    "type": "integer",
+                    "description": "Number of unique counterparties received from",
+                    "example": 615
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "Total unique counterparties",
+                    "example": 777
+                  }
+                }
+              },
+              {
+                "name": "swapVolumeUsd",
+                "type": "number",
+                "description": "Total swap volume in USD",
+                "example": 11778.556304337722
+              }
+            ]
+          }
+        }
+      ]
+    },
     "getSwapsByPairAddress": {
       "apiHost": "https://deep-index.moralis.io/api/v2.2",
       "summary": "Get swap transactions by pair address",
@@ -23744,7 +24545,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -23800,7 +24601,10 @@
           "required": false,
           "example": "DESC",
           "type": "string",
-          "enum": ["ASC", "DESC"]
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
         },
         {
           "name": "transactionTypes",
@@ -24111,7 +24915,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -24450,7 +25254,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -24741,7 +25545,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -24880,7 +25684,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -25046,7 +25850,7 @@
                     "ronin",
                     "0x7e4",
                     "ronin-testnet",
-                    "0x7e5",
+                    "0x31769",
                     "lisk",
                     "0x46f",
                     "lisk-sepolia",
@@ -25203,7 +26007,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -25307,7 +26111,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -25638,7 +26442,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -25784,7 +26588,7 @@
             "ronin",
             "0x7e4",
             "ronin-testnet",
-            "0x7e5",
+            "0x31769",
             "lisk",
             "0x46f",
             "lisk-sepolia",
@@ -25935,7 +26739,7 @@
                     "ronin",
                     "0x7e4",
                     "ronin-testnet",
-                    "0x7e5",
+                    "0x31769",
                     "lisk",
                     "0x46f",
                     "lisk-sepolia",
@@ -26278,7 +27082,12 @@
                     "description": "The 24 hours timeframe data"
                   }
                 },
-                "required": ["5min", "1h", "4h", "24h"]
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ]
               },
               {
                 "name": "totalVolume",
@@ -26305,7 +27114,12 @@
                     "description": "The 24 hours timeframe data"
                   }
                 },
-                "required": ["5min", "1h", "4h", "24h"]
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ]
               },
               {
                 "name": "totalBuyVolume",
@@ -26332,7 +27146,12 @@
                     "description": "The 24 hours timeframe data"
                   }
                 },
-                "required": ["5min", "1h", "4h", "24h"]
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ]
               },
               {
                 "name": "totalSellVolume",
@@ -26359,7 +27178,12 @@
                     "description": "The 24 hours timeframe data"
                   }
                 },
-                "required": ["5min", "1h", "4h", "24h"]
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ]
               },
               {
                 "name": "totalBuyers",
@@ -26386,7 +27210,12 @@
                     "description": "The 24 hours timeframe data"
                   }
                 },
-                "required": ["5min", "1h", "4h", "24h"]
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ]
               },
               {
                 "name": "totalSellers",
@@ -26413,7 +27242,12 @@
                     "description": "The 24 hours timeframe data"
                   }
                 },
-                "required": ["5min", "1h", "4h", "24h"]
+                "required": [
+                  "5min",
+                  "1h",
+                  "4h",
+                  "24h"
+                ]
               }
             ]
           }
@@ -26715,7 +27549,11 @@
                     "nullable": true
                   }
                 },
-                "required": ["type", "name", "symbol"]
+                "required": [
+                  "type",
+                  "name",
+                  "symbol"
+                ]
               },
               {
                 "name": "collection",
@@ -26952,7 +27790,11 @@
                       "nullable": true
                     }
                   },
-                  "required": ["type", "name", "symbol"]
+                  "required": [
+                    "type",
+                    "name",
+                    "symbol"
+                  ]
                 },
                 {
                   "name": "collection",
@@ -27254,7 +28096,10 @@
                     "type": "string"
                   }
                 },
-                "required": ["solana", "lamports"]
+                "required": [
+                  "solana",
+                  "lamports"
+                ]
               },
               {
                 "name": "nfts",
@@ -27337,7 +28182,11 @@
                           "nullable": true
                         }
                       },
-                      "required": ["type", "name", "symbol"]
+                      "required": [
+                        "type",
+                        "name",
+                        "symbol"
+                      ]
                     },
                     {
                       "name": "collection",
@@ -27875,7 +28724,13 @@
                     "example": "18"
                   }
                 },
-                "required": ["address", "name", "symbol", "logo", "decimals"]
+                "required": [
+                  "address",
+                  "name",
+                  "symbol",
+                  "logo",
+                  "decimals"
+                ]
               },
               {
                 "name": "quoteToken",
@@ -27907,7 +28762,13 @@
                     "example": "18"
                   }
                 },
-                "required": ["address", "name", "symbol", "logo", "decimals"]
+                "required": [
+                  "address",
+                  "name",
+                  "symbol",
+                  "logo",
+                  "decimals"
+                ]
               },
               {
                 "name": "result",
@@ -28559,7 +29420,9 @@
           {
             "name": "addresses",
             "type": "array",
-            "example": ["So11111111111111111111111111111111111111112"],
+            "example": [
+              "So11111111111111111111111111111111111111112"
+            ],
             "field": {
               "type": "string"
             }
@@ -28907,7 +29770,12 @@
                     "type": "string"
                   }
                 },
-                "required": ["value", "decimals", "name", "symbol"]
+                "required": [
+                  "value",
+                  "decimals",
+                  "name",
+                  "symbol"
+                ]
               },
               {
                 "name": "usdPrice",
@@ -29025,7 +29893,12 @@
                       "type": "string"
                     }
                   },
-                  "required": ["value", "decimals", "name", "symbol"]
+                  "required": [
+                    "value",
+                    "decimals",
+                    "name",
+                    "symbol"
+                  ]
                 },
                 {
                   "name": "usdPrice",
@@ -29546,7 +30419,11 @@
                           "example": 20
                         }
                       },
-                      "required": ["swap", "transfer", "airdrop"]
+                      "required": [
+                        "swap",
+                        "transfer",
+                        "airdrop"
+                      ]
                     },
                     {
                       "name": "holdersIn",
@@ -29750,7 +30627,11 @@
                     "example": 20
                   }
                 },
-                "required": ["swap", "transfer", "airdrop"]
+                "required": [
+                  "swap",
+                  "transfer",
+                  "airdrop"
+                ]
               },
               {
                 "name": "holderChange",
@@ -29778,7 +30659,15 @@
                     "$ref": "#/components/schemas/HolderChangeDto"
                   }
                 },
-                "required": ["5min", "1h", "6h", "24h", "3d", "7d", "30d"]
+                "required": [
+                  "5min",
+                  "1h",
+                  "6h",
+                  "24h",
+                  "3d",
+                  "7d",
+                  "30d"
+                ]
               },
               {
                 "name": "holderDistribution",
@@ -29974,8 +30863,8 @@
           "name": "limit",
           "description": "Limit response results max value 100",
           "required": true,
-          "type": "number",
-          "example": 100
+          "example": 100,
+          "type": "number"
         },
         {
           "name": "cursor",
@@ -30166,7 +31055,9 @@
                                 "format": "double"
                               }
                             },
-                            "required": ["type"],
+                            "required": [
+                              "type"
+                            ],
                             "additionalProperties": false,
                             "example": {}
                           },
@@ -30192,7 +31083,12 @@
                       "name": "status",
                       "type": "string",
                       "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
-                      "enum": ["active", "paused", "error", "terminated"],
+                      "enum": [
+                        "active",
+                        "paused",
+                        "error",
+                        "terminated"
+                      ],
                       "example": {}
                     },
                     {
@@ -30420,7 +31316,9 @@
                       "format": "double"
                     }
                   },
-                  "required": ["type"],
+                  "required": [
+                    "type"
+                  ],
                   "additionalProperties": false,
                   "example": {}
                 },
@@ -30607,7 +31505,9 @@
                           "format": "double"
                         }
                       },
-                      "required": ["type"],
+                      "required": [
+                        "type"
+                      ],
                       "additionalProperties": false,
                       "example": {}
                     },
@@ -30633,7 +31533,12 @@
                 "name": "status",
                 "type": "string",
                 "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
-                "enum": ["active", "paused", "error", "terminated"],
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
                 "example": {}
               },
               {
@@ -30841,7 +31746,9 @@
                           "format": "double"
                         }
                       },
-                      "required": ["type"],
+                      "required": [
+                        "type"
+                      ],
                       "additionalProperties": false,
                       "example": {}
                     },
@@ -30867,7 +31774,12 @@
                 "name": "status",
                 "type": "string",
                 "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
-                "enum": ["active", "paused", "error", "terminated"],
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
                 "example": {}
               },
               {
@@ -31089,7 +32001,9 @@
                       "format": "double"
                     }
                   },
-                  "required": ["type"],
+                  "required": [
+                    "type"
+                  ],
                   "additionalProperties": false,
                   "example": {}
                 },
@@ -31276,7 +32190,9 @@
                           "format": "double"
                         }
                       },
-                      "required": ["type"],
+                      "required": [
+                        "type"
+                      ],
                       "additionalProperties": false,
                       "example": {}
                     },
@@ -31302,7 +32218,12 @@
                 "name": "status",
                 "type": "string",
                 "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
-                "enum": ["active", "paused", "error", "terminated"],
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
                 "example": {}
               },
               {
@@ -31510,7 +32431,9 @@
                           "format": "double"
                         }
                       },
-                      "required": ["type"],
+                      "required": [
+                        "type"
+                      ],
                       "additionalProperties": false,
                       "example": {}
                     },
@@ -31536,7 +32459,12 @@
                 "name": "status",
                 "type": "string",
                 "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
-                "enum": ["active", "paused", "error", "terminated"],
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
                 "example": {}
               },
               {
@@ -31744,7 +32672,9 @@
                           "format": "double"
                         }
                       },
-                      "required": ["type"],
+                      "required": [
+                        "type"
+                      ],
                       "additionalProperties": false,
                       "example": {}
                     },
@@ -31770,7 +32700,12 @@
                 "name": "status",
                 "type": "string",
                 "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
-                "enum": ["active", "paused", "error", "terminated"],
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
                 "example": {}
               },
               {
@@ -31817,7 +32752,10 @@
             "name": "status",
             "type": "string",
             "description": "The stream status: active (processing blocks) or paused (not processing blocks)",
-            "enum": ["active", "paused"],
+            "enum": [
+              "active",
+              "paused"
+            ],
             "example": "active"
           }
         ]
@@ -31992,7 +32930,9 @@
                           "format": "double"
                         }
                       },
-                      "required": ["type"],
+                      "required": [
+                        "type"
+                      ],
                       "additionalProperties": false,
                       "example": {}
                     },
@@ -32018,7 +32958,12 @@
                 "name": "status",
                 "type": "string",
                 "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
-                "enum": ["active", "paused", "error", "terminated"],
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
                 "example": {}
               },
               {
@@ -32060,8 +33005,8 @@
           "name": "limit",
           "description": "Limit response results max value 100",
           "required": true,
-          "type": "number",
-          "example": 100
+          "example": 100,
+          "type": "number"
         },
         {
           "name": "cursor",
@@ -32177,7 +33122,7 @@
         "fields": [
           {
             "name": "address",
-            "description": "The address or a list of addresses to replace in the Stream.",
+            "description": "The address or a list of addresses to be replace from the Stream.",
             "example": "string"
           }
         ]
@@ -32685,8 +33630,8 @@
         {
           "name": "limit",
           "required": true,
-          "type": "number",
-          "example": 100
+          "example": 100,
+          "type": "number"
         },
         {
           "name": "cursor",
@@ -32931,8 +33876,8 @@
         {
           "name": "limit",
           "required": true,
-          "type": "number",
-          "example": 100
+          "example": 100,
+          "type": "number"
         },
         {
           "name": "cursor",
@@ -33058,6 +34003,798 @@
               }
             ]
           }
+        }
+      ]
+    },
+    "bitcoinStreamsGetAll": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "GET",
+      "path": "/streams/bitcoin",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "limit",
+          "required": true,
+          "type": "number"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok",
+          "body": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "total",
+                "type": "number"
+              },
+              {
+                "name": "result",
+                "type": "array",
+                "field": {
+                  "type": "object",
+                  "fields": [
+                    {
+                      "name": "id",
+                      "type": "string"
+                    },
+                    {
+                      "name": "allAddresses",
+                      "type": "boolean"
+                    },
+                    {
+                      "name": "demo",
+                      "type": "boolean"
+                    },
+                    {
+                      "name": "description",
+                      "type": "string"
+                    },
+                    {
+                      "name": "includeInputs",
+                      "type": "boolean"
+                    },
+                    {
+                      "name": "includeOutputs",
+                      "type": "boolean"
+                    },
+                    {
+                      "name": "isErrorSince",
+                      "type": "string"
+                    },
+                    {
+                      "name": "network",
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "mainnet",
+                          "testnet"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "status",
+                      "type": "string",
+                      "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
+                      "enum": [
+                        "active",
+                        "paused",
+                        "error",
+                        "terminated"
+                      ],
+                      "example": {}
+                    },
+                    {
+                      "name": "statusMessage",
+                      "type": "string"
+                    },
+                    {
+                      "name": "tag",
+                      "type": "string"
+                    },
+                    {
+                      "name": "webhookUrl",
+                      "type": "string"
+                    },
+                    {
+                      "name": "amountOfAddresses",
+                      "type": "number"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bitcoinStreamsCreate": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "PUT",
+      "path": "/streams/bitcoin",
+      "pathParams": [],
+      "queryParams": [],
+      "bodyParam": {
+        "required": true,
+        "type": "object",
+        "fields": [
+          {
+            "name": "webhookUrl",
+            "type": "string",
+            "description": "Webhook URL where moralis will send the POST request.",
+            "example": "string"
+          },
+          {
+            "name": "tag",
+            "type": "string",
+            "description": "A user-provided tag that will be send along the webhook",
+            "example": "string"
+          },
+          {
+            "name": "network",
+            "type": "array",
+            "description": "The network to listen to",
+            "items": {
+              "type": "string",
+              "enum": [
+                "mainnet",
+                "testnet"
+              ]
+            },
+            "example": []
+          },
+          {
+            "name": "includeOutputs",
+            "type": "boolean",
+            "description": "Include or not output details in webhook defaults to true",
+            "example": false
+          },
+          {
+            "name": "includeInputs",
+            "type": "boolean",
+            "description": "Include or not input details in webhook defaults to true",
+            "example": false
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "A description for this stream",
+            "example": "string"
+          },
+          {
+            "name": "demo",
+            "type": "boolean",
+            "description": "Indicator if it is a demo stream",
+            "example": false
+          },
+          {
+            "name": "allAddresses",
+            "type": "boolean",
+            "description": "Include events for all addresses",
+            "example": false
+          }
+        ]
+      },
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok",
+          "body": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string"
+              },
+              {
+                "name": "allAddresses",
+                "type": "boolean"
+              },
+              {
+                "name": "demo",
+                "type": "boolean"
+              },
+              {
+                "name": "description",
+                "type": "string"
+              },
+              {
+                "name": "includeInputs",
+                "type": "boolean"
+              },
+              {
+                "name": "includeOutputs",
+                "type": "boolean"
+              },
+              {
+                "name": "isErrorSince",
+                "type": "string"
+              },
+              {
+                "name": "network",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "mainnet",
+                    "testnet"
+                  ]
+                }
+              },
+              {
+                "name": "status",
+                "type": "string",
+                "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
+                "example": {}
+              },
+              {
+                "name": "statusMessage",
+                "type": "string"
+              },
+              {
+                "name": "tag",
+                "type": "string"
+              },
+              {
+                "name": "webhookUrl",
+                "type": "string"
+              },
+              {
+                "name": "amountOfAddresses",
+                "type": "number"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bitcoinStreamsGet": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "GET",
+      "path": "/streams/bitcoin/:id",
+      "pathParams": [
+        {
+          "name": "id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "queryParams": [],
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok",
+          "body": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string"
+              },
+              {
+                "name": "allAddresses",
+                "type": "boolean"
+              },
+              {
+                "name": "demo",
+                "type": "boolean"
+              },
+              {
+                "name": "description",
+                "type": "string"
+              },
+              {
+                "name": "includeInputs",
+                "type": "boolean"
+              },
+              {
+                "name": "includeOutputs",
+                "type": "boolean"
+              },
+              {
+                "name": "isErrorSince",
+                "type": "string"
+              },
+              {
+                "name": "network",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "mainnet",
+                    "testnet"
+                  ]
+                }
+              },
+              {
+                "name": "status",
+                "type": "string",
+                "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
+                "example": {}
+              },
+              {
+                "name": "statusMessage",
+                "type": "string"
+              },
+              {
+                "name": "tag",
+                "type": "string"
+              },
+              {
+                "name": "webhookUrl",
+                "type": "string"
+              },
+              {
+                "name": "amountOfAddresses",
+                "type": "number"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bitcoinStreamsUpdate": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "POST",
+      "path": "/streams/bitcoin/:id",
+      "pathParams": [
+        {
+          "name": "id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "queryParams": [],
+      "bodyParam": {
+        "required": true,
+        "type": "object",
+        "fields": [
+          {
+            "name": "allAddresses",
+            "type": "boolean",
+            "description": "Include events for all addresses",
+            "example": false
+          },
+          {
+            "name": "demo",
+            "type": "boolean",
+            "description": "Indicator if it is a demo stream",
+            "example": false
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "A description for this stream",
+            "example": "string"
+          },
+          {
+            "name": "includeInputs",
+            "type": "boolean",
+            "description": "Include or not input details in webhook defaults to true",
+            "example": false
+          },
+          {
+            "name": "includeOutputs",
+            "type": "boolean",
+            "description": "Include or not output details in webhook defaults to true",
+            "example": false
+          },
+          {
+            "name": "network",
+            "type": "array",
+            "description": "The network to listen to",
+            "items": {
+              "type": "string",
+              "enum": [
+                "mainnet",
+                "testnet"
+              ]
+            },
+            "example": []
+          },
+          {
+            "name": "tag",
+            "type": "string",
+            "description": "A user-provided tag that will be send along the webhook",
+            "example": "string"
+          },
+          {
+            "name": "webhookUrl",
+            "type": "string",
+            "description": "Webhook URL where moralis will send the POST request.",
+            "example": "string"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok",
+          "body": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "id",
+                "type": "string"
+              },
+              {
+                "name": "allAddresses",
+                "type": "boolean"
+              },
+              {
+                "name": "demo",
+                "type": "boolean"
+              },
+              {
+                "name": "description",
+                "type": "string"
+              },
+              {
+                "name": "includeInputs",
+                "type": "boolean"
+              },
+              {
+                "name": "includeOutputs",
+                "type": "boolean"
+              },
+              {
+                "name": "isErrorSince",
+                "type": "string"
+              },
+              {
+                "name": "network",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "mainnet",
+                    "testnet"
+                  ]
+                }
+              },
+              {
+                "name": "status",
+                "type": "string",
+                "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
+                "example": {}
+              },
+              {
+                "name": "statusMessage",
+                "type": "string"
+              },
+              {
+                "name": "tag",
+                "type": "string"
+              },
+              {
+                "name": "webhookUrl",
+                "type": "string"
+              },
+              {
+                "name": "amountOfAddresses",
+                "type": "number"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bitcoinStreamsDelete": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "DELETE",
+      "path": "/streams/bitcoin/:id",
+      "pathParams": [
+        {
+          "name": "id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "queryParams": [],
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok"
+        }
+      ]
+    },
+    "bitcoinStreamsAddAddresses": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "POST",
+      "path": "/streams/bitcoin/:id/address",
+      "pathParams": [
+        {
+          "name": "id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "queryParams": [],
+      "bodyParam": {
+        "required": true,
+        "type": "json"
+      },
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok",
+          "body": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "address"
+              },
+              {
+                "name": "streamId",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bitcoinStreamsDeleteAddresses": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "DELETE",
+      "path": "/streams/bitcoin/:id/address",
+      "pathParams": [
+        {
+          "name": "id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "queryParams": [],
+      "bodyParam": {
+        "required": true,
+        "type": "json"
+      },
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok",
+          "body": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "address"
+              },
+              {
+                "name": "streamId",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bitcoinStreamsGetAddresses": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "GET",
+      "path": "/streams/bitcoin/:id/address",
+      "pathParams": [
+        {
+          "name": "id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "queryParams": [
+        {
+          "name": "limit",
+          "required": true,
+          "type": "number"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok",
+          "body": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "cursor",
+                "type": "string"
+              },
+              {
+                "name": "total",
+                "type": "number"
+              },
+              {
+                "name": "result",
+                "type": "array",
+                "field": {
+                  "type": "object",
+                  "fields": [
+                    {
+                      "name": "address"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bitcoinStreamsUpdateStatus": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "POST",
+      "path": "/streams/bitcoin/:id/status",
+      "pathParams": [
+        {
+          "name": "id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "queryParams": [],
+      "bodyParam": {
+        "required": true,
+        "type": "object",
+        "fields": [
+          {
+            "name": "status",
+            "type": "string",
+            "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
+            "enum": [
+              "active",
+              "paused",
+              "error",
+              "terminated"
+            ],
+            "example": {}
+          }
+        ]
+      },
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok",
+          "body": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "status",
+                "type": "string",
+                "description": "The stream status:\n[active] The Stream is healthy and processing blocks\n[paused] The Stream is paused and is not processing blocks\n[error] The Stream has encountered an error and is not processing blocks",
+                "enum": [
+                  "active",
+                  "paused",
+                  "error",
+                  "terminated"
+                ],
+                "example": {}
+              },
+              {
+                "name": "statusMessage",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bitcoinGetBlockByNumber": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "POST",
+      "path": "/streams/bitcoin/:chainId/block/:blockNumber",
+      "pathParams": [
+        {
+          "name": "chainId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "blockNumber",
+          "required": true,
+          "type": "number"
+        }
+      ],
+      "queryParams": [],
+      "bodyParam": {
+        "required": true,
+        "type": "object",
+        "fields": [
+          {
+            "name": "tag",
+            "type": "string",
+            "description": "A user-provided tag that will be send along the webhook",
+            "example": "string"
+          },
+          {
+            "name": "allAddresses",
+            "type": "boolean",
+            "description": "Include events for all addresses",
+            "example": false
+          },
+          {
+            "name": "includeInputs",
+            "type": "boolean",
+            "description": "Include or not input details in webhook defaults to true",
+            "example": false
+          },
+          {
+            "name": "includeOutputs",
+            "type": "boolean",
+            "description": "Include or not output details in webhook defaults to true",
+            "example": false
+          },
+          {
+            "name": "addresses",
+            "type": "array",
+            "description": "Bitcoin addresses to filter by",
+            "example": [],
+            "field": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok"
+        }
+      ]
+    },
+    "bitcoinBlockToWebhook": {
+      "apiHost": "https://api.moralis-streams.com",
+      "method": "POST",
+      "path": "/streams/bitcoin/:chainId/block-to-webhook/:blockNumber/:streamId",
+      "pathParams": [
+        {
+          "name": "chainId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "blockNumber",
+          "required": true,
+          "type": "number"
+        },
+        {
+          "name": "streamId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "queryParams": [],
+      "responses": [
+        {
+          "status": "200",
+          "description": "Ok"
         }
       ]
     }

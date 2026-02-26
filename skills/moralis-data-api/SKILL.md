@@ -213,7 +213,7 @@ See [references/SupportedApisAndChains.md](references/SupportedApisAndChains.md)
 
 ## Endpoint Catalog
 
-Complete list of all 135 endpoints (101 EVM + 34 Solana) organized by category.
+Complete list of all 136 endpoints (102 EVM + 34 Solana) organized by category.
 
 ### Wallet
 
@@ -226,6 +226,7 @@ Balances, tokens, NFTs, transaction history, profitability, and net worth data.
 | [getWalletActiveChains](rules/getWalletActiveChains.md) | Get active chains by wallet address |
 | [getWalletApprovals](rules/getWalletApprovals.md) | Get ERC20 approvals by wallet |
 | [getWalletHistory](rules/getWalletHistory.md) | Get the complete decoded transaction history of a wallet |
+| [getWalletInsight](rules/getWalletInsight.md) | Get wallet insight metrics |
 | [getWalletNetWorth](rules/getWalletNetWorth.md) | Get wallet net worth |
 | [getWalletNFTCollections](rules/getWalletNFTCollections.md) | Get NFT collections by wallet address |
 | [getWalletNFTs](rules/getWalletNFTs.md) | Get NFTs by wallet address |
@@ -322,6 +323,7 @@ Token and NFT prices, OHLCV candlestick data.
 | Endpoint | Description |
 |----------|-------------|
 | [getMultipleTokenPrices](rules/getMultipleTokenPrices__evm.md) | Get Multiple ERC20 token prices |
+| [getPairCandlesticks](rules/getPairCandlesticks.md) | Get OHLCV by pair address |
 | [getPairPrice](rules/getPairPrice.md) | Get DEX token pair price |
 | [getTokenPrice](rules/getTokenPrice__evm.md) | Get ERC20 token price |
 
@@ -364,7 +366,6 @@ Utility endpoints including API version, endpoint weights, and address resolutio
 | Endpoint | Description |
 |----------|-------------|
 | [getBondingTokensByExchange](rules/getBondingTokensByExchange__evm.md) | Get bonding tokens by exchange |
-| [getCandleSticks](rules/getCandleSticks__evm.md) | Get OHLCV by pair address |
 | [getEntitiesByCategory](rules/getEntitiesByCategory.md) | Get Entities By Category |
 | [getFilteredTokens](rules/getFilteredTokens.md) | Returns a list of tokens that match the specified filters and criteria |
 | [getGraduatedTokensByExchange](rules/getGraduatedTokensByExchange__evm.md) | Get graduated tokens by exchange |
@@ -424,6 +425,7 @@ Solana-specific endpoints (24 native + 10 EVM variants that support Solana chain
 
 - [references/CommonPitfalls.md](references/CommonPitfalls.md) - Complete pitfalls reference
 - [references/DataTransformations.md](references/DataTransformations.md) - Type conversion reference
+- [references/FilteredTokens.md](references/FilteredTokens.md) - Token discovery metrics, timeframes, filters, and examples
 - [references/ResponsePatterns.md](references/ResponsePatterns.md) - Pagination patterns
 - [references/SupportedApisAndChains.md](references/SupportedApisAndChains.md) - Chains and APIs
 
