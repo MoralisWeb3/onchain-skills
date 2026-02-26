@@ -21,18 +21,32 @@ skills/
 ├── moralis-data-api/           # Unified EVM + Solana data API (135 endpoints)
 │   ├── rules/                  # Auto-generated endpoint docs (one per endpoint)
 │   ├── references/
-│   │   ├── DataTransformations.md    # Pattern reference (manual)
-│   │   ├── ResponsePatterns.md       # Pattern reference (manual)
-│   │   ├── CommonPitfalls.md         # Pattern reference (manual)
-│   │   └── SupportedApisAndChains.md # Chain support matrix (manual)
+│   │   ├── CommonPitfalls.md         # Gotchas: data types, HTTP methods, path inconsistencies
+│   │   ├── DataTransformations.md    # Type conversions, field mappings, snake_case → camelCase
+│   │   ├── DefiProtocols.md          # Supported DeFi protocols and chains
+│   │   ├── NftMarketplaces.md        # Supported NFT marketplaces for trade/floor price endpoints
+│   │   ├── Pagination.md             # Cursor-based pagination reference
+│   │   ├── ResponsePatterns.md       # Pagination patterns and response wrapper structures
+│   │   ├── SupportedApisAndChains.md # Chain support matrix
+│   │   ├── SupportedDexs.md          # Supported DEXs for token API endpoints
+│   │   ├── TokenHoldersFaq.md        # Token Holders API FAQ and important notes
+│   │   ├── TokenSearch.md            # Token search functionality reference
+│   │   └── WalletHistory.md          # Wallet history categories and classifications
 │   └── SKILL.md
 └── moralis-streams-api/        # Real-time blockchain event streaming
     ├── rules/                  # Auto-generated endpoint docs (one per endpoint)
     ├── references/
-    │   ├── StreamConfiguration.md    # Pattern reference (manual)
-    │   ├── CommonPitfalls.md         # Pattern reference (manual)
-    │   ├── WebhookSecurity.md        # Signature verification (manual)
-    │   └── WebhookResponseBody.md    # Webhook payload structure (manual)
+    │   ├── CommonPitfalls.md         # HTTP methods, response structures, webhook differences
+    │   ├── FAQ.md                    # Streams API frequently asked questions
+    │   ├── FilterStreams.md          # Webhook data filtering to reduce noise
+    │   ├── ListenToAllAddresses.md   # Monitor events across every contract on a chain
+    │   ├── MonitorMultipleAddresses.md # Best practices for multiple addresses
+    │   ├── ReplayFailedWebhooks.md   # Replay events for failed webhook deliveries
+    │   ├── StreamConfiguration.md    # UUID format, chain IDs, topic0, status values
+    │   ├── Tutorials.md             # Real-world examples and tutorials
+    │   ├── UsefulStreamOptions.md    # Advanced stream configuration options
+    │   ├── WebhookResponseBody.md    # Webhook payload structure
+    │   └── WebhookSecurity.md        # Signature verification
     └── SKILL.md
 ```
 
@@ -44,14 +58,31 @@ Each skill includes pattern reference files containing complete reference materi
 
 ### moralis-data-api
 
-- `references/DataTransformations.md` - Complete type conversion and field mapping reference (block numbers, timestamps, balances, snake_case → camelCase)
-- `references/ResponsePatterns.md` - Complete pagination and response structure reference (4 pagination patterns with examples)
-- `references/CommonPitfalls.md` - Complete pitfalls and gotchas reference (data type assumptions, HTTP methods, path inconsistencies)
+- `references/CommonPitfalls.md` - Gotchas: data type assumptions, HTTP methods, path inconsistencies
+- `references/DataTransformations.md` - Type conversions, field mappings (block numbers, timestamps, balances, snake_case → camelCase)
+- `references/DefiProtocols.md` - Supported DeFi protocols and chains for position endpoints
+- `references/NftMarketplaces.md` - Supported NFT marketplaces for trade/floor price endpoints
+- `references/Pagination.md` - Cursor-based pagination reference with examples
+- `references/ResponsePatterns.md` - Pagination patterns and response wrapper structures
+- `references/SupportedApisAndChains.md` - Chain support matrix
+- `references/SupportedDexs.md` - Supported DEXs for token API endpoints
+- `references/TokenHoldersFaq.md` - Token Holders API FAQ and important notes
+- `references/TokenSearch.md` - Token search functionality reference
+- `references/WalletHistory.md` - Wallet history categories and classifications
 
 ### moralis-streams-api
 
-- `references/StreamConfiguration.md` - Complete stream configuration reference (UUID format, chain IDs, topic0, status values, field mappings)
-- `references/CommonPitfalls.md` - Complete streams-specific pitfalls reference (HTTP methods, response structures, webhook payload differences)
+- `references/CommonPitfalls.md` - HTTP methods, response structures, webhook payload differences
+- `references/FAQ.md` - Streams API frequently asked questions
+- `references/FilterStreams.md` - Webhook data filtering to reduce noise
+- `references/ListenToAllAddresses.md` - Monitor events across every contract on a chain
+- `references/MonitorMultipleAddresses.md` - Best practices for multiple addresses in streams
+- `references/ReplayFailedWebhooks.md` - Replay events for failed webhook deliveries
+- `references/StreamConfiguration.md` - UUID format, chain IDs, topic0, status values, field mappings
+- `references/Tutorials.md` - Real-world examples and tutorials
+- `references/UsefulStreamOptions.md` - Advanced stream configuration options
+- `references/WebhookResponseBody.md` - Webhook payload structure
+- `references/WebhookSecurity.md` - Signature verification
 
 **Note:** Pattern reference files are NOT auto-generated by the endpoint generator. They are manually maintained and will not be overwritten when running `node scripts/generate-endpoint-rules.js`.
 
@@ -61,14 +92,32 @@ Each skill includes pattern reference files containing complete reference materi
 # Generate endpoint markdown rules from swagger config
 node scripts/generate-endpoint-rules.js
 
+# Generate/update swagger/api-configs.json from Swagger source
+node scripts/generate-api-configs.js
+
 # Extract endpoints from swagger documentation
 node scripts/extract-endpoints.js
 
 # Check for endpoint naming collisions
 node scripts/check-collisions.js
 
+# Check all endpoint naming collisions (ESM)
+node scripts/check-all-collisions.mjs
+
 # Validate Solana suffix naming (all Solana endpoints must have __solana)
 node scripts/check-solana-suffix.js
+
+# Verify Solana endpoint variants are properly registered (ESM)
+node scripts/verify-solana-variants.mjs
+
+# Test all skills end-to-end
+bash scripts/test-all-skills.sh
+
+# Test for known bugs
+bash scripts/test-bugs.sh
+
+# Verify skill installation
+bash scripts/test-installation.sh
 ```
 
 ## Source of Truth

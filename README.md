@@ -40,7 +40,7 @@ Unified skill for all blockchain data queries. Auto-detects EVM vs Solana from a
 
 - **Wallet** (16) — balances, tokens, NFTs, history, profitability, net worth
 - **Token** (22) — prices, metadata, pairs, DEX swaps, analytics, security scores, snipers
-- **NFT** (21) — metadata, transfers, traits, rarity, floor prices, trades
+- **NFT** (22) — metadata, transfers, traits, rarity, floor prices, trades
 - **DeFi** (3) — protocol positions, liquidity, exposure
 - **Entity** (2) — labeled addresses (exchanges, funds, whales)
 - **Price** (3) — OHLCV, token prices, pair prices
