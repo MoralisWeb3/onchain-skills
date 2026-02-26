@@ -1,11 +1,18 @@
 ---
 name: moralis-data-api
 description: Query Web3 blockchain data from Moralis API. Use when user asks about wallet data (balances, tokens, NFTs, transaction history, profitability, net worth), token data (prices, metadata, DEX pairs, analytics, security scores), NFT data (metadata, transfers, traits, rarity, floor prices), DeFi positions, entity/label data for exchanges and funds, or block and transaction data. Supports EVM chains (Ethereum, Polygon, BSC, Arbitrum, Base, Optimism, Avalanche, etc.) and Solana. NOT for real-time streaming - use moralis-streams-api instead.
+version: 1.0.0
 license: MIT
-compatibility: Requires curl for API calls
+compatibility: Requires curl for API calls. Requires MORALIS_API_KEY env var for authentication.
 metadata:
-  version: "1.0.0"
   author: MoralisWeb3
+  openclaw:
+    requires:
+      env:
+        - MORALIS_API_KEY
+      bins:
+        - curl
+    primaryEnv: MORALIS_API_KEY
 allowed-tools: Bash Read Grep Glob
 ---
 
@@ -34,7 +41,7 @@ For EVERY endpoint:
 
 **Never ask the user to paste their API key into the chat.** Instead:
 
-1. Check if `MORALIS_API_KEY` is already set in the environment (try running `echo $MORALIS_API_KEY`).
+1. Check if `MORALIS_API_KEY` is set in the environment (try running `[ -n "$MORALIS_API_KEY" ] && echo "API key is set" || echo "API key is NOT set"`).
 2. If not set, offer to create the `.env` file with an empty placeholder: `MORALIS_API_KEY=`
 3. Tell the user to open the `.env` file and paste their key there themselves.
 4. Let them know: without the key, you won't be able to test or call the Moralis API on their behalf.

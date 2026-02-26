@@ -1,11 +1,18 @@
 ---
 name: moralis-streams-api
 description: Real-time blockchain event monitoring with webhooks. Use when user asks about setting up webhooks, real-time event streaming, monitoring wallet addresses, tracking token transfers in real-time, listening to all addresses on a chain, creating/updating/deleting streams, adding/removing addresses from streams, or receiving blockchain events as they happen. Supports all EVM chains. NOT for querying historical or current blockchain state - use moralis-data-api instead.
+version: 1.0.0
 license: MIT
-compatibility: Requires curl for API calls
+compatibility: Requires curl for API calls. Requires MORALIS_API_KEY env var for authentication.
 metadata:
-  version: "1.0.0"
   author: MoralisWeb3
+  openclaw:
+    requires:
+      env:
+        - MORALIS_API_KEY
+      bins:
+        - curl
+    primaryEnv: MORALIS_API_KEY
 allowed-tools: Bash Read Grep Glob
 ---
 
@@ -32,7 +39,7 @@ For EVERY endpoint:
 
 **Never ask the user to paste their API key into the chat.** Instead:
 
-1. Check if `MORALIS_API_KEY` is already set in the environment (try running `echo $MORALIS_API_KEY`).
+1. Check if `MORALIS_API_KEY` is set in the environment (try running `[ -n "$MORALIS_API_KEY" ] && echo "API key is set" || echo "API key is NOT set"`).
 2. If not set, offer to create the `.env` file with an empty placeholder: `MORALIS_API_KEY=`
 3. Tell the user to open the `.env` file and paste their key there themselves.
 4. Let them know: without the key, you won't be able to test or call the Moralis API on their behalf.

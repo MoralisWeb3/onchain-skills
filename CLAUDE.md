@@ -88,17 +88,24 @@ node scripts/check-solana-suffix.js
 
 ## Skill Frontmatter Pattern
 
-All SKILL.md files use YAML frontmatter per the [Agent Skills Specification](https://agentskills.io/specification):
+All SKILL.md files use YAML frontmatter per the [Agent Skills Specification](https://agentskills.io/specification), extended with OpenClaw/ClawHub fields:
 
 ```yaml
 ---
 name: skill-name
 description: Describes what the skill does and when to use it. Max 1024 chars.
+version: 1.0.0
 license: MIT
-compatibility: Requires Node.js (built-in modules only)
+compatibility: Requires curl for API calls. Requires MORALIS_API_KEY env var for authentication.
 metadata:
-    version: "x.y.z"
-    author: MoralisWeb3
+  author: MoralisWeb3
+  openclaw:
+    requires:
+      env:
+        - MORALIS_API_KEY
+      bins:
+        - curl
+    primaryEnv: MORALIS_API_KEY
 allowed-tools: Bash Read Grep Glob
 ---
 ```
@@ -114,9 +121,11 @@ allowed-tools: Bash Read Grep Glob
 
 | Field | Notes |
 |-------|-------|
+| `version` | Semver string. Must be top-level for ClawHub version detection |
 | `license` | License identifier |
-| `compatibility` | Max 500 chars, environment requirements |
+| `compatibility` | Max 500 chars, environment requirements (human-readable) |
 | `metadata` | Arbitrary key-value pairs (string keys to string values) |
+| `metadata.openclaw` | OpenClaw extension: `requires.env`, `requires.bins`, `primaryEnv`, `os`, `install` |
 | `allowed-tools` | Space-delimited list of pre-approved tools |
 
 ## Query Client Pattern
