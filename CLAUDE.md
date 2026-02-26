@@ -24,6 +24,7 @@ skills/
 │   │   ├── CommonPitfalls.md         # Gotchas: data types, HTTP methods, path inconsistencies
 │   │   ├── DataTransformations.md    # Type conversions, field mappings, snake_case → camelCase
 │   │   ├── DefiProtocols.md          # Supported DeFi protocols and chains
+│   │   ├── FilteredTokens.md         # Token discovery metrics, timeframes, and filter examples
 │   │   ├── NftMarketplaces.md        # Supported NFT marketplaces for trade/floor price endpoints
 │   │   ├── Pagination.md             # Cursor-based pagination reference
 │   │   ├── ResponsePatterns.md       # Pagination patterns and response wrapper structures
@@ -61,6 +62,7 @@ Each skill includes pattern reference files containing complete reference materi
 - `references/CommonPitfalls.md` - Gotchas: data type assumptions, HTTP methods, path inconsistencies
 - `references/DataTransformations.md` - Type conversions, field mappings (block numbers, timestamps, balances, snake_case → camelCase)
 - `references/DefiProtocols.md` - Supported DeFi protocols and chains for position endpoints
+- `references/FilteredTokens.md` - Token discovery metrics, timeframes, and filter examples
 - `references/NftMarketplaces.md` - Supported NFT marketplaces for trade/floor price endpoints
 - `references/Pagination.md` - Cursor-based pagination reference with examples
 - `references/ResponsePatterns.md` - Pagination patterns and response wrapper structures
