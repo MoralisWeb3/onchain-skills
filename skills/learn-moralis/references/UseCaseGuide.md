@@ -215,7 +215,7 @@ User's Bot <-- Webhook <-- Moralis Streams <-- Blockchain
 |------|----------|-------|
 | Token metadata | `getTokenMetadata` | @moralis-data-api |
 | Current price | `getTokenPrice` | @moralis-data-api |
-| OHLCV data | `getCandleSticks` | @moralis-data-api |
+| OHLCV data | `getPairCandlesticks` | @moralis-data-api |
 | Analytics (volume, liquidity) | `getTokenAnalytics` | @moralis-data-api |
 | Holder distribution | `getTokenHolders` | @moralis-data-api |
 | Top holders | `getTokenOwners` | @moralis-data-api |
@@ -232,7 +232,7 @@ User's Bot <-- Webhook <-- Moralis Streams <-- Blockchain
    - getTokenPrice
    - getTokenScore
 2. Charts:
-   - getCandleSticks (OHLCV)
+   - getPairCandlesticks (OHLCV)
 3. Holders:
    - getTokenHolders (summary)
    - getTokenOwners (list)
@@ -386,10 +386,10 @@ response.cursor → next request cursor param
 
 ### Caching Strategy
 
-- Balances: Cache 30s-1min
-- Prices: Cache 5-15s
-- Metadata: Cache hours-days
-- Historical: Cache indefinitely
+- Balances: Cache 10-30s
+- Prices: Cache 10-30s
+- Metadata: Cache 30-60s (changes rarely)
+- Historical: Cache aggressively (immutable once confirmed)
 
 ### Rate Limiting
 

@@ -31,7 +31,7 @@ Detailed comparison of Moralis products to help users choose the right solution.
 - Pull-based (you request data)
 - Returns current state
 - Supports historical queries via block parameters
-- ~100-500ms latency
+- Fast response times (varies by query complexity and chain)
 
 **Example:** "Show me vitalik.eth's current token balances"
 
@@ -49,7 +49,7 @@ Detailed comparison of Moralis products to help users choose the right solution.
 - Push-based (events delivered to you)
 - Requires webhook endpoint
 - ~1-3 second delivery after block confirmation
-- 100% delivery guarantee with retries
+- At-least-once delivery with retries (idempotent handlers recommended)
 - Decoded, enriched data
 
 **Example:** "Notify me whenever vitalik.eth receives tokens"
@@ -63,7 +63,7 @@ Detailed comparison of Moralis products to help users choose the right solution.
 | Setup time | 2-3 minutes | Hours | 2+ hours |
 | Decoded data | Yes | No (raw) | Yes |
 | Cross-chain | Yes, unified | Per-chain | Per-chain |
-| Reliability | 100% guarantee | Connection drops | Variable |
+| Reliability | At-least-once with retries | Connection drops | Variable |
 | Wallet monitoring | Yes | No | No |
 | Maintenance | Zero | High | Medium |
 
@@ -142,6 +142,11 @@ Detailed comparison of Moralis products to help users choose the right solution.
 - Labeled addresses (exchanges, funds)
 - Identity/compliance use cases
 
+### Discovery API
+- Trending tokens, top gainers/losers
+- Market cap rankings, price movers
+- Token search and filtering
+
 ---
 
 ## Choosing by Use Case
@@ -171,7 +176,7 @@ Detailed comparison of Moralis products to help users choose the right solution.
 | Method | Cost Structure |
 |--------|----------------|
 | Data APIs | Per-request (CUs) |
-| Streams | Per-webhook delivery |
+| Streams | Per-record CUs (50 CU/record, confirmed only) |
 | Datashare | Per-GB exported |
 | RPC Nodes | Per-request |
 

@@ -19,7 +19,7 @@ allowed-tools: Read Grep Glob
 
 1. What Moralis is (enterprise Web3 data platform)
 2. The two skills available and when to use each:
-   - **@moralis-data-api** (135 endpoints) — query wallet balances, tokens, NFTs, DeFi positions, prices, transactions, analytics. Use for "what is the current/historical state?"
+   - **@moralis-data-api** (136 endpoints) — query wallet balances, tokens, NFTs, DeFi positions, prices, transactions, analytics. Use for "what is the current/historical state?"
    - **@moralis-streams-api** (20 endpoints, EVM only) — real-time EVM event monitoring via webhooks. Use for "notify me when something happens"
 3. Supported chains: 40+ EVM chains for both skills, Solana for Data API only
 4. How to get started: set `MORALIS_API_KEY` in `.env`, then use the skill that fits their need
@@ -82,6 +82,9 @@ After answering a general question, route users to the appropriate skill:
 | ENS/Unstoppable domain lookup? | Yes | @moralis-data-api |
 | Token security scores? | Yes | @moralis-data-api |
 | Detect snipers/bots? | Yes | @moralis-data-api |
+| Get trending tokens? | Yes | @moralis-data-api |
+| Get top tokens by market cap? | Yes | @moralis-data-api |
+| Search tokens by name/symbol? | Yes | @moralis-data-api |
 
 ### What Moralis Cannot Do
 
@@ -106,7 +109,7 @@ After answering a general question, route users to the appropriate skill:
 | Arbitrum | 0xa4b1 | No profitability, no floor prices |
 | Optimism | 0xa | No profitability, no floor prices |
 | Avalanche | 0xa86a | No profitability, no floor prices |
-| Sei | 0x531 | New chain, full support |
+| Sei | 0x531 | Nearly full (no profitability), includes floor prices |
 | Monad | 0x8f | New chain, good support |
 
 ### Also Supported

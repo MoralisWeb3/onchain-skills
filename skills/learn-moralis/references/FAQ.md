@@ -86,10 +86,10 @@ Yes, use @moralis-streams-api. Create a stream with the wallet address and recei
 
 ### Does Streams guarantee delivery?
 
-Yes. 100% delivery guarantee with:
-- Automatic retries on failure
-- Payload backup for replay
-- No event loss
+Yes. At-least-once delivery guarantee with:
+- Automatic retries with exponential backoff on failure
+- Payload backup and replay functionality
+- Webhook handlers should be idempotent (duplicates possible)
 
 ### Can I get historical events from Streams?
 
