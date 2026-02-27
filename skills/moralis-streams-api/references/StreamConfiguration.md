@@ -32,7 +32,7 @@ Complete reference for stream configuration when working with Moralis Streams AP
 
 ```typescript
 function isValidUUID(uuid: string): boolean {
-  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(uuid);
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(uuid);
 }
 
 // Usage
@@ -104,6 +104,21 @@ if (!isValidUUID(streamId)) {
 | Sei            | `0x531`    | `sei`        |
 | Sei Testnet   | `0x530`    | `sei testnet` |
 | Monad          | `0x8f`     | `monad`     |
+| HyperEVM       | `0x3e7`    | `hyperevm`  |
+| Chiliz         | `0x15b38`  | `chiliz`    |
+| Chiliz Testnet | `0x15b32`  | `chiliz testnet` |
+| Moonbase       | `0x507`    | `moonbase`  |
+
+### Chains NOT Supported by Streams
+
+The following chains are supported by the Moralis Data API but **do not support Streams**:
+
+- zkSync (`0x144`)
+- Blast (`0x13e31`)
+- Mantle (`0x1388`)
+- opBNB (`0xcc`)
+- Polygon zkEVM (`0x44d`)
+- Zetachain (`0x1b59`)
 
 ### Chain ID Validation
 
@@ -183,6 +198,8 @@ console.log(fragment.format); // "Transfer(address,address,uint256)"
 // ✅ CORRECT
 "active"
 "paused"
+"error"
+"terminated"
 
 // ❌ WRONG
 "ACTIVE"
@@ -191,10 +208,21 @@ console.log(fragment.format); // "Transfer(address,address,uint256)"
 "Paused"
 ```
 
+### Status Descriptions
+
+| Status | Description |
+|--------|-------------|
+| `active` | Normal operating state. Blocks are evaluated and webhooks are delivered. |
+| `paused` | Manually paused. No blocks evaluated, no webhooks sent. Resume by setting to `active`. |
+| `error` | Auto-triggered when webhook success rate drops below 70% or event queue exceeds 10,000. Delivery paused, blocks still evaluated. |
+| `terminated` | Auto-triggered after 24 hours in `error` state. **Unrecoverable** — must create a new stream. |
+
+See [ErrorHandling.md](ErrorHandling.md) for complete error lifecycle details.
+
 ### Status Transitions
 
 ```typescript
-type StreamStatus = 'active' | 'paused' | 'inactive';
+type StreamStatus = 'active' | 'paused' | 'error' | 'terminated';
 
 async function pauseStream(streamId: string): Promise<void> {
   const response = await fetch(`/streams/evm/${streamId}/status`, {
@@ -215,7 +243,7 @@ async function resumeStream(streamId: string): Promise<void> {
 
 ```typescript
 function isValidStreamStatus(status: string): boolean {
-  const validStatuses = ['active', 'paused'];
+  const validStatuses = ['active', 'paused', 'error', 'terminated'];
   return validStatuses.includes(status.toLowerCase());
 }
 ```
@@ -437,11 +465,29 @@ Some stream features require advanced options configuration.
 | Pro / Business | 50,000 addresses |
 | Enterprise     | Up to 100M addresses |
 
+## Project Settings Region
+
+When configuring project settings via `SetSettings`, you can specify a region:
+
+| Region | Value |
+|--------|-------|
+| US East | `us-east-1` |
+| US West | `us-west-2` |
+| EU Central | `eu-central-1` |
+| Asia Pacific | `ap-southeast-1` |
+
+```bash
+curl -X POST "https://api.moralis-streams.com/settings" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"region": "eu-central-1"}'
+```
+
 ## Best Practices
 
 1. **Always use hex chain IDs** - More efficient than string names
 2. **Verify stream ID format** - Must be UUID, never hex
-3. **Use lowercase status values** - `"active"` or `"paused"` only
+3. **Use lowercase status values** - `"active"`, `"paused"`, `"error"`, or `"terminated"`
 4. **Start with specific addresses** - Use `all_addresses: false` to test
 5. **Enable only needed event types** - Don't monitor everything unnecessarily
 6. **Set appropriate chainIds** - Monitor only chains you actually need

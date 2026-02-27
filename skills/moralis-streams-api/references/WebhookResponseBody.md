@@ -20,8 +20,10 @@ All webhook responses include these common fields:
 | `txsInternal` | array | Internal transactions |
 | `erc20Transfers` | array | ERC20 transfer events (decoded) |
 | `erc20Approvals` | array | ERC20 approval events (decoded) |
-| `nftApprovals` | object | NFT approval events (ERC721, ERC1155) |
+| `nftApprovals` | object | NFT approval events (ERC721, ERC1155) — nested format |
+| `nftTokenApprovals` | array | NFT approval events (flat array, preferred over `nftApprovals`) |
 | `nftTransfers` | array | NFT transfer events (decoded) |
+| `nativeBalances` | array | Native token balances (when `getNativeBalances` is configured) |
 
 ## Response Types
 
@@ -392,6 +394,96 @@ For internal transactions, select `Internal Transactions (txsInternal)` in admin
   "nftTransfers": []
 }
 ```
+
+### 7. Native Balances
+
+When `getNativeBalances` is configured on your stream, the webhook includes a `nativeBalances` array with the native token balance of matched addresses at the time of the block.
+
+```json
+{
+  "confirmed": true,
+  "chainId": "0x1",
+  "nativeBalances": [
+    {
+      "address": "0x839d4641f97153b0ff26ab837860c479e2bd0242",
+      "balance": "1234567890000000000",
+      "balanceWithDecimals": "1.23456789"
+    }
+  ]
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `address` | Wallet address |
+| `balance` | Native balance in wei (as string) |
+| `balanceWithDecimals` | Human-readable balance with decimals |
+
+See [UsefulStreamOptions.md](UsefulStreamOptions.md) for `getNativeBalances` configuration.
+
+### 8. NFT Token Approvals (Flat Array)
+
+The `nftTokenApprovals` field provides NFT approval events as a flat array (preferred over the nested `nftApprovals` object):
+
+```json
+{
+  "nftTokenApprovals": [
+    {
+      "transactionHash": "0xabc...",
+      "logIndex": "42",
+      "contract": "0x1234...",
+      "account": "0x5678...",
+      "operator": "0x9abc...",
+      "approvedAll": true,
+      "tokenContractType": "ERC721",
+      "tokenName": "BoredApeYachtClub",
+      "tokenSymbol": "BAYC"
+    }
+  ]
+}
+```
+
+## Enrichment Fields
+
+Decoded transfer and approval events include additional enrichment fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `logo` | string | URL to the token logo image |
+| `thumbnail` | string | URL to a smaller token logo thumbnail |
+| `possibleSpam` | boolean | `true` if the token is flagged as potential spam |
+| `verifiedCollection` | boolean | `true` if the NFT collection is verified |
+
+These fields appear on `erc20Transfers`, `erc20Approvals`, and `nftTransfers` entries.
+
+## Trigger Results
+
+When [Triggers](Triggers.md) are configured on a stream, matching events include a `triggers` array and a `triggered_by` field:
+
+```json
+{
+  "erc20Transfers": [
+    {
+      "transactionHash": "0xabc...",
+      "from": "0x1234...",
+      "to": "0x5678...",
+      "value": "1000000000000000000",
+      "triggered_by": "erc20transfer",
+      "triggers": [
+        {
+          "name": "balanceOf",
+          "value": "5000000000000000000"
+        }
+      ]
+    }
+  ]
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `triggered_by` | The event type that activated the trigger |
+| `triggers` | Array of trigger results with `name` (function name) and `value` (return value) |
 
 ## Block Object
 

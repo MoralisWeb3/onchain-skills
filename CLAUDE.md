@@ -38,12 +38,15 @@ skills/
     ├── rules/                  # Auto-generated endpoint docs (one per endpoint)
     ├── references/
     │   ├── CommonPitfalls.md         # HTTP methods, response structures, webhook differences
+    │   ├── DeliveryGuarantees.md     # At-least-once delivery, dual webhooks, confirmation blocks
+    │   ├── ErrorHandling.md          # Retry schedule, error/terminated states, rate limits, re-orgs
     │   ├── FAQ.md                    # Streams API frequently asked questions
     │   ├── FilterStreams.md          # Webhook data filtering to reduce noise
     │   ├── ListenToAllAddresses.md   # Monitor events across every contract on a chain
     │   ├── MonitorMultipleAddresses.md # Best practices for multiple addresses
     │   ├── ReplayFailedWebhooks.md   # Replay events for failed webhook deliveries
     │   ├── StreamConfiguration.md    # UUID format, chain IDs, topic0, status values
+    │   ├── Triggers.md              # Read-only contract call enrichment (balanceOf, etc.)
     │   ├── Tutorials.md             # Real-world examples and tutorials
     │   ├── UsefulStreamOptions.md    # Advanced stream configuration options
     │   ├── WebhookResponseBody.md    # Webhook payload structure
@@ -75,12 +78,15 @@ Each skill includes pattern reference files containing complete reference materi
 ### moralis-streams-api
 
 - `references/CommonPitfalls.md` - HTTP methods, response structures, webhook payload differences
+- `references/DeliveryGuarantees.md` - At-least-once delivery, dual webhooks, confirmation blocks
+- `references/ErrorHandling.md` - Retry schedule, error/terminated states, rate limits, re-org handling
 - `references/FAQ.md` - Streams API frequently asked questions
 - `references/FilterStreams.md` - Webhook data filtering to reduce noise
 - `references/ListenToAllAddresses.md` - Monitor events across every contract on a chain
 - `references/MonitorMultipleAddresses.md` - Best practices for multiple addresses in streams
 - `references/ReplayFailedWebhooks.md` - Replay events for failed webhook deliveries
 - `references/StreamConfiguration.md` - UUID format, chain IDs, topic0, status values, field mappings
+- `references/Triggers.md` - Read-only contract call enrichment (balanceOf, etc.)
 - `references/Tutorials.md` - Real-world examples and tutorials
 - `references/UsefulStreamOptions.md` - Advanced stream configuration options
 - `references/WebhookResponseBody.md` - Webhook payload structure

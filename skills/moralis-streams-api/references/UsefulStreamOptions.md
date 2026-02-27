@@ -106,6 +106,109 @@ Advanced Options are useful when you want to narrow down the data included in th
 - Only including transfers where `amount` is greater than 100 tokens (in wei, assuming 18 decimals)
 - Not including native transactions
 
+## Get Native Balances
+
+The `getNativeBalances` option enriches webhook payloads with native token balances (ETH, BNB, MATIC, etc.) of matched addresses at the time of the block.
+
+> **Note:** Requires **Business plan** or higher.
+
+### Configuration
+
+```json
+{
+  "getNativeBalances": [
+    {
+      "selectors": ["$from", "$to"],
+      "type": "erc20transfer"
+    }
+  ]
+}
+```
+
+### Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `selectors` | string[] | Dynamic selectors for addresses to query (`$from`, `$to`, `$contract`) |
+| `type` | string | Event type that triggers balance lookup |
+
+### Valid Types
+
+| Type | Description |
+|------|-------------|
+| `tx` | Native transactions |
+| `log` | Contract event logs |
+| `erc20transfer` | ERC20 token transfers |
+| `erc20approval` | ERC20 approvals |
+| `nfttransfer` | NFT transfers |
+| `internalTx` | Internal transactions |
+
+### Example: Get Balances on ERC20 Transfers
+
+```bash
+curl -X PUT "https://api.moralis-streams.com/streams/evm" \
+  -H "accept: application/json" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "webhookUrl": "https://your-server.com/webhook",
+  "description": "ERC20 transfers with native balances",
+  "tag": "erc20-native-balances",
+  "chainIds": ["0x1"],
+  "topic0": ["Transfer(address,address,uint256)"],
+  "includeContractLogs": true,
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {"indexed": true, "name": "from", "type": "address"},
+        {"indexed": true, "name": "to", "type": "address"},
+        {"indexed": false, "name": "value", "type": "uint256"}
+      ],
+      "name": "Transfer",
+      "type": "event"
+    }
+  ],
+  "getNativeBalances": [
+    {
+      "selectors": ["$from", "$to"],
+      "type": "erc20transfer"
+    }
+  ]
+}'
+```
+
+### Resulting Webhook Payload
+
+```json
+{
+  "nativeBalances": [
+    {
+      "address": "0x1234...",
+      "balance": "1500000000000000000",
+      "balanceWithDecimals": "1.5"
+    },
+    {
+      "address": "0x5678...",
+      "balance": "250000000000000000",
+      "balanceWithDecimals": "0.25"
+    }
+  ]
+}
+```
+
+## Filter Possible Spam Addresses
+
+Set `filterPossibleSpamAddresses` to `true` to automatically exclude events from known spam token contracts. This prevents spam tokens from appearing in your webhook payloads.
+
+```json
+{
+  "filterPossibleSpamAddresses": true
+}
+```
+
+This is especially useful for wallet monitoring streams where spam token transfers are common. See also [FilterStreams.md](FilterStreams.md) for more filtering options.
+
 ## Combining Options
 
 You can combine multiple options in a single stream configuration:

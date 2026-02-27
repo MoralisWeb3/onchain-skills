@@ -275,6 +275,199 @@ curl -X PUT "https://api.moralis-streams.com/streams/evm" \
 
 ---
 
+## Monitor High-Value ENS Domain Registrations
+
+Track when high-value ENS domains are registered by monitoring the `NameRegistered` event on the ENS Registry.
+
+```bash
+curl -X PUT "https://api.moralis-streams.com/streams/evm" \
+  -H "accept: application/json" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "chainIds": ["0x1"],
+  "description": "Monitor high-value ENS domain registrations",
+  "tag": "ens-registrations",
+  "webhookUrl": "https://YOUR_WEBHOOK_URL",
+  "includeContractLogs": true,
+  "topic0": ["NameRegistered(string,bytes32,address,uint256,uint256)"],
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {"indexed": false, "name": "name", "type": "string"},
+        {"indexed": true, "name": "label", "type": "bytes32"},
+        {"indexed": true, "name": "owner", "type": "address"},
+        {"indexed": false, "name": "cost", "type": "uint256"},
+        {"indexed": false, "name": "expires", "type": "uint256"}
+      ],
+      "name": "NameRegistered",
+      "type": "event"
+    }
+  ],
+  "advancedOptions": [
+    {
+      "topic0": "NameRegistered(string,bytes32,address,uint256,uint256)",
+      "filter": {
+        "gt": ["cost", "1000000000000000000"]
+      }
+    }
+  ]
+}'
+```
+
+### Add ENS Registry Address
+
+```bash
+curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
+  -H "accept: application/json" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "addressToAdd": ["0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"]
+}'
+```
+
+**Key details:**
+- Filters for registrations costing more than 1 ETH (`1000000000000000000` wei)
+- ENS Registry: `0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e`
+
+**Reference:** [Monitor ENS Domain Registrations](https://docs.moralis.com/streams-api/evm/how-to-monitor-ens-domain-registrations)
+
+---
+
+## Track ERC20 Token Mints and Burns (USDC)
+
+Monitor a specific ERC20 token for mint and burn events by detecting transfers to/from the zero address.
+
+```bash
+curl -X PUT "https://api.moralis-streams.com/streams/evm" \
+  -H "accept: application/json" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "chainIds": ["0x1"],
+  "description": "Track USDC mints and burns",
+  "tag": "usdc-mints-burns",
+  "webhookUrl": "https://YOUR_WEBHOOK_URL",
+  "includeContractLogs": true,
+  "topic0": ["Transfer(address,address,uint256)"],
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {"indexed": true, "name": "from", "type": "address"},
+        {"indexed": true, "name": "to", "type": "address"},
+        {"indexed": false, "name": "value", "type": "uint256"}
+      ],
+      "name": "Transfer",
+      "type": "event"
+    }
+  ],
+  "advancedOptions": [
+    {
+      "topic0": "Transfer(address,address,uint256)",
+      "filter": {
+        "or": [
+          {
+            "and": [
+              {"eq": ["from", "0x0000000000000000000000000000000000000000"]},
+              {"eq": ["moralis_streams_contract_address", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"]}
+            ]
+          },
+          {
+            "and": [
+              {"eq": ["to", "0x0000000000000000000000000000000000000000"]},
+              {"eq": ["moralis_streams_contract_address", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"]}
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}'
+```
+
+### Add USDC Contract Address
+
+```bash
+curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
+  -H "accept: application/json" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "addressToAdd": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"]
+}'
+```
+
+**Key details:**
+- **Mint**: `from` is the zero address (`0x000...000`)
+- **Burn**: `to` is the zero address (`0x000...000`)
+- USDC on Ethereum: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+- Uses `moralis_streams_contract_address` to ensure only USDC transfers are matched
+
+---
+
+## Monitor Specific NFTs by Token ID (CryptoPunks)
+
+Track transfers of specific CryptoPunks by token ID using the non-standard `PunkTransfer` event and the `in` filter operator.
+
+> **Note:** CryptoPunks use a non-standard contract that does not follow ERC721. Standard `Transfer(address,address,uint256)` events won't work.
+
+```bash
+curl -X PUT "https://api.moralis-streams.com/streams/evm" \
+  -H "accept: application/json" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "chainIds": ["0x1"],
+  "description": "Monitor specific CryptoPunk transfers",
+  "tag": "cryptopunks-tracker",
+  "webhookUrl": "https://YOUR_WEBHOOK_URL",
+  "includeContractLogs": true,
+  "topic0": ["PunkTransfer(address,address,uint256)"],
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {"indexed": true, "name": "from", "type": "address"},
+        {"indexed": true, "name": "to", "type": "address"},
+        {"indexed": false, "name": "punkIndex", "type": "uint256"}
+      ],
+      "name": "PunkTransfer",
+      "type": "event"
+    }
+  ],
+  "advancedOptions": [
+    {
+      "topic0": "PunkTransfer(address,address,uint256)",
+      "filter": {
+        "in": ["punkIndex", ["1000", "2000", "3000", "4000", "5000"]]
+      }
+    }
+  ]
+}'
+```
+
+### Add CryptoPunks Contract
+
+```bash
+curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
+  -H "accept: application/json" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "addressToAdd": ["0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB"]
+}'
+```
+
+**Key details:**
+- CryptoPunks: `0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB`
+- Uses the `in` filter operator to match specific token IDs
+- Non-standard `PunkTransfer` event (not ERC721 `Transfer`)
+
+---
+
 ## Common Patterns
 
 ### Filter by Token Amount

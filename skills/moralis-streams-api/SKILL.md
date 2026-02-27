@@ -135,9 +135,11 @@ All requests require: `X-API-Key: $MORALIS_API_KEY`
 ### Status Values (lowercase only)
 
 ```typescript
-"active"   // CORRECT
-"paused"   // CORRECT
-"ACTIVE"   // WRONG
+"active"      // CORRECT - normal operating state
+"paused"      // CORRECT - manually paused
+"error"       // CORRECT - auto-set when webhook success rate <70%
+"terminated"  // CORRECT - unrecoverable, after 24h in error
+"ACTIVE"      // WRONG
 ```
 
 ---
@@ -149,8 +151,31 @@ All requests require: `X-API-Key: $MORALIS_API_KEY`
 3. **Hex stream ID** - Must be UUID format, not hex
 4. **String chain names** - Use hex (0x1), not names (eth)
 5. **Uppercase status** - Use lowercase ("active", "paused")
+6. **Not returning 200 on test webhook** - Stream won't start unless your endpoint returns 2xx on the test webhook sent during create/update
 
 See [references/CommonPitfalls.md](references/CommonPitfalls.md) for complete reference.
+
+---
+
+## Triggers (Read-Only Contract Calls)
+
+Enrich webhook data with on-chain reads (e.g., `balanceOf`). Triggers execute `view`/`pure` functions and attach results to webhook events. Supports dynamic selectors (`$contract`, `$from`, `$to`). See [references/Triggers.md](references/Triggers.md) for complete reference with examples.
+
+---
+
+## Native Balances in Webhooks
+
+Configure `getNativeBalances` to include native token balances (ETH, BNB, etc.) in webhook payloads. Requires Business plan+. See [references/UsefulStreamOptions.md](references/UsefulStreamOptions.md) for configuration details.
+
+---
+
+## Delivery and Error Handling
+
+- **Two webhooks per event**: Unconfirmed (`confirmed: false`) + Confirmed (`confirmed: true`). Idempotent handlers required.
+- **Streams auto-terminate after 24 hours in error state** (webhook success rate <70%). This is **unrecoverable** — you must create a new stream.
+- **Test webhook**: Sent on every create/update. Must return 200 or stream won't start.
+
+See [references/DeliveryGuarantees.md](references/DeliveryGuarantees.md) and [references/ErrorHandling.md](references/ErrorHandling.md).
 
 ---
 
@@ -312,13 +337,20 @@ See [references/StreamConfiguration.md](references/StreamConfiguration.md) for c
 
 ## Reference Documentation
 
-- [references/ListenToAllAddresses.md](references/ListenToAllAddresses.md) - Monitor events across all contracts on a chain
 - [references/CommonPitfalls.md](references/CommonPitfalls.md) - Complete pitfalls reference
-- [references/StreamConfiguration.md](references/StreamConfiguration.md) - Stream config reference
-- [references/WebhookSecurity.md](references/WebhookSecurity.md) - Signature verification
-- [references/WebhookResponseBody.md](references/WebhookResponseBody.md) - Webhook payload structure
+- [references/DeliveryGuarantees.md](references/DeliveryGuarantees.md) - At-least-once delivery, dual webhooks, confirmation blocks, test webhooks
+- [references/ErrorHandling.md](references/ErrorHandling.md) - Retry schedule, error/terminated states, rate limits, re-org handling
+- [references/FAQ.md](references/FAQ.md) - Streams API frequently asked questions
+- [references/FilterStreams.md](references/FilterStreams.md) - Webhook data filtering to reduce noise
+- [references/ListenToAllAddresses.md](references/ListenToAllAddresses.md) - Monitor events across all contracts on a chain
 - [references/MonitorMultipleAddresses.md](references/MonitorMultipleAddresses.md) - Multi-address monitoring patterns
 - [references/ReplayFailedWebhooks.md](references/ReplayFailedWebhooks.md) - Replay failed webhook guide
+- [references/StreamConfiguration.md](references/StreamConfiguration.md) - Stream config reference
+- [references/Triggers.md](references/Triggers.md) - Read-only contract call enrichment (balanceOf, etc.)
+- [references/Tutorials.md](references/Tutorials.md) - Real-world examples and tutorials
+- [references/UsefulStreamOptions.md](references/UsefulStreamOptions.md) - Advanced stream configuration options
+- [references/WebhookResponseBody.md](references/WebhookResponseBody.md) - Webhook payload structure
+- [references/WebhookSecurity.md](references/WebhookSecurity.md) - Signature verification
 
 ---
 

@@ -39,7 +39,20 @@ You are **only charged for the confirmed transaction**.
 
 ## After how many blocks is a transaction considered confirmed?
 
-Confirmation requirements vary by chain. See Moralis documentation for the specific number of blocks required for each chain.
+Confirmation depth varies by chain:
+
+| Chain | Chain ID | Blocks Until Confirmed |
+|-------|----------|----------------------|
+| Ethereum | `0x1` | 12 |
+| Polygon | `0x89` | 100 |
+| BSC | `0x38` | 18 |
+| Arbitrum | `0xa4b1` | 18 |
+| Base | `0x2105` | 100 |
+| Optimism | `0xa` | 500 |
+| Avalanche | `0xa86a` | 100 |
+| Fantom | `0xfa` | 100 |
+
+For a complete per-chain table, see [DeliveryGuarantees.md](DeliveryGuarantees.md).
 
 ## How many addresses can I add to a stream?
 
@@ -108,6 +121,27 @@ A **record** is the basic unit for calculating Streams usage:
 - Total records = `txs + logs + txsInternal` in the webhook response
 - Cost: **50 Compute Units per record**
 - Only confirmed blocks are charged (unconfirmed has `x-records-charged: 0`)
+
+## What happens if my webhook endpoint is down?
+
+Moralis retries with exponential backoff (1 min → 10 min → 1 hour → 2 hours → 6 hours → 12 hours → 24 hours). If the webhook success rate drops below **70%** or the event queue exceeds **10,000**, the stream enters `error` state and delivery is paused.
+
+If the stream remains in `error` state for **24 hours**, it becomes `terminated` and is unrecoverable. See [ErrorHandling.md](ErrorHandling.md) for complete details.
+
+## Can a terminated stream be resumed?
+
+**No.** A terminated stream cannot be resumed, restarted, or recovered. You must create a new stream. This is why monitoring webhook health is critical — see [ErrorHandling.md](ErrorHandling.md) for best practices.
+
+## What is the rate limit for adding addresses to a stream?
+
+**5 requests per 5 minutes** for address addition endpoints. To stay within limits, use batch operations — send multiple addresses in a single request using the `addressToAdd` array (up to 50,000 addresses per batch).
+
+```bash
+curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
+  -H "X-API-Key: $MORALIS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"addressToAdd": ["0x1234...", "0x5678...", "0x9abc..."]}'
+```
 
 ## Need More Help?
 
