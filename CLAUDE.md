@@ -128,6 +128,9 @@ bash scripts/test-bugs.sh
 
 # Verify skill installation
 bash scripts/test-installation.sh
+
+# Bump skill version (semver)
+node scripts/bump-version.js <skill|all> <major|minor|patch>
 ```
 
 ## Source of Truth
@@ -144,6 +147,16 @@ bash scripts/test-installation.sh
 - **Solana endpoints:** Always suffixed with `__solana` (e.g., `balance__solana.md`)
 - **EVM endpoints:** No suffix unless collision exists (then `__evm`)
 - This convention is strictly enforced by the generator script
+
+## Skill Versioning
+
+Skills use semver (`MAJOR.MINOR.PATCH`) in the `version` frontmatter field. Bump with `node scripts/bump-version.js`.
+
+| Bump | When | Examples |
+|------|------|---------|
+| **Major** | Breaking changes to skill behavior, removed capabilities | Dropping Solana support, renaming skill |
+| **Minor** | New capabilities, endpoints, or reference files | Adding Discovery API docs, new endpoint batch |
+| **Patch** | Fixes, corrections, content alignment | Wrong endpoint name, updated FAQ, aligned TTLs |
 
 ## Skill Frontmatter Pattern
 
