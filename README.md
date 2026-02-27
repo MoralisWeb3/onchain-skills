@@ -8,9 +8,21 @@ Works with any agent that supports the [Agent Skills](https://skills.sh/) standa
 
 ### Install the skills
 
+**Via [skills.sh](https://skills.sh/):**
+
 ```bash
 npx skills add MoralisWeb3/onchain-skills
 ```
+
+**Via [ClawHub](https://clawhub.ai/):**
+
+```bash
+clawhub install moralis-data-api
+clawhub install moralis-streams-api
+clawhub install learn-moralis
+```
+
+**Via your OpenClaw agent:** If you have an [OpenClaw](https://openclaw.ai/) agent running, just ask it to search for and install the Moralis API skills from ClawHub — it knows how to find and set them up for you.
 
 ### Set your API key (optional)
 
@@ -26,7 +38,7 @@ Without the key, the skill can't call the Moralis API on your behalf.
 
 | Skill | Description |
 |-------|-------------|
-| **moralis-data-api** | EVM + Solana blockchain data (135 endpoints) |
+| **moralis-data-api** | EVM + Solana blockchain data (136 endpoints) |
 | **moralis-streams-api** | Real-time event monitoring with webhooks (20 endpoints) |
 | **learn-moralis** | Routing, FAQ, pricing, and capability guidance |
 
@@ -36,17 +48,17 @@ Unified skill for all blockchain data queries. Auto-detects EVM vs Solana from a
 
 **Default Chain:** For EVM addresses without a specified chain, defaults to Ethereum (`0x1`).
 
-**135 endpoints** (101 EVM + 34 Solana) across these categories:
+**136 endpoints** (102 EVM + 34 Solana) across these categories:
 
-- **Wallet** (16) — balances, tokens, NFTs, history, profitability, net worth
+- **Wallet** (17) — balances, tokens, NFTs, history, profitability, net worth
 - **Token** (22) — prices, metadata, pairs, DEX swaps, analytics, security scores, snipers
 - **NFT** (22) — metadata, transfers, traits, rarity, floor prices, trades
 - **DeFi** (3) — protocol positions, liquidity, exposure
 - **Entity** (2) — labeled addresses (exchanges, funds, whales)
-- **Price** (3) — OHLCV, token prices, pair prices
+- **Price** (4) — OHLCV, token prices, pair prices
 - **Blockchain** (5) — blocks, transactions, date-to-block
 - **Discovery** (13) — trending tokens, market movers, top gainers/losers
-- **Other** (15) — address resolution, token search, bonding, candlesticks, graduated tokens
+- **Other** (14) — address resolution, token search, bonding, candlesticks, graduated tokens
 - **Solana** (34) — native Solana endpoints + EVM endpoints with Solana support
 
 ```
