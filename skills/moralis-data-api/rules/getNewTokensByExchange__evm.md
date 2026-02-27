@@ -46,7 +46,7 @@ Returns the new tokens for the specified exchange.
   "total": 10,
   "page": 1,
   "page_size": 100,
-  "cursor": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+  "cursor": "<cursor_from_previous_response>",
   "result": [
     {
       "tokenAddress": "0x6b175474e89094c44da98b954eedeac495271d0f",

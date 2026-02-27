@@ -6,6 +6,8 @@ license: MIT
 compatibility: Knowledge-only skill. Read/Grep/Glob access bundled reference files (FAQ, ProductComparison, UseCaseGuide). Does not require or access any API keys or environment variables.
 metadata:
   author: MoralisWeb3
+  homepage: https://docs.moralis.com
+  repository: https://github.com/MoralisWeb3/onchain-skills
   openclaw:
     requires: {}
 allowed-tools: Read Grep Glob

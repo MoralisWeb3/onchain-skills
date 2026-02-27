@@ -47,7 +47,7 @@ Status: 200
 {
   "page": 1,
   "pageSize": 100,
-  "cursor": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...kJ8E_653QrA4Q8zb_9OCn6opE9aBo8PjqLeQU_VCaaw",
+  "cursor": "<cursor_from_previous_response>",
   "exchangeName": "Raydium AMM v4",
   "exchangeLogo": "https://entities-logos.s3.amazonaws.com/raydium.png",
   "exchangeAddress": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",

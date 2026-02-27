@@ -18,10 +18,10 @@ Each response returns a `cursor` value. Use that cursor in the next request to g
 curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/nft?chain=0x1&limit=100" \
   -H "X-API-Key: $MORALIS_API_KEY"
 
-# Response includes: {"cursor": "eyJjcmVhdGVkQXQiOjE2...", ...}
+# Response includes: {"cursor": "<cursor_value>", ...}
 
 # Next page (use cursor from response)
-curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/nft?chain=0x1&limit=100&cursor=eyJjcmVhdGVkQXQiOjE2..." \
+curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/nft?chain=0x1&limit=100&cursor=<cursor_from_previous_response>" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```
 

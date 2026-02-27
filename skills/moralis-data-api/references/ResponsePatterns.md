@@ -62,7 +62,7 @@ Returns wrapped object with `result`, `cursor`, `page`, and `page_size`. Data is
 
 ```typescript
 {
-  "cursor": "eyJw...",
+  "cursor": "<cursor_value>",
   "page": "2",
   "page_size": "100",
   "result": [
@@ -106,7 +106,7 @@ Returns wrapped object with `page`, `page_size`, `cursor`, and `result`. Similar
 {
   "page": "1",
   "page_size": "100",
-  "cursor": "eyJw...",
+  "cursor": "<cursor_value>",
   "result": [
     { "token_address": "0x...", ... },
     { "token_address": "0x...", ... }

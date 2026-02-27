@@ -128,7 +128,7 @@ curl -X GET "https://api.moralis-streams.com/streams/evm/{streamId}/address?limi
     "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
     "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
   ],
-  "cursor": "eyJzdHJlYW1JZCI6ICIxMjM0NTY3OC05MGFiLWNkZWYtMTIzNC01Njc4OTAxMjM0NTY3OCIsICJhZGRyZXNzIjogIjB4NzQyZDM1Q2M2NjM0QzA1MzI5MjVhM2I4NDRCYzllNzU5NWYwYkViIn0=",
+  "cursor": "<cursor_value>",
   "total": 3
 }
 ```

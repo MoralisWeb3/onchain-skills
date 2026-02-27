@@ -47,7 +47,7 @@ Status: 200
 {
   "page": 1,
   "pageSize": 100,
-  "cursor": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...Caaw",
+  "cursor": "<cursor_from_previous_response>",
   "result": [
     {
       "transactionHash": "0xafc66b9b1802618f560be5244395f0fc0b95a1f1fdeee7a206acbb546c9e8a72",

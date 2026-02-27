@@ -6,6 +6,8 @@ license: MIT
 compatibility: Requires curl for API calls. Requires MORALIS_API_KEY env var for authentication.
 metadata:
   author: MoralisWeb3
+  homepage: https://docs.moralis.com
+  repository: https://github.com/MoralisWeb3/onchain-skills
   openclaw:
     requires:
       env:

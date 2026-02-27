@@ -23172,7 +23172,7 @@
                 "name": "cursor",
                 "type": "string",
                 "description": "The cursor to use for the next page",
-                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+                "example": "<cursor_from_previous_response>"
               },
               {
                 "name": "result",
@@ -23377,7 +23377,7 @@
                 "name": "cursor",
                 "type": "string",
                 "description": "The cursor to use for the next page",
-                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+                "example": "<cursor_from_previous_response>"
               },
               {
                 "name": "result",
@@ -23582,7 +23582,7 @@
                 "name": "cursor",
                 "type": "string",
                 "description": "The cursor to use for the next page",
-                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+                "example": "<cursor_from_previous_response>"
               },
               {
                 "name": "result",
@@ -28667,7 +28667,7 @@
               {
                 "name": "cursor",
                 "type": "string",
-                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...kJ8E_653QrA4Q8zb_9OCn6opE9aBo8PjqLeQU_VCaaw"
+                "example": "<cursor_from_previous_response>"
               },
               {
                 "name": "exchangeName",
@@ -28930,7 +28930,7 @@
               {
                 "name": "cursor",
                 "type": "string",
-                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...Caaw"
+                "example": "<cursor_from_previous_response>"
               },
               {
                 "name": "result",
