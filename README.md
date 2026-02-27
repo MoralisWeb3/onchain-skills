@@ -24,15 +24,27 @@ clawhub install learn-moralis
 
 **Via your OpenClaw agent:** If you have an [OpenClaw](https://openclaw.ai/) agent running, just ask it to search for and install the Moralis API skills from ClawHub — it knows how to find and set them up for you.
 
-### Set your API key (optional)
+### Set your API key
 
-Add your key to a `.env` file in your project root — the skill will offer to create it for you, or do it manually:
+Get your key from [admin.moralis.com](https://admin.moralis.com/register), then configure it for your agent:
+
+**For most agents** (Claude Code, Cursor, Windsurf, Cline, etc.) — add to a `.env` file in your project root:
 
 ```bash
 echo "MORALIS_API_KEY=your_key_here" >> .env
 ```
 
-Without the key, the skill can't call the Moralis API on your behalf.
+**For OpenClaw** — add to the `env` section in `~/.openclaw/openclaw.json`:
+
+```json
+{
+  "env": {
+    "MORALIS_API_KEY": "your_key_here"
+  }
+}
+```
+
+Without the key, the skills can't call the Moralis API on your behalf.
 
 ## Skills
 
