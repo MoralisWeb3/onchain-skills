@@ -39,6 +39,15 @@ Each transaction may include:
 - [getWalletTokenTransfers](rules/getWalletTokenTransfers.md) - Get ERC20 token transfers
 - [getWalletNFTTransfers](rules/getWalletNFTTransfers.md) - Get NFT transfers
 
+## Performance Characteristics
+
+- Most requests return quickly, but response time depends on wallet activity volume and chain
+- Wallets with extensive transaction history (whale wallets, power users) take longer to process
+- Use pagination with smaller `limit` values (25–50) for large wallets
+- Set client timeout to **30s** to handle edge cases
+
+See [PerformanceAndLatency.md](PerformanceAndLatency.md) for full optimization guidance.
+
 ## Documentation
 
 For complete wallet history documentation and examples, see:

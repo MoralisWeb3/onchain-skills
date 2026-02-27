@@ -224,6 +224,21 @@ Blast, zkSync, Mantle, opBNB, Polygon zkEVM, Zetachain
 
 ---
 
+## Performance Expectations
+
+Most Data API endpoints respond quickly. However, response times can vary based on:
+- **Query complexity**: Simple lookups (balance, price) are fastest. Decoded endpoints (wallet history, DeFi positions) do more processing.
+- **Wallet size**: Wallets with large transaction histories take longer. Use pagination with smaller limits for whale/power-user wallets.
+- **Chain**: Response times vary across chains. Some chains are inherently slower than others.
+
+### Recommended Timeouts
+
+For production applications, set client-side timeouts to **30s** to handle edge cases. Most requests return much faster, but large wallets or slower chains can occasionally take longer.
+
+For detailed optimization guidance, see @moralis-data-api → references/PerformanceAndLatency.md.
+
+---
+
 ## Reference Documentation
 
 For detailed information:

@@ -73,7 +73,7 @@ Yes. The `getWalletHistory` and `getTransactionVerbose` endpoints return human-r
 |--------|----------|---------|
 | Model | Request-response | Push via webhook |
 | Use | Query current/historical state | React to events |
-| Latency | 100-500ms per request | 1-3s after block |
+| Latency | Fast (varies by query complexity and chain) | 1-3s after block |
 | Setup | API calls | Webhook endpoint required |
 
 ### Can I monitor wallets in real-time?
@@ -165,6 +165,12 @@ Yes, official SDKs for:
 - Python
 
 But these skills use direct REST API calls via curl for simplicity.
+
+### What response times should I expect?
+
+Most Data API endpoints respond quickly. Response times vary depending on query complexity (decoded endpoints take longer), wallet size (large wallets need more processing), and chain. For production applications, set client-side timeouts to **30s** to safely handle edge cases. Use pagination with smaller `limit` values for wallets with large transaction histories. Implement exponential backoff for 429 (rate limit) responses.
+
+See [PerformanceAndLatency.md](../moralis-data-api/references/PerformanceAndLatency.md) for full details.
 
 ### Is there a webhook secret?
 

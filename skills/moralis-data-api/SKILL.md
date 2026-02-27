@@ -193,6 +193,20 @@ curl "https://deep-index.moralis.io/api/v2.2/${ADDRESS}?chain=${CHAIN}&limit=5" 
 
 ---
 
+## Performance & Timeouts
+
+Most endpoints respond quickly under normal conditions. Response times can vary based on wallet activity volume, chain, and query complexity.
+
+**Recommended client timeouts:**
+- Simple queries (balance, price, metadata): 10s
+- Complex queries (wallet history, DeFi positions): 30s
+
+Large wallets with extensive transaction histories may take longer — use pagination with reasonable `limit` values.
+
+See [references/PerformanceAndLatency.md](references/PerformanceAndLatency.md) for optimization tips.
+
+---
+
 ## Default Chain Behavior
 
 **EVM addresses (`0x...`):** Default to Ethereum (`chain=0x1`) unless specified.
@@ -426,6 +440,7 @@ Solana-specific endpoints (24 native + 10 EVM variants that support Solana chain
 - [references/CommonPitfalls.md](references/CommonPitfalls.md) - Complete pitfalls reference
 - [references/DataTransformations.md](references/DataTransformations.md) - Type conversion reference
 - [references/FilteredTokens.md](references/FilteredTokens.md) - Token discovery metrics, timeframes, filters, and examples
+- [references/PerformanceAndLatency.md](references/PerformanceAndLatency.md) - Response time guidance, timeout recommendations, caching
 - [references/ResponsePatterns.md](references/ResponsePatterns.md) - Pagination patterns
 - [references/SupportedApisAndChains.md](references/SupportedApisAndChains.md) - Chains and APIs
 

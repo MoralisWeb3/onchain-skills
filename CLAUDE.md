@@ -27,6 +27,7 @@ skills/
 │   │   ├── FilteredTokens.md         # Token discovery metrics, timeframes, and filter examples
 │   │   ├── NftMarketplaces.md        # Supported NFT marketplaces for trade/floor price endpoints
 │   │   ├── Pagination.md             # Cursor-based pagination reference
+│   │   ├── PerformanceAndLatency.md  # Response time guidance, timeouts, caching
 │   │   ├── ResponsePatterns.md       # Pagination patterns and response wrapper structures
 │   │   ├── SupportedApisAndChains.md # Chain support matrix
 │   │   ├── SupportedDexs.md          # Supported DEXs for token API endpoints
@@ -68,6 +69,7 @@ Each skill includes pattern reference files containing complete reference materi
 - `references/FilteredTokens.md` - Token discovery metrics, timeframes, and filter examples
 - `references/NftMarketplaces.md` - Supported NFT marketplaces for trade/floor price endpoints
 - `references/Pagination.md` - Cursor-based pagination reference with examples
+- `references/PerformanceAndLatency.md` - Response time guidance, timeout recommendations, caching
 - `references/ResponsePatterns.md` - Pagination patterns and response wrapper structures
 - `references/SupportedApisAndChains.md` - Chain support matrix
 - `references/SupportedDexs.md` - Supported DEXs for token API endpoints
