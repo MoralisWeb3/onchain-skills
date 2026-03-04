@@ -24,6 +24,7 @@ if [ "$SKILL_COUNT" -ge 2 ]; then
   echo "✓ At least 2 skills present (found $SKILL_COUNT)"
 else
   echo "✗ Expected at least 2 skills, found $SKILL_COUNT"
+  exit 1
 fi
 echo ""
 
@@ -35,9 +36,21 @@ if [ -d "$SAMPLE_SKILL" ]; then
     echo "✓ Sample skill has SKILL.md"
   else
     echo "✗ Sample skill missing SKILL.md"
+    exit 1
   fi
 else
   echo "✗ Sample skill directory not found"
+  exit 1
+fi
+echo ""
+
+# Test 4: Sensitive literal validation
+echo "Test 4: Sensitive Literal Validation"
+if node scripts/check-sensitive-literals.js > /dev/null; then
+  echo "✓ No address/hash-like literals found"
+else
+  echo "✗ Sensitive address/hash-like literals detected"
+  exit 1
 fi
 echo ""
 

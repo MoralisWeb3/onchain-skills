@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The pair address token-transactions are to be retrieved for. | \`0xa3c2076eb97d573cc8842f1db1ecdf7b6f77ba27\` |
+| address | string | Yes | The pair address token-transactions are to be retrieved for. | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -36,12 +36,12 @@ Returns snipers by pair address.
 
 ```json
 {
-  "transactionHash": "0x2bfcba4715774420936669cd0ff2241d70e9abecab76c9db813602015b3134ad",
+  "transactionHash": "YOUR_TX_HASH",
   "blockTimestamp": "2022-02-22T00:00:00Z",
   "blockNumber": 21093423,
   "result": [
     {
-      "walletAddress": "0x2bfcba4715774420936669cd0ff2241d70e9abec",
+      "walletAddress": "YOUR_ADDRESS",
       "totalTokensSniped": 0,
       "totalSnipedUsd": 0,
       "totalSnipedTransactions": 0,
@@ -54,14 +54,14 @@ Returns snipers by pair address.
       "realizedProfitUsd": 0,
       "snipedTransactions": [
         {
-          "transactionHash": "0x2bfcba4715774420936669cd0ff2241d70e9abec",
+          "transactionHash": "YOUR_TX_HASH",
           "blocksAfterCreation": 0,
           "transactionTimestamp": 0
         }
       ],
       "sellTransactions": [
         {
-          "transactionHash": "0x2bfcba4715774420936669cd0ff2241d70e9abec",
+          "transactionHash": "YOUR_TX_HASH",
           "blocksAfterCreation": 0,
           "transactionTimestamp": 0
         }
@@ -74,7 +74,7 @@ Returns snipers by pair address.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/pairs/0xa3c2076eb97d573cc8842f1db1ecdf7b6f77ba27/snipers?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/pairs/YOUR_ADDRESS/snipers?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

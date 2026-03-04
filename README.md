@@ -74,11 +74,11 @@ Unified skill for all blockchain data queries. Auto-detects EVM vs Solana from a
 - **Solana** (34) — native Solana endpoints + EVM endpoints with Solana support
 
 ```
-/moralis-data-api Get the balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045
+/moralis-data-api Get the balance of YOUR_EVM_ADDRESS
 
-/moralis-data-api Get the balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 on Polygon
+/moralis-data-api Get the balance of YOUR_EVM_ADDRESS on Polygon
 
-/moralis-data-api Get the balance of Solana wallet 742d35Cc6634C0532925a3b844Bc9e7595f0bEb
+/moralis-data-api Get the balance of Solana wallet YOUR_SOLANA_ADDRESS
 ```
 
 > **Tip:** Prefix your prompt with the skill name (e.g. `/moralis-data-api`) to load it directly. Some agents auto-detect skills, but tagging ensures it works across all agents.
@@ -92,7 +92,7 @@ Real-time blockchain event monitoring with webhooks. **20 endpoints** for creati
 ```
 /moralis-streams-api Create a stream to monitor all ERC20 transfers on Ethereum
 
-/moralis-streams-api Pause the stream with ID a1b2c3d4-e5f6-7890-abcd-ef1234567890
+/moralis-streams-api Pause the stream with ID YOUR_STREAM_ID
 ```
 
 ## learn-moralis
@@ -116,6 +116,7 @@ Knowledge-only skill for answering general questions about Moralis. Routes users
 - **Zero dependencies** — all API calls use curl
 - **Works with 18+ agents** — any agent supporting the [Agent Skills](https://skills.sh/) standard
 - **Auto-generated endpoint docs** — `swagger/api-configs.json` → `scripts/generate-endpoint-rules.js` → `rules/*.md`
+- **Sanitized examples** — markdown docs use placeholders (`YOUR_EVM_ADDRESS`, etc.) to avoid shipping real-looking identifiers
 - **Manually maintained references** — pattern files in each skill's `references/` directory
 
 ## Documentation

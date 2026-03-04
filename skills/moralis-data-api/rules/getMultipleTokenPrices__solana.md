@@ -24,7 +24,7 @@ POST
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| addresses | array | No | - | \`\` |
+| addresses | array | No | - | \`[]\` |
 
 ## Response Example
 

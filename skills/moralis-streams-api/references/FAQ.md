@@ -134,13 +134,13 @@ If the stream remains in `error` state for **24 hours**, it becomes `terminated`
 
 ## What is the rate limit for adding addresses to a stream?
 
-**5 requests per 5 minutes** for address addition endpoints. To stay within limits, use batch operations — send multiple addresses in a single request using the `addressToAdd` array (up to 50,000 addresses per batch).
+**5 requests per 5 minutes** for address addition endpoints. To stay within limits, use batch operations — send multiple addresses in a single request using the `address` field (up to 50,000 addresses per batch).
 
 ```bash
 curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"addressToAdd": ["0x1234...", "0x5678...", "0x9abc..."]}'
+  -d '{"address": ["YOUR_EVM_ADDRESS", "YOUR_EVM_ADDRESS", "YOUR_EVM_ADDRESS"]}'
 ```
 
 ## Need More Help?

@@ -11,7 +11,6 @@ const data = JSON.parse(fs.readFileSync(API_CONFIGS_PATH, "utf8"));
 // Get all operationIds from each source
 const evmOps = new Set(Object.keys(data.evm || {}));
 const solanaOps = new Set(Object.keys(data.solana || {}));
-const streamsOps = new Set(Object.keys(data.streams || {}));
 
 // Find collisions between EVM and Solana
 const collisions = [];
@@ -69,3 +68,5 @@ if (missingFiles.length > 0) {
 if (missingSuffix.length === 0 && missingFiles.length === 0) {
   console.log("✅ All collision handling is correct!");
 }
+
+process.exit(missingSuffix.length > 0 || missingFiles.length > 0 ? 1 : 0);

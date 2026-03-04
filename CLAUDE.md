@@ -18,9 +18,10 @@ skills/
 │   │   ├── ProductComparison.md
 │   │   └── UseCaseGuide.md
 │   └── SKILL.md
-├── moralis-data-api/           # Unified EVM + Solana data API (135 endpoints)
+├── moralis-data-api/           # Unified EVM + Solana data API (136 endpoints)
 │   ├── rules/                  # Auto-generated endpoint docs (one per endpoint)
 │   ├── references/
+│   │   ├── ApiResponseCodes.md       # API response code patterns and handling guidance
 │   │   ├── CommonPitfalls.md         # Gotchas: data types, HTTP methods, path inconsistencies
 │   │   ├── DataTransformations.md    # Type conversions, field mappings, snake_case → camelCase
 │   │   ├── DefiProtocols.md          # Supported DeFi protocols and chains
@@ -31,6 +32,7 @@ skills/
 │   │   ├── ResponsePatterns.md       # Pagination patterns and response wrapper structures
 │   │   ├── SupportedApisAndChains.md # Chain support matrix
 │   │   ├── SupportedDexs.md          # Supported DEXs for token API endpoints
+│   │   ├── SpamDetection.md          # Spam flag interpretation and filtering guidance
 │   │   ├── TokenHoldersFaq.md        # Token Holders API FAQ and important notes
 │   │   ├── TokenSearch.md            # Token search functionality reference
 │   │   └── WalletHistory.md          # Wallet history categories and classifications
@@ -64,6 +66,7 @@ Each skill includes pattern reference files containing complete reference materi
 ### moralis-data-api
 
 - `references/CommonPitfalls.md` - Gotchas: data type assumptions, HTTP methods, path inconsistencies
+- `references/ApiResponseCodes.md` - API response code patterns, response handling, and retry guidance
 - `references/DataTransformations.md` - Type conversions, field mappings (block numbers, timestamps, balances, snake_case → camelCase)
 - `references/DefiProtocols.md` - Supported DeFi protocols and chains for position endpoints
 - `references/FilteredTokens.md` - Token discovery metrics, timeframes, and filter examples
@@ -73,6 +76,7 @@ Each skill includes pattern reference files containing complete reference materi
 - `references/ResponsePatterns.md` - Pagination patterns and response wrapper structures
 - `references/SupportedApisAndChains.md` - Chain support matrix
 - `references/SupportedDexs.md` - Supported DEXs for token API endpoints
+- `references/SpamDetection.md` - Spam flag interpretation, filtering behavior, and recommended handling
 - `references/TokenHoldersFaq.md` - Token Holders API FAQ and important notes
 - `references/TokenSearch.md` - Token search functionality reference
 - `references/WalletHistory.md` - Wallet history categories and classifications
@@ -99,6 +103,12 @@ Each skill includes pattern reference files containing complete reference materi
 ## Development Commands
 
 ```bash
+# One-shot build (preferred): generation + validation + non-API tests
+bun run build
+
+# Full build including API-key dependent tests
+bun run build:full
+
 # Generate endpoint markdown rules from swagger config
 node scripts/generate-endpoint-rules.js
 
@@ -119,6 +129,15 @@ node scripts/check-solana-suffix.js
 
 # Verify Solana endpoint variants are properly registered (ESM)
 node scripts/verify-solana-variants.mjs
+
+# Validate markdown references resolve correctly
+node scripts/check-markdown-links.js
+
+# Sanitize markdown docs by replacing address/hash-like literals with placeholders
+node scripts/sanitize-sensitive-literals.js
+
+# Validate no address/hash-like literals exist in markdown docs
+node scripts/check-sensitive-literals.js
 
 # Test all skills end-to-end
 bash scripts/test-all-skills.sh
@@ -147,6 +166,14 @@ node scripts/bump-version.js <skill|all> <major|minor|patch>
 - **Solana endpoints:** Always suffixed with `__solana` (e.g., `balance__solana.md`)
 - **EVM endpoints:** No suffix unless collision exists (then `__evm`)
 - This convention is strictly enforced by the generator script
+
+## Sensitive Literal Policy
+
+To avoid antivirus false positives in hosted skill content:
+
+- Never commit real-looking EVM addresses, transaction hashes, Solana addresses, or UUIDs in markdown files.
+- Always use placeholders such as `YOUR_EVM_ADDRESS`, `YOUR_SOLANA_ADDRESS`, `YOUR_TX_HASH`, and `YOUR_STREAM_ID`.
+- Run `node scripts/check-sensitive-literals.js` before reporting completion.
 
 ## Skill Versioning
 

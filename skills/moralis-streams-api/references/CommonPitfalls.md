@@ -106,7 +106,7 @@ const streamId = '0x1234567890abcdef';
 await fetch(`/streams/evm/${streamId}`);
 
 // ✅ CORRECT - Using UUID format
-const streamId = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890';
+const streamId = 'YOUR_STREAM_ID';
 await fetch(`/streams/evm/${streamId}`);
 ```
 

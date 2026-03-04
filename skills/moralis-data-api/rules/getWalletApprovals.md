@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The wallet address from which to retrieve active ERC20 token approvals | \`0xcB1C1FdE09f811B294172696404e88E658659905\` |
+| address | string | Yes | The wallet address from which to retrieve active ERC20 token approvals | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -50,11 +50,11 @@ Returns active ERC20 token approvals for the specified wallet address
     {
       "block_number": 12526958,
       "block_timestamp": "2021-04-02T10:07:54.000Z",
-      "transaction_hash": "0x2d30ca6f024dbc1307ac8a1a44ca27de6f797ec22ef20627a1307243b0ab7d09",
+      "transaction_hash": "YOUR_TX_HASH",
       "value": "8409770570506626",
       "value_formatted": "0.1",
       "token": {
-        "address": "0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c",
+        "address": "YOUR_ADDRESS",
         "address_label": "address_label_example",
         "name": "Tether USD",
         "symbol": "USDT",
@@ -67,7 +67,7 @@ Returns active ERC20 token approvals for the specified wallet address
         "usd_at_risk": "1000000000000000"
       },
       "spender": {
-        "address": "0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c",
+        "address": "YOUR_ADDRESS",
         "address_label": "Binance 1",
         "entity": "Opensea",
         "entity_logo": "https://opensea.io/favicon.ico"
@@ -80,7 +80,7 @@ Returns active ERC20 token approvals for the specified wallet address
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/0xcB1C1FdE09f811B294172696404e88E658659905/approvals?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/YOUR_ADDRESS/approvals?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

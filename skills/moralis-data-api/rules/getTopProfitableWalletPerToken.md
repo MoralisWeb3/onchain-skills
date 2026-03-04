@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The ERC20 token address. | \`0x6982508145454ce325ddbe47a25d4ec3d2311933\` |
+| address | string | Yes | The ERC20 token address. | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -38,7 +38,7 @@ Successful response with top profitable wallets.
   "name": "Kylin Network",
   "symbol": "KYL",
   "decimals": 18,
-  "logo": "https://cdn.moralis.io/eth/0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c.png",
+  "logo": "https://example.com/RESOURCE_URL",
   "possible_spam": "false",
   "result": [
     {
@@ -61,7 +61,7 @@ Successful response with top profitable wallets.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/0x6982508145454ce325ddbe47a25d4ec3d2311933/top-gainers?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/YOUR_ADDRESS/top-gainers?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

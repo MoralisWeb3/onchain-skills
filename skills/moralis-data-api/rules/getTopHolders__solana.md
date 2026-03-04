@@ -17,7 +17,7 @@ GET
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
 | network | string (mainnet) | Yes | The network to query | - |
-| address | string | Yes | The address to query | \`EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v\` |
+| address | string | Yes | The address to query | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -59,7 +59,7 @@ Status: 200
 ## Example (curl)
 
 ```bash
-curl -X GET "https://solana-gateway.moralis.io/token/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/top-holders" \
+curl -X GET "https://solana-gateway.moralis.io/token/mainnet/YOUR_ADDRESS/top-holders" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

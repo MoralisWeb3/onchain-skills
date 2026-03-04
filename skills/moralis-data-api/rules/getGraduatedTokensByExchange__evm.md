@@ -49,7 +49,7 @@ Returns the graduated tokens for the specified exchange.
   "cursor": "<cursor_from_previous_response>",
   "result": [
     {
-      "tokenAddress": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "tokenAddress": "YOUR_TOKEN_ADDRESS",
       "name": "Test Token",
       "symbol": "TEST",
       "logo": "https://example.com/logo.png",

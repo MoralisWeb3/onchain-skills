@@ -30,14 +30,14 @@ Returns metadata for a given token contract address (name, symbol, decimals, log
 ```json
 [
   {
-    "address": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+    "address": "YOUR_ADDRESS",
     "address_label": "Binance 1",
     "name": "Kylin Network",
     "symbol": "KYL",
     "decimals": "18",
-    "logo": "https://cdn.moralis.io/eth/0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c.png",
+    "logo": "https://example.com/RESOURCE_URL",
     "logo_hash": "ee7aa2cdf100649a3521a082116258e862e6971261a39b5cd4e4354fcccbc54d",
-    "thumbnail": "https://cdn.moralis.io/eth/0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c_thumb.png",
+    "thumbnail": "https://example.com/RESOURCE_URL",
     "total_supply": "420689899999994793099999999997400",
     "total_supply_formatted": "420689899999994.7930999999999974",
     "implementations": [
@@ -45,7 +45,7 @@ Returns metadata for a given token contract address (name, symbol, decimals, log
         "chainId": "0x1",
         "chain": "eth",
         "chainName": "Ethereum",
-        "address": "0x6982508145454ce325ddbe47a25d4ec3d2311933"
+        "address": "YOUR_ADDRESS"
       }
     ],
     "fully_diluted_valuation": "3407271444.05",

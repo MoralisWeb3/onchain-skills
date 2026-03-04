@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The address of the NFT collection | \`0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D\` |
+| address | string | Yes | The address of the NFT collection | \`YOUR_ADDRESS\` |
 | token_id | string | Yes | The token id of the NFT collection | \`1\` |
 
 ## Query Params
@@ -105,7 +105,7 @@ Returns the sold price details
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/nft/0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D/1/price?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/nft/YOUR_ADDRESS/1/price?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

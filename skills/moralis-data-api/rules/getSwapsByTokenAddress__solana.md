@@ -19,7 +19,7 @@ GET
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
 | network | string (mainnet) | Yes | The network to query | - |
-| address | string | Yes | The address to query | \`So11111111111111111111111111111111111111112\` |
+| address | string | Yes | The address to query | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -50,22 +50,22 @@ Status: 200
   "cursor": "<cursor_from_previous_response>",
   "result": [
     {
-      "transactionHash": "0xafc66b9b1802618f560be5244395f0fc0b95a1f1fdeee7a206acbb546c9e8a72",
+      "transactionHash": "YOUR_TX_HASH",
       "transactionIndex": 5,
       "transactionType": "buy",
       "blockNumber": 12345678,
       "blockTimestamp": "2024-11-21T09:22:28.000Z",
       "subCategory": "ACCUMULATION",
-      "walletAddress": "0x1c584a6baecb7c5d51caa0ef3a579e08bd49d4e5",
-      "pairAddress": "0xdded227d71a096c6b5d87807c1b5c456771aaa94",
+      "walletAddress": "YOUR_ADDRESS",
+      "pairAddress": "YOUR_PAIR_ADDRESS",
       "pairLabel": "USDC/WETH",
-      "exchangeAddress": "0x1080ee857d165186af7f8d63e8ec510c28a6d1ea",
+      "exchangeAddress": "YOUR_ADDRESS",
       "exchangeName": "Uniswap",
-      "exchangeLogo": "https://logo.moralis.io/0xe708_0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f_769a0b766bd3d6d1830f0a95d7b3e313",
+      "exchangeLogo": "https://example.com/RESOURCE_URL",
       "baseToken": "ETH",
       "quoteToken": "USDT",
       "bought": {
-        "address": "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
+        "address": "YOUR_ADDRESS",
         "name": "Wrapped Ether",
         "symbol": "SYM",
         "logo": "https://example.com/logo-token1.png",
@@ -75,7 +75,7 @@ Status: 200
         "tokenType": "token1"
       },
       "sold": {
-        "address": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+        "address": "YOUR_ADDRESS",
         "name": "USDC",
         "symbol": "SYM",
         "logo": "https://example.com/logo-token2.png",
@@ -94,7 +94,7 @@ Status: 200
 ## Example (curl)
 
 ```bash
-curl -X GET "https://solana-gateway.moralis.io/token/mainnet/So11111111111111111111111111111111111111112/swaps?order=DESC&transactionTypes=buy%2Csell" \
+curl -X GET "https://solana-gateway.moralis.io/token/mainnet/YOUR_ADDRESS/swaps?order=DESC&transactionTypes=buy%2Csell" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

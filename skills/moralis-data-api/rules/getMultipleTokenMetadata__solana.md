@@ -24,7 +24,7 @@ POST
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| addresses | array | No | - | \`So11111111111111111111111111111111111111112\` |
+| addresses | array | No | - | \`["YOUR_ADDRESS"]\` |
 
 ## Response Example
 
@@ -71,7 +71,7 @@ curl -X POST "https://solana-gateway.moralis.io/token/mainnet/metadata" \
   -H "Content-Type: application/json" \
   -d '{
   "addresses": [
-    "So11111111111111111111111111111111111111112"
+    "YOUR_ADDRESS"
   ]
 }'
 ```

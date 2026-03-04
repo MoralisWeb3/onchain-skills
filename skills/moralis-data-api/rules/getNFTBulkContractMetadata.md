@@ -33,15 +33,15 @@ Returns the metadata for the requested NFT collections.
 ```json
 [
   {
-    "token_address": "0x2d30ca6f024dbc1307ac8a1a44ca27de6f797ec22ef20627a1307243b0ab7d09",
+    "token_address": "YOUR_TOKEN_ADDRESS",
     "name": "KryptoKitties",
     "synced_at": "synced_at_example",
     "symbol": "RARI",
     "contract_type": "ERC721",
     "possible_spam": "false",
     "verified_collection": "false",
-    "collection_logo": "https://cdn.moralis.io/eth/0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c.png",
-    "collection_banner_image": "https://cdn.moralis.io/eth/0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c.png",
+    "collection_logo": "https://example.com/RESOURCE_URL",
+    "collection_banner_image": "https://example.com/RESOURCE_URL",
     "collection_category": "Art",
     "project_url": "https://www.cryptokitties.co/",
     "wiki_url": "https://en.wikipedia.org/wiki/CryptoKitties",
@@ -53,22 +53,22 @@ Returns the metadata for the requested NFT collections.
     "floor_price_usd": "12345.4899",
     "floor_price_currency": "eth",
     "last_sale": {
-      "transaction_hash": "0x19e14f34b8f120c980f7ba05338d64c00384857fb9c561e2c56d0f575424a95c",
+      "transaction_hash": "YOUR_TX_HASH",
       "block_timestamp": "2023-04-04T15:59:11.000Z",
-      "buyer_address": "0xcb1c1fde09f811b294172696404e88e658659905",
-      "seller_address": "0x497a7dee2f13db161eb2fec060fa783cb041419f",
+      "buyer_address": "YOUR_ADDRESS",
+      "seller_address": "YOUR_ADDRESS",
       "price": "7300000000000000",
       "price_formatted": "0.0073",
       "usd_price_at_sale": "13.61",
       "current_usd_value": "15.53",
-      "token_address": "0xe8778996e096b39705c6a0a937eb587a1ebbda17",
+      "token_address": "YOUR_TOKEN_ADDRESS",
       "token_id": "170",
       "payment_token": {
         "token_name": "Ether",
         "token_symbol": "ETH",
         "token_logo": "https://cdn.moralis.io/eth/0x.png",
         "token_decimals": "18",
-        "token_address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        "token_address": "YOUR_TOKEN_ADDRESS"
       }
     }
   }

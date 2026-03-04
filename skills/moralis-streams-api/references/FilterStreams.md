@@ -75,13 +75,13 @@ A zero address in `from` = Mint, in `to` = Burn:
   "or": [
     {
       "and": [
-        {"eq": ["from", "0x0000000000000000000000000000000000000000"]},
+        {"eq": ["from", "YOUR_EVM_ADDRESS"]},
         {"gte": ["value", "10000000000"]}
       ]
     },
     {
       "and": [
-        {"eq": ["to", "0x0000000000000000000000000000000000000000"]},
+        {"eq": ["to", "YOUR_EVM_ADDRESS"]},
         {"gte": ["value", "10000000000"]}
       ]
     }
@@ -130,5 +130,5 @@ const filter = {
 ## References
 
 - [Filter Streams Documentation](https://docs.moralis.com/streams-api/evm/streams-configuration/filter-streams)
-- [CreateStream](./CreateStream.md) - For creating streams with filters
-- [UpdateStream](./UpdateStream.md) - For updating existing stream filters
+- [CreateStream](../rules/CreateStream.md) - For creating streams with filters
+- [UpdateStream](../rules/UpdateStream.md) - For updating existing stream filters

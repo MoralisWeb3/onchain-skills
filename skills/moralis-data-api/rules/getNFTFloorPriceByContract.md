@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The address of the NFT contract | \`0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d\` |
+| address | string | Yes | The address of the NFT contract | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -34,7 +34,7 @@ Returns the conract's floor price
 
 ```json
 {
-  "address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  "address": "YOUR_ADDRESS",
   "floor_price": "0.2176",
   "floor_price_usd": "564.24",
   "currency": "eth",
@@ -45,7 +45,7 @@ Returns the conract's floor price
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/nft/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/floor-price?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/nft/YOUR_ADDRESS/floor-price?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

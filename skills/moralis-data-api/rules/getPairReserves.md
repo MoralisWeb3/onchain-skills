@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| pair_address | string | Yes | The liquidity pair address | \`0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974\` |
+| pair_address | string | Yes | The liquidity pair address | \`YOUR_PAIR_ADDRESS\` |
 
 ## Query Params
 
@@ -47,7 +47,7 @@ Returns the pair reserves
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974/reserves?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/YOUR_PAIR_ADDRESS/reserves?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

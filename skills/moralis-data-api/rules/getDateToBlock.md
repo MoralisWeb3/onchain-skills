@@ -33,8 +33,8 @@ Returns the block number and corresponding date and timestamp
   "block": 9193266,
   "timestamp": 1577836811,
   "block_timestamp": "2019-12-31T23:59:45.000Z",
-  "hash": "0x9b559aef7ea858608c2e554246fe4a24287e7aeeb976848df2b9a2531f4b9171",
-  "parent_hash": "0x011d1fc45839de975cc55d758943f9f1d204f80a90eb631f3bf064b80d53e045"
+  "hash": "YOUR_HASH",
+  "parent_hash": "YOUR_HASH"
 }
 ```
 

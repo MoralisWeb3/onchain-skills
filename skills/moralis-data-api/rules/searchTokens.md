@@ -40,7 +40,7 @@ Returns the search results
   "total": 10000,
   "result": [
     {
-      "tokenAddress": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+      "tokenAddress": "YOUR_TOKEN_ADDRESS",
       "chainId": "0x1",
       "name": "Pepe",
       "symbol": "PEPE",
@@ -54,7 +54,7 @@ Returns the search results
       "usdPricePercentChange": {},
       "volumeUsd": {},
       "securityScore": 92,
-      "logo": "https://adds-token-info-29a861f.s3.eu-central-1.amazonaws.com/marketing/evm/0x6982508145454ce325ddbe47a25d4ec3d2311933_icon.png",
+      "logo": "https://example.com/RESOURCE_URL",
       "isVerifiedContract": false,
       "fullyDilutedValuation": 71242582.97741453,
       "totalHolders": 18908,
@@ -64,7 +64,7 @@ Returns the search results
           "chainId": "0x1",
           "chain": "eth",
           "chainName": "Ethereum",
-          "address": "0x6982508145454ce325ddbe47a25d4ec3d2311933"
+          "address": "YOUR_ADDRESS"
         }
       ]
     }

@@ -20,7 +20,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| tokenAddress | string | Yes | The token address to query | \`0x6982508145454ce325ddbe47a25d4ec3d2311933\` |
+| tokenAddress | string | Yes | The token address to query | \`YOUR_TOKEN_ADDRESS\` |
 
 ## Query Params
 
@@ -94,7 +94,7 @@ Successful response
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/tokens/0x6982508145454ce325ddbe47a25d4ec3d2311933/analytics?chain=solana" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/tokens/YOUR_TOKEN_ADDRESS/analytics?chain=solana" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

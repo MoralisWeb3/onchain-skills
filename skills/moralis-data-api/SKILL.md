@@ -1,7 +1,7 @@
 ---
 name: moralis-data-api
 description: Query Web3 blockchain data from Moralis API. Use when user asks about wallet data (balances, tokens, NFTs, transaction history, profitability, net worth), token data (prices, metadata, DEX pairs, analytics, security scores), NFT data (metadata, transfers, traits, rarity, floor prices), DeFi positions, entity/label data for exchanges and funds, or block and transaction data. Supports EVM chains (Ethereum, Polygon, BSC, Arbitrum, Base, Optimism, Avalanche, etc.) and Solana. NOT for real-time streaming - use moralis-streams-api instead.
-version: 1.3.2
+version: 1.4.0
 license: MIT
 compatibility: Requires curl for API calls. Requires MORALIS_API_KEY env var for authentication.
 metadata:
@@ -59,7 +59,7 @@ Create the `.env` file in the project root (same directory the user runs Claude 
 ### Verify Your Key
 
 ```bash
-curl "https://deep-index.moralis.io/api/v2.2/0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045/balance?chain=0x1" \
+curl "https://deep-index.moralis.io/api/v2.2/YOUR_EVM_ADDRESS/balance?chain=0x1" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```
 
@@ -165,7 +165,7 @@ See [references/Pagination.md](references/Pagination.md) for details.
 ## Testing Endpoints
 
 ```bash
-ADDRESS="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+ADDRESS="YOUR_EVM_ADDRESS"
 CHAIN="0x1"
 
 # Wallet Balance
@@ -173,7 +173,7 @@ curl "https://deep-index.moralis.io/api/v2.2/${ADDRESS}/balance?chain=${CHAIN}" 
   -H "X-API-Key: $MORALIS_API_KEY"
 
 # Token Price
-curl "https://deep-index.moralis.io/api/v2.2/erc20/0x6B175474E89094C44Da98b954EedeAC495271d0F/price?chain=${CHAIN}" \
+curl "https://deep-index.moralis.io/api/v2.2/erc20/YOUR_EVM_ADDRESS/price?chain=${CHAIN}" \
   -H "X-API-Key: $MORALIS_API_KEY"
 
 # Wallet Transactions (note result wrapper)
@@ -442,8 +442,10 @@ Solana-specific endpoints (24 native + 10 EVM variants that support Solana chain
 - [references/CommonPitfalls.md](references/CommonPitfalls.md) - Complete pitfalls reference
 - [references/DataTransformations.md](references/DataTransformations.md) - Type conversion reference
 - [references/FilteredTokens.md](references/FilteredTokens.md) - Token discovery metrics, timeframes, filters, and examples
+- [references/ApiResponseCodes.md](references/ApiResponseCodes.md) - Common status codes and response field conventions
 - [references/PerformanceAndLatency.md](references/PerformanceAndLatency.md) - Response time guidance, timeout recommendations, caching
 - [references/ResponsePatterns.md](references/ResponsePatterns.md) - Pagination patterns
+- [references/SpamDetection.md](references/SpamDetection.md) - Spam detection behavior and filtering guidance
 - [references/SupportedApisAndChains.md](references/SupportedApisAndChains.md) - Chains and APIs
 
 ---

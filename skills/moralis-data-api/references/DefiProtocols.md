@@ -62,9 +62,9 @@ List of supported DeFi protocols and chains for DeFi position and protocol-relat
 
 ## Related Endpoints
 
-- [getDefiSummary](rules/getDefiSummary.md) - Get DeFi summary of a wallet
-- [getDefiPositionsSummary](rules/getDefiPositionsSummary.md) - Get DeFi positions of a wallet
-- [getDefiPositionsByProtocol](rules/getDefiPositionsByProtocol.md) - Get detailed DeFi positions by protocol
+- [getDefiSummary](../rules/getDefiSummary.md) - Get DeFi summary of a wallet
+- [getDefiPositionsSummary](../rules/getDefiPositionsSummary.md) - Get DeFi positions of a wallet
+- [getDefiPositionsByProtocol](../rules/getDefiPositionsByProtocol.md) - Get detailed DeFi positions by protocol
 
 ## Documentation
 

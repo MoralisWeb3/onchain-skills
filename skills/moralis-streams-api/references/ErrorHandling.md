@@ -82,7 +82,7 @@ Moralis automatically handles blockchain reorganizations (re-orgs):
 ### Adding Addresses
 
 - **Limit:** 5 requests per 5 minutes for adding addresses to a stream
-- **Recommendation:** Use batch operations — send multiple addresses in a single `POST /streams/evm/{id}/address` call using the `addressToAdd` array
+- **Recommendation:** Use batch operations — send multiple addresses in a single `POST /streams/evm/{id}/address` call using the `address` field
 - **Maximum per batch:** 50,000 addresses per request
 
 ### Stream Reloads

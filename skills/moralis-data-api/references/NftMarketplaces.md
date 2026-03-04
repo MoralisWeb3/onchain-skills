@@ -50,13 +50,13 @@ List of supported NFT marketplaces for NFT trade, floor price, and collection-re
 
 ## Related Endpoints
 
-- [getNFTTrades](rules/getNFTTrades.md) - Get NFT trades by collection
-- [getNFTTradesByToken](rules/getNFTTradesByToken.md) - Get NFT trades by token
-- [getNFTTradesByWallet](rules/getNFTTradesByWallet.md) - Get NFT trades by wallet address
-- [getNFTFloorPriceByContract](rules/getNFTFloorPriceByContract.md) - Get NFT floor price by contract
-- [getNFTFloorPriceByToken](rules/getNFTFloorPriceByToken.md) - Get NFT floor price by token
-- [getNFTContractSalePrices](rules/getNFTContractSalePrices.md) - Get NFT sale prices by collection
-- [getNFTHistoricalFloorPriceByContract](rules/getNFTHistoricalFloorPriceByContract.md) - Get historical NFT floor price by contract
+- [getNFTTrades](../rules/getNFTTrades.md) - Get NFT trades by collection
+- [getNFTTradesByToken](../rules/getNFTTradesByToken.md) - Get NFT trades by token
+- [getNFTTradesByWallet](../rules/getNFTTradesByWallet.md) - Get NFT trades by wallet address
+- [getNFTFloorPriceByContract](../rules/getNFTFloorPriceByContract.md) - Get NFT floor price by contract
+- [getNFTFloorPriceByToken](../rules/getNFTFloorPriceByToken.md) - Get NFT floor price by token
+- [getNFTContractSalePrices](../rules/getNFTContractSalePrices.md) - Get NFT sale prices by collection
+- [getNFTHistoricalFloorPriceByContract](../rules/getNFTHistoricalFloorPriceByContract.md) - Get historical NFT floor price by contract
 
 ## Documentation
 

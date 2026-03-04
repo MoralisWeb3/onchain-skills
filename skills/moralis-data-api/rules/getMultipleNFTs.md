@@ -24,9 +24,9 @@ POST
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| tokens | array | No | The tokens to be fetched (max 25 tokens) | \`[object Object],[object Object],[object Object]\` |
-| normalizeMetadata | boolean | No | Should normalized metadata be returned? | \`-\` |
-| media_items | boolean | No | Should preview media data be returned? | \`-\` |
+| tokens | array | No | The tokens to be fetched (max 25 tokens) | \`[{"token_address":"YOUR_TOKEN_ADDRESS","token_id":"12"},{"token_address":"YOUR_TOKEN_ADDRESS","token_id":"1"},{"token_address":"YOUR_TOKEN_ADDRESS","token_id":"200"}]\` |
+| normalizeMetadata | boolean | No | Should normalized metadata be returned? | \`false\` |
+| media_items | boolean | No | Should preview media data be returned? | \`false\` |
 
 ## Response Example
 
@@ -37,10 +37,10 @@ Returns a collection of NFT owners
 ```json
 [
   {
-    "token_address": "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
+    "token_address": "YOUR_TOKEN_ADDRESS",
     "token_id": "15",
     "contract_type": "ERC721",
-    "owner_of": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e",
+    "owner_of": "YOUR_ADDRESS",
     "block_number": "88256",
     "block_number_minted": "88256",
     "token_uri": "token_uri_example",
@@ -60,22 +60,22 @@ Returns a collection of NFT owners
     "floor_price_usd": "12345.4899",
     "floor_price_currency": "eth",
     "last_sale": {
-      "transaction_hash": "0x19e14f34b8f120c980f7ba05338d64c00384857fb9c561e2c56d0f575424a95c",
+      "transaction_hash": "YOUR_TX_HASH",
       "block_timestamp": "2023-04-04T15:59:11.000Z",
-      "buyer_address": "0xcb1c1fde09f811b294172696404e88e658659905",
-      "seller_address": "0x497a7dee2f13db161eb2fec060fa783cb041419f",
+      "buyer_address": "YOUR_ADDRESS",
+      "seller_address": "YOUR_ADDRESS",
       "price": "7300000000000000",
       "price_formatted": "0.0073",
       "usd_price_at_sale": "13.61",
       "current_usd_value": "15.53",
-      "token_address": "0xe8778996e096b39705c6a0a937eb587a1ebbda17",
+      "token_address": "YOUR_TOKEN_ADDRESS",
       "token_id": "170",
       "payment_token": {
         "token_name": "Ether",
         "token_symbol": "ETH",
         "token_logo": "https://cdn.moralis.io/eth/0x.png",
         "token_decimals": "18",
-        "token_address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        "token_address": "YOUR_TOKEN_ADDRESS"
       }
     }
   }
@@ -92,15 +92,15 @@ curl -X POST "https://deep-index.moralis.io/api/v2.2/nft/getMultipleNFTs?chain=e
   -d '{
   "tokens": [
     {
-      "token_address": "0xa4991609c508b6d4fb7156426db0bd49fe298bd8",
+      "token_address": "YOUR_TOKEN_ADDRESS",
       "token_id": "12"
     },
     {
-      "token_address": "0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7",
+      "token_address": "YOUR_TOKEN_ADDRESS",
       "token_id": "1"
     },
     {
-      "token_address": "0x3c64dc415ebb4690d1df2b6216148c8de6dd29f7",
+      "token_address": "YOUR_TOKEN_ADDRESS",
       "token_id": "200"
     }
   ],

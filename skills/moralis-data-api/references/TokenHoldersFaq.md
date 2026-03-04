@@ -34,10 +34,10 @@ A: Generally interchangeable, but "holders" typically refers to token balances w
 
 ## Related Endpoints
 
-- [getTokenHolders](rules/getTokenHolders__evm.md) - Get holders summary by token address
-- [getHistoricalTokenHolders](rules/getHistoricalTokenHolders__evm.md) - Get time-series holders data
-- [getTokenOwners](rules/getTokenOwners.md) - Get ERC20 token owners by contract
-- [getTopHolders](rules/getTopHolders__solana.md) - Get top holders for a token (Solana)
+- [getTokenHolders](../rules/getTokenHolders__evm.md) - Get holders summary by token address
+- [getHistoricalTokenHolders](../rules/getHistoricalTokenHolders__evm.md) - Get time-series holders data
+- [getTokenOwners](../rules/getTokenOwners.md) - Get ERC20 token owners by contract
+- [getTopHolders](../rules/getTopHolders__solana.md) - Get top holders for a token (Solana)
 
 ## Documentation
 

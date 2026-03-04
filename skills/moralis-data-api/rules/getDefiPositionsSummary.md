@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | Wallet address | \`0xd100d8b69c5ae23d6aa30c6c3874bf47539b95fd\` |
+| address | string | Yes | Wallet address | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -42,7 +42,7 @@ Returns all defi positions for the wallet address.
     "position": {
       "label": "liquidity",
       "tokens": [],
-      "address": "0x06012c8cf97bead5deae237070f9587f8e7a266d",
+      "address": "YOUR_ADDRESS",
       "balance_usd": "1000000",
       "total_unclaimed_usd_value": "1000000"
     }
@@ -53,7 +53,7 @@ Returns all defi positions for the wallet address.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/0xd100d8b69c5ae23d6aa30c6c3874bf47539b95fd/defi/positions?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/YOUR_ADDRESS/defi/positions?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

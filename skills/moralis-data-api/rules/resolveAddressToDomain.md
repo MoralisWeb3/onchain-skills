@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The address to be resolved | \`0x94ef5300cbc0aa600a821ccbc561b057e456ab23\` |
+| address | string | Yes | The address to be resolved | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -41,7 +41,7 @@ Returns an unstoppable domain
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/resolve/0x94ef5300cbc0aa600a821ccbc561b057e456ab23/domain?currency=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/resolve/YOUR_ADDRESS/domain?currency=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

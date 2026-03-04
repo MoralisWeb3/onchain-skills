@@ -17,7 +17,7 @@ curl -X PUT "https://api.moralis-streams.com/streams/evm" \
   "chainIds": ["0x38"],
   "description": "Listen to a list of wallets for BUSD transfers",
   "tag": "busd-transfers",
-  "webhookUrl": "https://webhook.site/e04c2edc-afb9-45b8-aff5-20724b2b1561",
+  "webhookUrl": "https://webhook.site/YOUR_STREAM_ID",
   "includeContractLogs": true,
   "topic0": ["Transfer(address,address,uint256)"],
   "abi": [
@@ -36,7 +36,7 @@ curl -X PUT "https://api.moralis-streams.com/streams/evm" \
     {
       "topic0": "Transfer(address,address,uint256)",
       "filter": {
-        "eq": ["moralis_streams_contract_address", "0x55d398326f99059ff775485246999027b3197955"]
+        "eq": ["moralis_streams_contract_address", "YOUR_EVM_ADDRESS"]
       }
     }
   ]
@@ -53,7 +53,7 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "addressToAdd": ["0x1234567890123456789012345678901234567890", "0x8765432109876543210987654321098765432109", "0x5432109876543210987654321098765432109876"]
+  "address": ["YOUR_EVM_ADDRESS", "YOUR_EVM_ADDRESS", "YOUR_EVM_ADDRESS"]
 }'
 ```
 
@@ -109,7 +109,7 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "addressToAdd": ["0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f"]
+  "address": ["YOUR_EVM_ADDRESS"]
 }'
 ```
 
@@ -157,20 +157,20 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "addressToAdd": [
-    "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
-    "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac",
-    "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73",
-    "0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32"
+  "address": [
+    "YOUR_EVM_ADDRESS",
+    "YOUR_EVM_ADDRESS",
+    "YOUR_EVM_ADDRESS",
+    "YOUR_EVM_ADDRESS"
   ]
 }'
 ```
 
 **Factory Addresses:**
-- Uniswap V2: `0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f`
-- SushiSwap: `0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac`
-- PancakeSwap V2: `0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73`
-- QuickSwap: `0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32`
+- Uniswap V2: `YOUR_EVM_ADDRESS`
+- SushiSwap: `YOUR_EVM_ADDRESS`
+- PancakeSwap V2: `YOUR_EVM_ADDRESS`
+- QuickSwap: `YOUR_EVM_ADDRESS`
 
 **Use Cases:**
 - Token Discovery Platforms
@@ -259,7 +259,7 @@ curl -X PUT "https://api.moralis-streams.com/streams/evm" \
     {
       "topic0": "Transfer(address,address,uint256)",
       "filter": {
-        "eq": ["from", "0x283af0b28c62c092c9727f1ee09c02ca627eb7f5"]
+        "eq": ["from", "YOUR_EVM_ADDRESS"]
       }
     }
   ]
@@ -324,13 +324,13 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "addressToAdd": ["0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"]
+  "address": ["YOUR_EVM_ADDRESS"]
 }'
 ```
 
 **Key details:**
 - Filters for registrations costing more than 1 ETH (`1000000000000000000` wei)
-- ENS Registry: `0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e`
+- ENS Registry: `YOUR_EVM_ADDRESS`
 
 **Reference:** [Monitor ENS Domain Registrations](https://docs.moralis.com/streams-api/evm/how-to-monitor-ens-domain-registrations)
 
@@ -371,14 +371,14 @@ curl -X PUT "https://api.moralis-streams.com/streams/evm" \
         "or": [
           {
             "and": [
-              {"eq": ["from", "0x0000000000000000000000000000000000000000"]},
-              {"eq": ["moralis_streams_contract_address", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"]}
+              {"eq": ["from", "YOUR_EVM_ADDRESS"]},
+              {"eq": ["moralis_streams_contract_address", "YOUR_EVM_ADDRESS"]}
             ]
           },
           {
             "and": [
-              {"eq": ["to", "0x0000000000000000000000000000000000000000"]},
-              {"eq": ["moralis_streams_contract_address", "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"]}
+              {"eq": ["to", "YOUR_EVM_ADDRESS"]},
+              {"eq": ["moralis_streams_contract_address", "YOUR_EVM_ADDRESS"]}
             ]
           }
         ]
@@ -396,14 +396,14 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "addressToAdd": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"]
+  "address": ["YOUR_EVM_ADDRESS"]
 }'
 ```
 
 **Key details:**
 - **Mint**: `from` is the zero address (`0x000...000`)
 - **Burn**: `to` is the zero address (`0x000...000`)
-- USDC on Ethereum: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
+- USDC on Ethereum: `YOUR_EVM_ADDRESS`
 - Uses `moralis_streams_contract_address` to ensure only USDC transfers are matched
 
 ---
@@ -457,12 +457,12 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/STREAM_ID/address" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "addressToAdd": ["0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB"]
+  "address": ["YOUR_EVM_ADDRESS"]
 }'
 ```
 
 **Key details:**
-- CryptoPunks: `0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB`
+- CryptoPunks: `YOUR_EVM_ADDRESS`
 - Uses the `in` filter operator to match specific token IDs
 - Non-standard `PunkTransfer` event (not ERC721 `Transfer`)
 
@@ -493,8 +493,8 @@ Only receive transfers above a certain threshold:
     "topic0": "Transfer(address,address,uint256)",
     "filter": {
       "or": [
-        {"eq": ["moralis_streams_contract_address", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"]},
-        {"eq": ["moralis_streams_contract_address", "0xdac17f958d2ee523a2206206994597c13d831ec7"]}
+        {"eq": ["moralis_streams_contract_address", "YOUR_EVM_ADDRESS"]},
+        {"eq": ["moralis_streams_contract_address", "YOUR_EVM_ADDRESS"]}
       ]
     }
   }
@@ -509,8 +509,8 @@ Only receive transfers above a certain threshold:
     "topic0": "Transfer(address,address,uint256)",
     "filter": {
       "or": [
-        {"eq": ["from", "0x0000000000000000000000000000000000000000"]},
-        {"eq": ["to", "0x0000000000000000000000000000000000000000"]}
+        {"eq": ["from", "YOUR_EVM_ADDRESS"]},
+        {"eq": ["to", "YOUR_EVM_ADDRESS"]}
       ]
     }
   }

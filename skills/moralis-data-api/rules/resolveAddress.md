@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The address to be resolved | \`0xd8da6bf26964af9d7eed9e03e53415d37aa96045\` |
+| address | string | Yes | The address to be resolved | \`YOUR_ADDRESS\` |
 
 ## Response Example
 
@@ -35,7 +35,7 @@ Returns an ENS
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/resolve/0xd8da6bf26964af9d7eed9e03e53415d37aa96045/reverse" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/resolve/YOUR_ADDRESS/reverse" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| tokenAddress | string | Yes | The address of the token | \`0x6982508145454ce325ddbe47a25d4ec3d2311933\` |
+| tokenAddress | string | Yes | The address of the token | \`YOUR_TOKEN_ADDRESS\` |
 
 ## Query Params
 
@@ -34,7 +34,7 @@ Returns the bonding status of the token.
 
 ```json
 {
-  "tokenAddress": "0x6b175474e89094c44da98b954eedeac495271d0f",
+  "tokenAddress": "YOUR_TOKEN_ADDRESS",
   "exchangeName": "tama.meme",
   "bondingProgress": 99.99,
   "graduatedAt": "2022-01-20T09:39:55.818Z"
@@ -44,7 +44,7 @@ Returns the bonding status of the token.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/0x6982508145454ce325ddbe47a25d4ec3d2311933/bondingStatus?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/YOUR_TOKEN_ADDRESS/bondingStatus?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

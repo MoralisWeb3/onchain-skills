@@ -28,7 +28,7 @@ Returns an address
 
 ```json
 {
-  "address": "0x057Ec652A4F150f7FF94f089A38008f49a0DF88e"
+  "address": "YOUR_ADDRESS"
 }
 ```
 

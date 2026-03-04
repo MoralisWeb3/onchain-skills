@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The token address to get transaction for | \`0x6982508145454ce325ddbe47a25d4ec3d2311933\` |
+| address | string | Yes | The token address to get transaction for | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -63,35 +63,35 @@ Returns swap transactions by wallet address.
   "cursor": "cursor_example",
   "result": [
     {
-      "transactionHash": "0x2bfcba4715774420936669cd0ff2241d70e9abecab76c9db813602015b3134ad",
+      "transactionHash": "YOUR_TX_HASH",
       "transactionIndex": 1,
       "transactionType": "buy",
       "blockTimestamp": "2022-02-22T00:00:00Z",
       "blockNumber": 21093423,
       "subCategory": "accumulation",
-      "walletAddress": "0x2bfcba4715774420936669cd0ff2241d70e9abec",
+      "walletAddress": "YOUR_ADDRESS",
       "walletAddressLabel": "Murad Wallet",
       "entity": "Murad",
       "entityLogo": "https://entities-logos.s3.us-east-1.amazonaws.com/murad.png",
-      "pairAddress": "0x36a46dff597c5a444bbc521d26787f57867d2214",
+      "pairAddress": "YOUR_PAIR_ADDRESS",
       "pairLabel": "BRETT/WETH",
-      "exchangeAddress": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f",
+      "exchangeAddress": "YOUR_ADDRESS",
       "exchangeName": "Uniswap v2",
       "exchangeLogo": "https://entities-logos.s3.us-east-1.amazonaws.com/uniswap.png",
       "bought": {
-        "address": "0x003dde3494f30d861d063232c6a8c04394b686ff",
+        "address": "YOUR_ADDRESS",
         "name": "BRETT",
         "symbol": "BRETT",
-        "logo": "https://cdn.moralis.io/tokens/0x0000000000085d4780b73119b644ae5ecd22b376.png",
+        "logo": "https://example.com/RESOURCE_URL",
         "amount": "14811.98",
         "usdPrice": 0.078634,
         "usdAmount": 1155.33
       },
       "sold": {
-        "address": "0x003dde3494f30d861d063232c6a8c04394b686ff",
+        "address": "YOUR_ADDRESS",
         "name": "BRETT",
         "symbol": "BRETT",
-        "logo": "https://cdn.moralis.io/tokens/0x0000000000085d4780b73119b644ae5ecd22b376.png",
+        "logo": "https://example.com/RESOURCE_URL",
         "amount": "14811.98",
         "usdPrice": 0.078634,
         "usdAmount": 1155.33
@@ -106,7 +106,7 @@ Returns swap transactions by wallet address.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/0x6982508145454ce325ddbe47a25d4ec3d2311933/swaps?chain=eth&order=DESC" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/YOUR_ADDRESS/swaps?chain=eth&order=DESC" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

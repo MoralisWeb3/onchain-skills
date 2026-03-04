@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | Wallet address | \`0xd100d8b69c5ae23d6aa30c6c3874bf47539b95fd\` |
+| address | string | Yes | Wallet address | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -51,7 +51,7 @@ Returns the defi summary for the wallet address.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/0xd100d8b69c5ae23d6aa30c6c3874bf47539b95fd/defi/summary?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/YOUR_ADDRESS/defi/summary?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

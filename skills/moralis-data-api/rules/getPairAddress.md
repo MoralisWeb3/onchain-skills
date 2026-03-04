@@ -18,8 +18,8 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| token0_address | string | Yes | The token0 address | \`0x2b591e99afe9f32eaa6214f7b7629768c40eeb39\` |
-| token1_address | string | Yes | The token1 address | \`0xdac17f958d2ee523a2206206994597c13d831ec7\` |
+| token0_address | string | Yes | The token0 address | \`YOUR_TOKEN_ADDRESS\` |
+| token1_address | string | Yes | The token1 address | \`YOUR_TOKEN_ADDRESS\` |
 
 ## Query Params
 
@@ -42,37 +42,37 @@ Returns the pair address of the two tokens.
 ```json
 {
   "token0": {
-    "address": "0x2b591e99afe9f32eaa6214f7b7629768c40eeb39",
+    "address": "YOUR_ADDRESS",
     "name": "HEX",
     "symbol": "HEX",
     "decimals": 9,
-    "logo": "https://cdn.moralis.io/eth/0x2b591e99afe9f32eaa6214f7b7629768c40eeb39.png",
+    "logo": "https://example.com/RESOURCE_URL",
     "logo_hash": "b3bd1b5512965d7b6aeee903dcc6d28b116d58c788eb41e9c1690baed878beaa",
-    "thumbnail": "https://cdn.moralis.io/eth/0x2b591e99afe9f32eaa6214f7b7629768c40eeb39_thumb.png",
+    "thumbnail": "https://example.com/RESOURCE_URL",
     "block_number": 14836562,
     "validated": 0,
     "created_at": "2022-01-20T09:39:55.818Z"
   },
   "token1": {
-    "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    "address": "YOUR_ADDRESS",
     "name": "Tether USD",
     "symbol": "USDT",
     "decimals": 6,
-    "logo": "https://cdn.moralis.io/eth/0xdac17f958d2ee523a2206206994597c13d831ec7.png",
+    "logo": "https://example.com/RESOURCE_URL",
     "logo_hash": "ee7aa2cdf100649a3521a082116258e862e6971261a39b5cd4e4354fcccbc54d",
-    "thumbnail": "https://cdn.moralis.io/eth/0xdac17f958d2ee523a2206206994597c13d831ec7_thumb.png",
+    "thumbnail": "https://example.com/RESOURCE_URL",
     "block_number": "4638568",
     "validated": 1,
     "created_at": "2022-01-20T09:39:55.818Z"
   },
-  "pairAddress": "0xbbb9bf440d0f686487925fef3b0a0f9aa67753f6"
+  "pairAddress": "YOUR_PAIR_ADDRESS"
 }
 ```
 
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/0x2b591e99afe9f32eaa6214f7b7629768c40eeb39/0xdac17f958d2ee523a2206206994597c13d831ec7/pairAddress?chain=eth&exchange=uniswapv2" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/YOUR_TOKEN_ADDRESS/YOUR_TOKEN_ADDRESS/pairAddress?chain=eth&exchange=uniswapv2" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

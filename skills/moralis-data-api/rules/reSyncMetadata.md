@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The address of the NFT contract | \`0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB\` |
+| address | string | Yes | The address of the NFT contract | \`YOUR_ADDRESS\` |
 | token_id | string | Yes | The ID of the token | \`1\` |
 
 ## Query Params
@@ -44,7 +44,7 @@ Status: 200
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/nft/0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB/1/metadata/resync?chain=eth&flag=uri&mode=sync" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/nft/YOUR_ADDRESS/1/metadata/resync?chain=eth&flag=uri&mode=sync" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

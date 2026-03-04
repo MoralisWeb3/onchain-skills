@@ -18,13 +18,13 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The wallet address to get insight for | \`0xcB1C1FdE09f811B294172696404e88E658659905\` |
+| address | string | Yes | The wallet address to get insight for | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| chains | array | No | The chains to query. If not provided, aggregates across all supported chains. | \`0x1,0x89\` |
+| chains | array | No | The chains to query. If not provided, aggregates across all supported chains. | \`["0x1","0x89"]\` |
 
 ## Response Example
 
@@ -34,7 +34,7 @@ Returns wallet insight metrics.
 
 ```json
 {
-  "address": "0xcB1C1FdE09f811B294172696404e88E658659905",
+  "address": "YOUR_ADDRESS",
   "addressType": "evm",
   "walletAgeDays": 1314,
   "firstActivityAt": {
@@ -100,7 +100,7 @@ Returns wallet insight metrics.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/0xcB1C1FdE09f811B294172696404e88E658659905/insight?chains=0x1%2C0x89" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/YOUR_ADDRESS/insight?chains=0x1%2C0x89" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

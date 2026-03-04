@@ -19,7 +19,7 @@ GET
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
 | network | string (mainnet) | Yes | The network to query | - |
-| address | string | Yes | The address to query | \`So11111111111111111111111111111111111111112\` |
+| address | string | Yes | The address to query | \`YOUR_ADDRESS\` |
 
 ## Response Example
 
@@ -72,7 +72,7 @@ Status: 200
 ## Example (curl)
 
 ```bash
-curl -X GET "https://solana-gateway.moralis.io/token/mainnet/So11111111111111111111111111111111111111112/pairs/stats" \
+curl -X GET "https://solana-gateway.moralis.io/token/mainnet/YOUR_ADDRESS/pairs/stats" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

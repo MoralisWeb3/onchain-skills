@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The wallet address | \`0xcB1C1FdE09f811B294172696404e88E658659905\` |
+| address | string | Yes | The wallet address | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -61,7 +61,7 @@ Returns the net worth of a wallet in USD
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/0xcB1C1FdE09f811B294172696404e88E658659905/net-worth?exclude_spam=true&exclude_unverified_contracts=true&max_token_inactivity=1&min_pair_side_liquidity_usd=1000" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/YOUR_ADDRESS/net-worth?exclude_spam=true&exclude_unverified_contracts=true&max_token_inactivity=1&min_pair_side_liquidity_usd=1000" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

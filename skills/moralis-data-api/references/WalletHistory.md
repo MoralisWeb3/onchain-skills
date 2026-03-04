@@ -33,11 +33,11 @@ Each transaction may include:
 
 ## Related Endpoints
 
-- [getWalletHistory](rules/getWalletHistory.md) - Get complete decoded transaction history
-- [getWalletTransactions](rules/getWalletTransactions.md) - Get native transactions
-- [getWalletTransactionsVerbose](rules/getWalletTransactionsVerbose.md) - Get decoded transactions
-- [getWalletTokenTransfers](rules/getWalletTokenTransfers.md) - Get ERC20 token transfers
-- [getWalletNFTTransfers](rules/getWalletNFTTransfers.md) - Get NFT transfers
+- [getWalletHistory](../rules/getWalletHistory.md) - Get complete decoded transaction history
+- [getWalletTransactions](../rules/getWalletTransactions.md) - Get native transactions
+- [getWalletTransactionsVerbose](../rules/getWalletTransactionsVerbose.md) - Get decoded transactions
+- [getWalletTokenTransfers](../rules/getWalletTokenTransfers.md) - Get ERC20 token transfers
+- [getWalletNFTTransfers](../rules/getWalletNFTTransfers.md) - Get NFT transfers
 
 ## Performance Characteristics
 

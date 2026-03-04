@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The pair address | \`0xa43fe16908251ee70ef74718545e4fe6c5ccec9f\` |
+| address | string | Yes | The pair address | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -55,8 +55,8 @@ Returns the OHLCV data.
 {
   "cursor": "cursor_example",
   "page": "2",
-  "pairAddress": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
-  "tokenAddress": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+  "pairAddress": "YOUR_PAIR_ADDRESS",
+  "tokenAddress": "YOUR_TOKEN_ADDRESS",
   "timeframe": "30min",
   "currency": "usd",
   "result": [
@@ -76,7 +76,7 @@ Returns the OHLCV data.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/pairs/0xa43fe16908251ee70ef74718545e4fe6c5ccec9f/ohlcv?chain=eth&timeframe=1h&currency=usd&fromDate=2025-01-01T10%3A00%3A00.000&toDate=2025-01-02T10%3A00%3A00.000" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/pairs/YOUR_ADDRESS/ohlcv?chain=eth&timeframe=1h&currency=usd&fromDate=2025-01-01T10%3A00%3A00.000&toDate=2025-01-02T10%3A00%3A00.000" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The pair address | \`0xa43fe16908251ee70ef74718545e4fe6c5ccec9f\` |
+| address | string | Yes | The pair address | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -34,15 +34,15 @@ Returns the pair stats.
 
 ```json
 {
-  "tokenAddress": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+  "tokenAddress": "YOUR_TOKEN_ADDRESS",
   "tokenName": "Wrapped Ether",
   "tokenSymbol": "WETH",
   "tokenLogo": "https://cdn.moralis.io/coins/images/2518/large/weth.png?1595348880",
   "pairCreated": "2021-04-02T10:07:54.000Z",
   "pairLabel": "WETH/PEPE",
-  "pairAddress": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+  "pairAddress": "YOUR_PAIR_ADDRESS",
   "exchange": "Uniswap v2",
-  "exchangeAddress": "0x101cc05f4a51c0319f570d5e146a8c625198e222",
+  "exchangeAddress": "YOUR_ADDRESS",
   "exchangeLogo": "uniswap.png",
   "exchangeUrl": "app.uniswap.com",
   "currentUsdPrice": "0.00000194",
@@ -108,7 +108,7 @@ Returns the pair stats.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/pairs/0xa43fe16908251ee70ef74718545e4fe6c5ccec9f/stats?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/pairs/YOUR_ADDRESS/stats?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

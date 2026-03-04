@@ -25,7 +25,7 @@ Complete reference for stream configuration when working with Moralis Streams AP
 "0x1234567890abcdef"
 
 // ✅ CORRECT - UUID format
-"a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+"YOUR_STREAM_ID"
 ```
 
 ### UUID Format Validation
@@ -36,7 +36,7 @@ function isValidUUID(uuid: string): boolean {
 }
 
 // Usage
-const streamId = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890';
+const streamId = 'YOUR_STREAM_ID';
 if (!isValidUUID(streamId)) {
   throw new Error('Invalid stream ID format. Must be UUID.');
 }

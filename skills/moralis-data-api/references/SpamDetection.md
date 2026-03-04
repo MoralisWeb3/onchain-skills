@@ -46,11 +46,11 @@ Many endpoints support spam filtering:
 
 ## Related Endpoints
 
-- [getWalletTokenBalancesPrice](rules/getWalletTokenBalancesPrice.md) - Get ERC20 balances with prices (supports spam filtering)
-- [getWalletNFTs](rules/getWalletNFTs.md) - Get NFTs by wallet (supports spam filtering)
-- [getTokenMetadata](rules/getTokenMetadata__evm.md) - Get token metadata (includes spam flags)
-- [getNFTMetadata](rules/getNFTMetadata__evm.md) - Get NFT metadata (includes spam flags)
-- [getTokenScore](rules/getTokenScore.md) - Get token security score (includes spam analysis)
+- [getWalletTokenBalancesPrice](../rules/getWalletTokenBalancesPrice.md) - Get ERC20 balances with prices (supports spam filtering)
+- [getWalletNFTs](../rules/getWalletNFTs.md) - Get NFTs by wallet (supports spam filtering)
+- [getTokenMetadata](../rules/getTokenMetadata__evm.md) - Get token metadata (includes spam flags)
+- [getNFTMetadata](../rules/getNFTMetadata__evm.md) - Get NFT metadata (includes spam flags)
+- [getTokenScore](../rules/getTokenScore.md) - Get token security score (includes spam analysis)
 
 ## Documentation
 

@@ -36,25 +36,25 @@ For native transactions, set `Native Transactions (txs)` in admin interface or `
   "confirmed": false,
   "chainId": "0x1",
   "abi": [],
-  "streamId": "c28d9e2e-ae9d-4fe6-9fc0-5fcde2dcdd17",
+  "streamId": "YOUR_STREAM_ID",
   "tag": "native_transactions",
   "retries": 0,
   "block": {
     "number": "15988759",
-    "hash": "0x3aa07bd98e328db97ec273ce06b3a15fc645931fbd26337fe20c48b274277f76",
+    "hash": "YOUR_HEX_HASH",
     "timestamp": "1668676247"
   },
   "logs": [],
   "txs": [
     {
-      "hash": "0xd68700a0e2abd9c041eb236812e4194bf91c8182a2b03065887ab0f33d5c2958",
+      "hash": "YOUR_HEX_HASH",
       "gas": "149200",
       "gasPrice": "13670412399",
       "nonce": "57995",
-      "input": "0xf78dc253000000000000000000000000d9408f29...cfee7c08",
+      "input": "YOUR_EVM_ADDRESS...cfee7c08",
       "transactionIndex": "52",
-      "fromAddress": "0x839d4641f97153b0ff26ab837860c479e2bd0242",
-      "toAddress": "0x1111111254eeb25477b68fb85ed929f73a960582",
+      "fromAddress": "YOUR_EVM_ADDRESS",
+      "toAddress": "YOUR_EVM_ADDRESS",
       "value": "0",
       "type": "2",
       "v": "1",
@@ -87,36 +87,36 @@ For native transactions + logs/events, select both `Native Transactions (txs)` a
   "confirmed": true,
   "chainId": "0x1",
   "abi": [],
-  "streamId": "c28d9e2e-ae9d-4fe6-9fc0-5fcde2dcdd17",
+  "streamId": "YOUR_STREAM_ID",
   "tag": "native_transactions_with_logs",
   "retries": 0,
   "block": {
     "number": "15988780",
-    "hash": "0xf40d623518fa16c20614278656e426721820031913fd9c670330d4b2b751d50e",
+    "hash": "YOUR_HEX_HASH",
     "timestamp": "1668676499"
   },
   "logs": [
     {
       "logIndex": "135",
-      "transactionHash": "0x59cd370a41c699bdb77a020b3a27735bb7442ace68ec8313040b8b9ee2672244",
-      "address": "0x96beaa1316f85fd679ec49e5a63dacc293b044be",
-      "data": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-      "topic0": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925",
-      "topic1": "0x0000000000000000000000001748789703159580520cc2ce6d1ba01e7359c44c",
-      "topic2": "0x0000000000000000000000001111111254eeb25477b68fb85ed929f73a960582",
+      "transactionHash": "YOUR_HEX_HASH",
+      "address": "YOUR_EVM_ADDRESS",
+      "data": "YOUR_HEX_HASH",
+      "topic0": "YOUR_HEX_HASH",
+      "topic1": "YOUR_HEX_HASH",
+      "topic2": "YOUR_HEX_HASH",
       "topic3": null
     }
   ],
   "txs": [
     {
-      "hash": "0x0bd4d05cfee0107ac69f7add8e21d66c3e4fd014b7aad595d6336910a6bfee39",
+      "hash": "YOUR_HEX_HASH",
       "gas": "109803",
       "gasPrice": "13481860832",
       "nonce": "291",
-      "input": "0x12aa3caf00000000000000000000000053222470...e26b9977",
+      "input": "YOUR_EVM_ADDRESS...e26b9977",
       "transactionIndex": "92",
-      "fromAddress": "0x3ec92c9d09403a76bda445ffdfaf6de59717219f",
-      "toAddress": "0x1111111254eeb25477b68fb85ed929f73a960582",
+      "fromAddress": "YOUR_EVM_ADDRESS",
+      "toAddress": "YOUR_EVM_ADDRESS",
       "value": "0",
       "type": "2",
       "v": "0",
@@ -133,11 +133,11 @@ For native transactions + logs/events, select both `Native Transactions (txs)` a
   "erc20Transfers": [],
   "erc20Approvals": [
     {
-      "transactionHash": "0x59cd370a41c699bdb77a020b3a27735bb7442ace68ec8313040b8b9ee2672244",
+      "transactionHash": "YOUR_HEX_HASH",
       "logIndex": "135",
-      "contract": "0x96beaa1316f85fd679ec49e5a63dacc293b044be",
-      "owner": "0x1748789703159580520cc2ce6d1ba01e7359c44c",
-      "spender": "0x1111111254eeb25477b68fb85ed929f73a960582",
+      "contract": "YOUR_EVM_ADDRESS",
+      "owner": "YOUR_EVM_ADDRESS",
+      "spender": "YOUR_EVM_ADDRESS",
       "value": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
       "tokenName": "This Is Not Alpha",
       "tokenSymbol": "TINA",
@@ -162,36 +162,36 @@ ERC20 transfer data is automatically decoded from logs and included at no additi
   "confirmed": false,
   "chainId": "0x5",
   "abi": [],
-  "streamId": "c4cf9b1a-0cb3-4c79-9ca3-04f11856c555",
+  "streamId": "YOUR_STREAM_ID",
   "tag": "ChrisWallet",
   "retries": 0,
   "block": {
     "number": "8037952",
-    "hash": "0x607ff512f17f890bf9ee6206e2029cd8530819ab72b2b9161f9b90d18ece8e03",
+    "hash": "YOUR_HEX_HASH",
     "timestamp": "1669667244"
   },
   "logs": [
     {
       "logIndex": "132",
-      "transactionHash": "0x1642a3b9b39e63d7fe571e7c22b80a5b059d2647fe4866d3f7105630f822d833",
-      "address": "0x0041ebd11f598305d401cc1052df49219630ab79",
-      "data": "0x0000000000000000000000000000000000000000000069e10006afc3291c0000",
-      "topic0": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-      "topic1": "0x0000000000000000000000000a46413965858a6ac4ed5184d7643dc055a4fea3",
-      "topic2": "0x000000000000000000000000e496601436da37a045d8e88bbd6b2c2e17d8fe33",
+      "transactionHash": "YOUR_HEX_HASH",
+      "address": "YOUR_EVM_ADDRESS",
+      "data": "YOUR_HEX_HASH",
+      "topic0": "YOUR_HEX_HASH",
+      "topic1": "YOUR_HEX_HASH",
+      "topic2": "YOUR_HEX_HASH",
       "topic3": null
     }
   ],
   "txs": [
     {
-      "hash": "0x1642a3b9b39e63d7fe571e7c22b80a5b059d2647fe4866d3f7105630f822d833",
+      "hash": "YOUR_HEX_HASH",
       "gas": "85359",
       "gasPrice": "6129141152",
       "nonce": "88",
-      "input": "0xa9059cbb000000000000000000000000e496601436da37a045d8e88bbd6b2c2e17d8fe330000000000000000000000000000000000000000000069e10006afc3291c0000",
+      "input": "YOUR_HEX_HASH",
       "transactionIndex": "49",
-      "fromAddress": "0x0a46413965858a6ac4ed5184d7643dc055a4fea3",
-      "toAddress": "0x0041ebd11f598305d401cc1052df49219630ab79",
+      "fromAddress": "YOUR_EVM_ADDRESS",
+      "toAddress": "YOUR_EVM_ADDRESS",
       "value": "0",
       "type": "2",
       "v": "1",
@@ -207,11 +207,11 @@ ERC20 transfer data is automatically decoded from logs and included at no additi
   "txsInternal": [],
   "erc20Transfers": [
     {
-      "transactionHash": "0x1642a3b9b39e63d7fe571e7c22b80a5b059d2647fe4866d3f7105630f822d833",
+      "transactionHash": "YOUR_HEX_HASH",
       "logIndex": "132",
-      "contract": "0x0041ebd11f598305d401cc1052df49219630ab79",
-      "from": "0x0a46413965858a6ac4ed5184d7643dc055a4fea3",
-      "to": "0xe496601436da37a045d8e88bbd6b2c2e17d8fe33",
+      "contract": "YOUR_EVM_ADDRESS",
+      "from": "YOUR_EVM_ADDRESS",
+      "to": "YOUR_EVM_ADDRESS",
       "value": "499999000000000000000000",
       "tokenName": "Example Token",
       "tokenSymbol": "Token",
@@ -252,24 +252,24 @@ NFT transfer data is automatically decoded from logs and included at no addition
   "confirmed": false,
   "chainId": "0x13881",
   "abi": [],
-  "streamId": "c4cf9b1a-0cb3-4c79-9ca3-04f11856c555",
+  "streamId": "YOUR_STREAM_ID",
   "tag": "ChrisWallet",
   "retries": 0,
   "block": {
     "number": "29381772",
-    "hash": "0xdd64099df718e2a439a9805d25a3ab88e943a8c713f2259d9777460d7051572c",
+    "hash": "YOUR_HEX_HASH",
     "timestamp": "1669640635"
   },
   "logs": [
     {
       "logIndex": "72",
-      "transactionHash": "0x5ecd6b57593ab2f4f3e39fbb3318a3933e2cf9fdcf5b7ca671fb0fc2ce9dc4b5",
-      "address": "0x26b4e79bca1a550ab26a8e533be97c40973b2671",
+      "transactionHash": "YOUR_HEX_HASH",
+      "address": "YOUR_EVM_ADDRESS",
       "data": "0x",
-      "topic0": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-      "topic1": "0x00000000000000000000000074f64bebb1a9615fc7c2ead9c894b6ffd1803582",
-      "topic2": "0x000000000000000000000000e496601436da37a045d8e88bbd6b2c2e17d8fe33",
-      "topic3": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      "topic0": "YOUR_HEX_HASH",
+      "topic1": "YOUR_HEX_HASH",
+      "topic2": "YOUR_HEX_HASH",
+      "topic3": "YOUR_HEX_HASH"
     }
   ],
   "txs": [],
@@ -283,13 +283,13 @@ NFT transfer data is automatically decoded from logs and included at no addition
   "nftTransfers": [
     {
       "operator": null,
-      "from": "0x74f64bebb1a9615fc7c2ead9c894b6ffd1803582",
-      "to": "0xe496601436da37a045d8e88bbd6b2c2e17d8fe33",
+      "from": "YOUR_EVM_ADDRESS",
+      "to": "YOUR_EVM_ADDRESS",
       "tokenId": "0",
       "amount": "1",
-      "transactionHash": "0x5ecd6b57593ab2f4f3e39fbb3318a3933e2cf9fdcf5b7ca671fb0fc2ce9dc4b5",
+      "transactionHash": "YOUR_HEX_HASH",
       "logIndex": "72",
-      "contract": "0x26b4e79bca1a550ab26a8e533be97c40973b2671",
+      "contract": "YOUR_EVM_ADDRESS",
       "tokenName": "Test",
       "tokenSymbol": "SYMBOL",
       "tokenContractType": "ERC721"
@@ -325,21 +325,21 @@ For smart contract events (logs), select `Contract interactions (logs)` and `Eve
       "type": "event"
     }
   ],
-  "streamId": "6378fe38-54c7-4816-8d61-fca8e128e260",
+  "streamId": "YOUR_STREAM_ID",
   "tag": "test_events",
   "retries": 1,
   "block": {
     "number": "15984246",
-    "hash": "0x7f8d8285b572a60f6a14d5f1dcbd40e487ccffd9ec78f8dfbccb49aa191fbb95",
+    "hash": "YOUR_HEX_HASH",
     "timestamp": "1668621827"
   },
   "logs": [
     {
       "logIndex": "320",
-      "transactionHash": "0xf1682fa49b83689093b467ac6937785102895fc3ba418624c28d04f9af6e5e2b",
-      "address": "0x4cd36d6f32586177e36179a810595a33163a20bf",
-      "data": "0x00000000000000000000000000000000000000000000944ad388817e590ab6070000000000000000000000000000000000000000000000000000008a602de18e",
-      "topic0": "0x1c411e9a96e071241c2f21f7726b17ae89e3cab4c78be50e062b03a9fffbbad1",
+      "transactionHash": "YOUR_HEX_HASH",
+      "address": "YOUR_EVM_ADDRESS",
+      "data": "YOUR_HEX_HASH",
+      "topic0": "YOUR_HEX_HASH",
       "topic1": null,
       "topic2": null,
       "topic3": null
@@ -366,23 +366,23 @@ For internal transactions, select `Internal Transactions (txsInternal)` in admin
   "confirmed": false,
   "chainId": "0x1",
   "abi": [],
-  "streamId": "c28d9e2e-ae9d-4fe6-9fc0-5fcde2dcdd17",
+  "streamId": "YOUR_STREAM_ID",
   "tag": "internal transactions",
   "retries": 0,
   "block": {
     "number": "15988462",
-    "hash": "0xa4520ca85758374d05c31f6e6869f081997daa6e6b18449d49cfac4558f9e7f8",
+    "hash": "YOUR_HEX_HASH",
     "timestamp": "1668672659"
   },
   "logs": [],
   "txs": [],
   "txsInternal": [
     {
-      "from": "0x1111111254eeb25477b68fb85ed929f73a960582",
-      "to": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "from": "YOUR_EVM_ADDRESS",
+      "to": "YOUR_EVM_ADDRESS",
       "value": "11000000000000000",
       "gas": "117885",
-      "transactionHash": "0x0e5c3114c0ee7d29cca17aa0b8e790c4d7d25b4789bd14150f113956b5ce94de"
+      "transactionHash": "YOUR_HEX_HASH"
     }
   ],
   "erc20Transfers": [],
@@ -405,7 +405,7 @@ When `getNativeBalances` is configured on your stream, the webhook includes a `n
   "chainId": "0x1",
   "nativeBalances": [
     {
-      "address": "0x839d4641f97153b0ff26ab837860c479e2bd0242",
+      "address": "YOUR_EVM_ADDRESS",
       "balance": "1234567890000000000",
       "balanceWithDecimals": "1.23456789"
     }
@@ -492,7 +492,7 @@ The `block` object contains:
 ```json
 {
   "number": "15988759",
-  "hash": "0x3aa07bd98e328db97ec273ce06b3a15fc645931fbd26337fe20c48b274277f76",
+  "hash": "YOUR_HEX_HASH",
   "timestamp": "1668676247"
 }
 ```
@@ -510,12 +510,12 @@ Each log entry in the `logs` array contains:
 ```json
 {
   "logIndex": "135",
-  "transactionHash": "0x59cd370a41c699bdb77a020b3a27735bb7442ace68ec8313040b8b9ee2672244",
-  "address": "0x96beaa1316f85fd679ec49e5a63dacc293b044be",
-  "data": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-  "topic0": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925",
-  "topic1": "0x0000000000000000000000001748789703159580520cc2ce6d1ba01e7359c44c",
-  "topic2": "0x0000000000000000000000001111111254eeb25477b68fb85ed929f73a960582",
+  "transactionHash": "YOUR_HEX_HASH",
+  "address": "YOUR_EVM_ADDRESS",
+  "data": "YOUR_HEX_HASH",
+  "topic0": "YOUR_HEX_HASH",
+  "topic1": "YOUR_HEX_HASH",
+  "topic2": "YOUR_HEX_HASH",
   "topic3": null
 }
 ```
@@ -526,14 +526,14 @@ Each transaction in the `txs` array contains:
 
 ```json
 {
-  "hash": "0xd68700a0e2abd9c041eb236812e4194bf91c8182a2b03065887ab0f33d5c2958",
+  "hash": "YOUR_HEX_HASH",
   "gas": "149200",
   "gasPrice": "13670412399",
   "nonce": "57995",
   "input": "0xf78dc253...",
   "transactionIndex": "52",
-  "fromAddress": "0x839d4641f97153b0ff26ab837860c479e2bd0242",
-  "toAddress": "0x1111111254eeb25477b68fb85ed929f73a960582",
+  "fromAddress": "YOUR_EVM_ADDRESS",
+  "toAddress": "YOUR_EVM_ADDRESS",
   "value": "0",
   "type": "2",
   "v": "1",
@@ -560,4 +560,4 @@ To enable different data types in webhooks, configure your stream:
 ## See Also
 
 - [WebhookSecurity.md](WebhookSecurity.md) - Verify webhook signatures
-- [CreateStream.md](CreateStream.md) - Create streams with specific configurations
+- [CreateStream.md](../rules/CreateStream.md) - Create streams with specific configurations

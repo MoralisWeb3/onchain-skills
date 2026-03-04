@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The pair address token-transactions are to be retrieved for. | \`0xa43fe16908251ee70ef74718545e4fe6c5ccec9f\` |
+| address | string | Yes | The pair address token-transactions are to be retrieved for. | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -61,38 +61,38 @@ Returns swap transactions by pair address.
   "page": "2",
   "pageSize": "100",
   "cursor": "cursor_example",
-  "exchangeAddress": "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+  "exchangeAddress": "YOUR_ADDRESS",
   "exchangeName": "Uniswap v2",
   "exchangeLogo": "https://entities-logos.s3.us-east-1.amazonaws.com/uniswap.png",
   "pairLabel": "BRETT/WETH",
-  "pairAddress": "0x36a46dff597c5a444bbc521d26787f57867d2214",
+  "pairAddress": "YOUR_PAIR_ADDRESS",
   "baseToken": {
-    "address": "0x003dde3494f30d861d063232c6a8c04394b686ff",
+    "address": "YOUR_ADDRESS",
     "name": "BRETT",
     "symbol": "BRETT",
-    "logo": "https://cdn.moralis.io/tokens/0x0000000000085d4780b73119b644ae5ecd22b376.png",
+    "logo": "https://example.com/RESOURCE_URL",
     "amount": "14811.98",
     "usdPrice": 0.078634,
     "usdAmount": 1155.33
   },
   "quoteToken": {
-    "address": "0x003dde3494f30d861d063232c6a8c04394b686ff",
+    "address": "YOUR_ADDRESS",
     "name": "BRETT",
     "symbol": "BRETT",
-    "logo": "https://cdn.moralis.io/tokens/0x0000000000085d4780b73119b644ae5ecd22b376.png",
+    "logo": "https://example.com/RESOURCE_URL",
     "amount": "14811.98",
     "usdPrice": 0.078634,
     "usdAmount": 1155.33
   },
   "result": [
     {
-      "transactionHash": "0x2bfcba4715774420936669cd0ff2241d70e9abecab76c9db813602015b3134ad",
+      "transactionHash": "YOUR_TX_HASH",
       "transactionIndex": 1,
       "transactionType": "buy",
       "blockTimestamp": "2022-02-22T00:00:00Z",
       "blockNumber": 21093423,
       "subCategory": "accumulation",
-      "walletAddress": "0x2bfcba4715774420936669cd0ff2241d70e9abec",
+      "walletAddress": "YOUR_ADDRESS",
       "baseTokenAmount": "1481.00",
       "quoteTokenAmount": "0.634",
       "baseTokenPriceUsd": 0.0734634,
@@ -107,7 +107,7 @@ Returns swap transactions by pair address.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/pairs/0xa43fe16908251ee70ef74718545e4fe6c5ccec9f/swaps?chain=eth&order=DESC" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/pairs/YOUR_ADDRESS/swaps?chain=eth&order=DESC" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

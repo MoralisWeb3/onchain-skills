@@ -19,14 +19,14 @@ POST
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
 | chain | string | Yes | Chain hex ID (e.g. "0x1" for Ethereum). Required unless 'chains' is provided. See references/FilteredTokens.md for metrics and filter details. | \`0x1\` |
-| filters | array | Yes | Array of filter objects. Each has metric, timeFrame, and at least one of gt/lt/eq. Filters are combined with AND logic. See references/FilteredTokens.md for all metrics and timeframes. | \`[object Object]\` |
-| sortBy | object | Yes | Sort configuration with metric, timeFrame, and type (ASC or DESC). See references/FilteredTokens.md for all metrics and timeframes. | \`[object Object]\` |
+| filters | array | Yes | Array of filter objects. Each has metric, timeFrame, and at least one of gt/lt/eq. Filters are combined with AND logic. See references/FilteredTokens.md for all metrics and timeframes. | \`[{"metric":"volumeUsd","timeFrame":"oneDay","gt":100000}]\` |
+| sortBy | object | Yes | Sort configuration with metric, timeFrame, and type (ASC or DESC). See references/FilteredTokens.md for all metrics and timeframes. | \`{"metric":"volumeUsd","timeFrame":"oneDay","type":"DESC"}\` |
 | limit | number | Yes | Maximum number of tokens to return | \`20\` |
-| chains | array | No | Array of chain hex IDs for multi-chain queries. Use instead of 'chain' to query multiple chains. | \`0x1,0x89\` |
-| categories | object | No | Category-based filtering. Object with 'include' and/or 'exclude' arrays (e.g. ["stablecoin", "meme"]). | \`[object Object]\` |
-| timeFramesToReturn | array | No | Which timeframes to include in response metrics. Defaults to all if omitted. See references/FilteredTokens.md for values. | \`oneDay,oneWeek\` |
-| metricsToReturn | array | No | Which metrics to include in response. Defaults to all if omitted. See references/FilteredTokens.md for values. | \`volumeUsd,usdPricePercentChange\` |
-| excludeMetadata | boolean | No | If true, omits token metadata from response to reduce payload size | \`-\` |
+| chains | array | No | Array of chain hex IDs for multi-chain queries. Use instead of 'chain' to query multiple chains. | \`["0x1","0x89"]\` |
+| categories | object | No | Category-based filtering. Object with 'include' and/or 'exclude' arrays (e.g. ["stablecoin", "meme"]). | \`{"exclude":["stablecoin"]}\` |
+| timeFramesToReturn | array | No | Which timeframes to include in response metrics. Defaults to all if omitted. See references/FilteredTokens.md for values. | \`["oneDay","oneWeek"]\` |
+| metricsToReturn | array | No | Which metrics to include in response. Defaults to all if omitted. See references/FilteredTokens.md for values. | \`["volumeUsd","usdPricePercentChange"]\` |
+| excludeMetadata | boolean | No | If true, omits token metadata from response to reduce payload size | \`false\` |
 
 ## Response Example
 

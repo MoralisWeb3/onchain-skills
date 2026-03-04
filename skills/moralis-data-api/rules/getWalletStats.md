@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | Wallet address | \`0xcB1C1FdE09f811B294172696404e88E658659905\` |
+| address | string | Yes | Wallet address | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -51,7 +51,7 @@ Returns the stats for the wallet address.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/0xcB1C1FdE09f811B294172696404e88E658659905/stats?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/wallets/YOUR_ADDRESS/stats?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

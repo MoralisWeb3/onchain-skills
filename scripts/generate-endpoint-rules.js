@@ -118,8 +118,134 @@ function registerOperation(operationId, source) {
  * Escape backticks for markdown
  */
 function escapeMd(str) {
-  if (!str) return "-";
+  if (str === undefined || str === null) return "-";
   return String(str).replace(/`/g, "\\`");
+}
+
+const EVM_ADDRESS_RE = /^0x[a-fA-F0-9]{40}$/;
+const HEX_HASH_RE = /^0x[a-fA-F0-9]{64,}$/;
+const HEX_BLOB_RE = /^0x[a-fA-F0-9]{16,}$/;
+const UUID_RE =
+  /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+const BASE58_RE = /^[1-9A-HJ-NP-Za-km-z]{32,60}$/;
+const EMBEDDED_BASE58_RE = /\b[1-9A-HJ-NP-Za-km-z]{32,60}\b/g;
+const EMBEDDED_SENSITIVE_RE =
+  /(0x[a-fA-F0-9]{40}|0x[a-fA-F0-9]{64,}|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/;
+
+function isLikelyBase58(value) {
+  const candidate = String(value).trim();
+  if (!BASE58_RE.test(candidate)) {
+    return false;
+  }
+  const hasDigit = /[1-9]/.test(candidate);
+  const hasLetter = /[A-HJ-NP-Za-km-z]/.test(candidate);
+  return hasDigit && hasLetter;
+}
+
+function hasEmbeddedBase58(value) {
+  const tokens = String(value).match(EMBEDDED_BASE58_RE) || [];
+  return tokens.some((token) => isLikelyBase58(token));
+}
+
+function placeholderForField(fieldName = "") {
+  const name = String(fieldName).toLowerCase();
+
+  if (name.includes("stream") && name.includes("id")) return "YOUR_STREAM_ID";
+  if (name === "from" || name === "to" || name === "miner") return "YOUR_ADDRESS";
+  if (name.includes("operator")) return "YOUR_ADDRESS";
+  if (name === "owner_of" || name === "ownerof") return "YOUR_ADDRESS";
+  if (name === "mint" || name.includes("mint_address")) return "YOUR_SOLANA_MINT";
+  if (name.startsWith("topic")) return "YOUR_TOPIC_HASH";
+  if (name.includes("transaction") || name.includes("tx_hash")) {
+    return "YOUR_TX_HASH";
+  }
+  if (name.includes("bloom")) return "YOUR_HEX_DATA";
+  if (name.includes("root") || name.includes("sha3") || name.includes("hash")) {
+    return "YOUR_HASH";
+  }
+  if (name.includes("data") || name.includes("input")) return "YOUR_HEX_DATA";
+  if (name.includes("nonce")) return "YOUR_HEX_VALUE";
+  if (name.includes("value") || name.includes("amount") || name.includes("balance")) {
+    return "YOUR_HEX_VALUE";
+  }
+  if (name.includes("block") && name.includes("hash")) return "YOUR_BLOCK_HASH";
+  if (name.includes("pair") && name.includes("address")) {
+    return "YOUR_PAIR_ADDRESS";
+  }
+  if (name.includes("token") && name.includes("address")) {
+    return "YOUR_TOKEN_ADDRESS";
+  }
+  if (name.includes("address")) return "YOUR_ADDRESS";
+  if (name === "id" || name.endsWith("_id")) return "YOUR_ID";
+  if (name.includes("logo") || name.includes("uri") || name.includes("url")) {
+    return "https://example.com/RESOURCE_URL";
+  }
+  return "YOUR_VALUE";
+}
+
+function sanitizeStringValue(value, fieldName = "") {
+  const str = String(value).trim();
+
+  if (UUID_RE.test(str)) {
+    return placeholderForField(fieldName);
+  }
+  if (EVM_ADDRESS_RE.test(str) || isLikelyBase58(str)) {
+    return placeholderForField(fieldName);
+  }
+  if (HEX_HASH_RE.test(str) || HEX_BLOB_RE.test(str)) {
+    return placeholderForField(fieldName);
+  }
+  if (
+    str.startsWith("http") &&
+    (EMBEDDED_SENSITIVE_RE.test(str) || hasEmbeddedBase58(str))
+  ) {
+    return "https://example.com/RESOURCE_URL";
+  }
+  if (hasEmbeddedBase58(str)) {
+    return placeholderForField(fieldName);
+  }
+  if (EMBEDDED_SENSITIVE_RE.test(str)) {
+    return placeholderForField(fieldName);
+  }
+
+  return str;
+}
+
+function sanitizeExampleValue(value, fieldName = "") {
+  if (value === undefined || value === null) {
+    return value;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => sanitizeExampleValue(item, fieldName));
+  }
+
+  if (typeof value === "object") {
+    const out = {};
+    for (const [key, nestedValue] of Object.entries(value)) {
+      out[key] = sanitizeExampleValue(nestedValue, key);
+    }
+    return out;
+  }
+
+  if (typeof value === "string") {
+    return sanitizeStringValue(value, fieldName);
+  }
+
+  return value;
+}
+
+function formatExampleForTable(value, fieldName = "") {
+  if (value === undefined) {
+    return "-";
+  }
+
+  const sanitized = sanitizeExampleValue(value, fieldName);
+  if (typeof sanitized === "object") {
+    return "\\`" + escapeMd(JSON.stringify(sanitized)) + "\\`";
+  }
+
+  return "\\`" + escapeMd(sanitized) + "\\`";
 }
 
 /**
@@ -143,15 +269,23 @@ function buildCurlExample(endpoint, source = "") {
     if (source === "solana" && param.name === "network" && !example) {
       example = "mainnet";
     }
-    if (example) {
-      urlPath = urlPath.replace(":" + param.name, example);
+    if (example !== undefined && example !== null && example !== "") {
+      const safeExample = sanitizeExampleValue(example, param.name);
+      urlPath = urlPath.replace(":" + param.name, String(safeExample));
     }
   }
 
   // Build query string
   const queryParamsStr = queryParams
     .filter((p) => p.example !== undefined)
-    .map((p) => p.name + "=" + encodeURIComponent(String(p.example)))
+    .map((p) => {
+      const safeExample = sanitizeExampleValue(p.example, p.name);
+      if (safeExample === undefined || safeExample === null || safeExample === "") {
+        return null;
+      }
+      return p.name + "=" + encodeURIComponent(String(safeExample));
+    })
+    .filter(Boolean)
     .join("&");
 
   let fullUrl = apiHost + urlPath;
@@ -179,7 +313,12 @@ function buildCurlExample(endpoint, source = "") {
  */
 function buildBodyExample(bodyParam) {
   if (typeof bodyParam === "string") {
-    return bodyParam;
+    try {
+      const parsed = JSON.parse(bodyParam);
+      return JSON.stringify(sanitizeExampleValue(parsed), null, 2);
+    } catch {
+      return sanitizeStringValue(bodyParam);
+    }
   }
 
   // Simple object builder
@@ -191,7 +330,7 @@ function buildBodyExample(bodyParam) {
   ) {
     for (const field of bodyParam.fields) {
       if (field.example !== undefined) {
-        obj[field.name] = field.example;
+        obj[field.name] = sanitizeExampleValue(field.example, field.name);
       }
     }
   }
@@ -272,9 +411,7 @@ function buildPathParamsSection(pathParams = [], source = "") {
       (paramEnum ? " (" + paramEnum.join(", ") + ")" : "");
     const required = param.required ? "Yes" : "No";
     const desc = param.description || "-";
-    const example = param.example
-      ? "\\`" + escapeMd(param.example) + "\\`"
-      : "-";
+    const example = formatExampleForTable(param.example, param.name);
     section +=
       "| " +
       name +
@@ -311,10 +448,7 @@ function buildQueryParamsSection(queryParams = []) {
       (param.enum ? " (" + param.enum.join(", ") + ")" : "");
     const required = param.required ? "Yes" : "No";
     const desc = param.description || "-";
-    const example =
-      param.example !== undefined
-        ? "\\`" + escapeMd(param.example) + "\\`"
-        : "-";
+    const example = formatExampleForTable(param.example, param.name);
     section +=
       "| " +
       name +
@@ -375,10 +509,7 @@ function buildBodySection(endpoint) {
       const type =
         (field.type || "-") +
         (field.enum ? " (" + field.enum.join(", ") + ")" : "");
-      const example =
-        field.example !== undefined
-          ? "\\`" + escapeMd(field.example) + "\\`"
-          : "-";
+      const example = formatExampleForTable(field.example, field.name);
       section +=
         "| " +
         field.name +
@@ -454,14 +585,14 @@ function buildExampleFromSchema(body) {
     // Skip $ref fields without examples (we can't resolve them)
     if (field.$ref) {
       if (field.example !== undefined) {
-        example[name] = field.example;
+        example[name] = sanitizeExampleValue(field.example, name);
       }
       continue;
     }
 
     // Use the example value if provided
     if (field.example !== undefined) {
-      example[name] = field.example;
+      example[name] = sanitizeExampleValue(field.example, name);
     } else if (field.type === "object" && field.properties) {
       // Recursively build nested objects from properties
       example[name] = buildExampleFromSchema({
@@ -500,7 +631,7 @@ function buildExampleFromSchema(body) {
             }),
           ];
         } else if (arraySchema.example !== undefined) {
-          example[name] = [arraySchema.example];
+          example[name] = [sanitizeExampleValue(arraySchema.example, name)];
         } else if (arraySchema.type) {
           // Simple type array
           example[name] = [];
@@ -558,7 +689,9 @@ function buildResponseExampleSection(endpoint) {
     section += successResponse.description + "\n\n";
   }
 
-  section += "```json\n" + JSON.stringify(example, null, 2) + "\n```\n";
+  const sanitizedExample = sanitizeExampleValue(example);
+  section +=
+    "```json\n" + JSON.stringify(sanitizedExample, null, 2) + "\n```\n";
 
   return section;
 }

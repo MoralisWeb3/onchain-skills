@@ -19,7 +19,7 @@ GET
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
 | network | string (mainnet) | Yes | The network to query | - |
-| pairAddress | string | Yes | The address of the pair to query | \`Czfq3xZZDmsdGdUyrNLtRhGc47cXcZtLG4crryfu44zE\` |
+| pairAddress | string | Yes | The address of the pair to query | \`YOUR_PAIR_ADDRESS\` |
 
 ## Query Params
 
@@ -50,21 +50,21 @@ Status: 200
   "cursor": "<cursor_from_previous_response>",
   "exchangeName": "Raydium AMM v4",
   "exchangeLogo": "https://entities-logos.s3.amazonaws.com/raydium.png",
-  "exchangeAddress": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
+  "exchangeAddress": "YOUR_ADDRESS",
   "pairLabel": "BREAD/SOL",
-  "pairAddress": "ALeyWh7zN979ZHUWY6YTMJC8wWowzdYqi8RRPRyB3LAd",
+  "pairAddress": "YOUR_PAIR_ADDRESS",
   "baseToken": {
-    "address": "madHpjRn6bd8t78Rsy7NuSuNwWa2HU8ByPobZprHbHv",
+    "address": "YOUR_ADDRESS",
     "name": "MAD",
     "symbol": "MAD",
-    "logo": "https://ipfs.io/ipfs/QmeCR6o1FrYjczPdDDDm4623usKksjj9BQLu89WqV8jFZW?filename=MAD.jpg",
+    "logo": "https://example.com/RESOURCE_URL",
     "decimals": "18"
   },
   "quoteToken": {
-    "address": "madHpjRn6bd8t78Rsy7NuSuNwWa2HU8ByPobZprHbHv",
+    "address": "YOUR_ADDRESS",
     "name": "MAD",
     "symbol": "MAD",
-    "logo": "https://ipfs.io/ipfs/QmeCR6o1FrYjczPdDDDm4623usKksjj9BQLu89WqV8jFZW?filename=MAD.jpg",
+    "logo": "https://example.com/RESOURCE_URL",
     "decimals": "18"
   },
   "result": [
@@ -75,7 +75,7 @@ Status: 200
       "subCategory": "sellAll",
       "blockTimestamp": "2024-11-28T09:44:55.000Z",
       "blockNumber": 304108120,
-      "walletAddress": "A8GVZWGMxRAouFQymPoMKx527JhHKrBRuqFx7NET4j22",
+      "walletAddress": "YOUR_ADDRESS",
       "baseTokenAmount": "199255.444466200",
       "quoteTokenAmount": "0.007374998",
       "baseTokenPriceUsd": 0.000008794,
@@ -90,7 +90,7 @@ Status: 200
 ## Example (curl)
 
 ```bash
-curl -X GET "https://solana-gateway.moralis.io/token/mainnet/pairs/Czfq3xZZDmsdGdUyrNLtRhGc47cXcZtLG4crryfu44zE/swaps?transactionTypes=buy%2Csell%2CaddLiquidity%2CremoveLiquidity" \
+curl -X GET "https://solana-gateway.moralis.io/token/mainnet/pairs/YOUR_PAIR_ADDRESS/swaps?transactionTypes=buy%2Csell%2CaddLiquidity%2CremoveLiquidity" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

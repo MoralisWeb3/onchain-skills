@@ -1,7 +1,7 @@
 ---
 name: moralis-streams-api
 description: Real-time blockchain event monitoring with webhooks. Use when user asks about setting up webhooks, real-time event streaming, monitoring wallet addresses, tracking token transfers in real-time, listening to all addresses on a chain, creating/updating/deleting streams, adding/removing addresses from streams, or receiving blockchain events as they happen. Supports all EVM chains. NOT for querying historical or current blockchain state - use moralis-data-api instead.
-version: 1.2.1
+version: 1.3.0
 license: MIT
 compatibility: Requires curl for API calls. Requires MORALIS_API_KEY env var for authentication.
 metadata:
@@ -113,7 +113,7 @@ All requests require: `X-API-Key: $MORALIS_API_KEY`
 "0x1234567890abcdef"
 
 // CORRECT - UUID format
-"a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+"YOUR_STREAM_ID"
 ```
 
 ### Chain IDs (ALWAYS hex)

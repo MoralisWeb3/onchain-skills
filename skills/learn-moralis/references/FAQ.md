@@ -42,7 +42,7 @@ Yes, there's a free tier with 40,000 Compute Units per day. Enough for developme
 - **Non-EVM:** Solana
 - **Emerging:** Monad, Sei, Ronin
 
-Full list: [SupportedApisAndChains.md](../moralis-data-api/references/SupportedApisAndChains.md)
+Full list: [SupportedApisAndChains.md](../../moralis-data-api/references/SupportedApisAndChains.md)
 
 ### Does Moralis support testnet?
 
@@ -170,7 +170,7 @@ But these skills use direct REST API calls via curl for simplicity.
 
 Most Data API endpoints respond quickly. Response times vary depending on query complexity (decoded endpoints take longer), wallet size (large wallets need more processing), and chain. For production applications, set client-side timeouts to **30s** to safely handle edge cases. Use pagination with smaller `limit` values for wallets with large transaction histories. Implement exponential backoff for 429 (rate limit) responses.
 
-See [PerformanceAndLatency.md](../moralis-data-api/references/PerformanceAndLatency.md) for full details.
+See [PerformanceAndLatency.md](../../moralis-data-api/references/PerformanceAndLatency.md) for full details.
 
 ### Is there a webhook secret?
 
@@ -217,7 +217,7 @@ Common mistakes:
 - Balances are strings, not numbers
 - Timestamps are ISO strings
 
-See [DataTransformations.md](../moralis-data-api/references/DataTransformations.md)
+See [DataTransformations.md](../../moralis-data-api/references/DataTransformations.md)
 
 ---
 

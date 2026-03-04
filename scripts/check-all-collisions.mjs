@@ -43,3 +43,5 @@ if (issues.length > 0) {
 } else {
   console.log('=== All collisions have both files ===');
 }
+
+process.exit(issues.length > 0 ? 1 : 0);

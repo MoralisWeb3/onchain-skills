@@ -18,7 +18,7 @@ POST
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| tokens | array | No | The tokens to be fetched | \`[object Object],[object Object]\` |
+| tokens | array | No | The tokens to be fetched | \`[{"chain":"0x1","tokenAddress":"YOUR_TOKEN_ADDRESS"},{"chain":"solana","tokenAddress":"YOUR_TOKEN_ADDRESS"}]\` |
 
 ## Response Example
 
@@ -98,11 +98,11 @@ curl -X POST "https://deep-index.moralis.io/api/v2.2/tokens/analytics" \
   "tokens": [
     {
       "chain": "0x1",
-      "tokenAddress": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+      "tokenAddress": "YOUR_TOKEN_ADDRESS"
     },
     {
       "chain": "solana",
-      "tokenAddress": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      "tokenAddress": "YOUR_TOKEN_ADDRESS"
     }
   ]
 }'

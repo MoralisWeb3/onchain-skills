@@ -33,9 +33,9 @@ Search results include:
 
 ## Related Endpoints
 
-- [searchTokens](rules/searchTokens.md) - Search for tokens by multiple criteria
-- [getTokenMetadata](rules/getTokenMetadata__evm.md) - Get token metadata by contract
-- [getTokenPairs](rules/getTokenPairs__evm.md) - Get token pairs by address
+- [searchTokens](../rules/searchTokens.md) - Search for tokens by multiple criteria
+- [getTokenMetadata](../rules/getTokenMetadata__evm.md) - Get token metadata by contract
+- [getTokenPairs](../rules/getTokenPairs__evm.md) - Get token pairs by address
 
 ## Documentation
 

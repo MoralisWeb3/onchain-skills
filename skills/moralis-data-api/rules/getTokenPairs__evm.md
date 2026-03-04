@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| token_address | string | Yes | The address of the token | \`0x6982508145454ce325ddbe47a25d4ec3d2311933\` |
+| token_address | string | Yes | The address of the token | \`YOUR_TOKEN_ADDRESS\` |
 
 ## Query Params
 
@@ -82,7 +82,7 @@ Returns the supported pairs for the token.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/0x6982508145454ce325ddbe47a25d4ec3d2311933/pairs?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/YOUR_TOKEN_ADDRESS/pairs?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The address of the NFT contract | \`0x524cab2ec69124574082676e6f654a18df49a048\` |
+| address | string | Yes | The address of the NFT contract | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -53,7 +53,7 @@ Returns the traits
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/nft/0x524cab2ec69124574082676e6f654a18df49a048/traits?chain=eth" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/nft/YOUR_ADDRESS/traits?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

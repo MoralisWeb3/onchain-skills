@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The address of the token contract | \`0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0\` |
+| address | string | Yes | The address of the token contract | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -27,7 +27,7 @@ GET
 | chain | string (eth, 0x1, sepolia, 0xaa36a7, polygon, 0x89, bsc, 0x38, bsc testnet, 0x61, avalanche, 0xa86a, fantom, 0xfa, cronos, 0x19, arbitrum, 0xa4b1, chiliz, 0x15b38, chiliz testnet, 0x15b32, gnosis, 0x64, gnosis testnet, 0x27d8, base, 0x2105, base sepolia, 0x14a34, optimism, 0xa, polygon amoy, 0x13882, linea, 0xe708, moonbeam, 0x504, moonriver, 0x505, moonbase, 0x507, linea sepolia, 0xe705, flow, 0x2eb, flow-testnet, 0x221, ronin, 0x7e4, ronin-testnet, 0x31769, lisk, 0x46f, lisk-sepolia, 0x106a, pulse, 0x171, sei-testnet, 0x530, sei, 0x531, monad, 0x8f) | No | The chain to query | \`eth\` |
 | exchange | string | No | The factory name or address of the token exchange | - |
 | to_block | number | No | The block number from which the token price should be checked | - |
-| include | string | No | This parameter is now deprecated as percentage change are included by default | \`-\` |
+| include | string | No | This parameter is now deprecated as percentage change are included by default | \`\` |
 | max_token_inactivity | number | No | Exclude tokens inactive for more than the given amount of days | - |
 | min_pair_side_liquidity_usd | number | No | Exclude tokens with liquidity less than the specified amount in USD. This parameter refers to the liquidity on a single side of the pair. | - |
 
@@ -41,18 +41,18 @@ Returns the price denominated in the blockchain's native token and USD for a giv
 {
   "tokenName": "Kylin Network",
   "tokenSymbol": "KYL",
-  "tokenLogo": "https://cdn.moralis.io/eth/0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c.png",
+  "tokenLogo": "https://example.com/RESOURCE_URL",
   "tokenDecimals": "18",
   "usdPrice": 19.722370676,
   "usdPriceFormatted": "19.722370676",
   "24hrPercentChange": "-0.8842730258590583",
-  "exchangeAddress": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+  "exchangeAddress": "YOUR_ADDRESS",
   "exchangeName": "Uniswap v3",
-  "tokenAddress": "0x67b6d479c7bb412c54e03dca8e1bc6740ce6b99c",
+  "tokenAddress": "YOUR_TOKEN_ADDRESS",
   "toBlock": "16314545",
   "possibleSpam": "false",
   "verifiedContract": true,
-  "pairAddress": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+  "pairAddress": "YOUR_PAIR_ADDRESS",
   "pairTotalLiquidityUsd": "123.45",
   "usdPrice24h": 1,
   "usdPrice24hrUsdChange": -0.00008615972490000345,
@@ -64,7 +64,7 @@ Returns the price denominated in the blockchain's native token and USD for a giv
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0/price?chain=eth&include=" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/YOUR_ADDRESS/price?chain=eth" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

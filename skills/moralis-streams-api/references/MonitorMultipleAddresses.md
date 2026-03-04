@@ -21,8 +21,8 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/{streamId}/address" \
   -H "Content-Type: application/json" \
   -d '{
     "address": [
-      "0xCFDF6Aaae9f6B927E3736FBD327853B622c5060E",
-      "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B"
+      "YOUR_EVM_ADDRESS",
+      "YOUR_EVM_ADDRESS"
     ]
   }'
 ```
@@ -35,7 +35,7 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/{streamId}/address" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "address": "0xCFDF6Aaae9f6B927E3736FBD327853B622c5060E"
+    "address": "YOUR_EVM_ADDRESS"
   }'
 ```
 
@@ -44,10 +44,10 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/{streamId}/address" \
 ```json
 {
   "addresses": [
-    "0xCFDF6Aaae9f6B927E3736FBD327853B622c5060E",
-    "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B"
+    "YOUR_EVM_ADDRESS",
+    "YOUR_EVM_ADDRESS"
   ],
-  "streamId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  "streamId": "YOUR_STREAM_ID"
 }
 ```
 
@@ -63,7 +63,7 @@ curl -X DELETE "https://api.moralis-streams.com/streams/evm/{streamId}/address" 
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "address": "0xCFDF6Aaae9f6B927E3736FBD327853B622c5060E"
+    "address": "YOUR_EVM_ADDRESS"
   }'
 ```
 
@@ -76,8 +76,8 @@ curl -X DELETE "https://api.moralis-streams.com/streams/evm/{streamId}/address" 
   -H "Content-Type: application/json" \
   -d '{
     "address": [
-      "0xCFDF6Aaae9f6B927E3736FBD327853B622c5060E",
-      "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B"
+      "YOUR_EVM_ADDRESS",
+      "YOUR_EVM_ADDRESS"
     ]
   }'
 ```
@@ -87,9 +87,9 @@ curl -X DELETE "https://api.moralis-streams.com/streams/evm/{streamId}/address" 
 ```json
 {
   "addresses": [
-    "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B"
+    "YOUR_EVM_ADDRESS"
   ],
-  "streamId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  "streamId": "YOUR_STREAM_ID"
 }
 ```
 
@@ -103,7 +103,7 @@ curl -X PATCH "https://api.moralis-streams.com/streams/evm/{streamId}/address" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "address": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
+    "address": "YOUR_EVM_ADDRESS"
   }'
 ```
 
@@ -124,9 +124,9 @@ curl -X GET "https://api.moralis-streams.com/streams/evm/{streamId}/address?limi
 ```json
 {
   "result": [
-    "0xCFDF6Aaae9f6B927E3736FBD327853B622c5060E",
-    "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
-    "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
+    "YOUR_EVM_ADDRESS",
+    "YOUR_EVM_ADDRESS",
+    "YOUR_EVM_ADDRESS"
   ],
   "cursor": "<cursor_value>",
   "total": 3
@@ -172,9 +172,9 @@ curl -X POST "https://api.moralis-streams.com/streams/evm/{streamId}/address" \
   -H "Content-Type: application/json" \
   -d '{
     "address": [
-      "0xCFDF6Aaae9f6B927E3736FBD327853B622c5060E",
-      "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
-      "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
+      "YOUR_EVM_ADDRESS",
+      "YOUR_EVM_ADDRESS",
+      "YOUR_EVM_ADDRESS"
     ]
   }'
 ```
@@ -204,8 +204,8 @@ The tag will be included in webhook payloads, making it easier to identify which
 ## References
 
 - [Monitor Multiple Addresses Documentation](https://docs.moralis.com/streams-api/evm/monitor-multiple-addresses)
-- [AddAddressToStream](./AddAddressToStream.md) - Add addresses to a stream
-- [DeleteAddressFromStream](./DeleteAddressFromStream.md) - Remove addresses from a stream
-- [ReplaceAddressFromStream](./ReplaceAddressFromStream.md) - Replace addresses in a stream
-- [GetAddresses](./GetAddresses.md) - Get all addresses for a stream
-- [CreateStream](./CreateStream.md) - Create a new stream
+- [AddAddressToStream](../rules/AddAddressToStream.md) - Add addresses to a stream
+- [DeleteAddressFromStream](../rules/DeleteAddressFromStream.md) - Remove addresses from a stream
+- [ReplaceAddressFromStream](../rules/ReplaceAddressFromStream.md) - Replace addresses in a stream
+- [GetAddresses](../rules/GetAddresses.md) - Get all addresses for a stream
+- [CreateStream](../rules/CreateStream.md) - Create a new stream

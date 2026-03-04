@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| tokenAddress | string | Yes | The token address to query | \`0x6982508145454ce325ddbe47a25d4ec3d2311933\` |
+| tokenAddress | string | Yes | The token address to query | \`YOUR_TOKEN_ADDRESS\` |
 
 ## Query Params
 
@@ -36,7 +36,7 @@ Successful response
 ```json
 {
   "chainId": "0x1",
-  "tokenAddress": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+  "tokenAddress": "YOUR_TOKEN_ADDRESS",
   "timeseries": [
     {
       "timestamp": "2022-02-22T00:00:00Z",
@@ -49,7 +49,7 @@ Successful response
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/tokens/0x6982508145454ce325ddbe47a25d4ec3d2311933/score/historical?chain=eth&timeframe=1d" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/tokens/YOUR_TOKEN_ADDRESS/score/historical?chain=eth&timeframe=1d" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

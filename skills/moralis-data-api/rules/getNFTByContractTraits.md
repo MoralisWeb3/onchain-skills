@@ -18,7 +18,7 @@ POST
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The address of the NFT contract | \`0x524cab2ec69124574082676e6f654a18df49a048\` |
+| address | string | Yes | The address of the NFT contract | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -54,16 +54,16 @@ Returns a collection of NFTs
   "cursor": "cursor_example",
   "result": [
     {
-      "token_address": "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
+      "token_address": "YOUR_TOKEN_ADDRESS",
       "token_id": "15",
-      "owner_of": "0x9c83ff0f1c8924da96cb2fcb7e093f78eb2e316b",
+      "owner_of": "YOUR_ADDRESS",
       "token_hash": "502cee781b0fb40ea02508b21d319ced",
       "block_number": "88256",
       "block_number_minted": "88256",
       "contract_type": "ERC721",
       "token_uri": "token_uri_example",
       "metadata": "metadata_example",
-      "minter_address": "0x9c83ff0f1c8924da96cb2fcb7e093f78eb2e316b",
+      "minter_address": "YOUR_ADDRESS",
       "last_token_uri_sync": "last_token_uri_sync_example",
       "last_metadata_sync": "last_metadata_sync_example",
       "amount": "1",
@@ -75,22 +75,22 @@ Returns a collection of NFTs
       "rarity_percentage": 98,
       "rarity_label": "Top 98%",
       "last_sale": {
-        "transaction_hash": "0x19e14f34b8f120c980f7ba05338d64c00384857fb9c561e2c56d0f575424a95c",
+        "transaction_hash": "YOUR_TX_HASH",
         "block_timestamp": "2023-04-04T15:59:11.000Z",
-        "buyer_address": "0xcb1c1fde09f811b294172696404e88e658659905",
-        "seller_address": "0x497a7dee2f13db161eb2fec060fa783cb041419f",
+        "buyer_address": "YOUR_ADDRESS",
+        "seller_address": "YOUR_ADDRESS",
         "price": "7300000000000000",
         "price_formatted": "0.0073",
         "usd_price_at_sale": "13.61",
         "current_usd_value": "15.53",
-        "token_address": "0xe8778996e096b39705c6a0a937eb587a1ebbda17",
+        "token_address": "YOUR_TOKEN_ADDRESS",
         "token_id": "170",
         "payment_token": {
           "token_name": "Ether",
           "token_symbol": "ETH",
           "token_logo": "https://cdn.moralis.io/eth/0x.png",
           "token_decimals": "18",
-          "token_address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          "token_address": "YOUR_TOKEN_ADDRESS"
         }
       },
       "list_price": {
@@ -111,7 +111,7 @@ Returns a collection of NFTs
 ## Example (curl)
 
 ```bash
-curl -X POST "https://deep-index.moralis.io/api/v2.2/nft/0x524cab2ec69124574082676e6f654a18df49a048/nfts-by-traits?chain=eth&format=decimal" \
+curl -X POST "https://deep-index.moralis.io/api/v2.2/nft/YOUR_ADDRESS/nfts-by-traits?chain=eth&format=decimal" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY" \
   -H "Content-Type: application/json" \

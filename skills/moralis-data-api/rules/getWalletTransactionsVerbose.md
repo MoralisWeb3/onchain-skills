@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| address | string | Yes | The address of the wallet | \`0xcB1C1FdE09f811B294172696404e88E658659905\` |
+| address | string | Yes | The address of the wallet | \`YOUR_ADDRESS\` |
 
 ## Query Params
 
@@ -41,7 +41,7 @@ GET
 * Provide the param 'to_block' or 'to_date'
 * If 'to_date' and 'to_block' are provided, 'to_block' will be used.
  | - |
-| include | string (internal_transactions) | No | If the result should contain the internal transactions. | \`-\` |
+| include | string (internal_transactions) | No | If the result should contain the internal transactions. | \`\` |
 | cursor | string | No | The cursor returned in the previous response (used for getting the next page). | - |
 | order | string (ASC, DESC) | No | The order of the result, in ascending (ASC) or descending (DESC) | \`DESC\` |
 | limit | number | No | The desired page size of the result. | - |
@@ -66,16 +66,16 @@ Returns a collection of native transactions.
   "page_size": "100",
   "result": [
     {
-      "hash": "0x1ed85b3757a6d31d01a4d6677fc52fd3911d649a0af21fe5ca3f886b153773ed",
+      "hash": "YOUR_HASH",
       "nonce": "1848059",
       "transaction_index": "108",
       "from_address_entity": "Opensea",
       "from_address_entity_logo": "https://opensea.io/favicon.ico",
-      "from_address": "0x267be1c1d684f78cb4f6a176c4911b741e4ffdc0",
+      "from_address": "YOUR_ADDRESS",
       "from_address_label": "Binance 1",
       "to_address_entity": "Beaver Build",
       "to_address_entity_logo": "https://beaverbuild.com/favicon.ico",
-      "to_address": "0x003dde3494f30d861d063232c6a8c04394b686ff",
+      "to_address": "YOUR_ADDRESS",
       "to_address_label": "Binance 2",
       "value": "115580000000000000",
       "gas": "30000",
@@ -89,21 +89,21 @@ Returns a collection of native transactions.
       "transaction_fee": "0.00034",
       "block_timestamp": "2021-05-07T11:08:35.000Z",
       "block_number": "12386788",
-      "block_hash": "0x9b559aef7ea858608c2e554246fe4a24287e7aeeb976848df2b9a2531f4b9171",
+      "block_hash": "YOUR_HASH",
       "logs": [
         {
           "log_index": "273",
-          "transaction_hash": "0xdd9006489e46670e0e85d1fb88823099e7f596b08aeaac023e9da0851f26fdd5",
+          "transaction_hash": "YOUR_TX_HASH",
           "transaction_index": "204",
-          "address": "0x3105d328c66d8d55092358cf595d54608178e9b5",
-          "data": "0x00000000000000000000000000000000000000000000000de05239bccd4d537400000000000000000000000000024dbc80a9f80e3d5fc0a0ee30e2693781a443",
-          "topic0": "0x2caecd17d02f56fa897705dcc740da2d237c373f70686f4e0d9bd3bf0400ea7a",
-          "topic1": "0x000000000000000000000000031002d15b0d0cd7c9129d6f644446368deae391",
-          "topic2": "0x000000000000000000000000d25943be09f968ba740e0782a34e710100defae9",
+          "address": "YOUR_ADDRESS",
+          "data": "YOUR_HEX_DATA",
+          "topic0": "YOUR_TOPIC_HASH",
+          "topic1": "YOUR_TOPIC_HASH",
+          "topic2": "YOUR_TOPIC_HASH",
           "topic3": null,
           "block_timestamp": "2021-05-07T11:08:35.000Z",
           "block_number": "12386788",
-          "block_hash": "0x9b559aef7ea858608c2e554246fe4a24287e7aeeb976848df2b9a2531f4b9171",
+          "block_hash": "YOUR_HASH",
           "decoded_event": {
             "signature": "Transfer(address,address,uint256)",
             "label": "Transfer",
@@ -111,7 +111,7 @@ Returns a collection of native transactions.
             "params": [
               {
                 "name": "from",
-                "value": "0x26C5011483Add49801eA8E3Ee354fE013895aCe5",
+                "value": "YOUR_HEX_VALUE",
                 "type": "address"
               }
             ]
@@ -125,7 +125,7 @@ Returns a collection of native transactions.
         "params": [
           {
             "name": "_to",
-            "value": "0x1CA455A55108874A95C84620dDA2566c54D17953",
+            "value": "YOUR_HEX_VALUE",
             "type": "address"
           }
         ]
@@ -138,7 +138,7 @@ Returns a collection of native transactions.
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/0xcB1C1FdE09f811B294172696404e88E658659905/verbose?chain=eth&include=&order=DESC" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/YOUR_ADDRESS/verbose?chain=eth&order=DESC" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

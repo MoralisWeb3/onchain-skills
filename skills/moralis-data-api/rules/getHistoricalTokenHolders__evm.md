@@ -18,7 +18,7 @@ GET
 
 | Name | Type | Required | Description | Example |
 |------|------|----------|-------------|----------|
-| tokenAddress | string | Yes | The token address | \`0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0\` |
+| tokenAddress | string | Yes | The token address | \`YOUR_TOKEN_ADDRESS\` |
 
 ## Query Params
 
@@ -88,7 +88,7 @@ Returns token
 ## Example (curl)
 
 ```bash
-curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0/holders/historical?chain=eth&fromDate=2025-01-01T10%3A00%3A00&toDate=2025-02-01T11%3A00%3A00&timeFrame=1d" \
+curl -X GET "https://deep-index.moralis.io/api/v2.2/erc20/YOUR_TOKEN_ADDRESS/holders/historical?chain=eth&fromDate=2025-01-01T10%3A00%3A00&toDate=2025-02-01T11%3A00%3A00&timeFrame=1d" \
   -H "accept: application/json" \
   -H "X-API-Key: $MORALIS_API_KEY"
 ```

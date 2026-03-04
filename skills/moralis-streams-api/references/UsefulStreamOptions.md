@@ -88,7 +88,7 @@ Advanced Options are useful when you want to narrow down the data included in th
     "filter": {
         "and": [
             {
-                "eq": ["from", "0x283af0b28c62c092c9727f1ee09c02ca627eb7f5"]
+                "eq": ["from", "YOUR_EVM_ADDRESS"]
             },
             {
                 "gt": ["amount", "100000000000000000000"]
@@ -102,7 +102,7 @@ Advanced Options are useful when you want to narrow down the data included in th
 **Explanation:**
 
 - Listening to the ERC20 `Transfer(address,address,uint256)` event
-- Filtering for transfers where `from` equals `0x283af0b28c62c092c9727f1ee09c02ca627eb7f5`
+- Filtering for transfers where `from` equals `YOUR_EVM_ADDRESS`
 - Only including transfers where `amount` is greater than 100 tokens (in wei, assuming 18 decimals)
 - Not including native transactions
 
@@ -235,6 +235,6 @@ You can combine multiple options in a single stream configuration:
 ## References
 
 - [Advanced Options Documentation](https://docs.moralis.com/streams-api/evm/streams-configuration/useful-streams-options)
-- [CreateStream](./CreateStream.md) - For creating streams with these options
-- [UpdateStream](./UpdateStream.md) - For updating existing stream options
+- [CreateStream](../rules/CreateStream.md) - For creating streams with these options
+- [UpdateStream](../rules/UpdateStream.md) - For updating existing stream options
 - [FilterStreams](./FilterStreams.md) - For detailed filter syntax and examples

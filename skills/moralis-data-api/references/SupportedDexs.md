@@ -48,12 +48,12 @@ List of supported Decentralized Exchanges (DEXs) for token API endpoints includi
 
 ## Related Endpoints
 
-- [getPairAddress](rules/getPairAddress.md) - Get DEX token pair address
-- [getPairReserves](rules/getPairReserves.md) - Get DEX token pair reserves
-- [getPairPrice](rules/getPairPrice.md) - Get DEX token pair price
-- [getSwapsByPairAddress](rules/getSwapsByPairAddress__evm.md) - Get swap transactions by pair
-- [getSwapsByTokenAddress](rules/getSwapsByTokenAddress__evm.md) - Get swap transactions by token
-- [getTokenPairs](rules/getTokenPairs__evm.md) - Get token pairs by address
+- [getPairAddress](../rules/getPairAddress.md) - Get DEX token pair address
+- [getPairReserves](../rules/getPairReserves.md) - Get DEX token pair reserves
+- [getPairPrice](../rules/getPairPrice.md) - Get DEX token pair price
+- [getSwapsByPairAddress](../rules/getSwapsByPairAddress__evm.md) - Get swap transactions by pair
+- [getSwapsByTokenAddress](../rules/getSwapsByTokenAddress__evm.md) - Get swap transactions by token
+- [getTokenPairs](../rules/getTokenPairs__evm.md) - Get token pairs by address
 
 ## Documentation
 
